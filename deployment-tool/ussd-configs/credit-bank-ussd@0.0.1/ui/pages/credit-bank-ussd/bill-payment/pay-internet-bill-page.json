@@ -1,0 +1,14 @@
+{
+    "type"                : "select",
+    "name"                : "pay-internet-bill-page",
+    "options"             : [
+		{
+            "name"        : "zuku-internet",
+            "label"       : "zuku-internet-label",
+            "enabled"     : true,
+            "authenticate": false
+		}
+    ],
+    "error"               : "pay-internet-bill-page-error",
+    "previous"            : "bill-payment-page"
+}

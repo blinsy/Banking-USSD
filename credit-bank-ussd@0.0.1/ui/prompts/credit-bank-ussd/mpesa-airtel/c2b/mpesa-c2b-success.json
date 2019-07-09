@@ -1,0 +1,4 @@
+{
+    "type" : "alert",
+    "name": "mpesa-c2b-success"
+}

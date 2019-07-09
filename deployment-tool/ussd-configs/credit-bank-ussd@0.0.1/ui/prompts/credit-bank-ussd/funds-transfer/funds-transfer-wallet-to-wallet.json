@@ -1,0 +1,53 @@
+[
+    {
+        "type"          : "input",
+        "name"          : "ft-wallet-to-wallet-credit-account",
+		"save-as"       : "fundsTransferCreditAccount",
+		"format-as"     : "credit-bank-wallet",
+        "validation"    : [
+            {
+                "name"  : "isNumber",
+                "type"  : "joi"
+            },
+			{
+				"name" : "matchesLength",
+				"type" : "joi",
+				"arguments": "length=10"
+			}
+        ],
+        "errors"         : ["ft-wallet-to-wallet-credit-account-error","ft-wallet-to-wallet-credit-account-error"],
+        "previous"      : "funds-transfer-other-accounts-page",
+        "next"          : "ft-wallet-to-wallet-amount"
+    },
+    {
+        "type"          : "input",
+        "name"          : "ft-wallet-to-wallet-amount",
+        "save-as"       : "fundsTransferAmount",
+        "validation"    : [
+            {
+                "name"  : "isAmount",
+				"type"              : "joi",
+				"arguments":"min=200"
+            }
+        ],
+        "format-as"     : "",
+        "error"         : "ft-wallet-to-wallet-amount-error",
+        "previous"      : "ft-wallet-to-wallet-credit-account",
+        "next"          : "ft-wallet-to-wallet-confirm"
+    },
+    {
+        "type"          : "select",
+        "name"          : "ft-wallet-to-wallet-confirm",
+		"options"       : "confirm-options",
+		"charges"         : true,
+        "error"         : "ft-wallet-to-wallet-confirm-error",
+        "action"        : "transact",
+        "external-fetch": {
+            "route"     : "funds-transfer-wallet-to-wallet",
+            "success"   : "api-success",
+            "error"     : "api-error"
+        },
+        "on-cancel"     : "client-page",
+        "previous"      : "ft-wallet-to-wallet-amount"
+    }
+]

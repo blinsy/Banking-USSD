@@ -1,0 +1,44 @@
+{
+    "type"                : "select",
+    "name"                : "pesalink-page",
+    "options"             : [
+		{
+                  "name"        : "pesalink-to-phone",
+                  "label"       : "pesalink-to-phone-label",
+                  "enabled"     : true,
+                  "authenticate": false
+		},
+		{
+                  "name"        : "pesalink-to-bank",
+                  "label"       : "pesalink-to-bank-label",
+                  "enabled"     : true,
+                  "authenticate": false
+		},
+		{
+                  "name"        : "pesalink-to-card",
+                  "label"       : "pesalink-to-card-label",
+                  "enabled"     : true,
+                  "authenticate": false
+            },
+            {
+                  "name"        : "pesalink-to-ecitizen",
+                  "label"       : "pesalink-to-ecitizen-label",
+                  "enabled"     : true,
+                  "authenticate": false
+		},
+            {
+                  "name"        : "pesalink-link-account",
+                  "label"       : "pesalink-link-account-label",
+                  "enabled"     : true,
+                  "authenticate": false
+            },
+            {
+                  "name"        : "pesalink-link-primary",
+                  "label"       : "pesalink-link-primary-label",
+                  "enabled"     : true,
+                  "authenticate": false
+            }
+    ],
+	"error"               : "pesalink-page-error",
+	"previous"            : "funds-transfer-page"
+}

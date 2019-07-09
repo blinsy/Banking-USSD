@@ -1,0 +1,21 @@
+[
+    {
+        "type"      : "select",
+        "name"      : "language-change",
+        "save-as"   : "selected_language",
+        "options"   : "language-options",
+        "error"     : "language-change-error",
+        "previous"  : "settings-page" ,
+        "next"      : "language-confirm"  
+    },
+    {
+        "type"      : "select",
+        "name"      : "language-confirm",
+        "options"   : "confirm-options",
+        "error"     : "language-confirm-error",
+        "action"    : "update-local",  
+        "local-path": "language=selected_language",
+        "next"      : "client-page",
+        "previous"  : "language-change"        
+    }
+]

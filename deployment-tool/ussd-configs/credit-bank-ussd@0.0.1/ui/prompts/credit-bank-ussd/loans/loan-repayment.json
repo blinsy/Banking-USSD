@@ -1,0 +1,62 @@
+[
+	{
+        "type"          : "select",
+		"name"          : "loan-repayment-accounts",
+		"save-as"       : "account",
+		"options"       : [
+            {
+                "label":"CB Micro Loan",
+                "value": "CB Micro Loan"
+            }
+        ],
+		"options-error" : "loan-repayment-account-options-error",
+        "error"         : "loan-repayment-accounts-error",
+		"previous"      : "loans-page",
+		"next"          : "loan-repayment-amount"
+    },
+    {
+        "type"          : "input",
+        "name"          : "loan-repayment-amount",
+        "save-as"       : "amount",
+        "validation"    : [
+            {
+                "name"  : "isAmount",
+				"type"              : "joi",
+				"arguments":"min=200"
+            }
+        ],
+        "format-as"     : "",
+        "error"         : "loan-repayment-amount-error",
+        "previous"      : "loan-repayment-accounts",
+        "next"          : "loan-repayment-confirm"
+    },
+    
+    {
+        "type"          : "select",
+        "name"          : "loan-repayment-confirm",
+        "options"       : "confirm-options",
+        "error"         : "loan-repayment-confirm-error",
+        "action"        : "transact",
+        "external-fetch": {
+            "route"     : "loan-repayment",
+            "success"   : "api-success",
+            "error"     : "api-error"
+        },
+        "on-cancel"     : "client-page",
+        "previous"      : "loan-repayment-amount"
+	},
+	
+
+
+
+	{
+		"type"      : "select",
+		"name"      : "loan-repayment-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "loan-repayment-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "loans-page"
+	}
+]

@@ -1,0 +1,61 @@
+[
+	{
+		"type"             : "select",
+		"name"             : "lock-savings-save-debit-account",
+		"save-as"          : "lockSavingsSaveDebitAccount",
+		"options"          : "mwallet-account+savings-accounts",
+		"show-if"           : {
+			"param"       : "lockSavingsAccount",
+			"validates-to": "isLockSavingsAccount",
+			"on-error"    : "lock-savings-account-error"
+		},		
+		"options-error"    : "lock-savings-save-debit-account-options-error",
+		"previous"         : "lock-savings-page",
+		"next"             : "lock-savings-save-amount",
+		"error"            : "lock-savings-save-debit-account-error"
+	},
+	{
+		"type"             : "input",
+		"name"             : "lock-savings-save-amount",
+		"save-as"          : "lockSavingsSaveAmount",
+		"validation"       : [
+			{
+				"name"     : "isAmount",
+				"type"     : "joi",
+				"arguments": "min=0"
+			}
+		],
+		"previous"         : "lock-savings-save-debit-account",
+		"next"             : "lock-savings-save-confirm",
+		"error"            : "lock-savings-save-amount-error"
+	},
+	{
+		"type"             : "select",
+		"name"             : "lock-savings-save-confirm",
+		"options"          : "confirm-options",
+		"charges"         : true,
+		"previous"         : "lock-savings-save-amount",
+		"action"           : "transact",
+		"external-fetch"   : {
+            "route"        : "lock-savings-save",
+            "success"      : "api-success",
+            "error"        : "api-error"
+		},
+		"on-cancel"        : "client-page",
+		"error"            : "lock-savings-save-confirm-error"
+	},
+
+
+
+	{
+		"type"      : "select",
+		"name"      : "lock-savings-save-debit-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "lock-savings-save-debit-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "dstv-credit-account"
+	}
+]
+

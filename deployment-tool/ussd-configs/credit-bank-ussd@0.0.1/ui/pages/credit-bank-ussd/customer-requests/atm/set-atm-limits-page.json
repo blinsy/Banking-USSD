@@ -1,0 +1,26 @@
+{
+    "type"                : "select",
+    "name"                : "set-atm-limits-page",
+    "options"             : [
+        {
+            "name"        : "atm-single-transaction",
+            "label"       : "atm-single-transaction-label",
+            "enabled"     : true,
+            "authenticate": false
+		},
+		{
+            "name"        : "atm-daily-amount",
+            "label"       : "atm-daily-amount-label",
+            "enabled"     : true,
+            "authenticate": false
+        },
+        {
+            "name"        : "atm-transaction-count",
+            "label"       : "atm-transaction-count-label",
+            "enabled"     : true,
+            "authenticate": false
+        }
+    ],
+    "error"               : "set-atm-limits-page-error",
+    "previous"            : "atm-cards-page"
+}

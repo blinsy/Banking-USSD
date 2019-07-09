@@ -1,0 +1,108 @@
+[
+	{
+		"type"             : "select",
+		"name"             : "account-mandates-debit-account",
+		"save-as"          : "account",
+		"options"          : "mwallet-account+savings-accounts",		
+		"error"            : "account-mandates-debit-account-account-error",
+		"previous"         : "account-requests-page",
+		"next"             : "account-mandates-id",
+		"action"           : "update-parameters",
+		"external-fetch"   : {
+			"route"           : "account-mandates-lookup",
+			"success"         : "account-mandates-id",
+			"error"           : "account-mandates-lookup-error",
+			"cache"           : true,
+			"cache-path"      : "global-request-details",
+			"cache-parameters": [
+				{
+					"path"          : "Result",
+					"save-as"       : "account-mandates",
+					"format-as"     : "account-mandates",
+					"validation"    : {
+						"name"         : "isText",
+						"type"         : "joi"
+					}
+				}
+			]
+		}
+	},
+    {
+        "type"            : "select",
+        "name"            : "account-mandates-id",
+        "save-as"         : "code",
+        "options"         : "account-mandates",	
+        "error"           : "account-mandates-id-error",
+        "previous"        : "account-mandates-debit-account",
+        "next"            : "account-mandates-type"
+	},
+	{
+        "type"            : "select",
+        "name"            : "account-mandates-type",
+        "options"         : [
+			{
+				"label" : "Approve",
+				"jump-to" : "account-mandates-confirm"
+			},
+			{
+				"label" : "Reject",
+				"jump-to" : "account-mandates-reject-confirm"
+			}
+		],	
+        "error"           : "account-mandates-type-error",
+        "previous"        : "account-mandates-id"
+	},
+
+    {
+        "type"            : "select",
+        "name"            : "account-mandates-confirm",
+		"options"         : "confirm-options",
+		"charges"         : true,
+        "error"           : "account-mandates-confirm-error",
+        "action"          : "transact",
+        "external-fetch"  : {
+            "route"       : "account-mandates-approve",
+            "success"     : "api-success",
+            "error"       : "api-error"
+        },
+        "on-cancel"       : "client-page",
+        "previous"        : "account-mandates-type"
+	},
+	{
+        "type"            : "select",
+        "name"            : "account-mandates-reject-confirm",
+		"options"         : "confirm-options",
+		"charges"         : true,
+        "error"           : "account-mandates-reject-confirm-error",
+        "action"          : "transact",
+        "external-fetch"  : {
+            "route"       : "account-mandates-reject",
+            "success"     : "api-success",
+            "error"       : "api-error"
+        },
+        "on-cancel"       : "client-page",
+        "previous"        : "account-mandates-type"
+	},
+	
+
+	{
+		"type"      : "select",
+		"name"      : "account-mandates-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "account-mandates-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "account-mandates-account"
+	},
+	{
+		"type"      : "select",
+		"name"      : "account-mandates-lookup-error",
+		"options"   : "yes-no-options",
+		"error"     : "account-mandates-lookup-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "account-requests-page"
+	}
+]

@@ -1,0 +1,120 @@
+[
+	{
+        "type"           : "select",
+        "name"           : "gotv-debit-account",
+        "save-as"        : "billPaymentDebitAccount",
+		"options"        : "mwallet-account+savings-accounts",		
+		"options-error"  : "gotv-debit-account-options-error",
+        "error"          : "gotv-debit-account-error",
+		"previous"       : "bill-payment-page",
+		"next"           : "gotv-credit-account"
+    },
+    {
+        "type"           : "input",
+        "name"           : "gotv-credit-account",
+        "save-as"        : "billPaymentCreditAccount",
+        "validation"     : [
+            {
+                "name"   : "isNumber",
+                "type"   : "joi"
+            }
+        ],
+        "error"          : "gotv-credit-account-error",
+        "previous"       : "bill-payment-page",
+        "next"           : "gotv-confirm",
+		"action"           : "update-parameters",
+		"external-fetch"   : { 
+			"route"                 : "gotv-bill-presentment",
+			"success"               : "gotv-confirm",	
+			"error"                 : "gotv-presentment-error",
+			"cache"                 : true,
+			"cache-path"            : "global-request-details",
+			"cache-parameters"      : [
+				{
+					"path" :"field4",
+					"save-as" :"billPaymentAmount"
+	
+				},
+				{
+					"path" :"field48",
+					"save-as" :"dueDate"
+	
+				},
+				{
+					"path" :"field49",
+					"save-as" :"customerName"
+	
+				}
+			],
+			"parameter-checks" : {
+				"billPaymentAmount" :{
+					"is-less-than": "0",
+					"redirect-to" : "gotv-presentment-amount-error"
+				}
+			}         
+		}
+	},
+	
+    {
+        "type"           : "input",
+        "name"           : "gotv-amount",
+        "save-as"        : "billPaymentAmount",
+        "validation"     : [
+            {
+                "name"   : "isAmount",
+				"type"   : "joi",
+				"arguments":"min=200"
+            }
+        ],
+        "format-as"      : "",
+        "error"          : "gotv-amount-error",
+        "previous"       : "gotv-debit-account",
+        "next"           : "gotv-confirm"
+    },    
+    {
+        "type"           : "select",
+        "name"           : "gotv-confirm",
+		"options"        : "confirm-options",
+		"charges"         : true,
+        "error"          : "gotv-confirm-error",
+        "action"         : "transact",
+        "external-fetch" : {
+            "route"      : "gotv-bill-payment",
+            "success"    : "api-success",
+            "error"      : "api-error"
+        },
+        "on-cancel"      : "client-page",
+        "previous"       : "gotv-credit-account"
+    },
+	
+
+
+	{
+		"type"      : "select",
+		"name"      : "gotv-debit-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "gotv-debit-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "gotv-credit-account"
+	},
+	{
+		"type"      : "select",
+		"name"      : "gotv-presentment-error",
+		"options"   : "yes-no-options",
+		"error"     : "gotv-presentment-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout"
+	},
+	{
+		"type"      : "select",
+		"name"      : "gotv-presentment-amount-error",
+		"options"   : "yes-no-options",
+		"error"     : "gotv-presentment-amount-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout"
+	}
+]

@@ -1,0 +1,69 @@
+[
+    {
+        "type"        : "input",
+        "name"        : "pin-change-old-pin",
+		"save-as"           : "oldPin",		
+		"format-as"     : "pin-hash",
+		"transform-function": "hash_pin",
+        "validation"  : [             
+            {
+                "name": "isCorrectPin",
+                "type": "custom"
+            }
+        ],
+        "error"       : "pin-change-wrong-old-pin-error",
+        "previous"    : "settings-page",
+        "next"        : "pin-change-new-pin"
+    },
+    {
+        "type"          : "input",
+        "name"          : "pin-change-new-pin",
+		"save-as"       : "newPin",
+		"transform-function": "hash_pin",
+        "validation"    : [
+            {
+                "name"  : "isStrongPin",
+                "type"  : "custom"
+			},
+			{
+                "name": "isNotEqualToLastEntry",
+                "type": "custom",
+				"arguments": "path = oldPin"
+            }
+        ],
+        "errors"         : ["pin-change-new-pin-error", "pin-change-new-pin-not-last-entry-error"],
+        "previous"      : "pin-change-old-pin",
+        "next"          : "pin-change-new-pin-reenter"
+    },
+    {
+        "type"          : "input",
+        "name"          : "pin-change-new-pin-reenter",
+		"save-as"       : "newPin",
+		"format-as"     : "pin-hash",
+        "validation"    : [
+            {
+                "name"  : "isEqualToLastEntry",
+                "type"  	: "custom",
+				"arguments" : "path=newPin"
+            }
+        ],
+        "error"         : "pin-change-new-pin-reenter-error",
+        "previous"      : "pin-change-new-pin",
+        "next"          : "pin-change-confirm"
+    },
+    {
+        "type"          : "select",
+        "name"          : "pin-change-confirm",
+        "options"       : "confirm-options",
+        "error"         : "pin-change-confirm-error",
+        "authenticate"  : false,
+        "action"        : "transact",
+        "external-fetch": { 
+            "route"     : "pin-change",
+            "success"   : "pin-change-success",
+            "error"     : "pin-change-error"              
+        },
+		"on-cancel"           : "settings-page",
+		"previous"            : "pin-change-new-pin-reenter"
+    }
+]

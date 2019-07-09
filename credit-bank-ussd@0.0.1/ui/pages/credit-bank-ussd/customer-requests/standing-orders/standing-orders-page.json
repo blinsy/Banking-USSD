@@ -1,0 +1,26 @@
+{
+    "type": "select",
+    "name": "standing-orders-page",
+    "options": [
+        {
+            "name": "create-standing-orders-page",
+            "label": "create-standing-orders-page-label",
+            "enabled": true,
+            "authenticate": false
+		},
+		{
+            "name": "standing-orders-amend",
+            "label": "standing-orders-amend-label",
+            "enabled": true,
+            "authenticate": false
+		},
+		{
+            "name": "standing-orders-cancel",
+            "label": "standing-orders-cancel-label",
+            "enabled": true,
+            "authenticate": false
+        }
+    ],
+    "error": "standing-orders-page-error",
+    "previous": "customer-requests-page"
+}

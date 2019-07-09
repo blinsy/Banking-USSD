@@ -1,0 +1,77 @@
+[
+    {
+        "type"            : "select",
+        "name"            : "request-cheque-book-account",
+        "save-as"         : "requestChequeBookDebitAccount",
+        "options"         : "savings-accounts",	
+		"options-error"   : "request-cheque-book-account-options-error",
+        "error"           : "request-cheque-book-account-error",
+        "previous"        : "cheques-page",
+        "next"            : "request-cheque-book-leaves"
+	},	
+	{
+        "type"            : "select",
+        "name"            : "request-cheque-book-leaves",
+        "save-as"         : "requestChequeBookLeaves",
+        "options"         : [
+			{
+				"label" : "25 Leaves",
+				"value" : "P25"
+			},
+			{
+				"label" : "50 Leaves",
+				"value" : "P50"
+			},
+			{
+				"label" : "100 Leaves",
+				"value" : "P100"
+			}
+		],	
+        "error"           : "request-cheque-book-leaves-error",
+        "previous"        : "request-cheque-book-account",
+        "next"            : "request-cheque-book-quantity"
+	},
+	
+	{
+        "type"           : "input",
+        "name"           : "request-cheque-book-quantity",
+        "save-as"        : "requestChequeBookQuantity",
+        "validation"     : [
+            {
+                "name"   : "isNumber",
+                "type"   : "joi"
+            }
+        ],
+        "format-as"      : "",
+        "error"          : "request-cheque-book-quantity-error",
+        "previous"       : "request-cheque-book-leaves",
+        "next"           : "request-cheque-book-confirm"
+	},
+    {
+        "type"            : "select",
+        "name"            : "request-cheque-book-confirm",
+		"options"         : "confirm-options",
+		"charges"         : true,
+        "error"           : "request-cheque-book-confirm-error",
+        "action"          : "transact",
+        "external-fetch"  : {
+            "route"       : "request-cheque-book",
+            "success"     : "api-success",
+            "error"       : "api-error"
+        },
+        "on-cancel"       : "client-page",
+        "previous"        : "request-cheque-book-quantity"
+	},
+	
+
+	{
+		"type"      : "select",
+		"name"      : "request-cheque-book-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "request-cheque-book-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "request-cheque-book-account"
+	}
+]

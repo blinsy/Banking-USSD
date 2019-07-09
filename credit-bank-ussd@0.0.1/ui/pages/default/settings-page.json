@@ -1,0 +1,46 @@
+{
+    "type"           : "select",
+    "name"           : "settings-page",
+    "previous"       : "client-page",
+    "options"        : [  
+		{
+            "name"   : "calculator",
+            "label"  : "calculator-label",          
+            "enabled": true
+		},      
+		{
+            "name"   : "forex",
+            "label"  : "forex-label",          
+            "enabled": true
+        },    
+        {
+            "name"   : "language-change",
+            "label"  : "language-change-label",
+            "enabled": false
+        },
+        {
+            "name"   : "pin-change",
+            "label"  : "pin-change-label",          
+            "enabled": true
+		},        
+		   
+        {
+            "name"   : "email-change",
+            "label"  : "email-change-label",
+            "enabled": false
+		},
+		{
+			"name"        : "contact-us",
+			"label"       : "contact-us-label",
+			"enabled"     : true,
+			"authenticate": false
+		},
+		{
+			"name"        : "tell-a-friend",
+			"label"       : "tell-a-friend-label",
+			"enabled"     : true,
+			"authenticate": false
+		}
+    ],
+    "error"          : "settings-page-error"
+}

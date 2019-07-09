@@ -1,0 +1,147 @@
+[
+    
+	{
+        "type"             : "select",
+        "name"             : "b2b-debit-account",
+        "save-as"          : "debitAccount",
+        "options"          : "mwallet-account+savings-accounts",
+		"options-error"    : "b2b-debit-account-options-error",
+        "error"            : "b2b-debit-account-error",
+        "previous"         : "withdrawal-page",
+        "next"             : "b2b-type"
+    },
+    {
+        "type"             : "select",
+		"name"             : "b2b-type",
+        "options"          : [
+            {
+				"label"    : "Buy Goods and Services",
+                "jump-to"  : "b2b-till"
+            },
+            {
+                "label"    : "Pay Bill",
+                "jump-to"  : "b2b-pay-bill"
+            }
+        ],
+        "error"            : "b2b-type-error"
+	},
+	{
+        "type"             : "input",
+        "name"             : "b2b-till",
+		"save-as"          : "till",
+        "validation"       : [
+            {
+                "name"     : "isNumber",
+                "type"     : "joi"
+            }
+        ],
+        "error"           : "b2b-till-error",
+        "previous"         : "b2b-type",
+        "next"             : "b2b-till-amount"
+    },
+    {
+        "type"             : "input",
+        "name"             : "b2b-pay-bill",
+		"save-as"          : "paybill",
+        "validation"       : [
+            {
+                "name"     : "isNumber",
+                "type"     : "joi"
+            }
+        ],
+        "error"            : "b2b-paybill-error",
+        "previous"         : "b2b-type",
+        "next"             : "b2b-account"
+    },
+    {
+        "type"             : "input",
+        "name"             : "b2b-account",
+        "save-as"          : "account",
+        "validation"       : [
+            {
+                "name"     : "isNumber",
+                "type"     : "joi"
+            }
+        ],
+        "error"            : "b2b-account-error",
+        "previous"         : "b2b-pay-bill",
+        "next"             : "b2b-pay-bill-amount"
+    },
+	{
+        "type"             : "input",
+        "name"             : "b2b-till-amount",
+        "save-as"          : "amount",
+        "validation"       : [
+            {
+                "name"     : "isAmount",
+                "arguments": "min= 10",
+                "type"     : "joi"
+            }
+        ],
+        "error"            : "b2b-till-amount-error",
+        "previous"         : "b2b-till",
+        "next"             : "b2b-till-confirm"
+    },
+    {
+        "type"             : "input",
+        "name"             : "b2b-pay-bill-amount",
+        "save-as"          : "amount",
+        "validation"       : [
+            {
+                "name"     : "isAmount",
+                "arguments": "min= 10",
+                "type"     : "joi"
+            }
+        ],
+        "error"            : "b2b-pay-bill-amount-error",
+        "previous"         : "b2b-account",
+        "next"             : "b2b-pay-bill-confirm"
+    },
+    {
+        "type"             : "select",
+        "name"             : "b2b-till-confirm",
+		"options"          : "confirm-options",
+		"charges"          : true,
+        "previous"         : "b2b-till-amount",
+        "action"           : "transact",
+        "external-fetch"   : {
+            "route"        : "buy-goods-and-services",
+            "success"      : "api-success",
+            "error"        : "api-error"
+        },
+        "on-cancel"        : "client-page",
+        "error"            : "b2b-till-confirm-error"
+    },
+    {
+        "type"             : "select",
+        "name"             : "b2b-pay-bill-confirm",
+		"options"          : "confirm-options",
+		"charges"          : true,
+        "previous"         : "b2b-amount",
+        "action"           : "transact",
+        "external-fetch"   : {
+            "route"        : "pay-bill",
+            "success"      : "api-success",
+            "error"        : "api-error"
+        },
+        "on-cancel"        : "client-page",
+        "error"            : "b2b-pay-bill-confirm-error"
+	},
+
+
+
+
+
+
+
+	{
+		"type"                   : "select",
+		"name"                   : "b2b-debit-account-options-error",
+		"options"                : "yes-no-options",
+		"error"                  : "b2b-debit-account-options-error-error",
+		"action"                 : "navigate",
+		"on-accept"              : "client-page",
+		"on-cancel"              : "logout",
+		"previous"               : "withdrawal-page"
+	}
+]

@@ -1,0 +1,40 @@
+[
+    {
+        "type"            : "select",
+        "name"            : "replace-atm-account",
+        "save-as"         : "replaceAtmAccount",
+        "options"         : "savings-accounts",
+		"options-error"   : "replace-atm-account-options-error",
+        "format-as"       : "",
+        "error"           : "replace-atm-account-error",
+        "previous"        : "atm-cards-page",
+        "next"            : "replace-atm-confirm"
+    },
+    {
+        "type"            : "select",
+        "name"            : "replace-atm-confirm",
+		"options"         : "confirm-options",
+		"charges"         : true,
+        "error"           : "replace-atm-confirm-error",
+        "action"          : "transact",
+        "external-fetch"  : {
+            "route"       : "replace-atm-card",
+            "success"     : "api-success",
+            "error"       : "api-error"
+        },
+        "on-cancel"       : "client-page",
+        "previous"        : "replace-atm-account"
+	},
+	
+
+	{
+		"type"      : "select",
+		"name"      : "replace-atm-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "replace-atm-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "replace-atm-account"
+	}
+]

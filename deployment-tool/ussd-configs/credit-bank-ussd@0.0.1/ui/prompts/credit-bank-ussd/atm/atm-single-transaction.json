@@ -1,0 +1,63 @@
+[
+    {
+        "type"            : "select",
+        "name"            : "atm-single-transaction-account",
+        "save-as"         : "atm",
+        "options"         : [
+            {
+                "label": "ATM-1234567890",
+                "value" : "1234567890"
+            },
+            {
+                "label": "ATM-0987654321",
+                "value" : "0987654321"
+            }
+        ],	
+		"options-error"   : "atm-single-transaction-account-options-error",
+        "error"           : "atm-single-transaction-account-error",
+        "previous"        : "set-atm-limits-page",
+        "next"            : "atm-single-transaction-amount"
+    },
+    {
+        "type"            : "input",
+        "name"            : "atm-single-transaction-amount",
+        "save-as"         : "amount",
+        "validation"         : [
+            {
+                "name": "isAmount",
+                "type" : "joi",
+                "arguments" : "min=10"
+            }
+        ],	
+        "error"           : "atm-single-transaction-amount-error",
+        "previous"        : "atm-single-transaction-account",
+        "next"            : "atm-single-transaction-confirm"
+    },
+    {
+        "type"            : "select",
+        "name"            : "atm-single-transaction-confirm",
+		"options"         : "confirm-options",
+		"charges"         : true,
+        "error"           : "atm-single-transaction-confirm-error",
+        "action"          : "transact",
+        "external-fetch"  : {
+            "route"       : "set-atm-transaction-limit",
+            "success"     : "api-success",
+            "error"       : "api-error"
+        },
+        "on-cancel"       : "client-page",
+        "previous"        : "atm-single-transaction-account"
+	},
+	
+
+	{
+		"type"      : "select",
+		"name"      : "atm-single-transaction-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "atm-single-transaction-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "set-atm-limits-page"
+	}
+]

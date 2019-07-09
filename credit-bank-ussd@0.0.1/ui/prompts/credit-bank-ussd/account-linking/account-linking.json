@@ -1,0 +1,50 @@
+[
+    {
+        "type": "input",
+        "name": "account-linking-account",
+        "save-as": "accountLinkingAccount",
+        "validation": [
+            {
+                "name": "isNumber",
+                "type": "joi"
+			},
+			{
+                "name"     : "matchesLength",
+				"type"     : "joi",
+				"arguments": "length=13"
+            }
+        ],
+        "error": "account-linking-account-error",
+        "previous": "customer-requests-page",
+        "next": "account-linking-id"
+	},	
+	{
+        "type": "input",
+        "name": "account-linking-id",
+        "save-as": "accountLinkingId",
+        "validation": [
+            {
+                "name": "isNumber",
+                "type": "joi"
+			}
+        ],
+        "error": "account-linking-id-error",
+        "previous": "account-linking-account",
+        "next": "account-linking-confirm"
+    },
+    {
+        "type": "select",
+		"name": "account-linking-confirm",
+		"charges"         : true,
+        "options": "confirm-options",
+        "error": "account-linking-confirm-error",
+        "action": "transact",
+        "external-fetch": {
+            "route": "account-linking",
+            "success": "account-linking-success",
+            "error": "api-error"
+        },
+        "on-cancel": "client-page",
+        "previous": "account-linking-account"
+    }
+]

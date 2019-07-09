@@ -1,0 +1,240 @@
+{
+	"get-profile"             : {
+		"template"               : {
+			"account-details"       : {
+				"account-type"     		  : "client", 
+				"all-accounts"         : "", 
+				"loan-accounts"        : [],
+				"search-options"       : []
+			},			
+			"global-request-details": {},	
+			"pin-trials-remaining"  : 3,
+			"language"              : "english"
+		},
+		"response"               : {
+			"status"                : {
+				"field"                : "field39",
+				"matches"              : [
+					{
+						"code"               : "00",
+						"status"             : "registered"
+					},
+					{
+						"code"               : "09",
+						"status"             : "unregistered"
+					}
+				],
+				"error"                : {
+					"message"             : "field48"
+				}
+			},
+			"mappers"               : {
+				"registered"           : {
+					"account-details"     : { 
+						"identification-id"  : "__id",
+						"is-registered"      : "__isRegistered",
+						"is-blocked"         : "__isBlocked",
+						"first-login"        : "__firstLogin",
+						"firstname"          : "__firstname",
+						"surname"            : "__lastname",
+						"othername"          : "__secondname",
+						"fullname"           : "__customername",
+						"active"             : "__active",
+						"loan-limit"         : "__loanscored",
+						"pin"                : "__pin",
+						"savings-accounts"   : "__accounts",
+						"mwallet-account"     : "__mwallet_account"
+					},
+					"email"               : "__emailaddress",
+					"msisdn"              : "__phonenumber",
+					"mwallet"             : "__mwallet",					
+					"imsi"                : "__imsi"
+				},
+				"unregistered"         : {
+					"account-details"     : {
+						"is-registered"      : false,
+						"is-blocked"         : false,
+						"first-login"        : false
+					},
+					"msisdn"              : "__field2"
+				},
+				"merge"                : [
+					{
+						"src"                : "account-details",
+						"destination"        : "account-details"
+					}
+				]
+			},
+			"rules"                 : [
+				{
+					"name"                : "__id",
+					"path"                : "IDENTIFICATIONID",
+					"default"             : ""
+				},
+				{
+					"name"                : "__isRegistered",
+					"path"                : "field39 ",
+					"matches"             : [
+						{ 
+							"code"              : "00",
+							"status"            : true 
+						}
+					],
+					"default"             : false
+				},
+				{
+					"name"                : "__isBlocked",
+					"path"                : "ACTIVE ",
+					"matches"             : [
+						{ 
+							"code"              : "0",
+							"status"            : true }
+					],
+					"default"             : false
+				},
+				{
+					"name"                : "__firstLogin",
+					"path"                : "FIRSTLOGIN",
+					"matches"             : [
+						{ 
+							"code"              : "1",
+							"status"            : true }
+					],
+					"default"             : false
+				},
+				{
+					"name"                : "__firstname",
+					"path"                : "FIRSTNAME",
+					"format-as"           : "capitalize",
+					"default"             : ""
+				},
+				{
+					"name"                : "__lastname",
+					"path"                : "LASTNAME",
+					"format-as"           : "capitalize",
+					"default"             : ""
+				},
+				{
+					"name"                : "__secondname",
+					"path"                : "SECONDNAME",
+					"format-as"           : "capitalize",
+					"default"             : ""
+				},
+				{
+					"name"                : "__customername",
+					"path"                : "CUSTOMERNAME",
+					"format-as"           : "capitalize",
+					"default"             : ""
+				},
+				{
+					"name"                : "__mwallet",
+					"path"                : "MWALLETACCOUNT",
+					"default"             : ""
+					
+				},
+				{
+					"name"                : "__active",
+					"path"                : "ACTIVE ",
+					"matches"             : [
+						{ 
+							"code"              : "1",
+							"status"            : true }
+					],
+					"default"             : false
+				},
+				{
+					"name"                : "__loanscored",
+					"path"                : "LOANSCORED",
+					"format-as"           : "integer",
+					"default"             : 0
+				},
+				{
+					"name"                : "__pin",
+					"path"                : "PIN ",
+					"default"             : ""
+				},
+				{
+					"name"                : "__emailaddress",
+					"path"                : "EMAILADDRESS",
+					"validation"		        : [
+						{
+							"name"              : "isEmail",
+							"type"              : "custom"
+						}
+					],
+					"default"             : ""
+				},
+				{
+					"name"                : "__imsi",
+					"path"                : "IMSI",
+					"default"             : false
+				},
+				{
+					"name"                : "__phonenumber",
+					"path"                : "PHONENUMBER",
+					"default"             : "__walletAccount"
+				},
+				{
+					"name"                : "__field2",
+					"path"                : "field2",
+					"default"             : "__walletAccount"
+				},
+				{
+					"name"                : "__mwallet_account",
+					"path"                : "MWALLETACCOUNT",
+					"group-delimiter"     : false,
+					"item-delimiter"      : "|",
+					"map"                 : [
+						"label",
+						"value"
+					],
+					"default"             : []
+				},
+				{
+					"name"                : "__accounts",
+					"path"                : "linkedAccounts",
+					"group-delimiter"     : false,
+					"item-delimiter"      : "|",
+					"map"                 : [
+						"label",
+						"value"
+					],
+					"default"             : [
+						{
+							"label" : "Account - 0141019000106",
+							"value" : "0141019000106" 
+						},
+						{
+							"label" : "Account - 0076003000023",
+							"value" : "0076003000023"
+						},
+						{
+							"label" : "Account - 0061002000237",
+							"value" : "0061002000237"
+						},
+						{
+							"label" : "Account - 0166004000118",
+							"value" : "0166004000118"
+						},
+						{
+							"label" : "Account - 0026004000190",
+							"value" : "0026004000190"
+						},
+						{
+							"label" : "Account - 0026003000324",
+							"value" : "0026003000324"
+						},
+						{
+							"label" : "Account - 0026003000229",
+							"value" : "0026003000229"
+						}
+					]
+				}
+			],
+			"special" : {
+				"account-details.all-accounts": "msisdn+account-details.savings-accounts"
+			}
+		}
+		
+	}
+}

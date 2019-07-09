@@ -1,0 +1,52 @@
+[
+    {
+        "type"          : "input",
+        "name"          : "ft-wallet-to-savings-credit-account",
+        "save-as"       : "fundsTransferCreditAccount",
+        "validation"    : [
+            {
+                "name"  : "isNumber",
+                "type"  : "joi"
+			},
+			{
+                "name"     : "matchesLength",
+				"type"     : "joi",
+				"arguments": "length=13"
+            }
+        ],
+        "error"         : ["ft-wallet-to-savings-credit-account-error","ft-wallet-to-savings-credit-account-error"],
+        "previous"      : "funds-transfer-other-accounts-page",
+        "next"          : "ft-wallet-to-savings-amount"
+    },
+    {
+        "type"          : "input",
+        "name"          : "ft-wallet-to-savings-amount",
+        "save-as"       : "fundsTransferAmount",
+        "validation"    : [
+            {
+                "name"  : "isAmount",
+				"type"              : "joi",
+				"arguments":"min=200"
+            }
+        ],
+        "format-as"     : "",
+        "error"         : "ft-wallet-to-savings-amount-error",
+        "previous"      : "ft-wallet-to-savings-credit-account",
+        "next"          : "ft-wallet-to-savings-confirm"
+    },
+    {
+        "type"          : "select",
+        "name"          : "ft-wallet-to-savings-confirm",
+		"options"       : "confirm-options",
+		"charges"         : true,
+        "error"         : "ft-wallet-to-savings-confirm-error",
+        "action"        : "transact",
+        "external-fetch": {
+            "route"     : "funds-transfer-wallet-to-savings",
+            "success"   : "api-success",
+            "error"     : "api-error"
+        },
+        "on-cancel"     : "client-page",
+        "previous"      : "ft-wallet-to-savings-amount"
+    }
+]

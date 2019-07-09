@@ -1,0 +1,329 @@
+[
+	{
+        "type"         : "select",
+        "name"         : "rtgs-to-bank-debit-account",
+        "save-as"      : "rtgsDebitAccount",
+		"options"      : "savings-accounts",		
+		"options-error": "rtgs-to-bank-debit-account-options-error",
+		"error"        : "rtgs-to-bank-debit-account-error",
+		"previous"     : "funds-transfer-page",
+		"next"         : "rtgs-to-bank-bank-account"
+	},	
+    {
+        "type"         : "select",
+		"name"         : "rtgs-to-bank-bank-account",
+        "options"      : "rtgs-bank-letters",
+        "error"        : "rtgs-to-bank-bank-account-error",
+		"previous"     : "rtgs-to-bank-debit-account"
+	},
+
+	{
+        "type"         : "select",
+        "name"         : "rtgs-a-b-bank-account",
+		"save-as"      : "rtgsBankCode",
+		"options"      : "rtgs-a-b-bank-accounts",		
+        "error"        : "rtgs-a-b-bank-account-error",
+		"previous"     : "rtgs-to-bank-bank-account",
+		"next"         : "branch-search",
+		"action"          : "update-parameters",		
+        "external-fetch"  : {
+            "route"                 : "rtgs-branch-lookup",
+            "success"               : "branch-search",
+			"error"                 : "rtgs-branch-lookup-error",
+			"cache"                 : true,
+			"cache-path"            : "global-constants",
+			"cache-parameters"      : [
+				{
+					"path"     : "Result",
+					"save-as"  : "branch-options",
+					"format-as": "branch-lookup"	
+				}
+			]
+        }
+	},
+	{
+        "type"         : "select",
+        "name"         : "rtgs-c-bank-account",
+		"save-as"      : "rtgsBankCode",
+		"options"      : "rtgs-c-bank-accounts",		
+        "error"        : "rtgs-c-bank-account-error",
+		"previous"     : "rtgs-to-bank-bank-account",
+		"next"         : "branch-search",
+		"action"          : "update-parameters",		
+        "external-fetch"  : {
+            "route"                 : "rtgs-branch-lookup",
+            "success"               : "branch-search",
+			"error"                 : "rtgs-branch-lookup-error",
+			"cache"                 : true,
+			"cache-path"            : "global-constants",
+			"cache-parameters"      : [
+				{
+					"path"     : "Result",
+					"save-as"  : "branch-options",
+					"format-as": "branch-lookup"	
+				}
+			]
+        }
+	},
+	{
+        "type"         : "select",
+        "name"         : "rtgs-d-e-bank-account",
+		"save-as"      : "rtgsBankCode",
+		"options"      : "rtgs-d-e-bank-accounts",		
+        "error"        : "rtgs-d-e-bank-account-error",
+		"previous"     : "rtgs-to-bank-bank-account",
+		"next"         : "branch-search",
+		"action"          : "update-parameters",		
+        "external-fetch"  : {
+            "route"                 : "rtgs-branch-lookup",
+            "success"               : "branch-search",
+			"error"                 : "rtgs-branch-lookup-error",
+			"cache"                 : true,
+			"cache-path"            : "global-constants",
+			"cache-parameters"      : [
+				{
+					"path"     : "Result",
+					"save-as"  : "branch-options",
+					"format-as": "branch-lookup"	
+				}
+			]
+        }
+	},
+	{
+        "type"         : "select",
+        "name"         : "rtgs-f-bank-account",
+        "save-as"      : "rtgsBankCode",
+		"options"      : "rtgs-f-bank-accounts",		
+        "error"        : "rtgs-f-bank-account-error",
+		"previous"     : "rtgs-to-bank-bank-account",
+		"next"         : "branch-search",
+		"action"          : "update-parameters",		
+        "external-fetch"  : {
+            "route"                 : "rtgs-branch-lookup",
+            "success"               : "branch-search",
+			"error"                 : "rtgs-branch-lookup-error",
+			"cache"                 : true,
+			"cache-path"            : "global-constants",
+			"cache-parameters"      : [
+				{
+					"path"     : "Result",
+					"save-as"  : "branch-options",
+					"format-as": "branch-lookup"	
+				}
+			]
+        }
+	},
+	{
+        "type"         : "select",
+        "name"         : "rtgs-g-h-bank-account",
+        "save-as"      : "rtgsBankCode",
+		"options"      : "rtgs-g-h-bank-accounts",		
+        "error"        : "rtgs-g-h-bank-account-error",
+		"previous"     : "rtgs-to-bank-bank-account",
+		"next"         : "branch-search",
+		"action"          : "update-parameters",		
+        "external-fetch"  : {
+            "route"                 : "rtgs-branch-lookup",
+            "success"               : "branch-search",
+			"error"                 : "rtgs-branch-lookup-error",
+			"cache"                 : true,
+			"cache-path"            : "global-constants",
+			"cache-parameters"      : [
+				{
+					"path"     : "Result",
+					"save-as"  : "branch-options",
+					"format-as": "branch-lookup"	
+				}
+			]
+        }
+	},
+	{
+        "type"         : "select",
+        "name"         : "rtgs-i-m-bank-account",
+        "save-as"      : "rtgsBankCode",
+		"action"          : "update-parameters",		
+        "external-fetch"  : {
+            "route"                 : "rtgs-branch-lookup",
+            "success"               : "branch-search",
+			"error"                 : "rtgs-branch-lookup-error",
+			"cache"                 : true,
+			"cache-path"            : "global-constants",
+			"cache-parameters"      : [
+				{
+					"path"     : "Result",
+					"save-as"  : "branch-options",
+					"format-as": "branch-lookup"	
+				}
+			]
+        },
+		"options"      : "rtgs-i-m-bank-accounts",		
+        "error"        : "rtgs-i-m-bank-account-error",
+		"previous"     : "rtgs-to-bank-bank-account",
+		"next"         : "branch-search"
+	},
+	{
+        "type"         : "select",
+        "name"         : "rtgs-n-s-bank-account",
+        "save-as"      : "rtgsBankCode",
+		"options"      : "rtgs-n-s-bank-accounts",		
+        "error"        : "rtgs-n-s-bank-account-error",
+		"previous"     : "rtgs-to-bank-bank-account",
+		"next"         : "branch-search",
+		"action"          : "update-parameters",		
+        "external-fetch"  : {
+            "route"                 : "rtgs-branch-lookup",
+            "success"               : "branch-search",
+			"error"                 : "rtgs-branch-lookup-error",
+			"cache"                 : true,
+			"cache-path"            : "global-constants",
+			"cache-parameters"      : [
+				{
+					"path"     : "Result",
+					"save-as"  : "branch-options",
+					"format-as": "branch-lookup"	
+				}
+			]
+        }
+	},
+	{
+        "type"         : "select",
+        "name"         : "rtgs-t-z-bank-account",
+        "save-as"      : "rtgsBankCode",
+		"options"      : "rtgs-t-z-bank-accounts",		
+        "error"        : "rtgs-t-z-bank-account-error",
+		"previous"     : "rtgs-to-bank-bank-account",
+		"next"         : "branch-search",
+		"action"          : "update-parameters",		
+        "external-fetch"  : {
+            "route"                 : "rtgs-branch-lookup",
+            "success"               : "branch-search",
+			"error"                 : "rtgs-branch-lookup-error",
+			"cache"                 : true,
+			"cache-path"            : "global-constants",
+			"cache-parameters"      : [
+				{
+					"path"     : "Result",
+					"save-as"  : "branch-options",
+					"format-as": "branch-lookup"	
+				}
+			]
+        }
+	},
+
+
+
+
+
+	{
+        "type"             : "input",        
+        "name"             : "branch-search",        
+        "action"           : "search",
+        "search-options"   : {
+            "limit"        : 5,
+            "dataset"      : "branch-options",
+            "saveTo"       : "branch-search-options"
+        },        
+        "errors"           : [ "branch-no-results-error", "branch-result-limit-exceeded-error" ],
+        "previous"         : "rtgs-to-bank-bank-account",
+        "next"             : "branch-result"
+    },
+    {
+        "type"             : "select",
+        "name"             : "branch-result",        
+        "save-as"          : "rtgsBranchCode",        
+        "options"          : "branch-search-options",        
+        "error"            : "branch-result-error",
+        "previous"         : "branch-search",
+        "next"             : "rtgs-to-bank-credit-account"
+	},
+
+
+
+    {
+        "type"           : "input",
+        "name"           : "rtgs-to-bank-credit-account",
+        "save-as"        : "rtgsCreditAccount",
+        "validation"     : [
+            {
+                "name"   : "isNumber",
+                "type"   : "joi"
+            }
+        ],
+        "error"          :"rtgs-to-bank-credit-account-error",
+        "previous"       : "rtgs-to-bank-bank-account",
+		"next"           : "rtgs-to-bank-credit-account-name"
+	},
+	{
+        "type"           : "input",
+        "name"           : "rtgs-to-bank-credit-account-name",
+		"save-as"        : "rtgsAccountName",
+		"format-as"        : "createSpaces",
+        "validation"     : [
+            {
+                "name"   : "isStatement",
+                "type"   : "custom"
+            }
+        ],
+        "error"          :"rtgs-to-bank-credit-account-name-error",
+        "previous"       : "rtgs-to-bank-credit-account",
+		"next"           : "rtgs-to-bank-amount"
+	},
+
+	{
+        "type"           : "input",
+        "name"           : "rtgs-to-bank-amount",
+        "save-as"        : "rtgsAmount",
+        "validation"     : [
+            {
+                "name"   : "isAmount",
+				"type"   : "joi",
+				"arguments":"min=funds-transfer-minimum-%@working-currency"
+            }
+        ],
+        "error"          : "rtgs-to-bank-amount-error",
+        "previous"       : "rtgs-to-bank-credit-account-name",
+		"next"           : "rtgs-to-bank-reason"
+	},
+
+	{
+        "type"           : "input",
+        "name"           : "rtgs-to-bank-reason",
+		"save-as"        : "rtgsReason",
+		"format-as"        : "createSpaces",
+        "validation"     : [
+            {
+                "name"   : "isStatement",
+                "type"   : "custom"
+            }
+        ],
+        "error"          : "rtgs-to-bank-reason-error",
+        "previous"       : "rtgs-to-bank-amount",
+		"next"           : "rtgs-to-bank-confirm"
+	},
+
+    {
+        "type"           : "select",
+        "name"           : "rtgs-to-bank-confirm",
+		"options"        : "confirm-options",
+		"charges"         : true,
+        "error"          : "rtgs-to-bank-confirm-error",
+        "action"         : "transact",
+        "external-fetch" : {
+            "route"      : "rtgs",
+            "success"    : "api-success",
+            "error"      : "api-error"
+        },
+        "on-cancel"      : "client-page",
+        "previous"       : "rtgs-to-bank-reason"
+    },
+	{
+		"type"      : "select",
+		"name"      : "rtgs-to-bank-debit-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "rtgs-to-bank-debit-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "rtgs-page"
+	}
+]

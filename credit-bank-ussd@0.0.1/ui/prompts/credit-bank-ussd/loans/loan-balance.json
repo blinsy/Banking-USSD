@@ -1,0 +1,44 @@
+[
+	{
+        "type"            : "select",
+        "name"            : "loan-balance-account",
+        "save-as"         : "account",
+		"options"         : [
+            {
+                "label":"CB Micro Loan",
+                "value": "CB Micro Loan"
+            }
+        ],
+		"options-error"   : "loan-balance-account-options-error",
+        "error"           : "loan-balance-account-error",
+        "previous"        : "loan-enquiries-page",
+        "next"            : "loan-balance-confirm"
+	},
+    {
+        "type"            : "select",
+        "name"            : "loan-balance-confirm",
+        "options"         : "confirm-options",
+        "previous"        : "loan-balance-account",
+        "action"          : "transact",
+        "external-fetch"  : {
+            "route"       : "loan-balance",
+            "success"     : "api-success",
+            "error"       : "api-error"
+        },
+        "on-cancel"       : "client-page",
+        "error"           : "loan-balance-confirm-error"
+	},
+	
+
+
+	{
+		"type"      : "select",
+		"name"      : "loan-balance-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "loan-balance-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "loan-enquiries-page"
+	}
+]

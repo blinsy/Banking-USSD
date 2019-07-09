@@ -1,0 +1,9 @@
+{
+    "type"      : "select",
+    "name"      : "api-success",
+    "options"   : "yes-no-options",
+    "error"     : "api-success-error",
+    "action"    : "navigate",
+    "on-accept" : "client-page",
+    "on-cancel" : "logout"    
+}

@@ -1,0 +1,165 @@
+[
+    {
+        "type"          : "select",
+        "name"          : "core-account-type",
+        "save-as"       : "coreAccountType",
+        "options"       : [
+            {
+				"label"             : "CB U Dream Account",
+				"value"             : "1001",
+				"jump-to"           : "cbu-dream-account"
+            },
+            {
+				"label"             : "Personal Current Account",
+				"value"             : "1002",
+				"jump-to"           : "personal-current-account"
+            },
+            {
+				"label"             : "My Saver Account",
+				"value"             : "1003",
+				"jump-to"           : "my-saver-account"
+            }
+		],
+		"options-error" : "core-account-type-options-error",
+		"error"         : "core-account-type-error",
+        "previous"      : "customer-requests-page"
+    },    
+	{
+        "type"          : "input",
+        "name"          : "cbu-dream-account",
+		"save-as"       : "coreAccountAmount",
+        "validation"    : [
+            {
+                "name"  : "isAmount",
+				"type"              : "joi",
+				"arguments"         : "min = 1000"
+            }
+        ],
+        "error"         : "cbu-dream-account-error",
+        "previous"      : "core-account-type",
+        "next"          : "core-account-opening-search"
+    },
+    {
+        "type"          : "input",
+        "name"          : "personal-current-account",
+		"save-as"       : "coreAccountAmount",
+        "validation"    : [
+            {
+                "name"  : "isAmount",
+				"type"              : "joi",
+				"arguments"         : "min = 2000"
+            }
+        ],
+        "error"         : "personal-current-account-error",
+        "previous"      : "core-account-type",
+        "next"          : "core-account-opening-search"
+	},
+	{
+        "type"          : "input",
+        "name"          : "my-saver-account",
+		"save-as"       : "coreAccountAmount",
+        "validation"    : [
+            {
+                "name"  : "isAmount",
+				"type"              : "joi",
+				"arguments"         : "min = 1000"
+            }
+        ],
+        "error"         : "my-saver-account-error",
+        "previous"      : "core-account-type",
+        "next"          : "core-account-opening-search"
+	},
+    {
+        "type"             : "input",        
+        "name"             : "core-account-opening-search",        
+        "action"           : "search",
+        "search-options"   : {
+            "limit"        : 5,
+            "dataset"      : "account-opening-branches",
+            "saveTo"       : "search-options"
+        },        
+        "errors"           : [ "no-results-error", "result-limit-exceeded-error" ],
+        "previous"         : "core-account-type",
+        "next"             : "core-account-opening-result"
+    },
+    {
+        "type"             : "select",
+        "name"             : "core-account-opening-result",        
+        "save-as"          : "coreAccountBranch",        
+        "options"          : "search-options",        
+        "error"            : "core-account-opening-result-error",
+        "previous"         : "core-account-opening-search",
+        "next"             : "core-account-currency"
+	},
+    {
+        "type"          : "select",
+        "name"          : "core-account-currency",
+        "save-as"       : "coreAccountCurrency",
+        "options"       : [
+            {
+				"label"             : "Kenyan Shilling",
+				"value"             : "KES"
+            },
+            {
+				"label"             : "Euro",
+				"value"             : "EUR"
+            },
+            {
+				"label"             : "British Pound",
+				"value"             : "GBP"
+            },
+            {
+				"label"             : "US Dollar",
+				"value"             : "USD"
+            }
+		],
+		"error"         : "core-account-currency-error",
+        "previous"      : "core-account-opening-result" ,
+        "next"          : "core-account-debit-account"
+    },
+	
+	{
+        "type"          : "select",
+        "name"          : "core-account-debit-account",
+		"save-as"       : "coreAccountDebitAccount",
+		"options"       : "mwallet-account+savings-accounts",
+		"options-error" : "core-account-debit-account-options-error",
+        "error"         : "core-account-debit-account-error",
+		"previous"      : "core-account-currency",
+		"next"          : "core-account-confirm"
+	},
+    {
+        "type"          : "select",
+        "name"          : "core-account-confirm",
+		"options"       : "confirm-options",
+        "error"         : "core-account-confirm-error",
+        "action"        : "transact",
+        "external-fetch": {
+            "route"     : "core-account-opening",
+            "success"   : "api-success",
+            "error"     : "api-error"
+        },
+        "on-cancel"     : "client-page",
+        "previous"      : "core-account-debit-account"
+    },
+	{
+		"type"          : "select",
+		"name"          : "core-account-type-options-error",
+		"options"       : "yes-no-options",
+		"error"         : "core-account-type-options-error-error",
+		"action"        : "navigate",
+		"on-accept"     : "client-page",
+		"on-cancel"     : "logout",
+		"previous"      : "client-page"
+	},
+	{
+		"type"          : "select",
+		"name"          : "core-account-debit-account-options-error",
+		"options"       : "yes-no-options",
+		"error"         : "core-account-debit-account-options-error-error",
+		"action"        : "navigate",
+		"on-accept"     : "client-page",
+		"on-cancel"     : "logout",
+		"previous"      : "core-account-type"
+	}    
+]

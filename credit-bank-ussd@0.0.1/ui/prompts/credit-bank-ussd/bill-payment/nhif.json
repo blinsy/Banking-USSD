@@ -1,0 +1,131 @@
+[	
+	{
+		"type"           : "select",
+		"name"           : "nhif-debit-account",
+		"save-as"        : "billPaymentDebitAccount",
+		"options"        : "mwallet-account+savings-accounts",		
+		"options-error"  : "nhif-debit-account-options-error",
+		"error"          : "nhif-debit-account-error",
+		"previous"       : "bill-payment-page",
+		"next"           : "nhif-member-type"
+	},
+	{
+        "type"           : "select",
+        "name"           : "nhif-member-type",
+        "save-as"        : "nhifMemberType",
+		"options"        : [
+			{
+				"label" : "NHIF Individual Account",
+				"value" : false
+			},
+			{
+				"label" : "NHIF Corporate Account",
+				"value" : true
+			}
+		],		
+		"options-error"  : "nhif-member-types-options-error",
+        "error"          : "nhif-member-type-error",
+		"previous"       : "nhif-debit-account",
+		"next"           : "nhif-credit-account"
+    },
+    {
+        "type"           : "input",
+        "name"           : "nhif-credit-account",
+        "save-as"        : "billPaymentCreditAccount",
+        "validation"     : [
+            {
+                "name"   : "isNumber",
+                "type"   : "joi"
+            }
+        ],
+        "format-as"      : "",
+        "error"          : "nhif-credit-account-error",
+        "previous"       : "bill-payment-page",
+		"next"           : "nhif-confirm",
+		"action"           : "update-parameters",
+		"external-fetch"   : { 
+			"route"                 : "nhif-bill-presentment",
+			"success"               : "nhif-confirm",	
+			"error"                 : "nhif-presentment-error",
+			"cache"                 : true,
+			"cache-path"            : "global-request-details",
+			"cache-parameters"      : [
+				{
+					"path" :"field4",
+					"save-as" :"billPaymentDueAmount"	
+				},
+				{
+					"path" :"field50",
+					"save-as" :"billPaymentpenaltyAmount"	
+				},
+				{
+					"path" :"field53",
+					"save-as" :"billPaymentAmount"	
+				}
+			],
+			"parameter-checks" : {
+				"billPaymentDueAmount" :{
+					"is-less-than": "0",
+					"redirect-to" : "nhif-presentment-amount-error"
+				}
+			}     
+		}
+	},  
+    {
+        "type"           : "select",
+        "name"           : "nhif-confirm",
+		"options"        : "confirm-options",
+		"charges"         : true,
+        "error"          : "nhif-confirm-error",
+        "action"         : "transact",
+        "external-fetch" : {
+            "route"      : "nhif-bill-payment",
+            "success"    : "api-success",
+            "error"      : "api-error"
+        },
+        "on-cancel"      : "client-page",
+        "previous"       : "nhif-member-type"
+    },
+	
+
+
+	{
+		"type"      : "select",
+		"name"      : "nhif-debit-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "nhif-debit-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "nhif-credit-account"
+	},
+	{
+		"type"      : "select",
+		"name"      : "nhif-member-types-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "nhif-member-types-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "bill-payment-page"
+	},
+	
+	{
+		"type"      : "select",
+		"name"      : "nhif-presentment-error",
+		"options"   : "yes-no-options",
+		"error"     : "nhif-presentment-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout"
+	},
+	{
+		"type"      : "select",
+		"name"      : "nhif-presentment-amount-error",
+		"options"   : "yes-no-options",
+		"error"     : "nhif-presentment-amount-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout"
+	}
+]

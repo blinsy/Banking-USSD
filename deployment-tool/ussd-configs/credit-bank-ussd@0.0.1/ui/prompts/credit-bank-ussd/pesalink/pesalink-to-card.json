@@ -1,0 +1,89 @@
+[
+	{
+        "type"         : "select",
+        "name"         : "pesalink-to-card-debit-account",
+        "save-as"      : "pesalinkDebitAccount",
+		"options"      : "savings-accounts",		
+		"options-error": "pesalink-to-card-debit-account-options-error",
+        "error"        : "pesalink-to-card-debit-account-error",
+		"previous"     : "pesalink-page",
+		"next"         : "pesalink-to-card-credit-account"
+	},	
+    {
+        "type"           : "input",
+        "name"           : "pesalink-to-card-credit-account",
+        "save-as"        : "pesalinkCreditAccount",
+        "validation"     : [
+            {
+                "name"   : "isNumber",
+                "type"   : "joi"
+			},
+			{
+				"name"   : "matchesLength",
+				"type"   : "joi",
+				"arguments" : "length=16"
+			}
+        ],
+        "errors"          : ["pesalink-to-card-credit-account-error","pesalink-to-card-credit-account-error"],
+        "previous"       : "pesalink-to-card-debit-account",
+		"next"           : "pesalink-to-card-amount"
+	},
+
+	{
+        "type"           : "input",
+        "name"           : "pesalink-to-card-amount",
+        "save-as"        : "pesalinkAmount",
+        "validation"     : [
+            {
+				"name"   : "isAmount",
+				"type"   : "joi",
+				"arguments":"min=funds-transfer-minimum-%@working-currency"
+            }
+        ],
+        "error"          : "pesalink-to-card-amount-error",
+        "previous"       : "pesalink-to-card-credit-account",
+		"next"           : "pesalink-to-card-reason"
+	},
+
+	{
+        "type"           : "input",
+        "name"           : "pesalink-to-card-reason",
+		"save-as"        : "pesalinkReason",
+		"format-as"        : "createSpaces",
+        "validation"     : [
+            {
+                "name"   : "isStatement",
+                "type"   : "custom"
+            }
+        ],
+        "error"          : "pesalink-to-card-reason-error",
+        "previous"       : "pesalink-to-card-amount",
+		"next"           : "pesalink-to-card-confirm"
+	},
+
+    {
+        "type"           : "select",
+        "name"           : "pesalink-to-card-confirm",
+		"options"        : "confirm-options",
+		"charges"         : true,
+        "error"          : "pesalink-to-card-confirm-error",
+        "action"         : "transact",
+        "external-fetch" : {
+            "route"      : "pesalink-to-card",
+            "success"    : "api-success",
+            "error"      : "api-error"
+        },
+        "on-cancel"      : "client-page",
+        "previous"       : "pesalink-to-card-reason"
+    },
+	{
+		"type"      : "select",
+		"name"      : "pesalink-to-card-debit-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "pesalink-to-card-debit-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "pesalink-page"
+	}
+]

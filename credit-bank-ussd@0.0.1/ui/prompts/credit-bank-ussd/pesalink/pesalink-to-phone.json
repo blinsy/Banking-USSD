@@ -1,0 +1,137 @@
+[
+	{
+        "type"         : "select",
+        "name"         : "pesalink-to-phone-debit-account",
+        "save-as"      : "pesalinkDebitAccount",
+		"options"      : "savings-accounts",		
+		"options-error": "pesalink-to-phone-debit-account-options-error",
+        "error"        : "pesalink-to-phone-debit-account-error",
+		"previous"     : "pesalink-page",
+		"next"         : "pesalink-to-phone-credit-account"
+	},	
+    {
+        "type"           : "input",
+		"name"           : "pesalink-to-phone-credit-account",
+		"format-as"      : "international-mobile-number",
+        "save-as"        : "pesalinkCreditAccount",
+        "validation"     : [
+            {
+                "name"   : "isNumber",
+                "type"   : "joi"
+			},
+			{
+				"name"   : "matchesLength",
+				"type"   : "joi",
+				"arguments" : "length=10"
+			}
+		],
+		"action"          : "update-parameters",		
+        "external-fetch"  : {
+            "route"                 : "pesalink-to-phone-lookup",
+            "success"               : "pesalink-to-phone-lookup-banks",
+			"error"                 : "pesalink-to-phone-lookup-error",
+			"cache"                 : true,
+			"cache-path"            : "global-constants",
+			"cache-parameters"      : [
+				{
+					"path"     : "data",
+					"save-as"  : "ROOT",
+					"format-as": "pesalink-phone-lookup"	
+				}
+			]
+        },
+        "errors"          : ["pesalink-to-phone-credit-account-error","pesalink-to-phone-credit-account-error"],
+        "previous"       : "pesalink-to-phone-debit-account",
+		"next"           : "pesalink-to-phone-amount"
+	},
+
+	{
+        "type"         : "select",
+        "name"         : "pesalink-to-phone-lookup-banks",
+        "save-as"      : "pesalinkToPhoneSortCode",
+		"options"      : "pesalink-lookup-result",		
+		"options-error": "pesalink-to-phone-lookup-banks-options-error",
+        "error"        : "pesalink-to-phone-lookup-banks-error",
+		"previous"     : "pesalink-to-phone-credit-account",
+		"next"         : "pesalink-to-phone-amount"
+	},
+
+	{
+        "type"           : "input",
+        "name"           : "pesalink-to-phone-amount",
+        "save-as"        : "pesalinkAmount",
+        "validation"     : [
+            {
+				"name"   : "isAmount",
+				"type"   : "joi",
+				"arguments":"min=funds-transfer-minimum-%@working-currency"
+            }
+        ],
+        "error"          : "pesalink-to-phone-amount-error",
+        "previous"       : "pesalink-to-phone-credit-account",
+		"next"           : "pesalink-to-phone-reason"
+	},
+
+	{
+        "type"           : "input",
+        "name"           : "pesalink-to-phone-reason",
+		"save-as"        : "pesalinkReason",
+		"format-as"        : "createSpaces",
+        "validation"     : [
+            {
+                "name"   : "isStatement",
+                "type"   : "custom"
+            }
+        ],
+        "error"          : "pesalink-to-phone-reason-error",
+        "previous"       : "pesalink-to-phone-amount",
+		"next"           : "pesalink-to-phone-confirm"
+	},
+
+    {
+        "type"           : "select",
+        "name"           : "pesalink-to-phone-confirm",
+		"options"        : "confirm-options",
+		"charges"         : true,
+        "error"          : "pesalink-to-phone-confirm-error",
+        "action"         : "transact",
+        "external-fetch" : {
+            "route"      : "pesalink-to-phone",
+            "success"    : "api-success",
+            "error"      : "api-error"
+        },
+        "on-cancel"      : "client-page",
+        "previous"       : "pesalink-to-phone-reason"
+    },
+	{
+		"type"      : "select",
+		"name"      : "pesalink-to-phone-debit-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "pesalink-to-phone-debit-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "pesalink-page"
+	},
+	{
+		"type"      : "select",
+		"name"      : "pesalink-to-phone-lookup-error",
+		"options"   : "yes-no-options",
+		"error"     : "pesalink-to-phone-lookup-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "pesalink-to-phone-credit-account"
+	},
+	{
+		"type"      : "select",
+		"name"      : "pesalink-to-phone-lookup-banks-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "pesalink-to-phone-lookup-banks-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "pesalink-to-phone-credit-account"
+	}
+	
+]

@@ -1,0 +1,26 @@
+{
+    "type"                : "select",
+    "name"                : "pay-tv-bill-page",
+    "options"             : [
+        {
+            "name"        : "dstv",
+            "label"       : "dstv-label",
+            "enabled"     : true,
+            "authenticate": false
+        },
+		{
+            "name"        : "gotv",
+            "label"       : "gotv-label",
+            "enabled"     : true,
+            "authenticate": false
+		},
+		{
+            "name"        : "zuku-tv",
+            "label"       : "zuku-tv-label",
+            "enabled"     : true,
+            "authenticate": false
+		}
+    ],
+    "error"               : "pay-tv-bill-page-error",
+    "previous"            : "bill-payment-page"
+}

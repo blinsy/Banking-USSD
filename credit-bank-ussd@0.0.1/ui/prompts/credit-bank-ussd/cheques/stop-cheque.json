@@ -1,0 +1,53 @@
+[
+    {
+        "type"            : "select",
+        "name"            : "stop-cheque-account",
+        "save-as"         : "stopChequeAccount",
+        "options"         : "savings-accounts",	
+		"options-error"   : "stop-cheque-account-options-error",
+        "format-as"       : "",
+        "error"           : "stop-cheque-account-error",
+        "previous"        : "cheques-page",
+        "next"            : "stop-cheque-number"
+	},
+	{
+		
+		"type"           : "input",
+		"name"           : "stop-cheque-number",
+		"save-as"        : "stopChequeNumber",
+		"validation"     : [
+			{
+				"name"   : "isNumber",
+				"type"   : "joi"
+			}
+		],
+		"format-as"      : "",
+		"error"          : "stop-cheque-number-error",
+		"previous"       : "stop-cheque-account",
+		"next"           : "stop-cheque-confirm"
+	},
+    {
+        "type"            : "select",
+        "name"            : "stop-cheque-confirm",
+		"options"         : "confirm-options",
+        "error"           : "stop-cheque-confirm-error",
+        "action"          : "transact",
+        "external-fetch"  : {
+            "route"       : "stop-cheque",
+            "success"     : "api-success",
+            "error"       : "api-error"
+        },
+        "on-cancel"       : "client-page",
+        "previous"        : "stop-cheque-number"
+	},
+	{
+		"type"      : "select",
+		"name"      : "stop-cheque-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "stop-cheque-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "stop-cheque-account"
+	}
+]

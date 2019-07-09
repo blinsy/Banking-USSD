@@ -1,0 +1,36 @@
+[
+	{
+		"type": "input",
+        "name": "tell-a-friend-number",
+		"save-as" : "friendPhoneNumber",
+		"format-as" : "international-mobile-number",
+        "validation": [
+			{
+				"name" : "matchesLength",
+				"type" : "joi",
+				"arguments": "length=10"
+			},
+            {
+                "name": "isNumber",
+                "type": "joi"
+            }
+        ],
+        "errors": [ "tell-a-friend-number-error", "tell-a-friend-number-error"],
+        "previous": "settings-page",
+		"next": "tell-a-friend-confirm" 
+	},   
+    {
+        "type"           : "select",
+        "name"           : "tell-a-friend-confirm",
+        "options"        : "confirm-options",
+        "error"          : "tell-a-friend-confirm-error",
+        "action"         : "transact",
+        "external-fetch" : {
+            "route"      : "tell-a-friend",
+            "success"    : "api-success",
+            "error"      : "api-error"
+        },
+        "on-cancel"      : "client-page",
+        "previous"       : "tell-a-friend-number"
+    }
+]

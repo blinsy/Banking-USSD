@@ -1,0 +1,9 @@
+{
+    "type"      : "select",
+    "name"      : "lock-savings-account-error",
+    "options"   : "yes-no-options",
+    "error"     : "lock-savings-account-error-error",
+    "action"    : "navigate",
+    "on-accept" : "lock-savings-page",
+    "on-cancel" : "logout"    
+}

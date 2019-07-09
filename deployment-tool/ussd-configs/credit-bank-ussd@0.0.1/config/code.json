@@ -1,0 +1,5 @@
+{
+	"hash_pin" : "\r\n\t\t//Hashing function\r\n\t\treturn arguments[0].crypto.HmacSHA256( Buffer.from ( arguments[0].data + arguments[0].msisdn ).toString('base64') , \"secret\").toString( arguments[0].crypto.enc.Hex);\r\n\t",
+	"decrement_pin_trials" : "return parseInt ( arguments [ 0 ], 10 ) - 1",
+	"reset_pin_trials" :"return 3"	
+}

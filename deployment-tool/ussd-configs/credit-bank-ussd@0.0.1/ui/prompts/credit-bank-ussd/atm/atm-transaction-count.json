@@ -1,0 +1,62 @@
+[
+    {
+        "type"            : "select",
+        "name"            : "atm-transaction-count-account",
+        "save-as"         : "atm",
+        "options"         : [
+            {
+                "label": "ATM-1234567890",
+                "value" : "1234567890"
+            },
+            {
+                "label": "ATM-0987654321",
+                "value" : "0987654321"
+            }
+        ],	
+		"options-error"   : "atm-transaction-count-account-options-error",
+        "error"           : "atm-transaction-count-account-error",
+        "previous"        : "set-atm-limits-page",
+        "next"            : "atm-transaction-count-count"
+    },
+    {
+        "type"            : "input",
+        "name"            : "atm-transaction-count-count",
+        "save-as"         : "count",
+        "validation"         : [
+            {
+                "name": "isNumber",
+                "type" : "joi"
+            }
+        ],	
+        "error"           : "atm-transaction-count-count-error",
+        "previous"        : "atm-transaction-count-account",
+        "next"            : "atm-transaction-count-confirm"
+    },
+    {
+        "type"            : "select",
+        "name"            : "atm-transaction-count-confirm",
+		"options"         : "confirm-options",
+		"charges"         : true,
+        "error"           : "atm-transaction-count-confirm-error",
+        "action"          : "transact",
+        "external-fetch"  : {
+            "route"       : "set-atm-transaction-count",
+            "success"     : "api-success",
+            "error"       : "api-error"
+        },
+        "on-cancel"       : "client-page",
+        "previous"        : "atm-transaction-count-count"
+	},
+	
+
+	{
+		"type"      : "select",
+		"name"      : "atm-transaction-count-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "atm-transaction-count-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "set-atm-limits-page"
+	}
+]

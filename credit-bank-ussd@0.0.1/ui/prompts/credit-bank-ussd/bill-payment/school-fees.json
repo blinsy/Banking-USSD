@@ -1,0 +1,92 @@
+[
+	{
+        "type"             : "select",
+        "name"             : "school-fees-debit-account",        
+        "save-as"          : "schoolFeesDebitAccount",        
+		"options"          : "mwallet-account+savings-accounts", 
+        "error"            : "school-fees-debit-account-error",
+		"previous"         : "bill-payment-page",
+		"next" 			   : "school-search"
+	},
+	{
+        "type"             : "input",        
+        "name"             : "school-search",        
+        "action"           : "search",
+        "search-options"   : {
+            "limit"        : 5,
+            "dataset"      : "school-options",
+            "saveTo"       : "search-options"
+        },        
+        "errors"           : [ "no-results-error", "result-limit-exceeded-error" ],
+        "previous"         : "school-fees-debit-account",
+        "next"             : "school-result"
+    },
+    {
+        "type"             : "select",
+        "name"             : "school-result",        
+        "save-as"          : "schoolFeesCreditAccount",        
+        "options"          : "search-options",        
+        "error"            : "schools-error",
+        "previous"         : "school-search",
+        "next"             : "school-fees-child-name"
+	},
+	{
+        "type"             : "input",
+        "name"             : "school-fees-child-name",        
+        "save-as"          : "schoolFeesChildName",   
+		"format-as"        : "createSpaces",
+        "validation"       : [
+			{
+				"name" : "isStatement",
+				"type" : "custom"
+			}
+		],       
+        "error"            : "school-fees-child-name-error",
+        "previous"         : "school-result",
+        "next"             : "school-fees-child-reg"
+	},
+	{
+        "type"             : "input",
+        "name"             : "school-fees-child-reg",        
+        "save-as"          : "schoolFeesChildReg",        
+        "validation"       : [
+			{
+				"name" : "isStudentId",
+				"type" : "custom"
+			}
+		],       
+        "error"            : "school-fees-child-reg-error",
+        "previous"         : "school-fees-child-name",
+        "next"             : "school-fees-amount"
+    },
+	{
+        "type"             : "input",
+        "name"             : "school-fees-amount",        
+        "save-as"          : "schoolFeesAmount",        
+        "validation"       : [
+			{
+				"name"      : "isAmount",
+				"type"      : "joi",
+				"arguments" : "min=100"
+			}
+		],       
+        "error"            : "school-fees-amount-error",
+        "previous"         : "school-fees-child-reg",
+        "next"             : "school-fees-confirm"
+	},
+	{
+        "type"             : "select",        
+		"name"             : "school-fees-confirm",  
+		"options"          : "confirm-options",
+		"charges"         : true,      
+        "action"           : "transact",
+        "external-fetch"   : {
+            "route"        : "school-fees-bill-payment",
+            "success"      : "api-success",
+            "error"        : "api-error"
+        },        
+		"error"            : "school-fees-confirm-error",
+		"on-cancel"        : "client-page",
+        "previous"         : "school-fees-amount"
+    }
+]

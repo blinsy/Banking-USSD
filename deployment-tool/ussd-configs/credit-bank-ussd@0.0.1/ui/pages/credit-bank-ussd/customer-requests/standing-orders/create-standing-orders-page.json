@@ -1,0 +1,21 @@
+{
+    "type": "select",
+    "name": "create-standing-orders-page",
+    "options": [
+        {
+            "name": "standing-orders-internal",
+            "label": "standing-orders-internal-label",
+            "enabled": true,
+            "authenticate": false
+        },
+        {
+            "name": "standing-orders-external",
+            "label": "standing-orders-external-label",
+            "enabled": true,
+            "authenticate": false
+        }
+    ],
+    "error": "create-standing-orders-page-error",
+    "previous": "standing-orders-page"
+}
+

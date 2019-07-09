@@ -1,0 +1,71 @@
+[
+    {
+        "type"           : "input",
+        "name"           : "access-kenya-credit-account",
+        "save-as"        : "billPaymentCreditAccount",
+        "validation"     : [
+            {
+                "name"   : "isNumber",
+                "type"   : "joi"
+            }
+        ],
+        "format-as"      : "",
+        "error"          : "access-kenya-credit-account-error",
+        "previous"       : "bill-payment-page",
+        "next"           : "access-kenya-debit-account"
+	},
+	{
+        "type"           : "select",
+        "name"           : "access-kenya-debit-account",
+        "save-as"        : "billPaymentDebitAccount",
+		"options"        : "savings-accounts",		
+		"options-error"  : "access-kenya-debit-account-options-error",
+        "error"          : "access-kenya-debit-account-error",
+		"previous"       : "access-kenya-credit-account",
+		"next"           : "access-kenya-amount"
+    },
+    {
+        "type"           : "input",
+        "name"           : "access-kenya-amount",
+        "save-as"        : "billPaymentAmount",
+        "validation"     : [
+            {
+                "name"   : "isAmount",
+				"type"   : "joi",
+				"arguments":"min=200"
+            }
+        ],
+        "format-as"      : "",
+        "error"          : "access-kenya-amount-error",
+        "previous"       : "access-kenya-debit-account",
+        "next"           : "access-kenya-confirm"
+    },    
+    {
+        "type"           : "select",
+        "name"           : "access-kenya-confirm",
+		"options"        : "confirm-options",
+		"charges"         : true,
+        "error"          : "access-kenya-confirm-error",
+        "action"         : "transact",
+        "external-fetch" : {
+            "route"      : "accessKenyaPayment",
+            "success"    : "api-success",
+            "error"      : "api-error"
+        },
+        "on-cancel"      : "client-page",
+        "previous"       : "access-kenya-amount"
+    },
+	
+
+
+	{
+		"type"      : "select",
+		"name"      : "access-kenya-debit-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "access-kenya-debit-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "access-kenya-credit-account"
+	}
+]

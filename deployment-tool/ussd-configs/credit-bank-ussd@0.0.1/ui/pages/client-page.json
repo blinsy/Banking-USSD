@@ -1,0 +1,63 @@
+{
+    "type"                : "select",
+    "name"                : "client-page",
+    "options"             : [
+		{
+            "name"        : "account-enquiries-page",
+            "label"       : "account-enquiries-page-label",
+            "enabled"     : true,
+            "authenticate": false
+        },
+        {
+            "name"        : "funds-transfer-page",
+            "label"       : "funds-transfer-page-label",
+            "enabled"     : true,
+            "authenticate": false
+		},
+
+		
+		{
+            "name"        : "buy-airtime",
+            "label"       : "topup-label",
+            "enabled"     : true,
+            "authenticate": false
+		},
+		{
+            "name"        : "bill-payment-page",
+            "label"       : "bill-payment-page-label",
+            "enabled"     : true,
+            "authenticate": false
+		},
+		{
+            "name"        : "customer-requests-page",
+            "label"       : "customer-requests-page-label",
+            "enabled"     : true,
+            "authenticate": false
+		},
+		{
+            "name"        : "mpesa-airtel-page",
+            "label"       : "mpesa-airtel-page-label",
+            "enabled"     : true,
+            "authenticate": false
+		},
+		{
+            "name"        : "loans-page",
+            "label"       : "loans-page-label",
+            "enabled"     : true,
+            "authenticate": false
+		},
+		{
+            "name"        : "lock-savings-page",
+            "label"       : "lock-savings-page-label",
+            "enabled"     : true,
+            "authenticate": false
+		},	
+        {
+            "name"        : "settings-page",
+            "label"       : "settings-page-label",
+            "enabled"     : true,
+            "authenticate": false
+        }
+    ],
+    "error"               : "client-page-error"
+}

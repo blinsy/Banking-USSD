@@ -1,0 +1,26 @@
+{
+    "type"                : "select",
+    "name"                : "pay-utility-bill-page",
+    "options"             : [
+        {
+            "name"        : "kplc-postpaid",
+            "label"       : "kplc-postpaid-label",
+            "enabled"     : true,
+            "authenticate": false
+        },
+        {
+            "name"        : "kplc-prepaid",
+            "label"       : "kplc-prepaid-label",
+            "enabled"     : true,
+            "authenticate": false
+        },
+        {
+            "name"        : "nairobiwater",
+            "label"       : "nairobiwater-label",
+            "enabled"     : true,
+            "authenticate": false
+		}
+    ],
+    "error"               : "pay-utility-bill-page-error",
+    "previous"            : "bill-payment-page"
+}

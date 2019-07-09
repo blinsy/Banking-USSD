@@ -1,0 +1,32 @@
+{
+    "type": "select",
+    "name": "lock-savings-page",
+    "options": [
+        {
+            "name"        : "lock-savings-open-account",
+            "label"       : "lock-savings-open-account-label",
+            "enabled"     : true,
+            "authenticate": false
+        },
+        {
+            "name"        : "lock-savings-save",
+            "label"       : "lock-savings-save-label",
+            "enabled"     : true,
+            "authenticate": false
+        },
+        {
+            "name"        : "lock-savings-ministatement",
+            "label"       : "lock-savings-ministatement-label",
+            "enabled"     : true,
+            "authenticate": false
+        },
+        {
+            "name"        : "lock-savings-unlock",
+            "label"       : "lock-savings-unlock-label",
+            "enabled"     : true,
+            "authenticate": false
+        }
+    ],
+	"error": "lock-savings-page-error",
+	"previous" : "client-page"
+}

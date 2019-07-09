@@ -1,0 +1,1618 @@
+{
+    "client-page": {
+        "english": {
+            "client-page": "CB Konnect USSD: ",
+            "client-page-error": "Invalid selection! CB Konnect USSD: ",
+            "account-enquiries-page-label": "Enquiries",
+            "funds-transfer-page-label": "Transfer Funds",
+            "pesalink-page-label": "Pesalink",
+            "topup-label": "Buy Airtime",
+            "bill-payment-page-label": "Pay Bills",
+            "standing-orders-page-label": "Standing Orders",
+            "customer-requests-page-label": "Customer Requests",
+            "mpesa-airtel-page-label": "Mpesa/Airtel Money",
+            "loans-page-label": "Loans",
+            "cheques-page-label": "Cheque Requests",
+            "atm-cards-page-label": "Card Requests",
+            "lock-savings-page-label": "Lock Savings",
+            "account-linking-label": "Link Account",
+            "settings-page-label": "More"
+        }
+    },
+    "login-page": {
+        "english": {
+            "login-page": "Dear @firstname, welcome to the @app-description service. Please select an option below",
+            "login-page-error": "Invalid selection! Please select an option below",
+            "login-label": "Login",
+            "login-pin-change-label": "Change PIN"
+        }
+    },
+    "registration-page": {
+        "english": {
+            "registration-page": "Welcome to the @app-description service. Please select an option below",
+            "registration-page-error": "Invalid selection! Please select an option below",
+            "terms-label": "Read Terms and conditions",
+            "registration-label": "Self Register"
+        }
+    },
+    "settings-page": {
+        "english": {
+            "settings-page": "Please select an option below",
+            "settings-page-error": "Invalid selection! Please select an option below",
+            "language-change-label": "Change Language",
+            "pin-change-label": "Change Pin",
+            "email-change-label": "Change Email",
+            "calculator-label": "Calculators",
+            "forex-label": "Forex",
+            "contact-us-label": "Contact Us",
+            "tell-a-friend-label": "Invite a friend"
+        }
+    },
+    "account-enquiries-page": {
+        "english": {
+            "account-enquiries-page": "Please select an option below",
+            "account-enquiries-page-error": "Invalid selection ! select an option below",
+            "balance-label": "Balance Enquiry",
+            "ministatement-label": "Mini Statement",
+            "fullstatement-label": "Full Statement"
+        }
+    },
+    "bill-payment-page": {
+        "english": {
+            "bill-payment-page": "Please select an option below",
+            "bill-payment-page-error": "Invalid selection ! select an option below",
+            "pay-utility-bill-page-label": "Pay Utility Bill",
+            "pay-tv-bill-page-label": "Pay Tv Bill",
+            "pay-internet-bill-page-label": "Pay Internet Bill",
+            "pay-government-bill-page-label": "Pay Government Bill",
+            "school-fees-label": "School Fees"
+        }
+    },
+    "pay-government-bill-page": {
+        "english": {
+            "pay-government-bill-page": "Select a category below",
+            "pay-government-bill-page-error": "Invalid selection! Select a category below",
+            "nhif-label": "NHIF",
+            "landrates-label": "Land Rates",
+            "itax-label": "Itax"
+        }
+    },
+    "pay-internet-bill-page": {
+        "english": {
+            "pay-internet-bill-page": "Select a category below",
+            "pay-internet-bill-page-error": "Invalid selection! Select a category below",
+            "zuku-internet-label": "Zuku Internet"
+        }
+    },
+    "pay-tv-bill-page": {
+        "english": {
+            "pay-tv-bill-page": "Select a category below",
+            "pay-tv-bill-page-error": "Invalid selection! Select a category below",
+            "dstv-label": "DSTv",
+            "gotv-label": "GoTv",
+            "zuku-tv-label": "ZukuTv"
+        }
+    },
+    "pay-utility-bill-page": {
+        "english": {
+            "pay-utility-bill-page": "Select a category below",
+            "pay-utility-bill-page-error": "Invalid selection! Select a category below",
+            "kplc-postpaid-label": "KPLC Post-Paid",
+            "kplc-prepaid-label": "KPLC Pre-Paid",
+            "nairobiwater-label": "Nairobi Water"
+        }
+    },
+    "loan-enquiries-page": {
+        "english": {
+            "loan-enquiries-page": "Please select a option below",
+            "loan-enquiries-page-error": "Invalid selection ! Select an option below",
+            "loan-balance-label": "Loan Balance Enquiry",
+            "loan-statement-label": "Loan Statement",
+            "loan-limit-label": "Check my Loan limit"
+        }
+    },
+    "loans-page": {
+        "english": {
+            "loans-page": "Please select an option below",
+            "loans-page-error": "Invalid selection ! select an option below",
+            "loan-enquiries-label": "Loan Enquiries",
+            "loan-application-label": "Loan Application",
+            "loan-repayment-label": "Loan Repayment"
+        }
+    },
+    "lock-savings-page": {
+        "english": {
+            "lock-savings-page": "Please select an option below",
+            "lock-savings-page-error": "Invalid selection! Select an option below",
+            "lock-savings-open-account-label": "Open a Lock Savings Account",
+            "lock-savings-save-label": "Save",
+            "lock-savings-unlock-label": "Unlock Lock Savings",
+            "lock-savings-ministatement-label": "Ministatement",
+            "lock-savings-withdraw-label": "Withdraw"
+        }
+    },
+    "funds-transfer-other-accounts-page": {
+        "english": {
+            "funds-transfer-other-accounts-page": "Transfer funds",
+            "funds-transfer-other-accounts-page-error": "Invalid selection! Transfer funds",
+            "funds-transfer-wallet-to-wallet-label": "Wallet to Wallet",
+            "funds-transfer-wallet-to-savings-label": "Wallet to a Bank Account",
+            "funds-transfer-savings-to-wallet-label": "Bank Account to Wallet",
+            "funds-transfer-savings-to-savings-label": "Bank Account to Bank Account",
+            "ft-same-account-error": "You cannot transfer funds to the same account. Continue?",
+            "ft-same-account-error-error": "Invalid selection! You cannot transfer funds to the same account. Continue?"
+        }
+    },
+    "funds-transfer-page": {
+        "english": {
+            "funds-transfer-page": "Please select an option below",
+            "funds-transfer-page-error": "Invalid selection! Select an option below",
+            "funds-transfer-own-accounts-label": "Transfer between my own Accounts",
+            "funds-transfer-other-accounts-page-label": "Transfer to other Accounts",
+            "pesalink-page-label": "Pesalink",
+            "rtgs-label": "RTGS",
+            "eft-label": "EFT"
+        }
+    },
+    "pesalink-page": {
+        "english": {
+            "pesalink-page": "Please select an option below",
+            "pesalink-page-error": "Invalid selection! Select an option below",
+            "pesalink-to-phone-label": "Send to Phone",
+            "pesalink-to-bank-label": "Send to Bank",
+            "pesalink-to-card-label": "Send to Card",
+            "pesalink-to-ecitizen-label": "Send to eCitizen",
+            "pesalink-link-account-label": "Register for PESALINK",
+            "pesalink-link-primary-label": "Set Primary Account"
+        }
+    },
+    "mpesa-airtel-page": {
+        "english": {
+            "mpesa-airtel-page": "Please select an option below",
+            "mpesa-airtel-page-error": "Invalid selection! Select an option below",
+            "withdrawal-page-label": "Transfer to Mpesa/Airtel",
+            "mpesa-c2b-label": "Deposit from Mpesa",
+            "mpesa-b2b-label": "Lipa na Mpesa",
+            "mpesa-float-label": "Buy Float"
+        }
+    },
+    "withdrawal-page": {
+        "english": {
+            "withdrawal-page": "Please select an option below",
+            "withdrawal-page-error": "Invalid selection ! select an option below",
+            "withdrawal-mpesa-b2c-label": "Transfer to Mpesa",
+            "withdrawal-airtel-b2c-label": "Transfer to Airtel Money"
+        }
+    },
+    "account-requests-page": {
+        "english": {
+            "account-requests-page": "Please select an option below",
+            "account-requests-page-error": "Invalid selection! Select an option below",
+            "account-linking-label": "Link Account",
+            "wallet-account-opening-label": "Activate Wallet Account",
+            "core-account-opening-label": "Open a Credit Bank Account",
+            "account-mandates-label": "Account Mandates",
+            "view-accounts-label": "View My Accounts"
+        }
+    },
+    "customer-requests-page": {
+        "english": {
+            "customer-requests-page": "Please select an option below",
+            "customer-requests-page-error": "Invalid selection! Please select an option below",
+            "standing-orders-page-label": "Standing orders",
+            "cheques-page-label": "Cheque Requests",
+            "atm-cards-page-label": "Card Requests",
+            "account-requests-page-label": "Account Requests",
+            "insurance-label": "Insurance"
+        }
+    },
+    "atm-cards-page": {
+        "english": {
+            "atm-cards-page": "Please select an option below",
+            "atm-cards-page-error": "Invalid selection ! select an option below",
+            "request-atm-label": "Request for a new Card",
+            "replace-atm-label": "Replace a Card",
+            "block-atm-label": "Block a card",
+            "unblock-atm-label": "Unblock a Card",
+            "set-atm-limits-label": "Set Card limits"
+        }
+    },
+    "cheques-page": {
+        "english": {
+            "cheques-page": "Please select an option below",
+            "cheques-page-error": "Invalid selection ! select an option below",
+            "request-cheque-book-label": "Request for a Cheque Book",
+            "stop-cheque-label": "Stop a Cheque"
+        }
+    },
+    "create-standing-orders-page": {
+        "english": {
+            "create-standing-orders-page": "Send money to",
+            "create-standing-orders-page-error": "Invalid selection! Send money to",
+            "standing-orders-internal-label": "Credit Bank Account",
+            "standing-orders-external-label": "Other Bank Account"
+        }
+    },
+    "standing-orders-page": {
+        "english": {
+            "standing-orders-page": "Please select an option below",
+            "standing-orders-page-error": "Invalid selection! Select an option below",
+            "create-standing-orders-page-label": "Create a Standing order",
+            "standing-orders-amend-label": "Amend a Standing Order",
+            "standing-orders-cancel-label": "Cancel a Standing Order"
+        }
+    },
+    "account-blocked": {
+        "english": {
+            "account-blocked": "END Dear customer, your account is currently blocked. Kindly contact @app-contact-name on @app-contact-number for assistance."
+        }
+    },
+    "global": {
+        "english": {
+            "previous": "Previous menu",
+            "home": "Home",
+            "api-success": "Dear @firstname, your @request_name request has been recieved and is being processed. You will receive an SMS response shortly. Continue ?",
+            "api-success-error": "Invalid selection! Your @request_name request has been recieved and is being processed. You will receive an SMS response shortly. Continue ?",
+            "api-error": "Dear @firstname, @api_message . Continue ?",
+            "api-error-error": "Invalid selection! @api_message . Continue ?",
+            "logout": "END Dear @firstname, thank you for accessing the @app-description service. Good bye.",
+            "confirm-label": "Confirm",
+            "cancel-label": "Cancel",
+            "yes-label": "Yes",
+            "no-label": "No",
+            "english-label": "English",
+            "french-label": "French",
+            "swahili-label": "Kiswahili",
+            "account-options-template": "@option Account",
+            "tx-charge-narration": ". Charge: Ksh. @txcharge Duty: Ksh. @txduty"
+        }
+    },
+    "first-login": {
+        "english": {
+            "first-login-system-pin": "Welcome to the @app-description service. Please enter your One Time PIN to proceed",
+            "invalid-system-pin-error": "Invalid PIN format! Enter a valid 4 digit PIN to proceed",
+            "wrong-system-pin-error": "Wrong One Time PIN! Enter your One Time PIN to proceed",
+            "first-login-new-pin": "Please enter a new 4 digit PIN",
+            "first-login-new-pin-reenter": "Please re-enter your 4 digit PIN",
+            "first-login-new-pin-reenter-error": "PINS do not match! Re-enter your 4 digit PIN",
+            "first-login-new-pin-error": "Invalid PIN! Enter a new 4 digit PIN ( hint                                                                   : avoid entering a birthday or an easy pin e.g 1234, 2222, 4321)",
+            "first-login-confirm": "change your PIN",
+            "first-login-confirm-error": "Invalid selection! change your PIN"
+        }
+    },
+    "imsi-check-failed": {
+        "english": {
+            "imsi-check-failed": "END Dear @firstname, the SIM card you are using is currently not in our database. Kindly visit your nearest branch to update your details"
+        }
+    },
+    "inapp-login": {
+        "english": {
+            "inapp-login": "Please enter your 4 digit PIN to access",
+            "invalid-inapp-pin-error": "Invalid PIN Format! Enter a valid PIN to access",
+            "wrong-inapp-pin-error": "Wrong PIN! @pin-trials-remaining remaining. Enter your PIN to access"
+        }
+    },
+    "login": {
+        "english": {
+            "login": "Please enter your 4 digit PIN to proceed",
+            "invalid-pin-error": "Invalid PIN Format! Enter a valid PIN to proceed",
+            "wrong-pin-error": "Wrong PIN! @pin-trials-remaining remaining. Enter your PIN to proceed",
+            "invalid-pin-length-error": "Invalid PIN length! Enter your 4 Digit PIN to proceed"
+        }
+    },
+    "logout": {
+        "english": {
+            "logout": "END Dear @firstname, thank you for accessing the @app-description. Good bye."
+        }
+    },
+    "transaction-login": {
+        "english": {
+            "transaction-login": " Enter your 4 digit PIN to complete the transaction ( @transaction-pin-trials-remaining trials left )",
+            "invalid-pin-error": "Invalid PIN! Enter your 4 digit PIN to complete the transaction ( @transaction-pin-trials-remaining trials left! )"
+        }
+    },
+    "wrong-login": {
+        "english": {
+            "wrong-login": "Wrong PIN! @pin-trials-remaining trials left! Enter your 4 digit PIN to proceed",
+            "invalid-wrong-login-error": "Invalid PIN format! Enter a valid 4 digit PIN to proceed",
+            "incorrect-wrong-login-error": "Wrong PIN! @pin-trials-remaining trials left! Enter your 4 digit PIN to proceed"
+        }
+    },
+    "api-error": {
+        "english": {
+            "api-error": "Dear @firstname, @api_message . Continue ?",
+            "api-error-error": "Invalid selection! Dear @firstname, @api_message . Continue ?"
+        }
+    },
+    "api-success": {
+        "english": {
+            "api-success": "Dear @firstname, your @request_name request is currently being processed. Continue ?",
+            "api-success-error": "Invalid selection! Your @request_name request is currently being processed. Continue ?"
+        }
+    },
+    "registration-cancel": {
+        "english": {
+            "registration-cancel": "Dear customer, thank you for visiting the @app-description service."
+        }
+    },
+    "registration-error": {
+        "english": {
+            "registration-error": "Dear customer, your self registration request failed. Kindly visit your nearest @app-description branch for assistance."
+        }
+    },
+    "registration-success": {
+        "english": {
+            "registration-success": "Dear customer, your self registration request was successful. Kindly dial @app-shortcode to login."
+        }
+    },
+    "registration": {
+        "english": {
+            "registration-surname": "Please enter your surname",
+            "registration-surname-error": "Invalid surname! Enter your surname",
+            "registration-firstname": "Please enter your first name",
+            "registration-firstname-error": "Invalid first name! Enter your first name",
+            "registration-othername": "Please enter your other name( enter s to skip )",
+            "registration-othername-error": "Invalid other name! Enter your other name ( enter s to skip )",
+            "registration-id": "Please enter your national ID number",
+            "registration-id-error": "Invalid national ID number ! Enter your national ID number",
+            "registration-has-core-account": "Do you have an existing Account with Credit Bank ?",
+            "registration-has-core-account-error": "Invalid selection! Do you have an existing Account with Credit Bank ?",
+            "registration-core-account": "Please enter your Credit Bank Account Number",
+            "registration-core-account-error": "Invalid Account Number! Enter your Credit Bank Account Number",
+            "registration-dob": "Please enter your date of birth in the format DD-MM-YYYY",
+            "registration-dob-error": "Invalid national Date of birth ! Enter your date of birth in the format DD-MM-YYYY",
+            "registration-email": "Please enter a valid email address ( enter s to skip )",
+            "registration-email-error": "Invalid email address! Enter a valid email( enter s to skip )",
+            "registration-confirm": "Having read the terms and conditions, do you accept to perform a self registration.",
+            "registration-confirm-error": "Invalid selection! Having read the terms and conditions, do you accept to perform a self registration.",
+            "registration-language-change": "Please select your preferred language",
+            "registration-language-change-error": "Invalid selection! Please select your preferred language",
+            "registration-language-confirm": "change your current language",
+            "registration-language_confirm-error": "invalid selection! change your current language"
+        }
+    },
+    "terms": {
+        "english": {
+            "terms": "You can read our terms and conditions by visiting @app-terms-url. Do you want to perform another transaction ?",
+            "terms-error": "Invalid selection! You can read our terms and conditions by visiting @app-terms-url. Do you want to perform another transaction ?"
+        }
+    },
+    "email-change": {
+        "english": {
+            "email-change-current-email": "Please enter your current email",
+            "email-change-invalid-email-error": "Invalid email format! enter a valid email",
+            "email-change-wrong-email-error": "Incorrect email! Please enter your current email",
+            "email-change-new-email": "Please enter your new email",
+            "email-change-invalid-new-email-error": "Invalid email format! enter a valid email",
+            "email-change-confirm": "set @new_email as your current email",
+            "email-change-confirm-error": "Invalid selection! set @new_email as your current email"
+        }
+    },
+    "language-change": {
+        "english": {
+            "language-change": "Please select your preferred language",
+            "language-change-error": "Invalid selection! Please select your preferred language",
+            "language-confirm": "change your current language",
+            "language_confirm-error": "invalid selection! change your current language"
+        }
+    },
+    "login-pin-change": {
+        "english": {
+            "login-pin-change-old-pin": "Please enter your old PIN to proceed",
+            "login-pin-change-invalid-old-pin-error": "Invalid PIN format! Enter a valid 4 digit PIN to proceed",
+            "login-pin-change-wrong-old-pin-error": "Wrong PIN! Enter your old PIN to proceed",
+            "login-pin-change-new-pin": "Please enter a new 4 digit PIN",
+            "login-pin-change-new-pin-error": "Invalid PIN format! Enter a new 4 digit PIN",
+            "login-pin-change-new-pin-not-last-entry-error": "Your cannot set your old PIN as the new PIN! Enter a new 4 Digit PIN",
+            "login-pin-change-new-pin-reenter": "Please re-enter your 4 digit PIN",
+            "login-pin-change-new-pin-reenter-error": "PINS do not match! Re-enter your 4 digit PIN",
+            "login-pin-change-confirm": "change your PIN",
+            "login-pin-change-confirm-error": "Invalid selection! change your PIN",
+            "login-pin-change-success": "END Dear @firstname, your PIN change request was successful. Kindly dial @app-shortcode to login.",
+            "login-pin-change-error": "Dear @firstname, your PIN change request failed. Continue ?",
+            "login-pin-change-error-error": "Invalid selection! Your PIN change request failed. Continue ?"
+        }
+    },
+    "pin-change-error": {
+        "english": {
+            "pin-change-error": "END Dear @firstname, your PIN change request failed. Kindly dial @app-shortcode to retry."
+        }
+    },
+    "pin-change-success": {
+        "english": {
+            "pin-change-success": "END Dear @firstname, your PIN change request was successful. Kindly dial @app-shortcode to login."
+        }
+    },
+    "pin-change": {
+        "english": {
+            "pin-change-old-pin": "Please enter your old PIN to proceed",
+            "pin-change-invalid-old-pin-error": "Invalid PIN format! Enter a valid 4 digit PIN to proceed",
+            "pin-change-wrong-old-pin-error": "Wrong PIN! Enter your old PIN to proceed",
+            "pin-change-new-pin": "Please enter a new 4 digit PIN",
+            "pin-change-new-pin-error": "Invalid PIN format! Enter a new 4 digit PIN",
+            "pin-change-new-pin-not-last-entry-error": "Your cannot set your old PIN as the new PIN! Enter a new 4 Digit PIN",
+            "pin-change-new-pin-reenter": "Please re-enter your 4 digit PIN",
+            "pin-change-new-pin-reenter-error": "PINS do not match! Re-enter your 4 digit PIN",
+            "pin-change-confirm": "change your PIN",
+            "pin-change-confirm-error": "Invalid selection! change your PIN",
+            "pin-change-success": "END Dear @firstname, your PIN change request was successful. Kindly dial @app-shortcode to login.",
+            "pin-change-error": "Dear @firstname, your PIN change request failed. Continue ?",
+            "pin-change-error-error": "Invalid selection! Your PIN change request failed. Continue ?"
+        }
+    },
+    "coming-soon": {
+        "english": {
+            "coming-soon": ""
+        }
+    },
+    "disabled": {
+        "english": {
+            "disabled": "END Dear @firstname, the @current_step menu you have tried to access is currently disabled"
+        }
+    },
+    "maintenance": {
+        "english": {
+            "system-maintenance": ""
+        }
+    },
+    "technical-error": {
+        "english": {
+            "technical-error": ""
+        }
+    },
+    "balance-success": {
+        "english": {
+            "balance-success": "Your Actual Balance is @currencyCode @actual-balance and Available Balance is @currencyCode @available-balance .Continue?",
+            "balance-success-error": "Invalid selection! your Actual Balance is @currencyCode @actual-balance and Available Balance is @currencyCode @available-balance .Continue?"
+        }
+    },
+    "fullstatement-email-error": {
+        "english": {
+            "fullstatement-email-error": "You need to set your email to obtain a fullstatement. kindly visit your nearest @app-client branch to update your details. Continue?",
+            "fullstatement-email-error-error": "Invalid selection!  kindly visit your nearest @app-client branch to update your details. Continue?"
+        }
+    },
+    "balance": {
+        "english": {
+            "balance-account": "Please select the Account",
+            "balance-account-type": "Please select the Balance Enquiry Account",
+            "balance-account-error": "Invalid selection! Select the Balance Enquiry Account",
+            "balance-account-savings": "Please select the Credit Bank Account",
+            "balance-account-savings-error": "Invalid selection! Select the Credit Bank Account",
+            "balance-account-savings-options-error": "You currently do not have any linked accounts.Continue",
+            "balance-confirm": "Perform a Balance Enquiry for Account @balanceDebitAccount",
+            "balance-confirm-error": "Invalid selection! perform a Balance Enquiry for Account @balanceDebitAccount"
+        }
+    },
+    "fullstatement": {
+        "english": {
+            "fullstatement-account": "Please select the Account",
+            "fullstatement-account-error": "Invalid selection ! Select the Account",
+            "fullstatement-account-savings": "Please select the Credit Bank Account",
+            "fullstatement-account-savings-error": "Invalid selection ! Select the Credit Bank Account",
+            "fullstatement-period": "Please select the Full Statement duration",
+            "fullstatement-period-error": "Invalid selection! Select the Full Statement duration",
+            "fullstatement-confirm": "Request for a @fullstatementPeriod  Full Statement for Account @fullstatementDebitAccount",
+            "fullstatement-confirm-error": "Invalid selection! Request for a @fullstatementPeriod  Full Statement for Account @fullstatementDebitAccount",
+            "fullstatement-account-savings-options-error": "You currently do not have any linked accounts.Continue"
+        }
+    },
+    "ministatement-success": {
+        "english": {
+            "ministatement-success": "Ministatement                                                                                                 : \n @ministatement \nContinue?",
+            "ministatement-success-error": "Invalid selection! Ministatement                                                                              : \n @ministatement \nContinue?"
+        }
+    },
+    "ministatement": {
+        "english": {
+            "ministatement-account": "Please select the Account",
+            "ministatement-account-error": "Invalid selection ! Select the Account",
+            "ministatement-account-savings": "Please select the Credit Bank Account",
+            "ministatement-account-savings-error": "Invalid selection ! Select the Credit Bank Account",
+            "ministatement-confirm": "Request for a Mini Statement for Account @ministatementDebitAccount",
+            "ministatement-confirm-error": "Invalid selection! Request for a Mini Statement for Account @ministatementDebitAccount",
+            "ministatement-account-savings-options-error": "You currently do not have any linked accounts.Continue"
+        }
+    },
+    "account-linking-success": {
+        "english": {
+            "account-linking-success": "END Dear @firstname, you have successfully linked an account to your Credit Bank Wallet. Please dial @app-shortcode to login"
+        }
+    },
+    "account-linking": {
+        "english": {
+            "account-linking-account": "Please enter the Account to link",
+            "account-linking-account-error": "Invalid account! Enter a valid account number to link",
+            "account-linking-id": "Please enter your National ID Number",
+            "account-linking-id-error": "Invalid ID! Enter your National ID Number",
+            "account-linking-confirm": "Link Account @accountLinkingAccount to your @app-description Wallet",
+            "account-linking-confirm-error": "Invalid selection! Link Account @accountLinkingAccount to your @app-description Wallet"
+        }
+    },
+    "account-mandates": {
+        "english": {
+            "account-mandates-account": "Please select a mandate",
+            "account-mandates-account-error": "Invalid selection! Select a mandate",
+            "account-mandates-confirm": "Do you wish to approve the transaction with code  @code",
+            "account-mandates-confirm-error": "Invalid selcetion! Approve the transaction with code  @code",
+            "account-mandates-type": "Please approve or reject the mandate",
+            "account-mandates-type-error": "Invalid selection! Approve or reject the mandate",
+            "account-mandates-reject-confirm": "Do you wish to reject the transaction with code  @code",
+            "account-mandates-reject-confirm-error": "Invalid selcetion! Reject the transaction with code  @code",
+            "account-mandates-account-options-error": "Dear @firstname, there are no pending mandates for approval",
+            "account-mandates-account-options-error-error": "Invalid selection! There are no pending mandates for approval",
+            "account-mandates-debit-account": "Please select an account",
+            "account-mandates-debit-account-account-error": "Invalid selection! Select an account",
+            "account-mandates-id": "Please select the Joint Account transaction to approve",
+            "account-mandates-id-error": "Invalid selection! Select the Joint Account transaction to approve",
+            "account-mandates-lookup-error": "There are currently no pending approvals for Account @account . Continue?",
+            "account-mandates-lookup-error-error": "Invalid selection! There are currently no pending approvals for Account @account . Continue?",
+            "account-mandates-code": "Please enter the Authorization code for mandate ID @id",
+            "account-mandates-code-error": "Invalid Code! Enter the Authorization code for mandate ID @id"
+        }
+    },
+    "core-account-opening": {
+        "english": {
+            "core-account-type": "Please select the Account type",
+            "core-account-type-error": "Invalid selection! Select the Account type",
+            "cbu-dream-account": "Please enter the initial amount to deposit ( minimum KES.1000)",
+            "cbu-dream-account-error": "Invalid amount! Please enter the initial amount to deposit ( minimum KES.1000)",
+            "personal-current-account": "Please enter the initial amount to deposit ( minimum KES.2000)",
+            "personal-current-account-error": "Invalid amount! Please enter the initial amount to deposit ( minimum KES.2000)",
+            "my-saver-account": "Please enter the initial amount to deposit ( minimum KES.1000)",
+            "my-saver-account-error": "Invalid amount! Please enter the initial amount to deposit ( minimum KES.1000)",
+            "core-account-opening-search": "Please enter the name of your domicile branch in order to conduct a search",
+            "core-account-opening-result": "Please select a domicile branch below",
+            "core-account-opening-result-error": "Invalid selection! Select a domicile branch below",
+            "no-results-error": "There are no domicile branches Matching '@search_item'. Please enter the branches first name in order to conduct a search",
+            "result-limit-exceeded-error": "Too many results. Please enter the full name of the domicile branch separated by a dot ( . ) to narrow the results",
+            "core-account-currency": "Please select the currency of the account",
+            "core-account-currency-error": "Invalid selection! Select the currency of the account",
+            "core-account-debit-account": "Please select the Account to debit",
+            "core-account-debit-account-error": "Invalid selection! Select the Account to debit",
+            "core-account-confirm": "You are about to open a @coreAccountType @coreAccountCurrency account. Initial deposit is KES @coreAccountAmount from Account @coreAccountDebitAccount",
+            "core-account-confirm-error": "Invalid selection! You are about to open a @coreAccountType @coreAccountCurrency account. Initial deposit is KES @coreAccountAmount from Account @coreAccountDebitAccount",
+            "core-account-type-options-error": "There are currently no Credit Bank Products that can be activated via mobile. Continue?",
+            "core-account-type-options-error-error": "Invalid selection! There are currently no Credit Bank Products that can be activated via mobile. Continue",
+            "core-account-debit-account-options-error": "You currently do not have any linked accounts. Continue?",
+            "core-account-debit-account-options-error-error": "Invalid selection! You currently do not have any linked accounts. Continue?"
+        }
+    },
+    "wallet-account-opening": {
+        "english": {
+            "wallet-account-opening": "Request for a activation of your Credit Bank wallet account",
+            "wallet-account-opening-error": "Invalid selection! Request for a activation of your Credit Bank wallet account"
+        }
+    },
+    "replace-atm": {
+        "english": {
+            "replace-atm-account": "Please select the Account to replace an ATM for",
+            "replace-atm-account-error": "Invalid selection ! Please select the account to replace an ATM for",
+            "replace-atm-confirm": "Replace Card for Account @replaceAtmAccount",
+            "replace-atm-confirm-error": "Invalid selection ! Replace Card for Account @replaceAtmAccount",
+            "replace-atm-account-options-error": "You currently do not have any linked accounts.Continue",
+            "replace-atm-account-options-error-error": "Invalid selection ! You currently do not have any linked accounts.Continue"
+        }
+    },
+    "block-atm": {
+        "english": {
+            "block-atm-account": "Please select the Card to block",
+            "block-atm-account-error": "Invalid selection! Select the Card to block",
+            "block-atm-confirm": "Block Card @atm",
+            "block-atm-confirm-error": "Invalid selection! Block Card @atm",
+            "block-atm-account-options-error": "Dear @firstname, you currently do not have any Cards",
+            "block-atm-account-options-error-error": "Invalid selection! You currently do not have any Cards"
+        }
+    },
+    "request-atm": {
+        "english": {
+            "request-atm-account": "Please select the Account to get an ATM for",
+            "request-atm-account-error": "Invalid selection ! Please select the account to get an ATM for",
+            "request-atm-confirm": "Request for an ATM card for Account @requestAtmAccount",
+            "request-atm-confirm-error": "Invalid selection ! Request for an ATM card for Account @requestAtmAccount",
+            "request-atm-account-options-error": "You currently do not have any linked accounts.Continue",
+            "request-atm-account-options-error-error": "Invalid selection ! You currently do not have any linked accounts.Continue"
+        }
+    },
+    "unblock-atm": {
+        "english": {
+            "unblock-atm-account": "Please select the Card to unblock",
+            "unblock-atm-account-error": "Invalid selection! Select the Card to unblock",
+            "unblock-atm-confirm": "Unblock Card @atm",
+            "unblock-atm-confirm-error": "Invalid selection! Unblock Card @atm",
+            "unblock-atm-account-options-error": "Dear @firstname, you currently do not have any Cards",
+            "unblock-atm-account-options-error-error": "Invalid selection! You currently do not have any Cards"
+        }
+    },
+    "set-atm-limits": {
+        "english": {
+            "set-card-limit-account": "Please select the Account",
+            "set-card-limit-account-error": "Invalid selection! Select the Account",
+            "set-card-limit-card": "Please select the card to set a limit on",
+            "set-card-limit-card-error": "Invalid selection! Select the card to set a limit on",
+            "set-card-limit-transaction": "Please select the card limit type",
+            "set-card-limit-transaction-error": "Invalid selection! Select the card limit type",
+            "pos-amount": "Please enter the PoS transaction limit",
+            "pos-amount-error": "Invalid amount! Enter the PoS transaction limit",
+            "atm-amount": "Please enter the ATM transaction limit",
+            "atm-amount-error": "Invalid amount! Enter the ATM transaction limit",
+            "online-amount": "Please enter the Online transaction limit",
+            "online-amount-error": "Invalid amount! Enter the Online transaction limit",
+            "pos-count": "Please enter the PoS transaction count limit",
+            "pos-count-error": "Invalid amount! Enter the  PoS transaction count limit",
+            "atm-count": "Please enter the ATM transaction count limit",
+            "atm-count-error": "Invalid amount! Enter the  ATM transaction count limit",
+            "online-count": "Please enter the Online transaction count limit",
+            "online-count-error": "Invalid amount! Enter the  Online transaction count limit",
+            "pos-confirm": "Set the PoS Transaction limit for card @card to @amount and Transaction count limit to @count",
+            "pos-confirm-error": "Invalid selection! Set the PoS Transaction limit for card @card to @amount and Transaction count limit to @count",
+            "atm-confirm": "Set the ATM Transaction limit for card @card to @amount and Transaction count limit to @count",
+            "atm-confirm-error": "Invalid selection! Set the ATM Transaction limit for card @card to @amount and Transaction count limit to @count",
+            "online-confirm": "Set the online Transaction limit for card @card to @amount and Transaction count limit to @count",
+            "online-confirm-error": "Invalid selection! Set the online Transaction limit for card @card to @amount and Transaction count limit to @count",
+            "card-lookup-error": "We are unable to fetch the cards linked to Account @debitAccount . Continue?",
+            "card-lookup-error-error": "Invalid selection! We are unable to fetch the cards linked to Account @debitAccount . Continue?"
+        }
+    },
+    "buy-airtime": {
+        "english": {
+            "buy-airtime-provider": "Please select an airtime provider",
+            "buy-airtime-provider-error": "Invalid selection! Select an airtime provider",
+            "buy-airtime-account-type": "Please select the account to buy airtime for",
+            "buy-airtime-account-type-error": "Invalid selection! Please select the account to buy airtime for",
+            "buy-airtime-credit-account": "Please enter the @airtimeProvider phone number in the format 07xxxxxxxx",
+            "buy-airtime-credit-account-error": "Invalid phone Number! Enter a valid @airtimeProvider phone number in the format 07xxxxxxxx",
+            "buy-airtime-debit-account": "Please select the account to debit",
+            "buy-airtime-debit-account-error": "Invalid selection! Select the account to debit",
+            "buy-airtime-amount": "Please enter the amount of airtime to purchase ( minimum Ksh. @buy-airtime-minimum )",
+            "buy-airtime-amount-error": "Invalid amount! Enter a valid amount of airtime to purchase ( minimum Ksh. @buy-airtime-minimum )",
+            "buy-airtime-confirm": "Purchase @airtimeProvider airtime worth Ksh. @airtimeAmount for @airtimeCreditAccount from @airtimeDebitAccount",
+            "buy-airtime-confirm-error": "Invalid selection! Purchase @airtimeProvider airtime worth Ksh. @airtimeAmount for @airtimeCreditAccount from @airtimeDebitAccount",
+            "buy-airtime-debit-account-options-error": "You currently do not have any linked accounts.Continue",
+            "buy-airtime-debit-account-options-error-error": "Invalid selection ! You currently do not have any linked accounts.Continue"
+        }
+    },
+    "request-cheque-book": {
+        "english": {
+            "request-cheque-book-account": "Please select the account to get a Cheque book for",
+            "request-cheque-book-account-error": "Invalid entry! Please select the account to get a Cheque book for",
+            "request-cheque-book-leaves": "Please select the number of Leaves",
+            "request-cheque-book-quantity": "Please enter the quantity of Cheque Books (minimum 1)",
+            "request-cheque-book-quantity-error": "Invalid quantity! Enter the quantity of Cheque Books(minimum 1)",
+            "request-cheque-book-leaves-error": "Invalid selection! Please select the number of Leaves",
+            "request-cheque-book-confirm": "Request for  @requestChequeBookQuantity @requestChequeBookLeaves Leaf Cheque Books for Account  @requestChequeBookDebitAccount",
+            "request-cheque-book-confirm-error": "Invalid selection ! Request for  @requestChequeBookQuantity @requestChequeBookLeaves Leaf Cheque Books for Account @requestChequeBookDebitAccount",
+            "request-cheque-book-account-options-error": "You currently do not have any linked accounts.Continue",
+            "request-cheque-book-account-options-error-error": "Invalid selection ! You currently do not have any linked accounts.Continue"
+        }
+    },
+    "stop-cheque": {
+        "english": {
+            "stop-cheque-account": "Please select the account to stop a cheque",
+            "stop-cheque-account-error": "Invalid selection ! Please select the account to stop a cheque",
+            "stop-cheque-number": "Please enter the cheque leaf number",
+            "stop-cheque-number-error": "Invalid Cheque Number! Enter the cheque number",
+            "stop-cheque-confirm": "Stop Cheque @stopChequeNumber for Account @stopChequeAccount",
+            "stop-cheque-confirm-error": "Invalid selection ! stop Cheque @stopChequeNumber for Account @stopChequeAccount",
+            "stop-cheque-account-options-error": "You currently do not have any linked accounts.Continue",
+            "stop-cheque-account-options-error-error": "Invalid selection ! You currently do not have any linked accounts.Continue"
+        }
+    },
+    "contact-us": {
+        "english": {
+            "contact-us": "Contact us on                                                                                                 : \nPhone                        : @app-contact-number \nEmail     : @app-email \nWhatsapp                                 : @app-whatsapp \nContinue ?"
+        }
+    },
+    "access-kenya": {
+        "english": {
+            "access-kenya-credit-account": "",
+            "access-kenya-credit-account-error": "",
+            "access-kenya-debit-account": "",
+            "access-kenya-debit-account-error": "",
+            "access-kenya-amount": "",
+            "access-kenya-amount-error": "",
+            "access-kenya-confirm": "",
+            "access-kenya-debit-account-options-error": ""
+        }
+    },
+    "dstv": {
+        "english": {
+            "dstv-presentment-error": "We are currently unable to fetch the DSTV bill for Account @billPaymentCreditAccount . Continue ? ",
+            "dstv-presentment-error-error": "Invalid selection! We are currently unable to fetch the DSTV bill for Account @billPaymentCreditAccount. Continue ? ",
+            "dstv-credit-account": "Please enter the DSTV Account number",
+            "dstv-credit-account-error": "Invalid entry! Please enter the DSTV Account number",
+            "dstv-debit-account": "Please select the account to be debited",
+            "dstv-debit-account-error": "Invalid selection! Select the account to be debited",
+            "dstv-amount": "Please enter the amount to pay ( min Ksh. @minimum-billpayment-amount ) ",
+            "dstv-amount-error": "Invalid entry! Please enter the amount to pay ( min Ksh. @minimum-billpayment-amount ) ",
+            "dstv-confirm": "Pay  Ksh. @billPaymentAmount to DSTV for @billPaymentCreditAccount from @billPaymentDebitAccount",
+            "dstv-confirm-error": "Invalid selection! pay  Ksh. @billPaymentAmount to DSTV for @billPaymentCreditAccount from @billPaymentDebitAccount",
+            "dstv-debit-account-options-error": "You currently do not have any linked accounts.Continue",
+            "dstv-debit-account-options-error-error": "Invalid selection ! You currently do not have any linked accounts.Continue",
+            "dstv-presentment-amount-error": "You currently do not have a DSTV bill to pay. Continue?",
+            "dstv-presentment-amount-error-error": "Invalid selection! You currently do not have a DSTV bill to pay. Continue?"
+        }
+    },
+    "gotv": {
+        "english": {
+            "gotv-presentment-error": "We are currently unable to fetch the GoTv bill for Account @billPaymentCreditAccount . Continue ? ",
+            "gotv-presentment-error-error": "Invalid selection! We are currently unable to fetch the GoTv bill for Account @billPaymentCreditAccount. Continue ? ",
+            "gotv-credit-account": "Please enter the GoTv Account number",
+            "gotv-credit-account-error": "Invalid entry! Please enter the GoTv Account number",
+            "gotv-debit-account": "Please select the account to be debited",
+            "gotv-debit-account-error": "Invalid selection! Select the account to be debited",
+            "gotv-amount": "Please enter the amount to pay ( min Ksh. @minimum-billpayment-amount ) ",
+            "gotv-amount-error": "Invalid entry! Please enter the amount to pay ( min Ksh. @minimum-billpayment-amount ) ",
+            "gotv-confirm": "Pay  Ksh. @billPaymentAmount to GoTv for @billPaymentCreditAccount from @billPaymentDebitAccount",
+            "gotv-confirm-error": "Invalid selection! pay  Ksh. @billPaymentAmount to GoTv for @billPaymentCreditAccount from @billPaymentDebitAccount",
+            "gotv-debit-account-options-error": "You currently do not have any linked accounts.Continue",
+            "gotv-debit-account-options-error-error": "Invalid selection ! You currently do not have any linked accounts.Continue",
+            "gotv-presentment-amount-error": "You currently do not have a GoTv bill to pay. Continue?",
+            "gotv-presentment-amount-error-error": "Invalid selection! You currently do not have a GoTv bill to pay. Continue?"
+        }
+    },
+    "itax": {
+        "english": {
+            "itax-debit-account": "Please select the debit account",
+            "itax-debit-account-error": "Invalid selection! Select the debit account",
+            "itax-eslip": "Please enter the E-slip number",
+            "itax-eslip-error": "Invalid E-slip number! Enter a valid E-slip number",
+            "itax-confirm": "Pay KES @amount to i-tax\n E-slip: @eslip \n Name: @fullName \n KRA PIN: @krapin \nfrom Account @debitAccount?",
+            "itax-confirm-error": "Invalid selection! Pay KES @amount to i-tax\n E-slip: @eslip \n Name: @fullName \n KRA PIN: @krapin \nfrom Account @debitAccount?",
+            "itax-debit-account-options-error": "You currently do not have any linked accounts. Continue?",
+            "itax-debit-account-options-error-error": "Invalid selection! You currently do not have any linked accounts. Continue?",
+            "itax-presentment-error": "Dear @firstname, we are currently unable to fetch the i-tax bill for E-Slip @eslip. Continue?",
+            "itax-presentment-error-error": "Invalid selection! We are currently unable to fetch the i-tax bill for E-Slip @eslip. Continue?",
+            "itax-presentment-amount-error": "Dear @firstname, you currently do not have an i-tax bill for E-Slip @eslip. Continue?",
+            "itax-presentment-amount-error-error": "Invalid selection! You currently do not have an i-tax bill for E-Slip @eslip. Continue?"
+        }
+    },
+    "jamii-telkom": {
+        "english": {
+            "jamii-telkom-credit-account": "",
+            "jamii-telkom-credit-account-error": "",
+            "jamii-telkom-debit-account": "",
+            "jamii-telkom-debit-account-error": "",
+            "jamii-telkom-amount": "",
+            "jamii-telkom-amount-error": "",
+            "jamii-telkom-confirm": "",
+            "jamii-telkom-debit-account-options-error": ""
+        }
+    },
+    "kplc-postpaid": {
+        "english": {
+            "kplc-postpaid-presentment-error": "We are currently unable to fetch the KPLC Postpaid bill for Account @billPaymentCreditAccount . Continue ? ",
+            "kplc-postpaid-presentment-error-error": "Invalid selection! We are currently unable to fetch the KPLC Postpaid bill for Account @billPaymentCreditAccount. Continue ? ",
+            "kplc-postpaid-credit-account": "Please enter the KPLC Post Paid Meter number",
+            "kplc-postpaid-credit-account-error": "Invalid account! Enter the KPLC Post Paid Meter number",
+            "kplc-postpaid-debit-account": "Please select the account to be debited",
+            "kplc-postpaid-debit-account-error": "Invalid selection! Select the account to be debited",
+            "kplc-postpaid-amount": "Please enter the amount to pay ( min Ksh. @minimum-billpayment-amount ) ",
+            "kplc-postpaid-amount-error": "Invalid entry! Please enter the amount to pay ( min Ksh. @minimum-billpayment-amount ) ",
+            "kplc-postpaid-confirm": "Pay  Ksh. @billPaymentAmount to KPLC for Account @billPaymentCreditAccount from @billPaymentDebitAccount",
+            "kplc-postpaid-confirm-error": "Invalid selection! pay  Ksh. @billPaymentAmount to KPLC for Account @billPaymentCreditAccount from @billPaymentDebitAccount",
+            "kplc-postpaid-debit-account-options-error": "You currently do not have any linked accounts.Continue",
+            "kplc-postpaid-debit-account-options-error-error": "Invalid selection ! You currently do not have any linked accounts.Continue",
+            "kplc-postpaid-presentment-amount-error": "You currently do not have a KPLC post paid bill to pay. Continue?",
+            "kplc-postpaid-presentment-amount-error-error": "Invalid selection! You currently do not have a KPLC post paid bill to pay. Continue?"
+        }
+    },
+    "kplc-prepaid": {
+        "english": {
+            "kplc-prepaid-credit-account": "Please enter the KPLC Pre Paid Meter number",
+            "kplc-prepaid-credit-account-error": "Invalid account! Enter the KPLC pre Paid Meter number",
+            "kplc-prepaid-debit-account": "Please select the account to be debited",
+            "kplc-prepaid-debit-account-error": "Invalid selection! Select the account to be debited",
+            "kplc-prepaid-amount": "Please enter the amount to pay ( min Ksh. @minimum-billpayment-amount ) ",
+            "kplc-prepaid-amount-error": "Invalid entry! Please enter the amount to pay ( min Ksh. @minimum-billpayment-amount ) ",
+            "kplc-prepaid-confirm": "Pay  Ksh. @billPaymentAmount to KPLC for @billPaymentCreditAccount from @billPaymentDebitAccount",
+            "kplc-prepaid-confirm-error": "Invalid selection! pay  Ksh. @billPaymentAmount to KPLC for @billPaymentCreditAccount from @billPaymentDebitAccount",
+            "kplc-prepaid-debit-account-options-error": "You currently do not have any linked accounts.Continue",
+            "kplc-prepaid-debit-account-options-error-error": "Invalid selection ! You currently do not have any linked accounts.Continue"
+        }
+    },
+    "landrates": {
+        "english": {
+            "landrates-credit-account": "Please enter the Plot number",
+            "landrates-credit-account-error": "Invalid plot number! Enter the Plot number",
+            "landrates-debit-account": "Please select the account to be debited",
+            "landrates-debit-account-error": "Invalid selection! Select the account to be debited",
+            "landrates-amount": "Please enter the amount to pay ( min Ksh. @minimum-billpayment-amount ) ",
+            "landrates-amount-error": "Invalid entry! Please enter the amount to pay ( min Ksh. @minimum-billpayment-amount ) ",
+            "landrates-confirm": "Make a Land Rates payment of Ksh. @billPaymentAmount for Plot No. @billPaymentCreditAccount from @billPaymentDebitAccount",
+            "landrates-confirm-error": "Invalid selection! make a Land Rates payment of Ksh. @billPaymentAmount for Plot No. @billPaymentCreditAccount from @billPaymentDebitAccount",
+            "landrates-debit-account-options-error": "You currently do not have any linked accounts.Continue",
+            "landrates-debit-account-options-error-error": "Invalid selection ! You currently do not have any linked accounts.Continue",
+            "landrates-presentment-error": "We are currently unable to fetch the Land Rates bill for Account @billPaymentCreditAccount . Continue ? ",
+            "landrates-presentment-error-error": "Invalid selection! We are currently unable to fetch the Land Rates bill for Account @billPaymentCreditAccount. Continue ? ",
+            "landrates-presentment-amount-error": "You currently do not have a Land rates bill to pay. Continue?",
+            "landrates-presentment-amount-error-error": "Invalid selection! You currently do not have a Land rates bill to pay. Continue?"
+        }
+    },
+    "nairobiwater": {
+        "english": {
+            "nairobiwater-credit-account": "Please enter the Nairobi Water Meter number",
+            "nairobiwater-credit-account-error": "Invalid account! Enter the Nairobi Water number",
+            "nairobiwater-debit-account": "Please select the account to be debited",
+            "nairobiwater-debit-account-error": "Invalid selection! Select the account to be debited",
+            "nairobiwater-amount": "Please enter the amount to pay ( min Ksh. @minimum-billpayment-amount ) ",
+            "nairobiwater-amount-error": "Invalid entry! Please enter the amount to pay ( min Ksh. @minimum-billpayment-amount ) ",
+            "nairobiwater-confirm": "Pay  Ksh. @billPaymentAmount to Nairobi Water for @billPaymentCreditAccount from @billPaymentDebitAccount",
+            "nairobiwater-confirm-error": "Invalid selection! pay  Ksh. @billPaymentAmount to Nairobi Water for @billPaymentCreditAccount from @billPaymentDebitAccount",
+            "nairobiwater-debit-account-options-error": "You currently do not have any linked accounts.Continue",
+            "nairobiwater-debit-account-options-error-error": "Invalid selection ! You currently do not have any linked accounts.Continue"
+        }
+    },
+    "nhif": {
+        "english": {
+            "nhif-presentment-error": "We are currently unable to fetch the NHIF bill for Account @billPaymentCreditAccount . Continue ? ",
+            "nhif-presentment-error-error": "Invalid selection! We are currently unable to fetch the NHIF bill for Account @billPaymentCreditAccount. Continue ? ",
+            "nhif-member-type": "Please select the NHIF membership type",
+            "nhif-error": "Invalid selection! Please select the NHIF membership type",
+            "nhif-individual": "Please enter the NHIF Account number",
+            "nhif-individual-error": "Invalid entry! Please enter the NHIF Account number",
+            "nhif-credit-account": "Please enter the NHIF Account number",
+            "nhif-credit-account-error": "Invalid account! Enter the NHIF Account number",
+            "nhif-debit-account": "Please select the account to be debited",
+            "nhif-debit-account-error": "Invalid selection! Select the account to be debited",
+            "nhif-amount": "Please enter the amount to pay ",
+            "nhif-amount-error": "Invalid entry! Please enter the amount to pay",
+            "nhif-penalty-amount": "Please enter the penalty amount to pay ",
+            "nhif-penalty-amount-error": "Invalid entry! Enter the penalty amount to pay ",
+            "nhif-confirm": "Pay  Ksh. @billPaymentAmount to NHIF for @billPaymentCreditAccount from @billPaymentDebitAccount",
+            "nhif-confirm-error": "Invalid selection! pay  Ksh. @billPaymentAmount to NHIF for @billPaymentCreditAccount from @billPaymentDebitAccount",
+            "nhif-debit-account-options-error": "You currently do not have any linked accounts.Continue",
+            "nhif-debit-account-options-error-error": "Invalid selection ! You currently do not have any linked accounts.Continue",
+            "nhif-member-types-options-error": "You currently do not have any linked accounts.Continue",
+            "nhif-member-types-options-error-error": "Invalid selection ! You currently do not have any linked accounts.Continue",
+            "nhif-presentment-amount-error": "You currently do not have a NHIF bill to pay. Continue?",
+            "nhif-presentment-amount-error-error": "Invalid selection! You currently do not have a NHIF bill to pay. Continue?"
+        }
+    },
+    "school-fees": {
+        "english": {
+            "school-fees-debit-account": "Please select the Account to pay from",
+            "school-fees-debit-account-error": "Invalid selection! Select the Account to pay from",
+            "school-fees-child-name": "Please enter the students name e.g John Doe",
+            "school-fees-child-name-error": "Invalid name! Enter the students name e.g John Doe",
+            "school-fees-child-reg": "Please enter the students registration number e.g 123456",
+            "school-fees-child-reg-error": "Invalid number! Enter the students registration number e.g 123456",
+            "school-fees-amount": "Please enter the Amount you would like to pay ( min @school-fees-minimum-amount )",
+            "school-fees-amount-error": "Invalid amount! Enter the Amount you would like to pay ( min @school-fees-minimum-amount )",
+            "school-fees-confirm": "Pay Ksh. @schoolFeesAmount from  @schoolFeesDebitAccount to  @schoolFeesCreditAccount. Name                   : @schoolFeesChildName, RegId    : @schoolFeesChildReg",
+            "school-fees-confirm-error": "Invalid selection! Pay Ksh. @schoolFeesAmount from  @schoolFeesDebitAccount to  @schoolFeesCreditAccount. Name: @schoolFeesChildName, RegId    : @schoolFeesChildReg",
+            "school-search": "Please enter the schools first name in order to conduct a search",
+            "school-result": "Please select a school below",
+            "no-results-error": "There are no schools Matching '@search_item'. Please enter the schools first name in order to conduct a search",
+            "result-limit-exceeded-error": "Too many results. Please enter the full name of the school separated by a dot ( . ) to narrow the results",
+            "schools-error": "Invalid Selection! Please select a school below"
+        }
+    },
+    "star-times": {
+        "english": {
+            "start-times-credit-account": "",
+            "start-times-credit-account-error": "",
+            "start-times-debit-account": "",
+            "start-times-debit-account-error": "",
+            "start-times-amount": "",
+            "start-times-amount-error": "",
+            "start-times-confirm": "",
+            "start-times-debit-account-options-error": ""
+        }
+    },
+    "zuku-internet": {
+        "english": {
+            "zuku-internet-presentment-error": "We are currently unable to fetch the Zuku Internet bill for Account @billPaymentCreditAccount . Continue ? ",
+            "zuku-internet-presentment-error-error": "Invalid selection! We are currently unable to fetch the Zuku Internet bill for Account @billPaymentCreditAccount. Continue ? ",
+            "zuku-internet-credit-account": "Please enter the Zuku Internet Account number",
+            "zuku-internet-credit-account-error": "Invalid entry! Please enter the Zuku Internet Account number",
+            "zuku-internet-debit-account": "Please select the account to be debited",
+            "zuku-internet-debit-account-error": "Invalid selection! Select the account to be debited",
+            "zuku-internet-amount": "Please enter the amount to pay ( min Ksh. @minimum-billpayment-amount ) ",
+            "zuku-internet-amount-error": "Invalid entry! Please enter the amount to pay ( min Ksh. @minimum-billpayment-amount ) ",
+            "zuku-internet-confirm": "Pay  Ksh. @billPaymentAmount to Zuku Internet for @billPaymentCreditAccount from @billPaymentDebitAccount",
+            "zuku-internet-confirm-error": "Invalid selection! pay  Ksh. @billPaymentAmount to Zuku Internet for @billPaymentCreditAccount from @billPaymentDebitAccount",
+            "zuku-internet-debit-account-options-error": "You currently do not have any linked accounts.Continue",
+            "zuku-internet-debit-account-options-error-error": "Invalid selection ! You currently do not have any linked accounts.Continue"
+        }
+    },
+    "zuku-tv": {
+        "english": {
+            "zuku-tv-presentment-error": "We are currently unable to fetch the ZukuTv bill for Account @billPaymentCreditAccount . Continue ? ",
+            "zuku-tv-presentment-error-error": "Invalid selection! We are currently unable to fetch the ZukuTv bill for Account @billPaymentCreditAccount. Continue ? ",
+            "zuku-tv-credit-account": "Please enter the ZukuTv Account number",
+            "zuku-tv-credit-account-error": "Invalid entry! Please enter the ZukuTv Account number",
+            "zuku-tv-debit-account": "Please select the account to be debited",
+            "zuku-tv-debit-account-error": "Invalid selection! Select the account to be debited",
+            "zuku-tv-amount": "Please enter the amount to pay ( min Ksh. @minimum-billpayment-amount ) ",
+            "zuku-tv-amount-error": "Invalid entry! Please enter the amount to pay ( min Ksh. @minimum-billpayment-amount ) ",
+            "zuku-tv-confirm": "Pay  Ksh. @billPaymentAmount to ZukuTv for @billPaymentCreditAccount from @billPaymentDebitAccount",
+            "zuku-tv-confirm-error": "Invalid selection! pay  Ksh. @billPaymentAmount to ZukuTv for @billPaymentCreditAccount from @billPaymentDebitAccount",
+            "zuku-tv-debit-account-options-error": "You currently do not have any linked accounts.Continue",
+            "zuku-tv-debit-account-options-error-error": "Invalid selection ! You currently do not have any linked accounts.Continue"
+        }
+    },
+    "calculator": {
+        "english": {
+            "calculator-type": "Calculators",
+            "calculator-type-error": "Invalid selection! Calculators",
+            "investment-amount": "Please enter the amount to invest",
+            "investment-amount-error": "Invalid amount! Enter the amount to invest",
+            "investment-interest": "Please enter the interest rate for the investment",
+            "investment-interest-error": "Invalid interest rate! Enter the interest rate for the investment",
+            "investment-confirm": "Investment returns:\n @investment-details \nContinue?",
+            "investment-confirm-error": "Invalid selection! Investment returns:\n @investment-details \nContinue?",
+            "loan-amount": "Please enter the amount to borrow",
+            "loan-amount-error": "Invalid amount! Enter the amount to borrow",
+            "loan-period": "Please enter the loan duration in months",
+            "loan-period-error": "Invalid duration! Enter the loan duration in months",
+            "loan-confirm": "@loan-details \nContinue?",
+            "loan-confirm-error": "Invalid selection! @loan-details \nContinue?"
+        }
+    },
+    "eft": {
+        "english": {
+            "eft-to-bank-debit-account": "Please select the account to send from",
+            "eft-to-bank-debit-account-error": "Invalid selection! Select the account to send from",
+            "eft-to-bank-bank-account": "Please select the first letter of the bank you want to send to",
+            "eft-to-bank-bank-account-error": "Invalid selection! Select the first letter of the bank you want to send to",
+            "eft-a-b-bank-account": "Please select the bank to send to",
+            "eft-a-b-bank-account-error": "Invalid selection! Select the bank to send to",
+            "eft-c-bank-account": "Please select the bank to send to",
+            "eft-c-bank-account-error": "Invalid selection! Select the bank to send to",
+            "eft-d-e-bank-account": "Please select the bank to send to",
+            "eft-d-e-bank-account-error": "Invalid selection! Select the bank to send to",
+            "eft-f-bank-account": "Please select the bank to send to",
+            "eft-f-bank-account-error": "Invalid selection! Select the bank to send to",
+            "eft-g-h-bank-account": "Please select the bank to send to",
+            "eft-g-h-bank-account-error": "Invalid selection! Select the bank to send to",
+            "eft-i-m-bank-account": "Please select the bank to send to",
+            "eft-i-m-bank-account-error": "Invalid selection! Select the bank to send to",
+            "eft-n-s-bank-account": "Please select the bank to send to",
+            "eft-n-s-bank-account-error": "Invalid selection! Select the bank to send to",
+            "eft-t-z-bank-account": "Please select the bank to send to",
+            "eft-t-z-bank-account-error": "Invalid selection! Select the bank to send to",
+            "eft-to-bank-credit-account": "Please enter the recipients bank account",
+            "eft-to-bank-credit-account-error": "Invalid bank account! Enter the recipients bank Account",
+            "eft-to-bank-credit-account-name": "Please enter the recipients bank account name",
+            "eft-to-bank-credit-account-name-error": "Invalid bank account! Enter the recipients bank account name",
+            "eft-to-bank-amount": "Please enter the amount to send ( minimum @working-currency @funds-transfer-minimum-@working-currency )",
+            "eft-to-bank-amount-error": "Invalid amount! Enter a valid amount to send ( minimum @working-currency @funds-transfer-minimum-@working-currency )",
+            "eft-to-bank-reason": "Please enter the reason for payment",
+            "eft-to-bank-reason-error": "Invalid entry! Enter the reason for payment",
+            "eft-to-bank-confirm": "Send @working-currency @eftAmount to  @eftCreditAccount from  @eftDebitAccount via EFT",
+            "eft-to-bank-confirm-error": "Invalid selection! send @working-currency @eftAmount to  @eftCreditAccount from  @eftDebitAccount via EFT",
+            "eft-to-bank-debit-account-options-error": "Dear  @firstname, you currently do not have any linked accounts.Continue?",
+            "eft-to-bank-debit-account-options-error-error": "Invalid selection! You currently do not have any linked accounts.Continue?",
+            "eft-branch-search": "Please enter the branch name in order to conduct a search",
+            "eft-branch-result": "Please select a branch below",
+            "eft-branch-no-results-error": "There are no branches Matching '@search_item'. Please enter the branches first name in order to conduct a search",
+            "eft-branch-result-limit-exceeded-error": "Too many results. Please enter the full name of the branch separated by a dot ( . ) to narrow the results",
+            "eft-branch-result-error": "Invalid Selection! Please select a branch below"
+        }
+    },
+    "forex": {
+        "english": {
+            "forex-confirm": "Get Forex Exchange Rates?",
+            "forex-confirm-error": "Invalid selection! Get Forex Exchange Rates?",
+            "forex-details": "Forex Data:\n @forex-data . Continue?",
+            "forex-details-error": "Invalid selection! Forex Data:\n @forex-data . Continue?",
+            "forex-error": "Unable to fetch forex data. Continue?",
+            "forex-error-error": "Invalid selection! Unable to fetch forex data. Continue?"
+        }
+    },
+    "insurance": {
+        "english": {
+            "insurance-type": "Please select the insurance to purchase",
+            "insurance-type-error": "Invalid selection! Select the insurance to purchase",
+            "motor-insurance-confirm": "Motor Insurance covers you against risks and is a mandatory requirement by the government.",
+            "personal-accident-confirm": "Personal Accident Insurance covers you against unexpected personal risks",
+            "property-insurance-confirm": "Property Insurance covers your property against any accidental and unforeseen loss or damage.",
+            "ipf-confirm": "Insurance Premium Financing lets you enjoy the benefits of insurance upfront and payback in manageable installments.",
+            "motor-insurance-confirm-error": "Invalid selection! Motor Insurance ",
+            "personal-accident-confirm-error": "Invalid selection! Personal Accident Insurance",
+            "property-insurance-confirm-error": "Invalid selection! Property Insurance ",
+            "ipf-confirm-error": "Invalid selection! Insurance Premium Financing",
+            "insurance-app-download": "Kindly search for 'CB Konnect'  on google and fill in the Insurance purchase form. Do another transaction?",
+            "insurance-app-download-error": "Invalid selection! Search for 'CB Konnect' on the google play store and fill in the insurance purchase form. Do another transaction?"
+        }
+    },
+    "insurance-success": {
+        "english": {
+            "insurance-success": "Dear @firstname, your @request_name request has been received. A @app-client Insurance agent will call you as soon as possible. Continue ?",
+            "insurance-success-error": "Invalid selection! Your @request_name request has been received. A @app-client Insurance agent will call you as soon as possible. Continue ?. Continue ?"
+        }
+    },
+    "funds-transfer-own-accounts": {
+        "english": {
+            "ft-own-accounts-debit-account": "Please select the account to transfer from",
+            "ft-own-accounts-debit-account-error": "Invalid selection! Select the account to transfer from",
+            "ft-own-accounts-credit-account": "Please select the account to transfer to",
+            "ft-own-accounts-credit-account-error": "Invalid selection! select the account to transfer to",
+            "ft-own-accounts-amount": "Please enter the amount to tranfer ( minimum @working-currency @funds-transfer-minimum-@working-currency )",
+            "ft-own-accounts-amount-error": "Invalid amount! Please enter a valid amount to tranfer ( minimum @working-currency @funds-transfer-minimum-@working-currency )",
+            "ft-own-accounts-confirm": "Transfer @working-currency @fundsTransferAmount from Account -  @fundsTransferDebitAccount to Account - @fundsTransferCreditAccount",
+            "ft-own-accounts-confirm-error": "Invalid selection! Transfer @working-currency @fundsTransferAmount from Account - @fundsTransferDebitAccount to Account - @fundsTransferCreditAccount",
+            "ft-own-accounts-debit-account-options-error": "You currently do not have any linked accounts.Continue",
+            "ft-own-accounts-credit-account-options-error": "You currently do not have any linked accounts.Continue",
+            "ft-own-accounts-debit-account-options-error-error": "Invalid selection ! You currently do not have any linked accounts.Continue",
+            "ft-own-accounts-credit-account-options-error-error": "Invalid selection ! You currently do not have any linked accounts.Continue"
+        }
+    },
+    "funds-transfer-savings-to-savings": {
+        "english": {
+            "ft-savings-to-savings-debit-account": "Please select the account to transfer from",
+            "ft-savings-to-savings-debit-account-error": "Invalid selection! select the account to transfer from",
+            "ft-savings-to-savings-credit-account": "Please enter the Credit Bank Account to transfer",
+            "ft-savings-to-savings-credit-account-error": "Invalid account! Enter the a valid Credit Bank Account",
+            "ft-savings-to-savings-amount": "Please enter the amount to tranfer ( minimum @working-currency @funds-transfer-minimum-@working-currency )",
+            "ft-savings-to-savings-amount-error": "Invalid amount! Please enter a valid amount to tranfer ( minimum @working-currency @funds-transfer-minimum-@working-currency )",
+            "ft-savings-to-savings-confirm": "Transfer @working-currency @fundsTransferAmount from  -  @fundsTransferDebitAccount to  - @fundsTransferCreditAccount",
+            "ft-savings-to-savings-confirm-error": "Invalid selection! Transfer @working-currency @fundsTransferAmount from  -  @fundsTransferDebitAccount to  -  @fundsTransferCreditAccount",
+            "ft-savings-to-savings-debit-account-options-error": "You currently do not have any linked accounts.Continue",
+            "ft-savings-to-savings-debit-account-options-error-error": "Invalid selection ! You currently do not have any linked accounts.Continue"
+        }
+    },
+    "funds-transfer-savings-to-wallet": {
+        "english": {
+            "ft-savings-to-wallet-debit-account": "Please select the account to transfer from",
+            "ft-savings-to-wallet-debit-account-error": "Invalid selection! select the account to transfer from",
+            "ft-savings-to-wallet-credit-account": "Please enter the Wallet Account to transfer to in the format 07xxxxxxxx",
+            "ft-savings-to-wallet-credit-account-error": "Invalid wallet account! Enter the a valid Wallet Account to transfer to in the format 07xxxxxxxx",
+            "ft-savings-to-wallet-amount": "Please enter the amount to tranfer ( minimum @working-currency @funds-transfer-minimum-@working-currency )",
+            "ft-savings-to-wallet-amount-error": "Invalid amount! Please enter a valid amount to tranfer ( minimum @working-currency @funds-transfer-minimum-@working-currency )",
+            "ft-savings-to-wallet-confirm": "Transfer @working-currency @fundsTransferAmount from  -  @fundsTransferDebitAccount to Wallet - @fundsTransferCreditAccount",
+            "ft-savings-to-wallet-confirm-error": "Invalid selection! Transfer @working-currency @fundsTransferAmount from  -  @fundsTransferDebitAccount to Wallet -  @fundsTransferCreditAccount",
+            "ft-savings-to-wallet-debit-account-options-error": "You currently do not have any linked accounts.Continue",
+            "ft-savings-to-wallet-debit-account-options-error-error": "Invalid selection ! You currently do not have any linked accounts.Continue"
+        }
+    },
+    "funds-transfer-wallet-to-savings": {
+        "english": {
+            "ft-wallet-to-savings-credit-account": "Please enter the Credit Bank Account to transfer to",
+            "ft-wallet-to-savings-credit-account-error": "Invalid account! Enter the a valid Credit Bank Account to transfer to",
+            "ft-wallet-to-savings-amount": "Please enter the amount to tranfer",
+            "ft-wallet-to-savings-amount-error": "Invalid amount! Please enter a valid amount to tranfer ( minimum Ksh. @funds-transfer-minimum )",
+            "ft-wallet-to-savings-confirm": "Transfer Ksh. @fundsTransferAmount from Wallet -  @msisdn to  - @fundsTransferCreditAccount",
+            "ft-wallet-to-savings-confirm-error": "Invalid selection! Transfer Ksh. @fundsTransferAmount from Wallet -  @msisdn to  -  @fundsTransferCreditAccount"
+        }
+    },
+    "funds-transfer-wallet-to-wallet": {
+        "english": {
+            "ft-wallet-to-wallet-credit-account": "Please enter the Account to transfer to in the format 07xxxxxxxx",
+            "ft-wallet-to-wallet-credit-account-error": "Invalid wallet account! Enter the a valid wallet Account to transfer to in the format 07xxxxxxxx",
+            "ft-wallet-to-wallet-amount": "Please enter the amount to tranfer",
+            "ft-wallet-to-wallet-amount-error": "Invalid amount! Please enter a valid amount to tranfer ( minimum Ksh. @funds-transfer-minimum )",
+            "ft-wallet-to-wallet-confirm": "Transfer Ksh. @fundsTransferAmount from Wallet -  @msisdn to Wallet @fundsTransferCreditAccount",
+            "ft-wallet-to-wallet-confirm-error": "Invalid selection! Transfer Ksh. @fundsTransferAmount from Wallet -  @msisdn to Wallet @fundsTransferCreditAccount"
+        }
+    },
+    "loan-application": {
+        "english": {
+            "loan-application-type": "Please select a loan type below",
+            "loan-application-type-error": "Invalid selection!  Please select a loan type below",
+            "loan-application-amount": "Please enter the amount that you would like to borrow ( Your Loan limit is @loan-limit, minimu KES. 200 )",
+            "loan-application-amount-error": "Invalid amount! Please enter the amount that you would like to borrow ( Your Loan limit is @loan-limit, minimu KES. 200 )",
+            "loan-application-confirm": "Apply for a  @type  loan worth Ksh. @amount",
+            "loan-application-confirm-error": "Invalid selection! apply for a  @type  loan worth Ksh. @amount",
+            "loan-application-type-options-error": "There are currently no available loan facilities. Continue",
+            "loan-application-type-options-error-error": "Invalid selection! There are currently no available loan facilities. Continue"
+        }
+    },
+    "loan-balance": {
+        "english": {
+            "loan-balance-account": "Please select the active Loan Account",
+            "loan-balance-account-error": "Invalid selection! Select the active Loan Account",
+            "loan-balance-account-options-error": "Dear @firstname, you currently do not have an active loan.Continue",
+            "loan-balance-account-options-error-error": "Invalid selection! You currently do not have an active loan.Continue",
+            "loan-balance-confirm": "Request for a the Loan Balance for @account",
+            "loan-balance-confirm-error": "Invalid selection! Request for a the Loan Balance for @account"
+        }
+    },
+    "loan-limit": {
+        "english": {
+            "loan-limit": "Dear @firstname, your loan limit is @loan-limit. Do you want do do another transaction?",
+            "loan-limit-error": "Invalid selectio! Your loan limit is @loan-limit. Do you want do do another transaction?"
+        }
+    },
+    "loan-repayment": {
+        "english": {
+            "loan-repayment-accounts": "Please select the loan account",
+            "loan-repayment-accounts-error": "Invalid selection! Select the loan account",
+            "loan-repayment-amount": "Please enter the amount to repay ( Balance: @loan-balance )",
+            "loan-repayment-amount-error": "Invalid amount! Please enter the amount to repay ( Balance: @loan-balance )",
+            "loan-repayment-confirm": "Pay Ksh. @amount to service your @account",
+            "loan-repayment-confirm-error": "Invalid selection!  Pay Ksh. @amount to service your @account",
+            "loan-repayment-account-options-error": "You currently do not have an active loan.Continue",
+            "loan-repayment-account-options-error-error": "Invalid selection! You currently do not have an active loan.Continue"
+        }
+    },
+    "loan-statement": {
+        "english": {
+            "loan-statement-account": "Please select the loan account",
+            "loan-statement-account-error": "Invalid selection ! Select the loan account",
+            "loan-statement-period": "Please select the loan Statement duration",
+            "loan-statement-period-error": "Invalid selection! Select the Loan Statement duration",
+            "loan-statement-confirm": "request for a @period  Loan Statement for Account @account",
+            "loan-statement-confirm-error": "Invalid selection! request for a @period  Loan Statement for Account @account",
+            "loan-statement-account-options-error": "You currently do not have an active loan.Continue",
+            "loan-statement-account-options-error-error": "Invalid selection! You currently do not have an active loan.Continue"
+        }
+    },
+    "lock-savings-account-error": {
+        "english": {
+            "lock-savings-account-error": "You do not have an active lock savings sucbscription. Continue?",
+            "lock-savings-account-error-error": "Invalid selection!  You do not have an active lock savings sucbscription. Continue?"
+        }
+    },
+    "lock-savings-ministatement": {
+        "english": {
+            "lock-savings-ministatement": "Request for a ministatement for your Lock Savings Account",
+            "lock-savings-ministatement-error": "Invalid selection! request for a ministatement for your Lock Savings Account"
+        }
+    },
+    "lock-savings-open-account": {
+        "english": {
+            "lock-savings-open-debit-account": "Please select the Account to save from",
+            "lock-savings-open-debit-account-error": "Invalid selection! Select the Account to save from",
+            "lock-savings-open-amount": "Please enter the target Amount to Save ( min @lock-savings-minimum-amount)",
+            "lock-savings-open-amount-error": "Invalid amount! Enter the target Amount to Save ( min @lock-savings-minimum-amount)",
+            "lock-savings-open-period": "Please select the Lock savings period",
+            "lock-open-period-error": "Invalid selection! Select the Lock savings period",
+            "lock-savings-open-deposit": "Please enter an amount to deposit ( min @lock-savings-min-deposit-amount)",
+            "lock-savings-open-deposit-error": "Invalid amount!  Enter an amount to deposit ( min @lock-savings-min-deposit-amount)",
+            "lock-savings-open-confirm": "Open a Lock Savings Account. Target                                                                           : @lockSavingsOpenAmount , Period: @lockSavingsOpenPeriod , Deposit: @lockSavingsOpenDeposit , From                        : @lockSavingsOpenDebitAccount",
+            "lock-savings-open-confirm-error": "Invalid selection! Open a Lock Savings Account. Target                                                        : @lockSavingsOpenAmount , Period: @lockSavingsOpenPeriod , Deposit: @lockSavingsOpenDeposit , From                        : @lockSavingsOpenDebitAccount",
+            "lock-savings-open-debit-account-options-error": "You currently do not have any linked accounts.Continue",
+            "lock-savings-open-debit-account-options-error-error": "Invalid selection ! You currently do not have any linked accounts.Continue"
+        }
+    },
+    "lock-savings-save": {
+        "english": {
+            "lock-savings-save-debit-account": "Please select the Account to save from",
+            "lock-savings-save-debit-account-error": "Invalid selection! Select the Account to save from",
+            "lock-savings-save-amount": "Please enter the Amount to Save ( min @lock-savings-min-deposit-amount)",
+            "lock-savings-save-amount-error": "Invalid amount! Enter the Amount to Save ( min @lock-savings-min-deposit-amount)",
+            "lock-savings-save-confirm": "Save Ksh. @lockSavingsSaveAmount from @lockSavingsSaveDebitAccount",
+            "lock-savings-save-confirm-error": "Invalid selection! save Ksh. @lockSavingsSaveAmount from @lockSavingsSaveDebitAccount",
+            "lock-savings-save-debit-account-options-error": "You currently do not have any linked accounts.Continue",
+            "lock-savings-save-debit-account-options-error-error": "Invalid selection ! You currently do not have any linked accounts.Continue"
+        }
+    },
+    "lock-savings-unlock": {
+        "english": {
+            "lock-savings-unlock-confirm": "Unlock lock savings account @lockSavingsAccount",
+            "lock-savings-unlock-confirm-error": "Invalid selection! Unlock lock savings account @lockSavingsAccount"
+        }
+    },
+    "lock-savings-withdraw": {
+        "english": {
+            "lock-savings-withdraw-debit-account-options-error": "",
+            "lock-savings-withdraw-debit-account-options-error-error": "",
+            "lock-savings-withdraw-debit-account": "Please select the account to withdraw to",
+            "lock-savings-withdraw-debit-account-error": "Invalid selection! Select the account to withdraw to",
+            "lock-savings-withdraw-amount": "Please enter the amount to withdraw",
+            "lock-savings-withdraw-amount-error": "Invalid amount! Enter the amount to withdraw",
+            "lock-savings-withdraw-confirm": "Withdraw Ksh. @lockSavingsWithdrawAmount from your lock savings account to  @lockSavingsWithdrawCreditAccount",
+            "lock-savings-withdraw-confirm-error": "Invalid selection! Withdraw Ksh. @lockSavingsWithdrawAmount from your lock savings account to  @lockSavingsWithdrawCreditAccount"
+        }
+    },
+    "otp-expired": {
+        "english": {
+            "otp-expired": "END Dear @firstname, your One Time Pin has expired. Kindly contact @app-contact-name on @app-contact-number for further assistance"
+        }
+    },
+    "pesalink-link-account": {
+        "english": {
+            "pesalink-link-account": "Please select the account to register",
+            "pesalink-link-account-error": "Invalid selection! Select the account to register",
+            "pesalink-link-primary": "Do you want to make this your primary account?",
+            "pesalink-link-primary-error": "Invalid selection! Do you want to make this your primary account?",
+            "pesalink-link-confirm": "Register @pesalinkLinkAccount with PESALINK",
+            "pesalink-link-confirm-error": "Invalid selection! Register @pesalinkLinkAccount with PESALINK",
+            "pesalink-link-account-options-error": "You currently do not have any linked accounts. Continue?",
+            "pesalink-link-account-options-error-error": "Invalid selection! You currently do not have any linked accounts. Continue?"
+        }
+    },
+    "pesalink-link-primary": {
+        "english": {
+            "pesalink-link-default-account": "Please select the primary account",
+            "pesalink-link-default-account-error": "Invalid selection! Select the primary account",
+            "pesalink-link-default-confirm": "Set Account @pesalinkLinkAccount to be your default PESALINK Account",
+            "pesalink-link-default-confirm-error": "Invalid selection! Set Account @pesalinkLinkAccount to be your default PESALINK Account",
+            "pesalink-link-account-options-error": "You currently do not have any linked accounts. Continue?",
+            "pesalink-link-account-options-error-error": "Invalid selection! You currently do not have any linked accounts. Continue?"
+        }
+    },
+    "pesalink-to-bank": {
+        "english": {
+            "pesalink-to-bank-debit-account": "Please select the account to send from",
+            "pesalink-to-bank-debit-account-error": "Invalid selection! Select the account to send from",
+            "pesalink-to-bank-bank-account": "Please select the first letter of the bank you want to send to",
+            "pesalink-to-bank-bank-account-error": "Invalid selection! Select the first letter of the bank you want to send to",
+            "pesalink-a-b-bank-account": "Please select the bank to send to",
+            "pesalink-a-b-bank-account-error": "Invalid selection! Select the bank to send to",
+            "pesalink-c-bank-account": "Please select the bank to send to",
+            "pesalink-c-bank-account-error": "Invalid selection! Select the bank to send to",
+            "pesalink-d-e-bank-account": "Please select the bank to send to",
+            "pesalink-d-e-bank-account-error": "Invalid selection! Select the bank to send to",
+            "pesalink-f-bank-account": "Please select the bank to send to",
+            "pesalink-f-bank-account-error": "Invalid selection! Select the bank to send to",
+            "pesalink-g-h-bank-account": "Please select the bank to send to",
+            "pesalink-g-h-bank-account-error": "Invalid selection! Select the bank to send to",
+            "pesalink-i-m-bank-account": "Please select the bank to send to",
+            "pesalink-i-m-bank-account-error": "Invalid selection! Select the bank to send to",
+            "pesalink-n-s-bank-account": "Please select the bank to send to",
+            "pesalink-n-s-bank-account-error": "Invalid selection! Select the bank to send to",
+            "pesalink-t-z-bank-account": "Please select the bank to send to",
+            "pesalink-t-z-bank-account-error": "Invalid selection! Select the bank to send to",
+            "pesalink-to-bank-credit-account": "Please enter the recipients bank account",
+            "pesalink-to-bank-credit-account-error": "Invalid bank account! Enter the recipients bank Account",
+            "pesalink-to-bank-amount": "Please enter the amount to send",
+            "pesalink-to-bank-amount-error": "Invalid amount! Enter a valid amount to send",
+            "pesalink-to-bank-reason": "Please enter the reason for payment",
+            "pesalink-to-bank-reason-error": "Invalid entry! Enter the reason for payment",
+            "pesalink-to-bank-confirm": "Send @working-currency @pesalinkAmount to  @pesalinkCreditAccount from  @pesalinkDebitAccount via PESALINK",
+            "pesalink-to-bank-confirm-error": "Invalid selection! send @working-currency @pesalinkAmount to  @pesalinkCreditAccount from  @pesalinkDebitAccount via PESALINK",
+            "pesalink-to-bank-debit-account-options-error": "You currently do not have any linked accounts.Continue?",
+            "pesalink-to-bank-debit-account-options-error-error": "Invalid selection! You currently do not have any linked accounts.Continue?"
+        }
+    },
+    "pesalink-to-card": {
+        "english": {
+            "pesalink-to-card-debit-account": "Please select the account to send from",
+            "pesalink-to-card-debit-account-error": "Invalid selection! Select the account to send from",
+            "pesalink-to-card-credit-account": "Please enter the card number to send to",
+            "pesalink-to-card-credit-account-error": "Invalid card number! Enter the card number to send to",
+            "pesalink-to-card-amount": "Please enter the amount to send  ( minimum @working-currency @funds-transfer-minimum-@working-currency )",
+            "pesalink-to-card-amount-error": "Invalid amount! Enter a valid amount to send  ( minimum @working-currency @funds-transfer-minimum-@working-currency )",
+            "pesalink-to-card-reason": "Please enter the reason for payment",
+            "pesalink-to-card-reason-error": "Invalid entry! Enter the reason for payment",
+            "pesalink-to-card-confirm": "Send @working-currency @pesalinkAmount to card @pesalinkCreditAccount from @pesalinkDebitAccount via PESALINK",
+            "pesalink-to-card-confirm-error": "Invalid selection! send @working-currency @pesalinkAmount to  @pesalinkCreditAccount from  @pesalinkDebitAccount via PESALINK",
+            "pesalink-to-card-debit-account-options-error": "You currently do not have any linked accounts.Continue?",
+            "pesalink-to-card-debit-account-options-error-error": "Invalid selection! You currently do not have any linked accounts.Continue?"
+        }
+    },
+    "pesalink-to-ecitizen": {
+        "english": {
+            "pesalink-to-ecitizen-debit-account": "Please select the account to send from",
+            "pesalink-to-ecitizen-debit-account-error": "Invalid selection! Select the account to send from",
+            "pesalink-to-ecitizen-lookup-banks": "Please select the Bank to send to",
+            "pesalink-to-ecitizen-lookup-banks-error": "Invalid selection! Select the Bank to send to",
+            "pesalink-to-ecitizen-amount": "Please enter the amount to send  ( minimum @working-currency @funds-transfer-minimum-@working-currency )",
+            "pesalink-to-ecitizen-amount-error": "Invalid amount! Enter a valid amount to send  ( minimum @working-currency @funds-transfer-minimum-@working-currency )",
+            "pesalink-to-ecitizen-confirm": "Send @working-currency @amount to\nPaybill: 206206\nRef No. BJRDMWU\nFrom  @debitAccount via PESALINK",
+            "pesalink-to-ecitizen-confirm-error": "Invalid selection! Send @working-currency @amount to\nPaybill: 206206\nRef No. BJRDMWU\nFrom  @debitAccount via PESALINK",
+            "pesalink-to-ecitizen-debit-account-options-error": "Dear  @firstname, you currently do not have any linked accounts.Continue?",
+            "pesalink-to-ecitizen-debit-account-options-error-error": "Invalid selection! You currently do not have any linked accounts.Continue?",
+            "pesalink-to-ecitizen-lookup-error": "No Bank Accounts that are PESALINK enabled are associated with Number: 206206. Continue?",
+            "pesalink-to-ecitizen-lookup-error-error": "Invalid selection! No Bank Accounts that are PESALINK enabled are associated with Paybill: 206206. Continue?",
+            "pesalink-to-ecitizen-lookup-banks-options-error": "No Bank Accounts that are PESALINK enabled are associated with Paybill: 206206. Continue?",
+            "pesalink-to-ecitizen-lookup-banks-options-error-error": "Invalid selection! No Bank Accounts that are PESALINK enabled are associated with Number: 206206. Continue?"
+        }
+    },
+    "pesalink-to-phone": {
+        "english": {
+            "pesalink-to-phone-debit-account": "Please select the account to send from",
+            "pesalink-to-phone-debit-account-error": "Invalid selection! Select the account to send from",
+            "pesalink-to-phone-credit-account": "Please enter the phone number to send to in the format 07xxxxxxxx",
+            "pesalink-to-phone-credit-account-error": "Invalid phone number! Enter the phone number to send to in the format 07xxxxxxxx",
+            "pesalink-to-phone-amount": "Please enter the amount to send  ( minimum @working-currency @funds-transfer-minimum-@working-currency )",
+            "pesalink-to-phone-amount-error": "Invalid amount! Enter a valid amount to send  ( minimum @working-currency @funds-transfer-minimum-@working-currency )",
+            "pesalink-to-phone-reason": "Please enter the reason for payment",
+            "pesalink-to-phone-reason-error": "Invalid entry! Enter the reason for payment",
+            "pesalink-to-phone-confirm": "Send @working-currency @pesalinkAmount to  @pesalinkCreditAccount from  @pesalinkDebitAccount via PESALINK",
+            "pesalink-to-phone-confirm-error": "Invalid selection! Send @working-currency @pesalinkAmount to  @pesalinkCreditAccount from  @pesalinkDebitAccount via PESALINK",
+            "pesalink-to-phone-debit-account-options-error": "Dear  @firstname, you currently do not have any linked accounts.Continue?",
+            "pesalink-to-phone-debit-account-options-error-error": "Invalid selection! You currently do not have any linked accounts.Continue?",
+            "pesalink-to-phone-lookup-error": "The phone number: @pesalinkCreditAccount is not registered on PESALINK. Continue?",
+            "pesalink-to-phone-lookup-error-error": "Invalid selection! The phone number: @pesalinkCreditAccount is not registered on PESALINK. Continue?",
+            "pesalink-to-phone-lookup-banks": "Please select the Bank to send to",
+            "pesalink-to-phone-lookup-banks-error": "Invalid selection! Select the Bank to send to",
+            "pesalink-to-phone-lookup-banks-options-error": "No Bank Accounts that are PESALINK enabled are associated with phone number: @pesalinkCreditAccount. Continue?",
+            "pesalink-to-phone-lookup-banks-options-error-error": "Invalid selection! No Bank Accounts that are PESALINK enabled are associated with phone number: @pesalinkCreditAccount. Continue?"
+        }
+    },
+    "standing-orders-amend": {
+        "english": {
+            "so-amend-debit-account": "Please select an Account",
+            "so-amend-debit-account-error": "Invalid selection! Select an Account",
+            "standing-orders-lookup-error": "Dear @firstname, no standing orders were found for the account @soDebitAccount . Continue?",
+            "standing-orders-lookup-error-error": "Invalid selection! No standing orders were found for the account @soDebitAccount . Continue?",
+            "so-amend-id": "Please select the standing Order",
+            "so-amend-id-error": "Invalid Selection! Select the standing Order",
+            "so-amend-amount": "Please enter the new amount to transfer ( current KES @so-current-amount )",
+            "so-amend-amount-error": "Invalid amount! Enter the new amount to transfer ( current KES @so-current-amount ",
+            "so-amend-end-date": "Please enter the new end date in the format YYYY-MM-DD e.g 2019-02-10",
+            "so-amend-end-date-error": "Invalid end date! Enter the new end date in the format YYYY-MM-DD e.g 2019-02-10",
+            "so-amend-confirm": "Set Standing order @soId to end on @soEndDate ",
+            "so-amend-confirm-error": "Invalid selection! set Standing order @soId to end on @soEndDate ",
+            "so-amend-debit-account-options-error": "You currently do not have any linked accounts. Continue?",
+            "so-amend-debit-account-options-error-error": "Invalid selection! You currently do not have any linked accounts. Continue?",
+            "standing-orders-options-error": "You currently do not have any standing orders on account @soDebitAccount . Continue?",
+            "standing-orders-options-error-error": "Invalid selection! you currently do not have any standing orders on account @soDebitAccount . Continue?"
+        }
+    },
+    "standing-orders-cancel": {
+        "english": {
+            "so-cancel-debit-account": "Please select an Account",
+            "so-cancel-debit-account-error": "Invalid selection! Select an Account",
+            "standing-orders-lookup-error": "No standing orders were found for the account @soDebitAccount . Continue?",
+            "standing-orders-lookup-error-error": "Invalid selection! No standing orders were found for the account @soDebitAccount . Continue?",
+            "so-cancel-id": "Please select the standing Order",
+            "so-cancel-id-error": "Invalid Selection! Select the standing Order",
+            "so-cancel-confirm": "Cancel Standing order @soId",
+            "so-cancel-confirm-error": "Invalid selection! Cancel Standing order",
+            "so-cancel-debit-account-options-error": "You currently do not have any linked accounts. Continue?",
+            "so-cancel-debit-account-options-error-error": "Invalid selection! You currently do not have any linked accounts. Continue?",
+            "standing-orders-options-error": "You currently do not have any standing orders on account @soDebitAccount . Continue?",
+            "standing-orders-options-error-error": "Invalid selection! you currently do not have any standing orders on account @soDebitAccount . Continue?"
+        }
+    },
+    "standing-orders-external": {
+        "english": {
+            "so-a-b-bank-account": "Please select a bank below",
+            "so-a-b-bank-account-error": "Invalid selection! Select a bank below",
+            "so-c-bank-account": "Please select a bank below",
+            "so-c-bank-account-error": "Invalid selection! Select a bank below",
+            "so-d-e-bank-account": "Please select a bank below",
+            "so-d-e-bank-account-error": "Invalid selection! Select a bank below",
+            "so-f-bank-account": "Please select a bank below",
+            "so-f-bank-account-error": "Invalid selection! Select a bank below",
+            "so-g-h-bank-account": "Please select a bank below",
+            "so-g-h-bank-account-error": "Invalid selection! Select a bank below",
+            "so-i-m-bank-account": "Please select a bank below",
+            "so-i-m-bank-account-error": "Invalid selection! Select a bank below",
+            "so-n-s-bank-account": "Please select a bank below",
+            "so-n-s-bank-account-error": "Invalid selection! Select a bank below",
+            "so-t-z-bank-account": "Please select a bank below",
+            "so-t-z-bank-account-error": "Invalid selection! Select a bank below",
+            "so-b2o-bank-account": "Please select the start letter of your bank",
+            "so-b2o-bank-account-error": "Invalid selection! Select the start letter of your bank",
+            "so-b2o-debit-account": "Please select the Account to send from",
+            "so-b2o-debit-account-error": "Invalid selection! Select the Account to send from",
+            "so-b2o-credit-account": "Please enter the Account to send to",
+            "so-b2o-credit-account-error": "Invalid Account! Enter the Account to send to",
+            "so-b2o-amount": "Please enter the amount to send",
+            "so-b2o-amount-error": "Invalid amount! Enter the amount to send",
+            "so-b2o-start-date": "Please enter the start date in the format MM-DD e.g 02-10",
+            "so-b2o-start-date-error": "Invalid start date! Enter the start date in the format MM-DD e.g 02-10",
+            "so-b2o-end-date": "Please enter the end date in the format YYYY-MM-DD e.g 2019-02-10",
+            "so-b2o-end-date-error": "Invalid end date! Enter the end date in the format YYYY-MM-DD e.g 2019-02-10",
+            "so-b2o-frequency": "Please select the frequency",
+            "so-b2o-frequency-error": "Invalid selection! Select the frequency",
+            "so-b2o-beneficiary-name": "Please enter the recipients full name e.g John doe",
+            "so-b2o-beneficiary-name-error": "Invalid name! Enter the recipients full name e.g John Doe",
+            "so-b2o-member-number": "Please enter your Member Number ( optionally enter s to skip )",
+            "so-b2o-member-number-error": "Invalid Member Number! Enter your Sacco Number ( enter s to skip )",
+            "so-b2o-instruction": "Please enter the purpose",
+            "so-b2o-instruction-error": "Invalid entry! Enter the purpose",
+            "so-b2o-confirm": "Set Standing order Ksh.                                                                                       : @soAmount ,Start Date          : @soStartDate ,To                : @soCreditAccount , Frequency @soFrequency ,Beneficiary: @soBeneficiaryName ,Purpose                             : @soInstruction ",
+            "so-b2o-confirm-error": "Invalid selection! Set Standing order Ksh.                                                                    : @soAmount ,Start Date          : @soStartDate ,To                : @soCreditAccount , Frequency @soFrequency ,Beneficiary: @soBeneficiaryName ,Purpose                             : @soInstruction ",
+            "so-b2o-debit-account-options-error": "You currently do not have any linked accounts.Continue",
+            "so-b2b-debit-account-options-error-error": "Invalid selection! You currently do not have any linked accounts.Continue"
+        }
+    },
+    "standing-orders-internal": {
+        "english": {
+            "so-b2b-debit-account": "Please select the Account to send from",
+            "so-b2b-debit-account-error": "Invalid selection! Select the Account to send from",
+            "so-b2b-credit-account": "Please enter the Credit Bank Account to send to",
+            "so-b2b-credit-account-error": "Invalid Account! Enter the Credit Bank Account to send to",
+            "so-b2b-amount": "Please enter the amount to send",
+            "so-b2b-amount-error": "Invalid amount! Enter the amount to send",
+            "so-b2b-start-date": "Please enter the start date in the format MM-DD e.g 02-10",
+            "so-b2b-start-date-error": "Invalid start date! Enter the start date in the format MM-DD e.g 02-10",
+            "so-b2b-end-date": "Please enter the end date in the format YYYY-MM-DD e.g 2019-02-10",
+            "so-b2b-end-date-error": "Invalid end date! Enter the end date in the format YYYY-MM-DD e.g 2019-02-10",
+            "so-b2b-frequency": "Please select the frequency",
+            "so-b2b-frequency-error": "Invalid selection! Select the frequency",
+            "so-b2b-beneficiary-name": "Please enter the recipients full name e.g John doe",
+            "so-b2b-beneficiary-name-error": "Invalid name! Enter the recipients full name e.g John Doe",
+            "so-b2b-beneficiary-lname": "Please enter the recipients last name",
+            "so-b2b-beneficiary-lname-error": "Invalid name! Enter the recipients last name",
+            "so-b2b-member-number": "Please enter your Member Number ( optionally enter s to skip )",
+            "so-b2b-member-number-error": "Invalid Member Number! Enter your Sacco Number ( enter s to skip )",
+            "so-b2b-instruction": "Please enter the purpose",
+            "so-b2b-instruction-error": "Invalid entry! Enter the purpose",
+            "so-b2b-confirm": "Set Standing order                                                                                            : Ksh.                           : @soAmount ,Start                : @soStartDate ,To                                      : @internal-transfer-customer  @soCreditAccount ,Frequency: @soFrequency ,Purpose: @soInstruction ",
+            "so-b2b-confirm-error": "Invalid selection! Set Standing order                                                                         : Ksh.                           : @soAmount ,Start                : @soStartDate ,To                                      : @internal-transfer-customer  @soCreditAccount ,Frequency: @soFrequency ,Purpose: @soInstruction ",
+            "so-b2b-debit-account-options-error": "You currently do not have any linked accounts.Continue",
+            "so-b2b-debit-account-options-error-error": "Invalid selection! You currently do not have any linked accounts.Continue"
+        }
+    },
+    "rtgs": {
+        "english": {
+            "rtgs-to-bank-debit-account": "Please select the account to send from",
+            "rtgs-to-bank-debit-account-error": "Invalid selection! Select the account to send from",
+            "rtgs-to-bank-bank-account": "Please select the first letter of the bank you want to send to",
+            "rtgs-to-bank-bank-account-error": "Invalid selection! Select the first letter of the bank you want to send to",
+            "rtgs-a-b-bank-account": "Please select the bank to send to",
+            "rtgs-a-b-bank-account-error": "Invalid selection! Select the bank to send to",
+            "rtgs-c-bank-account": "Please select the bank to send to",
+            "rtgs-c-bank-account-error": "Invalid selection! Select the bank to send to",
+            "rtgs-d-e-bank-account": "Please select the bank to send to",
+            "rtgs-d-e-bank-account-error": "Invalid selection! Select the bank to send to",
+            "rtgs-f-bank-account": "Please select the bank to send to",
+            "rtgs-f-bank-account-error": "Invalid selection! Select the bank to send to",
+            "rtgs-g-h-bank-account": "Please select the bank to send to",
+            "rtgs-g-h-bank-account-error": "Invalid selection! Select the bank to send to",
+            "rtgs-i-m-bank-account": "Please select the bank to send to",
+            "rtgs-i-m-bank-account-error": "Invalid selection! Select the bank to send to",
+            "rtgs-n-s-bank-account": "Please select the bank to send to",
+            "rtgs-n-s-bank-account-error": "Invalid selection! Select the bank to send to",
+            "rtgs-t-z-bank-account": "Please select the bank to send to",
+            "rtgs-t-z-bank-account-error": "Invalid selection! Select the bank to send to",
+            "rtgs-to-bank-credit-account": "Please enter the recipients bank account",
+            "rtgs-to-bank-credit-account-error": "Invalid bank account! Enter the recipients bank Account",
+            "rtgs-to-bank-credit-account-name": "Please enter the recipients bank account name",
+            "rtgs-to-bank-credit-account-name-error": "Invalid bank account! Enter the recipients bank account name",
+            "rtgs-to-bank-amount": "Please enter the amount to send ",
+            "rtgs-to-bank-amount-error": "Invalid amount! Enter a valid amount to send ",
+            "rtgs-to-bank-reason": "Please enter the reason for payment",
+            "rtgs-to-bank-reason-error": "Invalid entry! Enter the reason for payment",
+            "rtgs-to-bank-confirm": "Send @working-currency @rtgsAmount to  @rtgsCreditAccount from  @rtgsDebitAccount via RTGS",
+            "rtgs-to-bank-confirm-error": "Invalid selection! send @working-currency @rtgsAmount to  @rtgsCreditAccount from  @rtgsDebitAccount via RTGS",
+            "rtgs-to-bank-debit-account-options-error": "You currently do not have any linked accounts.Continue?",
+            "rtgs-to-bank-debit-account-options-error-error": "Invalid selection! You currently do not have any linked accounts.Continue?",
+            "branch-search": "Please enter the branch name in order to conduct a search",
+            "branch-result": "Please select a branch below",
+            "branch-no-results-error": "There are no branches Matching '@search_item'. Please enter the branches first name in order to conduct a search",
+            "branch-result-limit-exceeded-error": "Too many results. Please enter the full name of the branch separated by a dot ( . ) to narrow the results",
+            "branch-result-error": "Invalid Selection! Please select a branch below"
+        }
+    },
+    "tell-a-friend": {
+        "english": {
+            "tell-a-friend-number": "Please enter your friends Phone Number in the format 07xxxxxxxx",
+            "tell-a-friend-number-error": "Invalid Phone Number! Enter your friends Phone Number in the format 07xxxxxxxx",
+            "tell-a-friend-confirm": "invite @friendPhoneNumber to use the @app-description",
+            "tell-a-friend-confirm-error": "Invalid selection! invite @friendPhoneNumber to use the @app-description"
+        }
+    },
+    "view-accounts": {
+        "english": {
+            "view-accounts": "Dear @firstname, your accounts are                                                                            : \n @all-accounts \nContinue?",
+            "view-accounts-error": "Invalid selection! Your accounts are                                                                          : \n @all-accounts \nContinue?"
+        }
+    },
+    "mpesa-b2b": {
+        "english": {
+            "b2b-debit-account": "Please select the account to debit",
+            "b2b-debit-account-error": "Invalid selection! Select teh account to debit",
+            "b2b-type": "Lipa na Mpesa",
+            "b2b-type-error": "Invalid selection! Lipa na Mpesa",
+            "b2b-till": "Please enter the till number",
+            "b2b-till-error": "Invalid TIll number! Enter a valid till number",
+            "b2b-pay-bill": "Please enter the Business (Paybill) number",
+            "b2b-paybill-error": "Invalid business number! Enter a valid Business (Paybill) number",
+            "b2b-account": "Please enter the user account number",
+            "b2b-account-error": "Invalid account number! Enter a valid user account number ",
+            "b2b-till-amount": "Please enter the amount to pay (minimum KES. 10)",
+            "b2b-till-amount-error": "Invalid amount! Enter the amount to pay (minimum KES. 10)",
+            "b2b-pay-bill-amount": "Please enter the amount to pay (minimum KES. 10)",
+            "b2b-pay-bill-amount-error": "Invalid amount! Enter the amount to pay (minimum KES. 10)",
+            "b2b-till-confirm": "Pay KES. @amount to Till @till from Account @debitAccount",
+            "b2b-till-confirm-error": "Invalid selection! Pay KES. @amount to Till @till from Account @debitAccount",
+            "b2b-pay-bill-confirm": "Pay KES. @amount to Paybill @paybill , user account @account from Account @debitAccount",
+            "b2b-pay-bill-confirm-error": "Invalid selection! Pay KES. @amount to Paybill @paybill , user account @account from Account @debitAccount",
+            "b2b-debit-account-options-error": "Dear @firstname, you currently do not have any linked accounts. Continue?",
+            "b2b-debit-account-options-error-error": "Invalid selection! You currently do not have any linked accounts. Continue?"
+        }
+    },
+    "mpesa-float": {
+        "english": {
+            "float-debit-account": "Please select the account to debit from",
+            "float-debit-account-error": "Invalid selection! Select the account to debit from",
+            "float-paybill": "Please enter the paybill number",
+            "float-paybill-error": "Invalid paybill! Enter the paybill number",
+            "float-amount": "Please enter the amount of float to purchase",
+            "float-amount-error": "Invalid amount! Enter the amount of float to purchase",
+            "float-confirm": "Buy float worth KES @amount for paybill @floatAccount from account @debitAccount",
+            "float-confirm-error": "Invalid selection! Buy float worth KES @amount for paybill @floatAccount from account @debitAccount"
+        }
+    },
+    "withdrawal-mpesa-b2c": {
+        "english": {
+            "withdrawal-mpesa-debit-account": "Please select the Account to transfer from",
+            "withdrawal-mpesa-debit-account-error": "Invalid selection ! Select the Account to transfer from",
+            "withdrawal-mpesa-account-type": "Transfer to",
+            "withdrawal-mpesa-account-type-error": "Invalid selection! Transfer to",
+            "withdrawal-mpesa-credit-account": "Please enter the MPESA phone number to transfer to in the format 07xxxxxxxx",
+            "withdrawal-mpesa-credit-account-error": "Invalid Phone number! Enter the MPESA phone number to send to in the format 07xxxxxxxx",
+            "withdrawal-mpesa-amount": "Please enter the amount to transfer",
+            "withdrawal-mpesa-amount-error": "Invalid amount! Enter the amount to transfer",
+            "withdrawal-mpesa-confirm": "Transfer @working-currency @withdrawalAmount to Mpesa - @withdrawalCreditAccount from Account @withdrawalDebitAccount",
+            "withdrawal-mpesa-confirm-error": "Invalid selection! Transfer @working-currency @withdrawalAmount to Airtel - @withdrawalCreditAccount from Account @withdrawalDebitAccount",
+            "withdrawal-mpesa-debit-account-options-error": "You currently do not have any linked accounts.Continue",
+            "withdrawal-mpesa-debit-account-options-error-error": "Invalid selection! You currently do not have any linked accounts.Continue"
+        }
+    },
+    "withdrawal-airtel-b2c": {
+        "english": {
+            "withdrawal-airtel-debit-account": "Please select the Account to transfer from",
+            "withdrawal-airtel-debit-account-error": "Invalid selection ! Select the Account to transfer from",
+            "withdrawal-airtel-account-type": "Transfer to",
+            "withdrawal-airtel-account-type-error": "Invalid selection! Transfer to",
+            "withdrawal-airtel-credit-account": "Please enter the AIRTEL phone number to transfer to in the format 07xxxxxxxx",
+            "withdrawal-airtel-credit-account-error": "Invalid Phone number! Enter the AIRTEL phone number to send to in the format 07xxxxxxxx",
+            "withdrawal-airtel-amount": "Please enter the amount to transfer",
+            "withdrawal-airtel-amount-error": "Invalid amount! Enter the amount to transfer",
+            "withdrawal-airtel-confirm": "Transfer @working-currency @withdrawalAmount to Airtel - @withdrawalCreditAccount from Account @withdrawalDebitAccount",
+            "withdrawal-airtel-confirm-error": "Invalid selection! Transfer @working-currency @withdrawalAmount to Airtel - @withdrawalCreditAccount from Account @withdrawalDebitAccount",
+            "withdrawal-airtel-debit-account-options-error": "You currently do not have any linked accounts.Continue",
+            "withdrawal-airtel-debit-account-options-error-error": "Invalid selection! You currently do not have any linked accounts.Continue"
+        }
+    },
+    "mpesa-c2b-success": {
+        "english": {
+            "mpesa-c2b-success": "END Dear @firstname, please input your MPESA PIN on the popup that appears"
+        }
+    },
+    "mpesa-c2b": {
+        "english": {
+            "deposit-mpesa-debit-account": "Please select the account to deposit to",
+            "deposit-mpesa-debit-account-error": "Invalid selection! Select the account to deposit to",
+            "deposit-mpesa-amount": "Please enter the amount that you would like to deposit",
+            "deposit-mpesa-amount-error": "Invalid amount! Enter the amount that you would like to deposit",
+            "deposit-mpesa-confirm": "Deposit Ksh. @depositAmount from MPESA to  @msisdn",
+            "deposit-mpesa-confirm-error": "Invalid selection! deposit Ksh. @depositAmount from MPESA to @msisdn"
+        }
+    },
+    "atm-daily-amount": {
+        "english": {
+            "atm-daily-amount-account": "Please select the Card",
+            "atm-daily-amount-account-error": "Invalid selection! Select the Card",
+            "atm-daily-amount-amount": "Please enter the daily transaction limit (minimum KES.10)",
+            "atm-daily-amount-amount-error": "Invalid limit! Enter the daily transaction limit (minimum KES.10)",
+            "atm-daily-amount-confirm": "Set KES @amount as the daily transaction limit for Card @atm",
+            "atm-daily-amount-confirm-error": "Invalid selection! Set KES @amount as the daily transaction limit for Card @atm",
+            "atm-daily-amount-account-options-error": "You currently do not have any Cards",
+            "atm-daily-amount-account-options-error-error": "Invalid selection! You currently do not have any Cards"
+        }
+    },
+    "atm-single-transaction": {
+        "english": {
+            "atm-single-transaction-account": "Please select the Card",
+            "atm-single-transaction-account-error": "Invalid selection! Select the Card",
+            "atm-single-transaction-amount": "Please enter the single transaction limit (minimum KES.10)",
+            "atm-single-transaction-amount-error": "Invalid limit! Enter the single transaction limit (minimum KES.10)",
+            "atm-single-transaction-confirm": "Set KES @amount as the single transaction limit for Card @atm",
+            "atm-single-transaction-confirm-error": "Invalid selection! Set KES @amount as the single transaction limit for Card @atm",
+            "atm-single-transaction-account-options-error": "Dear @firstname, you currently do not have any Cards",
+            "atm-single-transaction-account-options-error-error": "Invalid selection! You currently do not have any Cards"
+        }
+    },
+    "atm-transaction-count": {
+        "english": {
+            "atm-transaction-count-account": "Please select the Card",
+            "atm-transaction-count-account-error": "Invalid selection! Select the Card",
+            "atm-transaction-count-count": "Please enter the daily transaction count limit ( min 1 )",
+            "atm-transaction-count-count-error": "Invalid selection! Enter the daily transaction count limit ( min 1 )",
+            "atm-transaction-count-confirm": "Allow @count daily transactions from Card @atm",
+            "atm-transaction-count-confirm-error": "Invalid selection! Allow @count daily transactions from Card @atm",
+            "atm-transaction-count-account-options-error": "Dear @firstname, you currently do not have any Cards",
+            "atm-transaction-count-account-options-error-error": "Invalid selection! You currently do not have any Cards"
+        }
+    },
+    "cancel-standing-orders": {
+        "english": {
+            "cancel-so-account": "",
+            "cancel-so-account-error": "",
+            "cancel-so-select": "",
+            "cancel-so-select-error": "",
+            "cancel-so-confirm": ""
+        }
+    },
+    "system-error": {
+        "english": {
+            "system-error": ""
+        }
+    },
+    "error": {
+        "english": {
+            "error": "Dear @firstname, the @app-description service is currently experiencing technical challenges. We apologize for the inconvenience. Kindly try again later."
+        }
+    }
+}

@@ -1,0 +1,99 @@
+[
+    
+	{
+        "type"            : "select",
+        "name"            : "withdrawal-airtel-debit-account",
+        "save-as"         : "withdrawalDebitAccount",
+        "options"         : "mwallet-account+savings-accounts",
+		"options-error"   : "withdrawal-airtel-debit-account-options-error",
+        "error"           : "withdrawal-airtel-debit-account-error",
+        "previous"        : "withdrawal-page",
+        "next"            : "withdrawal-airtel-account-type"
+    },
+    {
+        "type"             : "select",
+		"name"                   : "withdrawal-airtel-account-type",
+		"save-as"                : "withdrawalCreditAccount",
+        "options"          : [
+            {
+				"label"                : "My Number",
+				"value"                : "__walletAccount",
+                "jump-to"  : "withdrawal-airtel-amount"
+            },
+            {
+                "label"    : "Other Number",
+                "jump-to"  : "withdrawal-airtel-credit-account"
+            }
+        ],
+        "error"            : "withdrawal-airtel-account-type-error",
+        "previous"         : "withdrawal-airtel-debit-account"
+	},
+	{
+        "type": "input",
+        "name": "withdrawal-airtel-credit-account",
+		"save-as" : "withdrawalCreditAccount",
+		"format-as" : "international-mobile-number",
+        "validation": [
+			{
+				"name" : "matchesLength",
+				"type" : "joi",
+				"arguments": "length=10"
+			},
+            {
+                "name": "isNumber",
+                "type": "joi"
+            }
+        ],
+        "errors": [ "withdrawal-airtel-credit-account-error", "withdrawal-airtel-credit-account-error"],
+        "previous": "withdrawal-airtel-debit-account",
+        "next": "withdrawal-airtel-amount"
+	},
+	{
+        "type"          : "input",
+        "name"          : "withdrawal-airtel-amount",
+        "save-as"       : "withdrawalAmount",
+        "validation"    : [
+            {
+                "name"     : "isAmount",
+                "arguments": "min=10",
+                "type"     : "joi"
+            }
+        ],
+        "error"         : "withdrawal-airtel-amount-error",
+        "previous"      : "withdrawal-airtel-account-type",
+        "next"          : "withdrawal-airtel-confirm"
+    },
+    {
+        "type"            : "select",
+        "name"            : "withdrawal-airtel-confirm",
+		"options"         : "confirm-options",
+		"charges"         : true,
+        "previous"        : "withdrawal-airtel-amount",
+        "action"          : "transact",
+        "external-fetch"  : {
+            "api"         : "mock",
+            "route"       : "send-to-airtel-money",
+            "success"     : "api-success",
+            "error"       : "api-error"
+        },
+        "on-cancel"       : "client-page",
+        "error"           : "withdrawal-airtel-confirm-error"
+	},
+
+
+
+
+
+
+
+	{
+		"type"      : "select",
+		"name"      : "withdrawal-airtel-debit-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "withdrawal-airtel-debit-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "withdrawal-page"
+	}
+]

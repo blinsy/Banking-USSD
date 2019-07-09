@@ -1,0 +1,38 @@
+{
+    "type": "select",
+    "name": "atm-cards-page",
+    "options": [
+        {
+            "name": "request-atm",
+            "label": "request-atm-label",
+            "enabled": true,
+            "authenticate": false
+		},
+		{
+            "name": "replace-atm",
+            "label": "replace-atm-label",
+            "enabled": true,
+            "authenticate": false
+        },
+        {
+            "name": "block-atm",
+            "label": "block-atm-label",
+            "enabled": true,
+            "authenticate": false
+        },
+        {
+            "name": "unblock-atm",
+            "label": "unblock-atm-label",
+            "enabled": true,
+            "authenticate": false
+        },
+        {
+            "name": "set-atm-limits",
+            "label": "set-atm-limits-label",
+            "enabled": true,
+            "authenticate": false
+        }
+    ],
+    "error": "atm-cards-page-error",
+    "previous": "customer-requests-page"
+}

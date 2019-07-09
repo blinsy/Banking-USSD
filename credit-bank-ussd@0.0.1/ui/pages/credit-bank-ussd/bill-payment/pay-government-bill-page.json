@@ -1,0 +1,26 @@
+{
+    "type"                : "select",
+    "name"                : "pay-government-bill-page",
+    "options"             : [
+        {
+            "name"        : "nhif",
+            "label"       : "nhif-label",
+            "enabled"     : true,
+            "authenticate": false
+        },
+        {
+            "name"        : "landrates",
+            "label"       : "landrates-label",
+            "enabled"     : true,
+            "authenticate": false
+        },
+        {
+            "name"        : "itax",
+            "label"       : "itax-label",
+            "enabled"     : true,
+            "authenticate": false
+        }
+    ],
+    "error"               : "pay-government-bill-page-error",
+    "previous"            : "bill-payment-page"
+}

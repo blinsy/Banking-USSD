@@ -1,0 +1,3787 @@
+{
+    "credit-bank-ussd-api": {
+        "data-sources": {
+            "timeout"			: 25000,
+            "offline-timeout"	: 50,
+            "development"		: {
+				"host"    : "192.168.7.139",
+				"port"    : 8080,
+				"protocol": "http",
+				"method"  : "post",
+				"path"    : "CBPLC_ESBServlet/CBPLCServlet"
+			},
+			"pesalink-lookup" :{
+				"host"    : "192.168.7.138",
+				"port"    : 8080,
+				"protocol": "http",
+				"method"  : "post",
+				"path"    : "CBKonnectWalletApi/MobileWallet"
+            },
+            "mock" :{
+				"host"    : "127.0.0.1",
+				"port"    : 3000,
+				"protocol": "http",
+				"method"  : "get",
+				"path"    : ""
+            },			
+			"offsite"			: {
+				"host"    : "testgateway.ekenya.co.ke",
+				"port"    : 8443,
+				"protocol": "https",
+				"method"  : "post",
+				"path"    : "smeprouter/smep_ussd_router.php"
+			},
+			"home-dev"			: {
+				"host"    : "testgateway.ekenya.co.ke",
+				"port"    : 8443,
+				"protocol": "https",
+				"method"  : "post",
+				"path"    : "smeprouter/smep_ussd_router.php"
+            },
+            "eclectics-dev"		: {
+				"host"    : "10.20.2.6",
+				"port"    : 8443,
+				"protocol": "https",
+				"method"  : "post",
+				"path"    : "smeprouter/smep_ussd_router.php"
+            }
+        },
+        "meta-data": {
+            "appName"       : "CREDIT BANK PLC",
+            "currency"      : "KES",
+            "country-code"  : "KE",
+			"channel"       : "USSD",
+			"payload-format": "JSON"
+        },
+        "permissions": {
+            "base64"       : true,
+            "encrypt"      : false,
+            "hash-pin"     : true,
+            "fetch-charges": true
+        },
+        "request-settings": {
+            "headers": false,
+            "template": {
+				"field0"  : "0200",
+				"field7"  : "create:timeStamp=MMDDHHmmss",
+				"field11" : "create:stan",
+				"field12" : "create:timeStamp=HHmmss",
+				"field13" : "create:timeStamp=MMDD",
+				"field15" : "create:timeStamp=MMDD",
+				"field32" : "get:channel",	
+				"field33" : "IUBRUXExOTA1",
+				"field37" : "create:transactionId",
+				"field40" : "000",
+				"field41" : "FID00001",
+				"field42" : "606465ATM000001",
+				"field43" : "get:appName",
+				"field49" : "get:currency",
+				"field56" : "bcac5bdc-32fb-42df-8ddb-ce8f705ba8c5",
+				"field60" : "get:country-code",
+				"field123": "get:channel"				
+			},
+            "endpoints": {
+                "card-lookup":{
+					"request"     : {     
+                        "field0":"0200",
+                        "field2":"__walletAccount",
+                        "field3":"180000",
+                        "field4":"0",
+                        "field24":"BB",
+                        "field68" : "USSD -card lookup for Account %@field102 - Ref %@field37",
+                        "field100":"INTERSWITCH",
+                        "field101":"LOOKUP",
+						"field102":"__debitAccount"							
+					},
+                    "response": {
+                        "status": {
+							"field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }	
+				},
+                "itax-bill-presentment":{
+					"request"     : {     
+                        "field0":"0200",
+                        "field2":"__walletAccount",
+                        "field3":"180000",
+                        "field4":"0",
+                        "field24":"BB",
+                        "field68" : "USSD -Itax bill presentment for Eslip %@field102 - Ref %@field37",
+                        "field100":"ITAX",
+                        "field101":"ITAX",
+						"field102":"__eslip"							
+					},
+                    "response": {
+                        "status": {
+							"field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }	
+				},
+				"itax-bill-payment-charges": {
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "150000",
+						"field4"  : "__amount",
+						"field24" : "MM",
+						"field68" : "USSD - Send to Mpesa Charges - Ref %@field37",
+						"field123": "USSD",
+						"field126": "500000",
+						"field100":"ITAX",
+                        "field101":"ITAX",
+						"field102" : "__debitAccount"	
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+                "itax-bill-payment":{
+					"request"     : {  
+                        "field0": "0200",
+                        "field2": "__walletAccount",
+                        "field3": "500000",
+                        "field4": "__amount",
+                        "field24": "MM",
+                        "field62": "__krapin",
+                        "field63": "__taxcode", 
+                        "field65": "__eslip",
+                        "field68": "USSD -Itax bill payment - PIN: %@field62 Eslip: %@field65 Tax Code: %@field63 - Ref %@field37",
+						"field71": "ITAX",
+						"field72" : "__fullName",
+						"field73" : "__advicedate",
+						"field74" : "",
+						"field100": "ITAX",
+                        "field102": "__debitAccount",
+                        "field123": "APP",
+						"field126": "500000"
+					},
+                    "response": {
+                        "status": {
+							"field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }	
+				},
+
+				
+				
+                "account-mandates-lookup" : {
+					"request"     : {                        
+                        "field0": "0200",
+                        "field2": "__walletAccount",
+                        "field3": "210000",
+                        "field4": "0",
+                        "field24": "MM",
+                        "field65": "__walletAccount",
+                        "field68" : "USSD -Account Mandates Lookup Request for %@field65 - Ref %@field37",
+                        "field74": "ACCOUNT_MANDATES",
+						"field100": "LOOKUP"
+					},
+                    "response": {
+                        "status": {
+							"field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }		
+				},
+                "account-mandates-approve" : {
+					"request"     : {    
+                        "field0": "0200",
+                        "field2": "__walletAccount",
+                        "field3": "211000",
+                        "field4": "0",
+                        "field24": "MM",
+                        "field65": "__code",
+                        "field74": "ACCOUNT_MANDATES",
+                        "field100": "AUTHORIZE",
+						"field102":"__account"
+					},
+                    "response": {
+                        "status": {
+							"field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }		
+				},				
+				"account-mandates-reject" : {
+					"request"     : {    
+                        "field0": "0200",
+                        "field2": "__walletAccount",
+                        "field3": "211000",
+                        "field4": "0",
+                        "field24": "MM",
+                        "field65": "__code",
+                        "field74": "ACCOUNT_MANDATES",
+						"field100": "REJECT",
+						"field102":"__account"
+					},
+                    "response": {
+                        "status": {
+							"field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }		
+				},				
+				
+                
+
+                "pesalink-to-ecitizen-lookup" : {
+					"override-source" :"pesalink-lookup",
+                    "request": {
+						"service":"lookUp",
+						"username":"206206",
+						"lookupStage":"PESALINK"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "status",
+                            "matches": [
+                                {
+                                    "code": 1,
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+                "pesalink-to-ecitizen" : {
+                    "request": {
+						"field0": "0200",
+						"field2": "__amount",
+						"field3": "401000",
+						"field4": "__pesalinkAmount",
+						"field24": "BB",
+						"field65": "__sortcode",
+						"field68": "USSD - Pesalink Bank to eCitizen Funds Transfer From %@field102 to %@field103 - Ref %@field37",
+						"field72": "BJRDMWU",
+						"field100": "PESALINK",
+						"field101": "ACP", 
+						"field102": "__debitAccount",
+						"field103": "206206",
+						"field104": "Funds Transfer",
+						"field123": "MOBILE",
+						"field126": "Funds Transfer"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+                "account-mandates-approval" : {
+					"request"     : {	
+                        "field0": "0200",
+                        "field2": "__walletAccount",
+                        "field3": "404000",
+                        "field4":"0",
+                        "field24": "MM",
+                        "field32": "USSD",
+                        "field65": "PERSONAL_ACCIDENT",
+                        "field66":"",
+                        "field68": "USSD - Personal Accident Insurance From %@field102 - Ref %@field37",
+                        "field69": "001",
+                        "field98": "USSD",
+                        "field100": "INSURANCE",
+                        "field102": "__mwallet",
+                        "field104": "Personal Accident",
+                        "field123": "USSD"
+					},
+                    "response": {
+                        "status": {
+							"field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+                },
+                "set-atm-daily-amount" : {
+					"request"     : {	
+                        "field0": "0200",
+                        "field2": "__walletAccount",
+                        "field3": "404000",
+                        "field4":"0",
+                        "field24": "MM",
+                        "field32": "USSD",
+                        "field65": "PERSONAL_ACCIDENT",
+                        "field66":"",
+                        "field68": "USSD - Personal Accident Insurance From %@field102 - Ref %@field37",
+                        "field69": "001",
+                        "field98": "USSD",
+                        "field100": "INSURANCE",
+                        "field102": "__mwallet",
+                        "field104": "Personal Accident",
+                        "field123": "USSD"
+					},
+                    "response": {
+                        "status": {
+							"field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+                },
+                "set-atm-transaction-limit" : {
+					"request"     : {	
+                        "field0": "0200",
+                        "field2": "__walletAccount",
+                        "field3": "404000",
+                        "field4":"0",
+                        "field24": "MM",
+                        "field32": "USSD",
+                        "field65": "PERSONAL_ACCIDENT",
+                        "field66":"",
+                        "field68": "USSD - Personal Accident Insurance From %@field102 - Ref %@field37",
+                        "field69": "001",
+                        "field98": "USSD",
+                        "field100": "INSURANCE",
+                        "field102": "__mwallet",
+                        "field104": "Personal Accident",
+                        "field123": "USSD"
+					},
+                    "response": {
+                        "status": {
+							"field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+                },
+                "set-atm-transaction-count" : {
+					"request"     : {	
+                        "field0": "0200",
+                        "field2": "__walletAccount",
+                        "field3": "404000",
+                        "field4":"0",
+                        "field24": "MM",
+                        "field32": "USSD",
+                        "field65": "PERSONAL_ACCIDENT",
+                        "field66":"",
+                        "field68": "USSD - Personal Accident Insurance From %@field102 - Ref %@field37",
+                        "field69": "001",
+                        "field98": "USSD",
+                        "field100": "INSURANCE",
+                        "field102": "__mwallet",
+                        "field104": "Personal Accident",
+                        "field123": "USSD"
+					},
+                    "response": {
+                        "status": {
+							"field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+                },
+                "block-atm" : {
+					"request"     : {	
+                        "field0": "0200",
+                        "field2": "__walletAccount",
+                        "field3": "404000",
+                        "field4":"0",
+                        "field24": "MM",
+                        "field32": "USSD",
+                        "field65": "PERSONAL_ACCIDENT",
+                        "field66":"",
+                        "field68": "USSD - Personal Accident Insurance From %@field102 - Ref %@field37",
+                        "field69": "001",
+                        "field98": "USSD",
+                        "field100": "INSURANCE",
+                        "field102": "__mwallet",
+                        "field104": "Personal Accident",
+                        "field123": "USSD"
+					},
+                    "response": {
+                        "status": {
+							"field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+                },
+                "unblock-atm" : {
+					"request"     : {	
+                        "field0": "0200",
+                        "field2": "__walletAccount",
+                        "field3": "404000",
+                        "field4":"0",
+                        "field24": "MM",
+                        "field32": "USSD",
+                        "field65": "PERSONAL_ACCIDENT",
+                        "field66":"",
+                        "field68": "USSD - Personal Accident Insurance From %@field102 - Ref %@field37",
+                        "field69": "001",
+                        "field98": "USSD",
+                        "field100": "INSURANCE",
+                        "field102": "__mwallet",
+                        "field104": "Personal Accident",
+                        "field123": "USSD"
+					},
+                    "response": {
+                        "status": {
+							"field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+                },
+                "buy-goods-and-services" : {
+					"request"     : {	
+                        "field0": "0200",
+                        "field2": "__walletAccount",
+                        "field3": "404000",
+                        "field4":"0",
+                        "field24": "MM",
+                        "field32": "USSD",
+                        "field65": "PERSONAL_ACCIDENT",
+                        "field66":"",
+                        "field68": "USSD - Personal Accident Insurance From %@field102 - Ref %@field37",
+                        "field69": "001",
+                        "field98": "USSD",
+                        "field100": "INSURANCE",
+                        "field102": "__mwallet",
+                        "field104": "Personal Accident",
+                        "field123": "USSD"
+					},
+                    "response": {
+                        "status": {
+							"field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+                },
+                "pay-bill" : {
+					"request"     : {	
+                        "field0": "0200",
+                        "field2": "__walletAccount",
+                        "field3": "404000",
+                        "field4":"0",
+                        "field24": "MM",
+                        "field32": "USSD",
+                        "field65": "PERSONAL_ACCIDENT",
+                        "field66":"",
+                        "field68": "USSD - Personal Accident Insurance From %@field102 - Ref %@field37",
+                        "field69": "001",
+                        "field98": "USSD",
+                        "field100": "INSURANCE",
+                        "field102": "__mwallet",
+                        "field104": "Personal Accident",
+                        "field123": "USSD"
+					},
+                    "response": {
+                        "status": {
+							"field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+                },
+                "personal-accident-insurance" : {
+					"request"     : {	
+                        "field0": "0200",
+                        "field2": "__walletAccount",
+                        "field3": "404000",
+                        "field4":"0",
+                        "field24": "MM",
+                        "field32": "USSD",
+                        "field65": "PERSONAL_ACCIDENT",
+                        "field66":"",
+                        "field68": "USSD - Personal Accident Insurance From %@field102 - Ref %@field37",
+                        "field69": "001",
+                        "field98": "USSD",
+                        "field100": "INSURANCE",
+                        "field102": "__mwallet",
+                        "field104": "Personal Accident",
+                        "field123": "USSD"
+					},
+                    "response": {
+                        "status": {
+							"field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"motor-vehicle-insurance" : {
+					"request"     : {	
+                        "field0": "0200",
+                        "field2": "__walletAccount",
+                        "field3": "404000",
+                        "field4":"0",
+                        "field24": "MM",
+                        "field32": "USSD",
+                        "field65": "PERSONAL_ACCIDENT",
+                        "field66":"",
+                        "field68": "USSD - Motor Vehicle Insurance From %@field102 - Ref %@field37",
+                        "field69": "001",
+                        "field98": "USSD",
+                        "field100": "INSURANCE",
+                        "field102": "__mwallet",
+                        "field104": "Personal Accident",
+                        "field123": "USSD"
+					},
+                    "response": {
+                        "status": {
+							"field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+                },
+                "lock-savings-unlock":{
+					"request"     : {		                        
+                        "field0": "0200",
+                        "field2": "__walletAccount",
+                        "field3": "121100",
+                        "field4": "0",
+                        "field24": "MM",
+                        "field100": "UNLOCK_LS", 
+                        "field102": "__lockSavingsAccount",
+                        "field103": "__mwallet"
+					},
+                    "response": {
+                        "status": {
+							"field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+                "block-account" : {
+					"request"     : {
+                        "field0":  "0200",
+                        "field2":  "__walletAccount",
+                        "field3":  "130000",
+                        "field4":  "0",
+                        "field24": "MM",
+                        "field32": "USSD",
+                        "field100":"BLOCKACCOUNT"
+					},
+                    "response": {
+                        "status": {
+							"field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }		
+                },
+                "account-opening-lookup" : {
+					"request"     : {                        
+                        "field0"  : "0200",
+                        "field2"  : "__walletAccount",
+                        "field3"  : "210000",
+                        "field4"  : "0",
+                        "field24" : "BB",
+                        "field65" : "BANK",
+                        "field66" : "BANK",    
+                        "field68" : "USSD - Account Opening Lookup - Ref -%@FIELD37", 
+                        "field74" : "ACCOUNTOPENING",
+                        "field100": "LOOKUP"
+					},
+                    "response": {
+                        "status": {
+							"field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }		
+				},
+                "internal-account-lookup" : {
+					"request"     : {                        
+                        "field0": "0200",
+                        "field2": "__walletAccount",
+                        "field3": "170000",
+                        "field4": "0",
+                        "field24": "BB",
+                        "field100": "ACCOUNT_LOOKUP",
+                        "field102": "__soCreditAccount"
+					},
+                    "response": {
+                        "status": {
+							"field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }		
+				},
+				"lock-savings-open" :{
+					"request"     : {						
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "121000",
+						"field4": "__lockSavingsOpenDeposit",
+						"field24": "MM",
+						"field61": "__lockSavingsOpenPeriod",
+						"field62": "__lockSavingsOpenAmount",
+						"field68" :"USSD - Open Lock savings for %@field2 - term - %@field61, target - %@field62  - Ref %@field37",
+						"field100": "OPEN_LS",
+						"field102" : "__lockSavingsOpenDebitAccount"
+					},
+                    "response": {
+                        "status": {
+							"field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"lock-savings-ministatement":{
+					"request"     : {						
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "380000",
+						"field4": "0",
+						"field24": "MM",
+						"field68": "USSD - Lock Savings Mini statement for Account %@field102 - Ref %@field37",
+						"field100": "LCKSVNG_MINI",
+						"field102": "__lockSavingsAccount"
+					},
+                    "response": {
+                        "status": {
+							"field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"lock-savings-save":{
+					"request"     : {				
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "400000",
+						"field4": "__lockSavingsSaveAmount",
+						"field24": "MM",
+						"field68": "USSD - Lock Savings Deposit for Account %@field103 from Account %@field102 - Ref %@field37",
+						"field100": "FT",
+						"field102": "__lockSavingsSaveDebitAccount",
+						"field103": "__lockSavingsAccount",
+						"field104": "Funds Transfer",
+						"field123": "USSD",
+						"field126": "Funds Transfer"
+					},
+                    "response": {
+                        "status": {
+							"field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"lock-savings-withdraw":{
+					"request"     : {				
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "400000",
+						"field4": "__lockSavingsWithdrawAmount",
+						"field24": "MM",
+						"field68": "USSD - Lock Savings Withdraw from Account %@field102 to Account %@field103 - Ref %@field37",
+						"field100": "FT",
+						"field102": "__lockSavingsAccount",
+						"field103": "__lockSavingsWithdrawCreditAccount",
+						"field104": "Funds Transfer",
+						"field123": "MOBILE",
+						"field126": "Funds Transfer"
+					},
+                    "response": {
+                        "status": {
+							"field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"school-lookup" : {
+					"request"     : {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "210000",
+						"field4"  : "0",
+						"field24" : "MM",
+						"field68" : "USSD - School Lookup Request - Ref %@field37",
+						"field65" : "SCHOOL",
+						"field66" : "",
+						"field74" : "SCHOOL",
+						"field100": "LOOKUP"
+					},
+                    "response": {
+                        "status": {
+							"field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }		
+				},
+				"eft-bank-lookup" : {
+					"request"     : {
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "210000",
+						"field4": "0",
+						"field24": "MM",
+						"field65": "BANK",
+						"field68" : "USSD - EFT Bank Lookup Request - Ref %@field37",
+						"field66": "",
+						"field74": "EFT",
+						"field100": "LOOKUP"
+					},
+                    "response": {
+                        "status": {
+							"field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }		
+				},
+				"eft-branch-lookup" : {
+					"request"     : {
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "210000",
+						"field4": "0",
+						"field24": "MM",
+						"field65": "BRANCH",
+						"field68" : "USSD - EFT Branch Lookup Request - Ref %@field37",
+						"field66": "__eftBankCode",
+						"field74": "EFT",
+						"field100": "LOOKUP"
+					},
+                    "response": {
+                        "status": {
+							"field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }		
+				},
+				"rtgs-branch-lookup" : {
+					"request"     : {
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "210000",
+						"field4": "0",
+						"field24": "MM",
+						"field65": "BRANCH",
+						"field68" : "USSD - RTGS Branch Lookup Request - Ref %@field37",
+						"field66": "__rtgsBankCode",
+						"field74": "RTGS",
+						"field100": "LOOKUP"
+					},
+                    "response": {
+                        "status": {
+							"field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }		
+				},
+				"tell-a-friend" : {
+					"request"     : {
+						"field0" : "0200",
+						"field2" : "__walletAccount",
+						"field3" : "220000",
+						"field4" : "0",
+						"field24": "MM",
+						"field68" :"USSD - Tell A friend from %@field2 - friend contact - %@field65  - Ref %@field37",
+						"field65": "__friendPhoneNumber",
+						"field100": "TELL_A_FRIEND"						
+					},
+                    "response": {
+                        "status": {
+							"field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }					
+				},
+                "registration": {
+                    "request"     : {
+						"field0" : "0200",
+						"field2" : "__walletAccount",
+						"field3" : "120000",
+						"field4" : "0",
+						"field24": "MM",
+						"field61": "__surname",
+						"field62": "__firstname",
+						"field68" :"USSD - Registration for account %@field2  - Ref %@field37",
+						"field63": "__othername",
+						"field70": "__id",
+						"field71": "__email",
+						"field73": "en",
+						"field74": "__imsi",
+						"field75": "__hasCoreAccount",
+						"field76": "__coreAccount",
+						"field77": ""
+					},
+                    "response": {
+                        "status": {
+							"field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+                },
+                "profile": {
+                    "request": {
+						"field2"        : "__walletAccount",
+						"field3"        : "110000",
+						"field4"        : "0",
+						"field32"       : "USSD",
+						"field24"       : "MM",
+						"field64"       : "",
+						"field100"      : "LOGIN_REQUEST",
+						"field68"       :"USSD - Login Request for account %@field2  - Ref %@field37",
+						"field74"       : "__imsi",
+						"field77"       : "",
+						"field102"      : "%@field2"
+					},
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+						"mapper-function": "profile_mapper",
+						"adapter" : "get-profile",
+                        "save": false
+                    }
+				},
+                "pin-change": {
+                    "request": {
+						"field0":  "0200",
+						"field2":  "__walletAccount",
+						"field3":  "140000",
+						"field4":  "0",
+						"field24": "MM",
+						"field32": "USSD",
+						"field49": "KES",
+						"field72": "MWALLETACCOUNT=__walletAccount",
+						"field73": "__newPin",
+						"field68" :"USSD - Pin Change for account %@field2  - Ref %@field37",
+						"field74" : "__imsi",
+						"field77" : ""
+					},
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+                },
+                "email-change": {
+                    "request": {},
+                    "response": {
+                        "status": {
+                            "field": "",
+                            "matches": [
+                                {
+                                    "code": "",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": ""
+                            }
+                        },
+                        "mapper-function": "login_mapper",
+                        "save": false
+                    }
+                },
+                "balance": {
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "310000",
+						"field4"  : "0",
+						"field24" : "BB",
+						"field68" :"USSD - Balance Enquiry for account %@field102  - Ref %@field37",
+						"field74": "254728268432",
+						"field96" : "001",
+						"field102": "__balanceDebitAccount",
+						"field100": "BI",
+						"field104": "BALANCE_ENQUIRY",
+						"field123": "USSD",
+						"field126": "BALANCE_ENQUIRY"	
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"ministatement": {
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "380000",
+						"field4"  : "0",
+						"field24" : "BB",
+						"field68" :"USSD - Mini Statement for account %@field102  - Ref %@field37",
+						"field96" : "001",
+						"field102": "__ministatementDebitAccount",
+						"field100": "MINISTATE"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"fullstatement": {
+                    "request": {
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "370000",
+						"field4": "0",
+						"field24": "BB", 
+						"field64": "__dateTo",
+						"field52": "__dateTo",
+						"field68": "FULL_STATEMENT",
+						"field71": "__dateFrom",
+						"field72": "__dateFrom",
+						"field73": "__email",
+						"field74": "__walletAccount",
+						"field100": "FULLSTATEMENT",
+						"field102": "__fullstatementDebitAccount",
+						"field104": "FULL_STATEMENT",
+						"field126": "FULL_STATEMENT"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+                },
+                "funds-transfer": {
+                    "request": {
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "400000",
+						"field4": "__fundsTransferAmount",
+						"field24": "BB",
+						"field68" :"USSD - Funds Transfer From account %@field102 to account %@field103  - Ref %@field37",
+						"field98": "USSD",
+						"field100": "FTCORE2CORE",
+						"field102": "__fundsTransferDebitAccount",
+						"field103": "__fundsTransferCreditAccount",
+						"field104": "Funds Transfer",
+						"field123": "USSD",
+						"field126": "Funds Transfer"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"funds-transfer-wallet-to-wallet": {
+                    "request": {
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "400000",
+						"field4": "__fundsTransferAmount",
+						"field24": "BB",
+						"field68" :"USSD - Funds Transfer From account %@field102 to account %@field103  - Ref %@field37",
+						"field98": "USSD",
+						"field100": "FT",
+						"field102": "__mwallet",
+						"field103": "__fundsTransferCreditAccount",
+						"field104": "Funds Transfer",
+						"field123": "USSD",
+						"field126": "Funds Transfer"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"funds-transfer-wallet-to-savings": {
+                    "request": {
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "400000",
+						"field4": "__fundsTransferAmount",
+						"field24": "BB",
+						"field68" :"USSD - Funds Transfer From account %@field102 to account %@field103  - Ref %@field37",
+						"field98": "USSD",
+						"field100": "FTWALLET2CORE",
+						"field102": "__mwallet",
+						"field103": "__fundsTransferCreditAccount",
+						"field104": "Funds Transfer",
+						"field123": "USSD",
+						"field126": "Funds Transfer"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"funds-transfer-savings-to-wallet": {
+                    "request": {
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "400000",
+						"field4": "__fundsTransferAmount",
+						"field24": "BB",
+						"field68" :"USSD - Funds Transfer From account %@field102 to account %@field103  - Ref %@field37",
+						"field98": "USSD",
+						"field100": "FTCORE2WALLET",
+						"field102": "__fundsTransferDebitAccount",
+						"field103": "__fundsTransferCreditAccount",
+						"field104": "Funds Transfer",
+						"field123": "USSD",
+						"field126": "Funds Transfer"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"send-to-mpesa": {
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "430000",
+						"field4"  : "__withdrawalAmount",
+						"field24" : "BB",
+						"field65" : "__withdrawalCreditAccount",
+						"field68" :"USSD - Send to Mpesa to account %@field2  - Ref %@field37",
+						"field71" : "MPB2C",
+						"field100": "MPESAB2C",
+						"field102": "__withdrawalDebitAccount"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"send-to-airtel-money": {
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "430000",
+						"field4"  : "__withdrawalAmount",
+						"field24" : "BB",
+						"field65" : "__withdrawalCreditAccount",
+						"field68" :"USSD - Send to Airtel Money to account %@field2  - Ref %@field37",
+						"field71" : "MPB2C",
+						"field100": "AIRTELB2C",
+						"field102": "__withdrawalDebitAccount"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"buy-airtime": {
+                    "request": {
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "420000",
+						"field4": "__airtimeAmount",
+						"field24": "BB",
+						"field65": "__airtimeCreditAccount",
+						"field68" :"USSD - Buy %@field71 Airtime for account %@field102  - Ref %@field37",
+						"field71": "__airtimeProvider",
+						"field100": "__airtimeProvider",
+						"field102": "__airtimeDebitAccount"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+                },
+				"kplc-post-paid-bill-payment": {
+                    "request": {
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "500000",
+						"field4": "__billPaymentAmount",
+						"field24": "BB",
+						"field65": "__billPaymentCreditAccount",
+						"field68" :"USSD - %@field71 Billpayment from account %@field102 for account %@field65- Ref %@field37",
+						"field71": "KPLCPOSTPAID",
+						"field100": "KPLCPOSTPAID",
+						"field102": "__billPaymentDebitAccount"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"kplc-pre-paid-bill-payment": {
+                    "request": {
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "500000",
+						"field4": "__billPaymentAmount",
+						"field24": "BB",
+						"field65": "__billPaymentCreditAccount",
+						"field68" :"USSD - %@field71 Billpayment from account %@field102 for account %@field65- Ref %@field37",
+						"field71": "KPLCPREPAID",
+						"field100": "KPLCPREPAID",
+						"field102": "__billPaymentDebitAccount"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"nhif-bill-payment": {
+                    "request": {
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "500000",
+						"field4": "__billPaymentAmount",
+						"field24": "BB",
+						"field65": "__billPaymentCreditAccount",
+						"field68" :"USSD - %@field71 Billpayment from account %@field102 for account %@field65- Ref %@field37",
+						"field71": "NHIF",
+						"field100": "NHIF",
+						"field102": "__billPaymentDebitAccount"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},				
+				"nairobi-water-bill-payment": {
+                    "request": {
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "500000",
+						"field4": "__billPaymentAmount",
+						"field24": "BB",
+						"field65": "__billPaymentCreditAccount",
+						"field68" :"USSD - %@field71 Billpayment from account %@field102 for account %@field65- Ref %@field37",
+						"field71": "NAIROBIWATER",
+						"field100": "NAIROBIWATER",
+						"field102": "__billPaymentDebitAccount"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"zuku-tv-bill-payment": {
+                    "request": {
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "500000",
+						"field4": "__billPaymentAmount",
+						"field24": "BB",
+						"field65": "__billPaymentCreditAccount",
+						"field68" :"USSD - %@field71 Billpayment from account %@field102 for account %@field65- Ref %@field37",
+						"field71": "ZUKU_TV",
+						"field100": "ZUKU_TV",
+						"field102": "__billPaymentDebitAccount"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"zuku-internet-bill-payment": {
+                    "request": {
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "500000",
+						"field4": "__billPaymentAmount",
+						"field24": "BB",
+						"field65": "__billPaymentCreditAccount",
+						"field68" :"USSD - %@field71 Billpayment from account %@field102 for account %@field65- Ref %@field37",
+						"field71": "ZUKU_INTERNET",
+						"field100": "ZUKU_INTERNET",
+						"field102": "__billPaymentDebitAccount"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"gotv-bill-payment": {
+                    "request": {
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "500000",
+						"field4": "__billPaymentAmount",
+						"field24": "BB",
+						"field65": "__billPaymentCreditAccount",
+						"field68" :"USSD - %@field71 Billpayment from account %@field102 for account %@field65- Ref %@field37",
+						"field71": "GOTV",
+						"field100": "GOTV",
+						"field102": "__billPaymentDebitAccount"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},				
+				"dstv-bill-payment": {
+                    "request": {
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "500000",
+						"field4": "__billPaymentAmount",
+						"field24": "BB",
+						"field65": "__billPaymentCreditAccount",
+						"field68" :"USSD - %@field71 Billpayment from account %@field102 for account %@field65- Ref %@field37",
+						"field71": "DSTV",
+						"field100": "DSTV",
+						"field102": "__billPaymentDebitAccount"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},								
+				"landrates-bill-payment": {
+                    "request": {
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "500000",
+						"field4": "__billPaymentAmount",
+						"field24": "BB",
+						"field65": "__billPaymentCreditAccount",
+						"field68" :"USSD - %@field71 Billpayment from account %@field102 for account %@field65- Ref %@field37",
+						"field71": "LANDRATES",
+						"field100": "LANDRATES",
+						"field102": "__billPaymentDebitAccount"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},				
+				"landrates-bill-charges": {
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "___walletAccount",
+						"field3"  : "150000",
+						"field4"  : "__amount",
+						"field24" : "MM",
+						"field65" : "___walletAccount",
+						"field68" : "",
+						"field74" : "___walletAccount",
+						"field100": "LANDRATES",							
+						"field126": "500000"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"itax-payment": {
+                    "request": {
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "500000",
+						"field4": "__billPaymentAmount",
+						"field24": "BB",
+						"field65": "__billPaymentCreditAccount",
+						"field68" :"USSD - %@field71 Billpayment from account %@field102 for account %@field65- Ref %@field37",
+						"field71": "LANDRATES",
+						"field100": "LANDRATES",
+						"field102": "__billPaymentDebitAccount"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"school-fees-bill-payment": {
+                    "request": {
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "500000",
+						"field4": "__schoolFeesAmount",
+						"field24": "BB",
+						"field65": "__schoolFeesCreditAccount",
+						"field68" :"USSD - %@field71 Billpayment from account %@field102 for account %@field65 name: %@field200 reg: %@field201 - Ref %@field37",
+						"field71": "SCHOOLFEES",
+						"field100": "SCHOOLFEES",
+						"field102": "__schoolFeesDebitAccount",
+						"field200" :"__schoolFeesChildName",
+						"field201" : "__schoolFeesChildReg",
+
+						"field123":"__schoolFeesCreditAccount", 
+						"field124":"school name",
+						"field125":"__schoolFeesChildName", 
+						"field126":"__schoolFeesChildReg", 
+						"field127":"School fees Payment for student - %@field125 , admission no - %@field126 , school - %@field124 , account - %@field123"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"standing-orders-internal" :{
+                    "request": {
+						"field0"   : "0200",
+						"field2"   : "__walletAccount",
+						"field3"   : "921000",
+						"field4"   : "__soAmount",
+						"field15"  : "__soStartDate",
+						"field24"  : "BB",
+						"field44"  : "250000",
+						"field68"  :"USSD - Internal Standing order from account %@field102 to account %@field103- Ref %@field37",
+						"field100" : "STO_START",
+						"field102" : "__soDebitAccount",
+						"field103" : "__soCreditAccount",
+						"field104" : "STO_START",
+						"field112" : "__internal-transfer-customer",
+						"field123" : "__soFrequency",
+						"field124" : "__soEndDate",
+						"field126" : "__soInstruction"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"standing-orders-external" :{
+                    "request": {
+						"field0"   : "0200",
+						"field2"   : "__walletAccount",
+						"field3"   : "920000",
+						"field4"   : "__soAmount",
+						"field15"  : "__soStartDate",
+						"field24"  : "BB",
+						"field44"  : "__soBankSortCode",
+						"field68"  : "USSD - External Standing order from account %@field102 to account %@field103- Ref %@field37",
+						"field100" : "STO_START",
+						"field102" : "__soDebitAccount",
+						"field103" : "__soCreditAccount",
+						"field104" : "STO_START",
+						"field112" : "__soBeneficiaryName",
+						"field123" : "__soFrequency",
+						"field124" : "__soEndDate",
+						"field126" : "__soInstruction"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"standing-orders-amend" :{
+                    "request": {
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "924000",
+						"field4": "__soAmendAmount",
+						"field24": "BB",
+						"field68": "USSD - Amend Standing Order ID - %@field102 - Ref %@field37",
+						"field100": "STO_AMEND",
+						"field102": "__soId",
+						"field123": "__soEndDate",
+                        "field124": "__soEndDate" 
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"standing-orders-cancel" :{
+                    "request": {
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "924000",
+						"field4": "0",
+						"field24": "BB",
+						"field68": "USSD - Cancel Standing Order ID - %@field102 - Ref %@field37",
+						"field100": "STO",
+						"field102": "__soId",
+						"field123": "create:timeStamp=YYYYMMDD",
+						"field124": "create:timeStamp=YYYYMMDD"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"standing-orders-lookup" : {
+					"request" :{
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "932000",
+						"field4": "0",
+						"field24": "BB",
+						"field40": "000",
+						"field44": "01092",
+						"field68": "USSD - Standing Order Lookup for a/c %@field102 - Ref %@field37",
+						"field100": "STO",
+						"field102": "__soDebitAccount"
+					},
+					"response": {
+						"status": {
+							"field": "field39",
+							"matches": [
+								{
+									"code": "00",
+									"status": "success"
+								}
+							],
+							"error": {
+								"message": "field48"
+							}
+						},
+						"save": false
+					}
+				},
+				"account-linking" :{
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "170000",
+						"field4"  : "0",
+						"field24" : "MM",
+						"field100": "ACCOUNT_LINKING",
+						"field102": "__accountLinkingAccount",
+						"CORE_ACCOUNT": "__accountLinkingAccount",
+						"ID_NO": "__accountLinkingId",
+						"field68" :"USSD - Account Linking for account %@field102 with account %@field1- Ref %@field37"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},	
+				"account-opening" :{
+                    "request": {
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "122000",
+						"field4": "0",
+						"field24": "MM",
+						"field68" :"USSD - Account Opening for user %@field2 - Ref %@field37",
+						"field100": "OPEN_WA"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},				
+				"core-account-opening" :{
+                    "request": {
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "123000",
+						"field4": "__coreAccountAmount",
+                        "field24": "MM",
+                        "field50": "__coreAccountCurrency",
+                        "field65": "__coreAccountType",
+                        "field66": "__coreAccountBranch",
+						"field68" :"USSD - Core Account Opening for user %@field2 , a/c type %@field65 - Ref %@field37",
+						"field100": "ACCOUNT_OPENING",
+                        "field102": "__coreAccountDebitAccount"                       
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"request-cheque-book" :{
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "145000",
+						"field4"  : "0",
+						"field24" : "BB",
+						"field65" : "",
+						"field68" : "USSD - %@field123 Leaf Cheque Book Request for account %@field102 - Ref %@field37",
+						"field74" : "__walletAccount",
+						"field100": "CHQBOOKREQUEST",
+						"field102": "__requestChequeBookDebitAccount",
+						"field104": "CHEQUE_BOOK_REQUEST",
+						"field123": "__requestChequeBookLeaves",
+						"field124": "__requestChequeBookQuantity",
+						"field126": "CHEQUE_BOOK_REQUEST"						
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"stop-cheque" :{
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "146000",
+						"field4"  : "0",
+						"field24" : "BB",
+						"field65" : "",
+						"field68" : "USSD - Stop Cheque Request for account %@field102 - Ref %@field37",
+						"field74" : "__walletAccount",
+						"field100": "STOP_CHEQUE",
+						"field102": "__stopChequeAccount",
+						"field104": "CHEQUE_BOOK_STOP",
+						"field123": "__stopChequeNumber",
+						"field126": "CHEQUE_BOOK_STOP"						
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"request-atm-card" :{
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "145000",
+						"field4"  : "0",
+						"field24" : "BB",
+						"field65" : "",
+						"field68" : "USSD - Atm Card Request for account %@field102 - Ref %@field37",
+						"field74" : "__walletAccount",
+						"field76" : "0",
+						"field100": "CARDREQUEST",
+						"field102": "__requestAtmAccount",
+						"field104": "ATM_CARD_REQUEST",
+						"field126": "ATM_CARD_REQUEST"						
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"replace-atm-card" :{
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "145000",
+						"field4"  : "0",
+						"field24" : "BB",
+						"field65" : "",
+						"field68" : "USSD - Atm Card Replacement for account %@field102 - Ref %@field37",
+						"field72": "REPLACE_ATM",
+						"field74" : "__walletAccount",
+						"field76" : "0",						
+						"field100": "REPLACE_ATM",
+						"field102": "__replaceAtmAccount"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"mpesa-c2b" :{
+                    "request": {
+                        "field0": "0200",
+                        "field2": "__walletAccount",
+                        "field3": "450000",
+                        "field4": "__depositAmount",
+                        "field6":	"0",
+                        "field24": "MM",
+                        "field65": "__walletAccount",
+                        "secret":"HHng9jsq1oomnFFr4567729GgvflpiNgzA",
+                        "field68": "USSD - Cash Withdrawal - From %@field65 - Ref %@field37",
+                        "field71": "MPESAC2B",
+                        "field100": "MPESAC2B",
+                        "field103": "__mwallet"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"rtgs" :{
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "403000",
+						"field4"  : "__rtgsAmount",						
+						"field15" : "%@field13",
+						"field24" : "BB",
+						"field64" : "__rtgsAccountName",
+						"field65": "%@field200%@field201",
+						"field68": "USSD - RTGS Funds Transfer From %@field102 to %@field103 - Ref %@field37",
+						"field69": "001",
+						"field98": "MOBILE",
+						"field100": "RTGS",
+						"field102": "__rtgsDebitAccount",
+						"field103": "__rtgsCreditAccount",
+						"field104": "Funds Transfer",
+						"field123": "MOBILE",
+						"field126": "Funds Transfer",
+						"field200": "__rtgsBankCode",
+						"field201": "__rtgsBranchCode"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"eft" :{
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "402000",
+						"field4"  : "__eftAmount",
+						"field15" : "%@field13",
+ 						"field24" : "BB",
+						"field64" : "__eftAccountName",
+						"field65": "%@field200%@field201",
+						"field68": "USSD - EFT Funds Transfer From %@field102 to %@field103 - Ref %@field37",
+						"field69": "001",
+						"field98": "MOBILE",
+						"field100": "EFT",
+						"field102": "__eftDebitAccount",
+						"field103": "__eftCreditAccount",
+						"field104": "Funds Transfer",
+						"field123": "MOBILE",
+						"field126": "Funds Transfer",
+						"field200": "__eftBankCode",
+						"field201": "__eftBranchCode"						
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"pesalink-to-bank" : {
+                    "request": {
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "401000",
+						"field4": "__pesalinkAmount",
+						"field24": "BB",
+						"field65": "__pesalinkBankCode",
+						"field68": "USSD - Pesalink Bank to Bank Funds Transfer From %@field102 to %@field103 - Ref %@field37",
+						"field72": "__pesalinkReason",
+						"field100": "PESALINK",
+						"field101": "ACA", 
+						"field102": "__pesalinkDebitAccount",
+						"field103": "__pesalinkCreditAccount",
+						"field104": "Funds Transfer",
+						"field123": "MOBILE",
+						"field126": "Funds Transfer"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"pesalink-to-card" : {
+                    "request": {
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "401000",
+						"field4": "__pesalinkAmount",
+						"field24": "BB",
+						"field65": "__pesalinkBankCode",
+						"field68": "USSD - Pesalink Bank to Card Funds Transfer From %@field102 to %@field103 - Ref %@field37",
+						"field72": "__pesalinkReason",
+						"field100": "PESALINK",
+						"field101": "ACC", 
+						"field102": "__pesalinkDebitAccount",
+						"field103": "__pesalinkCreditAccount",
+						"field104": "Funds Transfer",
+						"field123": "MOBILE",
+                        "field126": "Funds Transfer"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"pesalink-to-phone" : {
+                    "request": {
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "401000",
+						"field4": "__pesalinkAmount",
+						"field24": "BB",
+						"field65": "__pesalinkToPhoneSortCode",
+						"field68": "USSD - Pesalink Bank to pPhone Funds Transfer From %@field102 to %@field103 - Ref %@field37",
+						"field72": "__pesalinkLookupName",
+						"field100": "PESALINK",
+						"field101": "ACP", 
+						"field102": "__pesalinkDebitAccount",
+						"field103": "__pesalinkCreditAccount",
+						"field104": "Funds Transfer",
+						"field123": "MOBILE",
+						"field126": "Funds Transfer"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"pesalink-to-phone-lookup" : {
+					"override-source" :"pesalink-lookup",
+                    "request": {
+						"service":"lookUp",
+						"username":"__pesalinkCreditAccount",
+						"lookupStage":"PESALINK"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "status",
+                            "matches": [
+                                {
+                                    "code": 1,
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"pesalink-register" : {
+					"override-source" :"pesalink-lookup",
+                    "request": {
+                        "username"          : "__walletAccount",
+                        "transactionType"   : "LinkPhone",
+                        "name"              : "__name",
+                        "email"             : "__email",
+                        "account"           : "__pesalinkLinkAccount",
+                        "transactionAccount": "core",
+                        "idNumber"          : "__id",
+						"service"           : "pesaLink",
+                        "auth"              : "0"                        
+                    },
+                    "response": {
+                        "status": {
+                            "field": "status",
+                            "matches": [
+                                {
+                                    "code": 1,
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+                },
+                "pesalink-set-default" : {
+					"override-source" :"pesalink-lookup",
+                    "request": {                        
+                        "service"        : "pesaLink",
+                        "username"       : "__walletAccount",
+                        "transactionType": "setDefault",
+                        "accountno"      : "__pesalinkLinkAccount",
+                        "idNumber"       : "__id",
+                        "email"          : "__email",
+                        "name"           : "__name"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "status",
+                            "matches": [
+                                {
+                                    "code": 1,
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+
+
+
+				"tell-a-friend-charges" : {
+					"request"     : {						
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "150000",
+						"field4": "0",
+						"field24": "MM",
+						"field68" :"USSD - Tell A friend Charges from %@field2 - friend contact - %@field65  - Ref %@field37",
+						"field123": "USSD",
+						"field126": "220000",
+						"field100": "TELL_A_FRIEND",
+						"field102" : "__walletAccount"	
+					},
+                    "response": {
+                        "status": {
+							"field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }					
+				},
+				"school-fees-bill-payment-charges": {
+                    "request": {
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "150000",
+						"field4": "0",
+						"field24": "MM",
+						"field68" :"USSD - School-Fees-Bill-payment Charges from %@field2 - friend contact - %@field65  - Ref %@field37",
+						"field123": "USSD",
+						"field126": "500000",
+						"field100": "SCHOOLFEES",
+						"field102" : "__walletAccount"
+					},
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+						"mapper-function": "profile_mapper",
+						"adapter" : "get-profile",
+                        "save": false
+                    }
+                },
+                "pin-change-charges": {
+                    "request": {
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "150000",
+						"field4": "0",
+						"field24": "MM",
+						"field68" :"USSD - pin-change Charges from %@field2 - friend contact - %@field65  - Ref %@field37",
+						"field123": "USSD",
+						"field126": "140000",
+						"field100": "FETCH_CHARGES",
+						"field102" : "__walletAccount"	
+					},
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+                },
+                "email-change-charges": {
+                    "request": {},
+                    "response": {
+                        "status": {
+                            "field": "",
+                            "matches": [
+                                {
+                                    "code": "",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": ""
+                            }
+                        },
+                        "mapper-function": "login_mapper",
+                        "save": false
+                    }
+                },
+                "balance-charges": {
+                    "request": {
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "150000",
+						"field4": "0",
+						"field24": "MM",
+						"field68" :"USSD - Balance Enquiry Charges- Ref %@field37",
+						"field123": "USSD",
+						"field126": "310000",
+						"field100": "BI",
+						"field102" : "__balanceDebitAccount"	
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"ministatement-charges": {
+                    "request": {
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "150000",
+						"field4": "0",
+						"field24": "MM",
+						"field68" :"USSD - Mini Statement Charges - Ref %@field37",
+						"field123": "USSD",
+						"field126": "380000",
+						"field100": "MINISTATE",
+						"field102" : "__ministatementDebitAccount"	
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"fullstatement-charges": {
+                    "request": {
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "150000",
+						"field4": "0",
+						"field24": "MM",
+						"field68" :"USSD - Full Statement Charges - Ref %@field37",
+						"field123": "USSD",
+						"field126": "370000",
+						"field100": "FULLSTATEMENT"	,
+						"field102" : "__fullstatementDebitAccount"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+                },
+                "funds-transfer-charges": {
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "150000",
+						"field4"  : "__fundsTransferAmount",
+						"field24" : "MM",
+						"field68" : "USSD - Funds Transfer Charges - Ref %@field37",
+						"field123": "USSD",
+						"field126": "400000",
+						"field100": "FT",
+						"field102" : "__walletAccount"	
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"funds-transfer-wallet-to-wallet-charges": {
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "150000",
+						"field4"  : "__fundsTransferAmount",
+						"field24" : "MM",
+						"field68" : "USSD - Funds Transfer Charges - Ref %@field37",
+						"field123": "USSD",
+						"field126": "400000",
+						"field100": "FT",
+						"field102" : "__walletAccount"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"funds-transfer-wallet-to-savings-charges": {
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "150000",
+						"field4"  : "__fundsTransferAmount",
+						"field24" : "MM",
+						"field68" : "USSD - Funds Transfer Charges - Ref %@field37",
+						"field123": "USSD",
+						"field126": "400000",
+						"field100": "FTWALLET2CORE",
+						"field102" : "__walletAccount"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"funds-transfer-savings-to-wallet-charges": {
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "150000",
+						"field4"  : "__fundsTransferAmount",
+						"field24" : "MM",
+						"field68" : "USSD - Funds Transfer Charges - Ref %@field37",
+						"field123": "USSD",
+						"field126": "400000",
+						"field100": "FTCORE2WALLET",
+						"field102" : "__walletAccount"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"send-to-mpesa-charges": {
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "150000",
+						"field4"  : "__withdrawalAmount",
+						"field24" : "MM",
+						"field68" : "USSD - Send to Mpesa Charges - Ref %@field37",
+						"field123": "USSD",
+						"field126": "430000",
+						"field100": "MPESAB2C",
+						"field102" : "__withdrawalDebitAccount"	
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"send-to-airtel-money-charges": {
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "150000",
+						"field4"  : "__withdrawalAmount",
+						"field24" : "MM",
+						"field68" : "USSD - Send to Airtel Money Charges - Ref %@field37",
+						"field123": "USSD",
+						"field126": "430000",
+						"field100": "AIRTELB2C",
+						"field102" : "__withdrawalDebitAccount"		
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"buy-airtime-charges": {
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "150000",
+						"field4"  : "__airtimeAmount",
+						"field24" : "MM",
+						"field68" : "USSD - Buy %@field71 Airtime Charges - Ref %@field37",
+						"field123": "USSD",
+						"field126": "420000",
+						"field100": "__airtimeProvider",
+						"field102" : "__airtimeDebitAccount"		
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+                },
+				"kplc-post-paid-bill-payment-charges": {
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "150000",
+						"field4"  : "0",
+						"field24" : "MM",
+						"field68" : "USSD - Billpayment Charges - Ref %@field37",
+						"field123": "USSD",
+						"field126": "500000",
+						"field100": "KPLCPOSTPAID",
+						"field102" : "__billPaymentDebitAccount"		
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"kplc-pre-paid-bill-payment-charges": {
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "150000",
+						"field4"  : "__billPaymentAmount",
+						"field24" : "MM",
+						"field68" : "USSD - Billpayment Charges - Ref %@field37",
+						"field123": "USSD",
+						"field126": "500000",
+						"field100": "KPLCPREPAID",
+						"field102" : "__billPaymentDebitAccount"	
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"nhif-bill-payment-charges": {
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "150000",
+						"field4"  : "0",
+						"field24" : "MM",
+						"field68" : "USSD - Billpayment Charges - Ref %@field37",
+						"field123": "USSD",
+						"field126": "500000",
+						"field100": "NHIF"	,
+						"field102" : "__billPaymentDebitAccount"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},				
+				"nairobi-water-bill-payment-charges": {
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "150000",
+						"field4"  : "__billPaymentAmount",
+						"field24" : "MM",
+						"field68" : "USSD - Billpayment Charges - Ref %@field37",
+						"field123": "USSD",
+						"field126": "500000",
+						"field100": "NAIROBIWATER",
+						"field102" : "__billPaymentDebitAccount"	
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"zuku-tv-bill-payment-charges": {
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "150000",
+						"field4"  : "__billPaymentAmount",
+						"field24" : "MM",
+						"field68" : "USSD - Billpayment Charges - Ref %@field37",
+						"field123": "USSD",
+						"field126": "500000",
+						"field100": "ZUKU_TV",
+						"field102" : "__billPaymentDebitAccount"	
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"zuku-internet-bill-payment-charges": {
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "150000",
+						"field4"  : "__billPaymentAmount",
+						"field24" : "MM",
+						"field68" : "USSD - Billpayment Charges - Ref %@field37",
+						"field123": "USSD",
+						"field126": "500000",
+						"field100": "ZUKU_INTERNET",
+						"field102" : "__billPaymentDebitAccount"	
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"gotv-bill-payment-charges": {
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "150000",
+						"field4"  : "0",
+						"field24" : "MM",
+						"field68" : "USSD - Billpayment Charges - Ref %@field37",
+						"field123": "USSD",
+						"field126": "500000",
+						"field100": "GOTV",
+						"field102" : "__billPaymentDebitAccount"	
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},				
+				"dstv-bill-payment-charges": {
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "150000",
+						"field4"  : "0",
+						"field24" : "MM",
+						"field68" : "USSD - Billpayment Charges - Ref %@field37",
+						"field123": "USSD",
+						"field126": "500000",
+						"field100": "DSTV",
+						"field102" : "__billPaymentDebitAccount"	
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},								
+				"landrates-bill-payment-charges": {
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "150000",
+						"field4"  : "0",
+						"field24" : "MM",
+						"field68" : "USSD - Billpayment Charges - Ref %@field37",
+						"field123": "USSD",
+						"field126": "500000",
+						"field100": "LANDRATES",
+						"field102" : "__billPaymentDebitAccount"	
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"itax-payment-charges": {
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "150000",
+						"field4"  : "__billPaymentAmount",
+						"field24" : "MM",
+						"field68" : "USSD - Billpayment Charges - Ref %@field37",
+						"field123": "USSD",
+						"field126": "500000",
+						"field100": "LANDRATES",
+						"field102" : "__billPaymentDebitAccount"	
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"school-fees-payment-charges": {
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "150000",
+						"field4"  : "__billPaymentAmount",
+						"field24" : "MM",
+						"field68" : "USSD - Billpayment Charges - Ref %@field37",
+						"field123": "USSD",
+						"field126": "500000",
+						"field100": "SCHOOLFEES",
+						"field102" : "__billPaymentDebitAccount"	
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"standing-orders-internal-charges" :{
+                    "request": {
+						"field0"   : "0200",
+						"field2"   : "__walletAccount",
+						"field3"   : "150000",
+						"field4"   : "__soAmount",
+						"field24"  : "MM",
+						"field68"  : "USSD - Standing Orders Internal Charges - Ref %@field37",
+						"field123" : "USSD",
+						"field126" : "921000",
+						"field100" : "STO_START",
+                        "field102" : "__soDebitAccount"	
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"standing-orders-external-charges" :{
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "150000",
+						"field4"  : "__soAmount",
+						"field24" : "MM",
+						"field68" : "USSD - Standing Orders External Charges - Ref %@field37",
+						"field123": "USSD",
+						"field126": "920000",
+						"field100": "STO_START",
+						"field102" : "__soDebitAccount"		
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+                },
+                "standing-orders-amend-charges" :{
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "150000",
+						"field4"  : "0",
+						"field24" : "BB",
+						"field68" : "USSD - Amend Standing Order Charges, ID - %@field102 - Ref %@field37",
+						"field126": "924000",
+						"field100": "STO_AMEND",
+						"field102": "__soDebitAccount",
+						"field123": "__soEndDate",
+                        "field124": "__soEndDate" 
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"account-linking-charges" :{
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "150000",
+						"field4"  : "0",
+						"field24" : "MM",
+						"field68" : "USSD - Account Linking Charges - Ref %@field37",
+						"field123": "USSD",
+						"field126": "170000",
+						"field100": "ACCOUNT_LINKING"	,
+						"field102" : "__walletAccount"	
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"core-account-opening-charges" :{
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "150000",
+						"field4"  : "__coreAccountAmount",
+						"field24" : "MM",
+						"field65": "__coreAccountType",
+						"field68" : "USSD - Core Account Opening charges for user %@field2 , a/c type %@field65 - Ref %@field37",
+						"field123": "USSD",
+						"field126": "123000",
+						"field100": "ACCOUNT_OPENING"	,
+						"field102" : "__coreAccountDebitAccount"						
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"request-cheque-book-charges" :{
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "150000",
+						"field4"  : "0",
+						"field24" : "MM",
+						"field68" : "USSD - %@field123 Leaf Cheque Book Charges for account %@field102 - Ref %@field37",
+						"field104": "145000",
+						"field126": "145000",
+						"field100": "CHQBOOKREQUEST"	,
+						"field102": "__requestChequeBookDebitAccount",
+						"field123": "__requestChequeBookLeaves",						
+						"field124": "__requestChequeBookQuantity"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"request-atm-card-charges" :{
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "150000",
+						"field4"  : "0",
+						"field24" : "MM",
+						"field68" : "USSD -ATM Card Request Charges for account %@field102 - Ref %@field37",
+						"field126": "145000",
+						"field100": "CARDREQUEST"	,
+						"field102": "__requestAtmAccount"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"replace-atm-card-charges" :{
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "150000",
+						"field4"  : "0",
+						"field24" : "MM",
+						"field68" : "USSD -ATM Card Replacement Charges for account %@field102 - Ref %@field37",
+						"field100": "REPLACE_ATM"	,
+						"field102": "__replaceAtmAccount",
+						"field104": "145000",
+						"field126": "145000"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"mpesa-c2b-charges" :{
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "150000",
+						"field4"  : "__depositAmount",
+						"field24" : "MM",
+						"field68" : "USSD Mpesa c2b Charges for account %@field102 - Ref %@field37",
+						"field126": "620000",
+						"field100": "MPESAC2B"	,
+						"field102": "__mwallet"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"rtgs-charges" :{
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "150000",
+						"field4"  : "__rtgsAmount",
+						"field24" : "MM",
+						"field68" : "USSD RTGS Charges for account %@field102 - Ref %@field37",
+						"field126": "403000",
+						"field100": "RTGS"	,
+                        "field102": "__rtgsDebitAccount",
+                        "field123": "USSD"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"eft-charges" :{
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "150000",
+						"field4"  : "__eftAmount",
+						"field24" : "MM",
+						"field68" : "USSD EFT Charges for account %@field102 - Ref %@field37",
+						"field100": "EFT"	,
+                        "field102": "__eftDebitAccount",
+                        "field104": "402000",
+                        "field123": "USSD",
+                        "field126": "402000"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"pesalink-to-bank-charges" : {
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "150000",
+						"field4"  : "__pesalinkAmount",
+						"field24" : "MM",
+						"field68" : "USSD Pesalink to Bank Charges for account %@field102 - Ref %@field37",
+						"field126": "401000",
+                        "field102": "__pesalinkDebitAccount",
+                        "field100": "PESALINK",
+                        "field104": "401000",
+                        "field123": "USSD"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+                },                
+				"pesalink-to-card-charges" : {
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "150000",
+						"field4"  : "__pesalinkAmount",
+                        "field24" : "BB",
+                        "field65": "__pesalinkBankCode",
+                        "field68" : "USSD Pesalink to Card Charges for account %@field102 - Ref %@field37",
+                        "field72": "__pesalinkReason",
+						"field126": "401000",
+                        "field102": "__pesalinkDebitAccount",
+                        "field103": "__pesalinkCreditAccount",
+                        "field100": "PESALINK",
+                        "field104": "401000",
+                        "field123": "USSD",
+                        "field101": "ACC"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+                },
+				"pesalink-to-phone-charges" : {
+                    "request": {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "150000",
+						"field4"  : "__pesalinkAmount",
+						"field24" : "MM",
+						"field68" : "USSD Pesalink to Phone Charges for account %@field102 - Ref %@field37",
+						"field126": "401000",
+                        "field102": "__pesalinkDebitAccount",
+                        "field100": "PESALINK",
+                        "field104": "401000",
+                        "field123": "USSD"
+
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"kplc-post-paid-bill-presentment": {
+					"request" :{
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "180000",
+						"field4": "0",
+						"field24": "MM",
+						"field32": "USSD",
+						"field100": "KPLCPOSTPAID",
+						"field101": "MeterNumber",
+						"field102": "__billPaymentCreditAccount",
+						"field68" :"USSD - %@field100 Presentment for account %@field102 - Ref %@field37"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+                },				
+				"nhif-bill-presentment": {
+                    "request": {
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "180000",
+						"field4": "55",
+						"field24": "MM",
+						"field32": "USSD",
+						"field65": "__nhifMemberType",
+						"field100": "NHIF",
+						"field101": "MeterNumber",
+						"field102": "__billPaymentCreditAccount",
+						"field68" :"USSD - %@field100 Presentment for account %@field102 - Ref %@field37"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"gotv-bill-presentment": {
+                    "request": {
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "180000",
+						"field4": "0",
+						"field24": "MM",
+						"field100": "GOTV",
+						"field101": "SmartcardNumber",
+						"field102": "__billPaymentCreditAccount",
+						"field68" :"USSD - %@field100 Presentment for account %@field102 - Ref %@field37"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"dstv-bill-presentment": {
+                    "request": {
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "180000",
+						"field4": "0",
+						"field24": "MM",
+						"field100": "DSTV",
+						"field101": "SmartcardNumber",
+						"field102": "__billPaymentCreditAccount",
+						"field68" :"USSD - %@field100 Presentment for account %@field102 - Ref %@field37"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				},
+				"landrates-bill-presentment": {
+                    "request": {
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "180000",
+						"field4": "0",
+						"field24": "MM",
+						"field32": "USSD",
+						"field100": "LANDRATES",
+						"field101": "MeterNumber",
+						"field102": "__billPaymentCreditAccount",
+						"field68" :"USSD - %@field100 Presentment for account %@field102 - Ref %@field37"
+                    },
+                    "response": {
+                        "status": {
+                            "field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }
+				}
+            }
+        }
+	}
+}

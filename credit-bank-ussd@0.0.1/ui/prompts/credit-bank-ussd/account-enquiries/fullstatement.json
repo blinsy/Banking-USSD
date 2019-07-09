@@ -1,0 +1,98 @@
+[
+   
+	{
+        "type"              : "select",
+        "name"              : "fullstatement-account-savings",
+		"save-as"           : "fullstatementDebitAccount",
+		"show-if"           : {
+			"param"       : "email",
+			"validates-to": "isEmail",
+			"on-error"    : "fullstatement-email-error"
+		},
+		"options"           : "mwallet-account+savings-accounts",
+		"options-error"     : "fullstatement-account-savings-options-error",
+        "error"             : "fullstatement-account-savings-error",
+        "previous"          : "account-enquiries-page",
+        "next"              : "fullstatement-period"
+	},
+	{
+        "type"              : "select",
+        "name"              : "fullstatement-period",
+        "save-as"           : "fullstatementPeriod",
+        "options"           : [
+			{
+				"label"                 : "Past Week",
+				"value"                 : "1 Week",
+				"option-value-transform": {
+					"name"                 : "moment-date-range",
+					"format"                : "DD/MMM/YYYY"
+				},
+				"jump-to"               : "fullstatement-confirm"
+			},
+			{
+				"label"                 : "Last Month",
+				"value"                 : "1 Month",
+				"option-value-transform": {
+					"name"                 : "moment-date-range",
+					"format"                : "DD/MMM/YYYY"
+				},
+				"jump-to"               : "fullstatement-confirm"
+			},
+			{
+				"label"                 : "Last 3 Months",
+				"value"                 : "3 Months",
+				"option-value-transform": {
+					"name"                 : "moment-date-range",
+					"format"                : "DD/MMM/YYYY"
+				},
+				"jump-to"               : "fullstatement-confirm"
+			},
+			{
+				"label"                 : "last 6 Months",
+				"value"                 : "6 Months",
+				"option-value-transform": {
+					"name"                 : "moment-date-range",
+					"format"                : "DD/MMM/YYYY"
+				},
+				"jump-to"               : "fullstatement-confirm"
+			},
+			{
+				"label"                 : "Past Year",
+				"option-value-transform": {
+					"name"                 : "moment-date-range",
+					"format"                : "DD/MMM/YYYY"
+				},
+				"value"                 : "1 Year",
+				"jump-to"               : "fullstatement-confirm"
+			}
+		],
+        "error"             : "fullstatement-period-error",
+        "previous"          : "fullstatement-account-savings",
+        "next"              : "fullstatement-confirm"
+	},
+    {
+        "type"              : "select",
+        "name"              : "fullstatement-confirm",
+		"options"           : "confirm-options",		
+		"charges"         : true,
+        "previous"          : "fullstatement-period",
+        "action"            : "transact",
+        "external-fetch"    : {
+            "route"         : "fullstatement",
+            "success"       : "api-success",
+            "error"         : "api-error"
+        },
+        "on-cancel"         : "client-page",
+        "error"             : "fullstatement-confirm-error"
+	},
+	{
+		"type"                    : "select",
+		"name"                    : "fullstatement-account-savings-options-error",
+		"options"                 : "yes-no-options",
+		"error"                   : "fullstatement-account-savings-options-error-error",
+		"action"                  : "navigate",
+		"on-accept"               : "client-page",
+		"on-cancel"               : "logout",
+		"previous"                : "fullstatement-account"
+	}
+]

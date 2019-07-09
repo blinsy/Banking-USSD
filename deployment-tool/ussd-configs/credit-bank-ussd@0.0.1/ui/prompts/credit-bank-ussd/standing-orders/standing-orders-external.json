@@ -1,0 +1,271 @@
+[
+    {
+        "type"         : "select",
+		"name"         : "so-b2o-bank-account",
+        "options"      : "so-bank-letters",
+        "error"        : "so-b2o-bank-account-error",
+		"previous"     : "create-standing-orders-page"
+	},
+	{
+        "type"         : "select",
+        "name"         : "so-a-b-bank-account",
+        "save-as"      : "soBankSortCode",
+		"options"      : "so-a-b-bank-accounts",		
+		"options-error": "so-a-b-bank-account-options-error",
+        "error"        : "so-a-b-bank-account-error",
+		"previous"     : "so-b2o-bank-account",
+		"next"         : "so-b2o-debit-account"
+	},
+	{
+        "type"         : "select",
+        "name"         : "so-c-bank-account",
+        "save-as"      : "soBankSortCode",
+		"options"      : "so-c-bank-accounts",		
+		"options-error": "so-c-bank-account-options-error",
+        "error"        : "so-c-bank-account-error",
+		"previous"     : "so-b2o-bank-account",
+		"next"         : "so-b2o-debit-account"
+	},
+	{
+        "type"         : "select",
+        "name"         : "so-d-e-bank-account",
+        "save-as"      : "soBankSortCode",
+		"options"      : "so-d-e-bank-accounts",		
+		"options-error": "so-d-e-bank-account-options-error",
+        "error"        : "so-d-e-bank-account-error",
+		"previous"     : "so-b2o-bank-account",
+		"next"         : "so-b2o-debit-account"
+	},
+	{
+        "type"         : "select",
+        "name"         : "so-f-bank-account",
+        "save-as"      : "soBankSortCode",
+		"options"      : "so-f-bank-accounts",		
+		"options-error": "so-f-bank-account-options-error",
+        "error"        : "so-f-bank-account-error",
+		"previous"     : "so-b2o-bank-account",
+		"next"         : "so-b2o-debit-account"
+	},
+	{
+        "type"         : "select",
+        "name"         : "so-g-h-bank-account",
+        "save-as"      : "soBankSortCode",
+		"options"      : "so-g-h-bank-accounts",		
+		"options-error": "so-g-h-bank-account-options-error",
+        "error"        : "so-g-h-bank-account-error",
+		"previous"     : "so-b2o-bank-account",
+		"next"         : "so-b2o-debit-account"
+	},
+	{
+        "type"         : "select",
+        "name"         : "so-i-m-bank-account",
+        "save-as"      : "soBankSortCode",
+		"options"      : "so-i-m-bank-accounts",		
+		"options-error": "so-i-m-bank-account-options-error",
+        "error"        : "so-i-m-bank-account-error",
+		"previous"     : "so-b2o-bank-account",
+		"next"         : "so-b2o-debit-account"
+	},
+	{
+        "type"         : "select",
+        "name"         : "so-n-s-bank-account",
+        "save-as"      : "soBankSortCode",
+		"options"      : "so-n-s-bank-accounts",		
+		"options-error": "so-n-s-bank-account-options-error",
+        "error"        : "so-n-s-bank-account-error",
+		"previous"     : "so-b2o-bank-account",
+		"next"         : "so-b2o-debit-account"
+	},
+	{
+        "type"         : "select",
+        "name"         : "so-t-z-bank-account",
+        "save-as"      : "soBankSortCode",
+		"options"      : "so-t-z-bank-accounts",		
+		"options-error": "so-t-z-bank-account-options-error",
+        "error"        : "so-t-z-bank-account-error",
+		"previous"     : "so-b2o-bank-account",
+		"next"         : "so-b2o-debit-account"
+	},	
+	{
+        "type"            : "select",
+        "name"            : "so-b2o-debit-account",
+        "save-as"         : "soDebitAccount",
+        "options"         : "mwallet-account+savings-accounts",
+		"options-error"   : "so-b2o-debit-account-options-error",
+        "error"           : "so-b2o-debit-account-error",
+        "previous"        : "so-b2o-bank-account",
+        "next"            : "so-b2o-credit-account"
+	},
+	{
+        "type"          : "input",
+        "name"          : "so-b2o-credit-account",
+        "save-as"       : "soCreditAccount",
+        "validation"    : [
+            {
+                "name"     : "isNumber",
+                "type"     : "joi"
+			},
+			{
+                "name"     : "matchesLength",
+				"type"     : "joi",
+				"arguments": "length=13"
+            }
+        ],
+        "error"         : "so-b2o-credit-account-error",
+        "previous"      : "so-b2o-debit-account",
+        "next"          : "so-b2o-amount"
+	},
+	{
+        "type"          : "input",
+        "name"          : "so-b2o-amount",
+        "save-as"       : "soAmount",
+        "validation"    : [
+			{
+                "name"     : "isAmount",
+				"type"     : "joi",
+				"arguments": "min=1"
+            }
+        ],
+        "error"         : "so-b2o-amount-error",
+        "previous"      : "so-b2o-credit-account",
+        "next"          : "so-b2o-start-date"
+	},
+
+	{
+        "type"          : "input",
+        "name"          : "so-b2o-start-date",
+		"save-as"       : "soStartDate",
+        "validation"    : [
+            {
+                "name"  : "isValidDate",
+				"type"  : "custom",
+				"arguments" :"format=MM-DD"
+            }
+		],
+		"format-as"     : "to-number",
+        "error"         : "so-b2o-start-date-error",
+        "previous"      : "so-b2o-amount",
+        "next"          : "so-b2o-end-date"
+	},
+	{
+        "type"          : "input",
+        "name"          : "so-b2o-end-date",
+		"save-as"       : "soEndDate",
+        "validation"    : [
+            {
+                "name"  : "isValidDateRange",
+				"type"  : "custom",
+				"arguments" :"format=YYYY-MM-DD,startDate=soStartDate,startDateFormat=MMDD"
+            }
+		],
+		"format-as"     : "to-number",
+        "error"         : "so-b2o-end-date-error",
+        "previous"      : "so-b2o-start-date",
+        "next"          : "so-b2o-frequency"
+	},
+	
+	{
+        "type"            : "select",
+        "name"            : "so-b2o-frequency",
+        "save-as"         : "soFrequency",
+        "options"         : [
+			{
+				"label" :"Daily",
+				"value" : "D"
+			},
+			{
+				"label" :"Weekly",
+				"value" : "W"
+			},
+			{
+				"label" :"Monthly",
+				"value" : "M"
+			},
+			{
+				"label" :"Yearly",
+				"value" : "Y"
+			}
+		],
+        "error"           : "so-b2o-frequency-error",
+        "previous"        : "so-b2o-date",
+        "next"            : "so-b2o-beneficiary-name"
+	},
+
+	{
+        "type"          : "input",
+        "name"          : "so-b2o-beneficiary-name",
+		"save-as"       : "soBeneficiaryName",
+		"format-as"        : "createSpaces",
+        "validation"    : [
+            {
+                "name"  : "isStatement",
+                "type"  : "custom"
+            }
+		],
+        "error"         : "so-b2o-beneficiary-name-error",
+        "previous"      : "so-b2o-frequency",
+        "next"          : "so-b2o-member-number"
+	},
+	{
+        "type"          : "input",
+        "name"          : "so-b2o-member-number",
+        "save-as"       : "soMemberNumber",
+        "validation"    : [
+            {
+                "name"     : "isNumber",
+                "type"     : "joi"
+            }
+		],
+        "error"         : "so-b2o-member-number-error",
+        "previous"      : "so-b2o-beneficiary-name",
+        "next"          : "so-b2o-instruction"
+	},
+
+	{
+        "type"          : "input",
+        "name"          : "so-b2o-instruction",
+		"save-as"       : "soInstruction",
+		"format-as"        : "createSpaces",
+        "validation"    : [
+            {
+                "name"  : "isStatement",
+                "type"  : "custom"
+            }
+		],
+        "error"         : "so-b2o-instruction-error",
+        "previous"      : "so-b2o-member-number",
+        "next"          : "so-b2o-confirm"
+	},
+    {
+        "type"            : "select",
+        "name"            : "so-b2o-confirm",
+		"options"         : "confirm-options",
+		"charges"         : true,
+        "previous"        : "so-b2o-instruction",
+        "action"          : "transact",
+        "external-fetch"  : {
+            "route"       : "standing-orders-external",
+            "success"     : "api-success",
+            "error"       : "api-error"
+        },
+        "on-cancel"       : "client-page",
+        "error"           : "so-b2o-confirm-error"
+	},
+
+
+
+
+
+
+
+	{
+		"type"      : "select",
+		"name"      : "so-b2o-debit-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "so-b2o-debit-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "client-page"
+	}
+]

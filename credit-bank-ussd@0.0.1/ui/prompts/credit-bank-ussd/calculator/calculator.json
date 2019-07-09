@@ -1,0 +1,93 @@
+[
+	{
+		"type"       : "select",
+		"name"       : "calculator-type",
+		"options"    : [
+			{
+				"label"    : "Loan Calculator",
+				"jump-to"  : "loan-amount"
+			}
+		],
+		"error"      : "calculator-type-error",
+		"previous"   : "settings-page"
+	},
+	{
+		"type"       : "input",
+		"name"       : "investment-amount",
+		"validation" : [
+			{
+				"name"     : "isAmount",
+				"type"     : "joi",	
+				"arguments": "min = 200"
+			}
+		],
+		"error"      : "investment-amount-error",
+		"previous"   : "calculator-type",
+		"next"       : "investment-interest"
+	},
+	{
+		"type"       : "input",
+		"name"       : "investment-interest",
+		"format-as"  : "investment-calculation",
+		"save-as"    : "investment-details",
+		"validation" : [
+			{
+				"name"     : "isNumber",
+				"type"     : "joi"
+			}
+		],
+		"error"      : "investment-interest-error",
+		"previous"   : "investment-amount",
+		"next"       : "investment-confirm"
+	},
+	{
+		"type"       : "select",
+		"name"       : "investment-confirm",
+		"options"    : "yes-no-options",
+		"action"     : "navigate",
+		"on-accept"  : "client-page",
+		"on-cancel"  : "logout",
+		"error"      : "investment-confirm-error",
+		"previous"   : "investment-interest"
+	},
+	{
+		"type"       : "input",
+		"name"       : "loan-amount",
+		"save-as"    : "principal",
+		"validation" : [
+			{
+				"name"     : "isAmount",
+				"type"     : "joi",	
+				"arguments": "min = 200"
+			}
+		],
+		"error"      : "loan-amount-error",
+		"previous"   : "calculator-type",
+		"next"       : "loan-period"
+	},
+	{
+		"type"       : "input",
+		"name"       : "loan-period",
+		"format-as"  : "loan-calculation",
+		"save-as"    : "loan-details",
+		"validation" : [
+			{
+				"name"     : "isNumber",
+				"type"     : "joi"
+			}
+		],
+		"error"      : "loan-period-error",
+		"previous"   : "loan-amount",
+		"next"       : "loan-confirm"
+	},
+	{
+		"type"       : "select",
+		"name"       : "loan-confirm",
+		"options"    : "yes-no-options",
+		"action"     : "navigate",
+		"on-accept"  : "client-page",
+		"on-cancel"  : "logout",
+		"error"      : "loan-confirm-error",
+		"previous"   : "loan-period"
+	}
+]

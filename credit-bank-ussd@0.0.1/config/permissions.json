@@ -1,0 +1,606 @@
+{
+    "production"     : [
+        {
+            "name"   : "account-enquiries-page",
+            "enabled": true
+        },
+        {
+            "name"   : "funds-transfer-page",
+            "enabled": true
+        },
+        {
+            "name"   : "buy-airtime",
+            "enabled": true
+        },
+        {
+            "name"   : "bill-payment-page",
+            "enabled": true
+        },
+        {
+            "name"   : "customer-requests-page",
+            "enabled": true
+        },
+        {
+            "name"   : "withdrawal-page",
+            "enabled": true
+        },
+        {
+            "name"   : "mpesa-c2b",
+            "enabled": true
+        },
+        {
+            "name"   : "loans-page",
+            "enabled": false
+        },
+        {
+            "name"   : "lock-savings-page",
+            "enabled": true
+        },
+        {
+            "name"   : "settings-page",
+            "enabled": true
+        },
+        {
+            "name"   : "login",
+            "enabled": true
+        },
+        {
+            "name"   : "login-pin-change",
+            "enabled": true
+        },
+        {
+            "name"   : "terms",
+            "enabled": true
+        },
+        {
+            "name"   : "registration",
+            "enabled": true
+        },
+        {
+            "name"   : "language-change",
+            "enabled": false
+        },
+        {
+            "name"   : "pin-change",
+            "enabled": true
+        },
+        {
+            "name"   : "email-change",
+            "enabled": false
+        },
+        {
+            "name"   : "contact-us",
+            "enabled": true
+        },
+        {
+            "name"   : "tell-a-friend",
+            "enabled": true
+        },
+        {
+            "name"   : "balance",
+            "enabled": true
+        },
+        {
+            "name"   : "ministatement",
+            "enabled": true
+        },
+        {
+            "name"   : "fullstatement",
+            "enabled": true
+        },
+        {
+            "name"   : "request-atm",
+            "enabled": true
+        },
+        {
+            "name"   : "replace-atm",
+            "enabled": true
+        },
+        {
+            "name"   : "stop-atm",
+            "enabled": false
+        },
+        {
+            "name"   : "kplc-postpaid",
+            "enabled": true
+        },
+        {
+            "name"   : "kplc-prepaid",
+            "enabled": true
+        },
+        {
+            "name"   : "dstv",
+            "enabled": true
+        },
+        {
+            "name"   : "nhif",
+            "enabled": true
+        },
+        {
+            "name"   : "landrates",
+            "enabled": true
+        },
+        {
+            "name"   : "nairobiwater",
+            "enabled": true
+        },
+        {
+            "name"   : "gotv",
+            "enabled": true
+        },
+        {
+            "name"   : "zuku-tv",
+            "enabled": true
+        },
+        {
+            "name"   : "zuku-internet",
+            "enabled": true
+        },
+        {
+            "name"   : "school-fees",
+            "enabled": true
+        },
+        {
+            "name"   : "request-cheque-book",
+            "enabled": true
+        },
+        {
+            "name"   : "stop-cheque",
+            "enabled": true
+        },
+        {
+            "name"   : "standing-orders-internal",
+            "enabled": true
+        },
+        {
+            "name"   : "standing-orders-external",
+            "enabled": true
+        },
+        {
+            "name"   : "standing-orders-page",
+            "enabled": true
+        },
+        {
+            "name"   : "cheques-page",
+            "enabled": true
+        },
+        {
+            "name"   : "atm-cards-page",
+            "enabled": true
+        },
+        {
+            "name"   : "account-linking",
+            "enabled": true
+        },
+        {
+            "name"   : "wallet-account-opening",
+            "enabled": true
+        },
+        {
+            "name"   : "core-account-opening",
+            "enabled": true
+        },
+        {
+            "name"   : "view-accounts",
+            "enabled": true
+        },
+        {
+            "name"   : "loan-balance",
+            "enabled": true
+        },
+        {
+            "name"   : "loan-statement",
+            "enabled": true
+        },
+        {
+            "name"   : "loan-limit",
+            "enabled": true
+        },
+        {
+            "name"   : "funds-transfer-savings-to-savings",
+            "enabled": true
+        },
+        {
+            "name"   : "funds-transfer-savings-to-wallet",
+            "enabled": true
+        },
+        {
+            "name"   : "funds-transfer-wallet-to-savings",
+            "enabled": true
+        },
+        {
+            "name"   : "funds-transfer-wallet-to-wallet",
+            "enabled": true
+        },
+        {
+            "name"   : "loan-enquiries-page",
+            "enabled": true
+        },
+        {
+            "name"   : "loan-application",
+            "enabled": true
+        },
+        {
+            "name"   : "loan-repayment",
+            "enabled": true
+        },
+        {
+            "name"   : "funds-transfer-own-accounts",
+            "enabled": true
+        },
+        {
+            "name"   : "funds-transfer-other-accounts-page",
+            "enabled": true
+        },
+        {
+            "name"   : "pesalink-page",
+            "enabled": true
+        },
+        {
+            "name"   : "rtgs",
+            "enabled": true
+        },
+        {
+            "name"   : "eft",
+            "enabled": true
+        },
+        {
+            "name"   : "lock-savings-open-account",
+            "enabled": true
+        },
+        {
+            "name"   : "lock-savings-save",
+            "enabled": true
+        },
+        {
+            "name"   : "lock-savings-unlock",
+            "enabled": true
+        },
+        {
+            "name"   : "lock-savings-ministatement",
+            "enabled": true
+        },
+        {
+            "name"   : "pesalink-to-phone",
+            "enabled": true
+        },
+        {
+            "name"   : "pesalink-to-bank",
+            "enabled": true
+        },
+        {
+            "name"   : "pesalink-to-card",
+            "enabled": true
+        },
+        {
+            "name"   : "pesalink-link-account",
+            "enabled": true
+        },
+        {
+            "name"   : "pesalink-link-primary",
+            "enabled": true
+        },
+        {
+            "name"   : "create-standing-orders-page",
+            "enabled": true
+        },
+        {
+            "name"   : "standing-orders-amend",
+            "enabled": true
+        },
+        {
+            "name"   : "standing-orders-cancel",
+            "enabled": true
+        },
+        {
+            "name"   : "withdrawal-mpesa-b2c",
+            "enabled": true
+        },
+        {
+            "name"   : "withdrawal-airtel-b2c",
+            "enabled": true
+        }
+    ],
+    "beta-sandbox"   : [
+        {
+            "name"   : "account-enquiries-page",
+            "enabled": true
+        },
+        {
+            "name"   : "funds-transfer-page",
+            "enabled": true
+        },
+        {
+            "name"   : "buy-airtime",
+            "enabled": true
+        },
+        {
+            "name"   : "bill-payment-page",
+            "enabled": true
+        },
+        {
+            "name"   : "customer-requests-page",
+            "enabled": true
+        },
+        {
+            "name"   : "withdrawal-page",
+            "enabled": true
+        },
+        {
+            "name"   : "mpesa-c2b",
+            "enabled": true
+        },
+        {
+            "name"   : "loans-page",
+            "enabled": false
+        },
+        {
+            "name"   : "lock-savings-page",
+            "enabled": true
+        },
+        {
+            "name"   : "settings-page",
+            "enabled": true
+        },
+        {
+            "name"   : "login",
+            "enabled": true
+        },
+        {
+            "name"   : "login-pin-change",
+            "enabled": true
+        },
+        {
+            "name"   : "terms",
+            "enabled": true
+        },
+        {
+            "name"   : "registration",
+            "enabled": true
+        },
+        {
+            "name"   : "language-change",
+            "enabled": true
+        },
+        {
+            "name"   : "pin-change",
+            "enabled": true
+        },
+        {
+            "name"   : "email-change",
+            "enabled": true
+        },
+        {
+            "name"   : "contact-us",
+            "enabled": true
+        },
+        {
+            "name"   : "tell-a-friend",
+            "enabled": true
+        },
+        {
+            "name"   : "balance",
+            "enabled": true
+        },
+        {
+            "name"   : "ministatement",
+            "enabled": true
+        },
+        {
+            "name"   : "fullstatement",
+            "enabled": true
+        },
+        {
+            "name"   : "request-atm",
+            "enabled": true
+        },
+        {
+            "name"   : "replace-atm",
+            "enabled": true
+        },
+        {
+            "name"   : "stop-atm",
+            "enabled": true
+        },
+        {
+            "name"   : "kplc-postpaid",
+            "enabled": true
+        },
+        {
+            "name"   : "kplc-prepaid",
+            "enabled": true
+        },
+        {
+            "name"   : "dstv",
+            "enabled": true
+        },
+        {
+            "name"   : "nhif",
+            "enabled": true
+        },
+        {
+            "name"   : "landrates",
+            "enabled": true
+        },
+        {
+            "name"   : "nairobiwater",
+            "enabled": true
+        },
+        {
+            "name"   : "gotv",
+            "enabled": true
+        },
+        {
+            "name"   : "zuku-tv",
+            "enabled": true
+        },
+        {
+            "name"   : "zuku-internet",
+            "enabled": true
+        },
+        {
+            "name"   : "school-fees",
+            "enabled": true
+        },
+        {
+            "name"   : "request-cheque-book",
+            "enabled": true
+        },
+        {
+            "name"   : "stop-cheque",
+            "enabled": true
+        },
+        {
+            "name"   : "standing-orders-internal",
+            "enabled": true
+        },
+        {
+            "name"   : "standing-orders-external",
+            "enabled": true
+        },
+        {
+            "name"   : "standing-orders-page",
+            "enabled": true
+        },
+        {
+            "name"   : "cheques-page",
+            "enabled": true
+        },
+        {
+            "name"   : "atm-cards-page",
+            "enabled": true
+        },
+        {
+            "name"   : "account-linking",
+            "enabled": true
+        },
+        {
+            "name"   : "wallet-account-opening",
+            "enabled": true
+        },
+        {
+            "name"   : "core-account-opening",
+            "enabled": true
+        },
+        {
+            "name"   : "view-accounts",
+            "enabled": true
+        },
+        {
+            "name"   : "loan-balance",
+            "enabled": true
+        },
+        {
+            "name"   : "loan-statement",
+            "enabled": true
+        },
+        {
+            "name"   : "loan-limit",
+            "enabled": true
+        },
+        {
+            "name"   : "funds-transfer-savings-to-savings",
+            "enabled": true
+        },
+        {
+            "name"   : "funds-transfer-savings-to-wallet",
+            "enabled": true
+        },
+        {
+            "name"   : "funds-transfer-wallet-to-savings",
+            "enabled": true
+        },
+        {
+            "name"   : "funds-transfer-wallet-to-wallet",
+            "enabled": true
+        },
+        {
+            "name"   : "loan-enquiries-page",
+            "enabled": true
+        },
+        {
+            "name"   : "loan-application",
+            "enabled": true
+        },
+        {
+            "name"   : "loan-repayment",
+            "enabled": true
+        },
+        {
+            "name"   : "funds-transfer-own-accounts",
+            "enabled": true
+        },
+        {
+            "name"   : "funds-transfer-other-accounts-page",
+            "enabled": true
+        },
+        {
+            "name"   : "pesalink-page",
+            "enabled": true
+        },
+        {
+            "name"   : "rtgs",
+            "enabled": true
+        },
+        {
+            "name"   : "eft",
+            "enabled": true
+        },
+        {
+            "name"   : "lock-savings-open-account",
+            "enabled": true
+        },
+        {
+            "name"   : "lock-savings-save",
+            "enabled": true
+        },
+        {
+            "name"   : "lock-savings-ministatement",
+            "enabled": true
+        },
+        {
+            "name"   : "lock-savings-unlock",
+            "enabled": true
+        },
+        {
+            "name"   : "pesalink-to-phone",
+            "enabled": true
+        },
+        {
+            "name"   : "pesalink-to-bank",
+            "enabled": true
+        },
+        {
+            "name"   : "pesalink-to-card",
+            "enabled": true
+        },
+        {
+            "name"   : "pesalink-link-account",
+            "enabled": true
+        },
+        {
+            "name"   : "pesalink-link-primary",
+            "enabled": true
+        },
+        {
+            "name"   : "create-standing-orders-page",
+            "enabled": true
+        },
+        {
+            "name"   : "standing-orders-amend",
+            "enabled": true
+        },
+        {
+            "name"   : "standing-orders-cancel",
+            "enabled": true
+        },
+        {
+            "name"   : "withdrawal-mpesa-b2c",
+            "enabled": true
+        },
+        {
+            "name"   : "withdrawal-airtel-b2c",
+            "enabled": true
+        }
+    ]
+}

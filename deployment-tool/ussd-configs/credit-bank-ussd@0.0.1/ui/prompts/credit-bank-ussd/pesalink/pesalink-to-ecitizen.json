@@ -1,0 +1,100 @@
+[
+	{
+        "type"          : "select",
+        "name"          : "pesalink-to-ecitizen-debit-account",
+        "save-as"       : "debitAccount",
+		"options"       : "savings-accounts",		
+		"options-error" : "pesalink-to-ecitizen-debit-account-options-error",
+        "error"         : "pesalink-to-ecitizen-debit-account-error",
+		"previous"      : "pesalink-page",
+		"action"        : "update-parameters",		
+        "external-fetch": {
+            "route"              : "pesalink-to-ecitizen-lookup",
+            "success"            : "pesalink-to-ecitizen-lookup-banks",
+			"error"              : "pesalink-to-ecitizen-lookup-error",
+			"cache"              : true,
+			"cache-path"         : "global-constants",
+			"cache-parameters"   : [
+				{
+					"path"       : "data",
+					"save-as"    : "ROOT",
+					"format-as"  : "pesalink-phone-lookup"	
+				}
+			]
+        }
+	},
+
+	{
+        "type"          : "select",
+        "name"          : "pesalink-to-ecitizen-lookup-banks",
+        "save-as"       : "sortcode",
+		"options"       : "pesalink-ecitizen-lookup-result",		
+		"options-error" : "pesalink-to-ecitizen-lookup-banks-options-error",
+        "error"         : "pesalink-to-ecitizen-lookup-banks-error",
+		"previous"      : "pesalink-to-ecitizen-debit-account",
+		"next"          : "pesalink-to-ecitizen-amount"
+	},
+
+	{
+        "type"          : "input",
+        "name"          : "pesalink-to-ecitizen-amount",
+        "save-as"       : "amount",
+        "validation"    : [
+            {
+				"name"     : "isAmount",
+				"type"     : "joi",
+				"arguments": "min = funds-transfer-minimum-%@working-currency"
+            }
+        ],
+        "error"         : "pesalink-to-ecitizen-amount-error",
+        "previous"      : "pesalink-to-ecitizen-credit-account",
+		"next"          : "pesalink-to-ecitizen-confirm"
+	},
+
+    {
+        "type"          : "select",
+        "name"          : "pesalink-to-ecitizen-confirm",
+		"options"       : "confirm-options",
+		"charges"       : true,
+        "error"         : "pesalink-to-ecitizen-confirm-error",
+        "action"        : "transact",
+        "external-fetch": {
+            "route"     : "pesalink-to-ecitizen",
+            "success"   : "api-success",
+            "error"     : "api-error"
+        },
+        "on-cancel"     : "client-page",
+        "previous"      : "pesalink-to-ecitizen-confirm"
+    },
+	{
+		"type"          : "select",
+		"name"          : "pesalink-to-ecitizen-debit-account-options-error",
+		"options"       : "yes-no-options",
+		"error"         : "pesalink-to-ecitizen-debit-account-options-error-error",
+		"action"        : "navigate",
+		"on-accept"     : "client-page",
+		"on-cancel"     : "logout",
+		"previous"      : "pesalink-page"
+	},
+	{
+		"type"          : "select",
+		"name"          : "pesalink-to-ecitizen-lookup-error",
+		"options"       : "yes-no-options",
+		"error"         : "pesalink-to-ecitizen-lookup-error-error",
+		"action"        : "navigate",
+		"on-accept"     : "client-page",
+		"on-cancel"     : "logout",
+		"previous"      : "pesalink-to-ecitizen-debit-account"
+	},
+	{
+		"type"          : "select",
+		"name"          : "pesalink-to-ecitizen-lookup-banks-options-error",
+		"options"       : "yes-no-options",
+		"error"         : "pesalink-to-ecitizen-lookup-banks-options-error-error",
+		"action"        : "navigate",
+		"on-accept"     : "client-page",
+		"on-cancel"     : "logout",
+		"previous"      : "pesalink-to-ecitizen-debit-account"
+	}
+	
+]

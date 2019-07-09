@@ -1,0 +1,9 @@
+{
+    "type"      : "select",
+    "name"      : "contact-us",
+    "options"   : "yes-no-options",
+    "error"     : "contact-us-error",
+    "action"    : "navigate",
+    "on-accept" : "client-page",
+    "on-cancel" : "logout"    
+}

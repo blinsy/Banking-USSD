@@ -1,0 +1,33 @@
+{
+    "type"         		     : "input",
+	"name"         		        : "transaction-login",
+    "next"         		     : "client-page",
+    "validation"   		     : [            
+        {
+            "name"        : "isCorrectPin",
+            "type"        : "custom"
+        }
+    ],    
+    "error"                  : "transaction-login",
+	"transform-function"     : "hash_pin",
+	"transaction-auth"  	 : { 
+		"success"               : "client-page",
+		"success-handler"       : {
+			"handler"              : "reset_pin_trials",
+			"argument"             : "transaction-pin-trials-remaining",
+			"save-as"              : "transaction-pin-trials-remaining"
+		},	
+		"error"                 : "transaction-login",
+		"error-handler"         : {
+			"handler"              : "decrement_pin_trials",
+			"argument"             : "transaction-pin-trials-remaining",
+			"save-as"              : "transaction-pin-trials-remaining",
+			"threshold"            : 0,
+			"redirect-on-threshold": "account-blocked",
+			"threshold-handler"    : "block-account"
+		},    
+		"cache"                 : true   
+	},
+	"on-cancel"      	     : "logout",
+	"previous"               : "login-page"  
+}		

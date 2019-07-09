@@ -1,0 +1,15 @@
+{
+    "type"        : "input",
+    "name"        : "inapp-login",
+    "validation"  : [
+        {
+            "name": "isValidPin",
+            "type": "custom"
+        },
+        {
+            "name": "isCorrectPin",
+            "type": "custom"
+        }
+    ],
+    "errors"      : ["invalid-inapp-pin-error","wrong-inapp-pin-error"]    
+}

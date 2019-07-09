@@ -1,0 +1,26 @@
+{
+    "type"                      : "select",
+    "name"                      : "mpesa-airtel-page",
+    "options"                   : [
+		{
+      "name"        : "withdrawal-page",
+      "label"       : "withdrawal-page-label",
+      "enabled"     : true,
+      "authenticate": false
+		},
+		{
+      "name"        : "mpesa-c2b",
+      "label"       : "mpesa-c2b-label",
+      "enabled"     : true,
+      "authenticate": false
+		},
+		{
+      "name"        : "mpesa-b2b",
+      "label"       : "mpesa-b2b-label",
+      "enabled"     : true,
+      "authenticate": false
+		}
+    ],
+    "error"                     : "mpesa-airtel-page-error",
+    "previous"                  : "client-page"
+}

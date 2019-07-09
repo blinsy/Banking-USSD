@@ -1,0 +1,121 @@
+[
+	{
+        "type"           : "select",
+        "name"           : "dstv-debit-account",
+        "save-as"        : "billPaymentDebitAccount",
+		"options"        : "mwallet-account+savings-accounts",		
+		"options-error"  : "dstv-debit-account-options-error",
+        "error"          : "dstv-debit-account-error",
+		"previous"       : "bill-payment-page",
+		"next"           : "dstv-credit-account"
+    },
+    {
+        "type"           : "input",
+        "name"           : "dstv-credit-account",
+        "save-as"        : "billPaymentCreditAccount",
+        "validation"     : [
+            {
+                "name"   : "isNumber",
+                "type"   : "joi"
+            }
+        ],
+        "format-as"      : "",
+        "error"          : "dstv-credit-account-error",
+        "previous"       : "bill-payment-page",
+        "next"           : "dstv-confirm",
+		"action"           : "update-parameters",
+		"external-fetch"   : { 
+			"route"                 : "dstv-bill-presentment",
+			"success"               : "dstv-confirm",	
+			"error"                 : "dstv-presentment-error",
+			"cache"                 : true,
+			"cache-path"            : "global-request-details",
+			"cache-parameters"      : [
+				{
+					"path" :"field4",
+					"save-as" :"billPaymentAmount"
+	
+				},
+				{
+					"path" :"field48",
+					"save-as" :"dueDate"
+	
+				},
+				{
+					"path" :"field49",
+					"save-as" :"customerName"
+	
+				}
+			],
+			"parameter-checks" : {
+				"billPaymentAmount" :{
+					"is-less-than": "0",
+					"redirect-to" : "dstv-presentment-amount-error"
+				}
+			}        
+		}
+	},
+	
+    {
+        "type"           : "input",
+        "name"           : "dstv-amount",
+        "save-as"        : "billPaymentAmount",
+        "validation"     : [
+            {
+                "name"   : "isAmount",
+				"type"   : "joi",
+				"arguments":"min=200"
+            }
+        ],
+        "format-as"      : "",
+        "error"          : "dstv-amount-error",
+        "previous"       : "dstv-debit-account",
+        "next"           : "dstv-confirm"
+    },    
+    {
+        "type"           : "select",
+        "name"           : "dstv-confirm",
+		"options"        : "confirm-options",
+		"charges"         : true,
+        "error"          : "dstv-confirm-error",
+        "action"         : "transact",
+        "external-fetch" : {
+            "route"      : "dstv-bill-payment",
+            "success"    : "api-success",
+            "error"      : "api-error"
+        },
+        "on-cancel"      : "client-page",
+        "previous"       : "dstv-credit-account"
+    },
+	
+
+
+	{
+		"type"      : "select",
+		"name"      : "dstv-debit-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "dstv-debit-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "dstv-credit-account"
+	},
+	{
+		"type"      : "select",
+		"name"      : "dstv-presentment-error",
+		"options"   : "yes-no-options",
+		"error"     : "dstv-presentment-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout"
+	},
+	{
+		"type"      : "select",
+		"name"      : "dstv-presentment-amount-error",
+		"options"   : "yes-no-options",
+		"error"     : "dstv-presentment-amount-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout"
+	}
+]

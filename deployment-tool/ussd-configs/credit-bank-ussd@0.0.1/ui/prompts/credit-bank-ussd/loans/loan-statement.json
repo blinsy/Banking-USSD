@@ -1,0 +1,80 @@
+[
+	{
+        "type"            : "select",
+        "name"            : "loan-statement-account",
+        "save-as"         : "account",
+		"options"         : [
+            {
+                "label":"CB Micro Loan",
+                "value": "CB Micro Loan"
+            }
+        ],
+		"options-error"   : "loan-statement-account-options-error",
+        "error"           : "loan-statement-account-error",
+        "previous"        : "loan-enquiries-page",
+        "next"            : "loan-statement-period"
+	},
+
+	{
+        "type"            : "select",
+        "name"            : "loan-statement-period",
+        "save-as"         : "period",
+        "options"         : [
+			{
+				"label"  : "Past Week",
+				"value"  : "1 Week",
+				"jump-to": "loan-statement-confirm"
+			},
+			{
+				"label"  : "Last Month",
+				"value"  : "1 Month",
+				"jump-to": "loan-statement-confirm"
+			},
+			{
+				"label"  : "Last 3 Months",
+				"value"  : "3 Months",
+				"jump-to": "loan-statement-confirm"
+			},
+			{
+				"label"  : "last 6 Months",
+				"value"  : "6 Months",
+				"jump-to": "loan-statement-confirm"
+			},
+			{
+				"label"  : "Past Year",
+				"value"  : "1 Year",
+				"jump-to": "loan-statement-confirm"
+			}
+		],
+        "error"           : "loan-statement-period-error",
+        "previous"        : "loan-statement-account",
+        "next"            : "loan-statement-confirm"
+	},
+    {
+        "type"            : "select",
+        "name"            : "loan-statement-confirm",
+        "options"         : "confirm-options",
+        "previous"        : "loan-statement-period",
+        "action"          : "transact",
+        "external-fetch"  : {
+            "api"         : "mock",
+            "route"       : "loan-statement",
+            "success"     : "api-success",
+            "error"       : "api-error"
+        },
+        "on-cancel"       : "client-page",
+        "error"           : "loan-statement-confirm-error"
+	},
+	
+
+	{
+		"type"      : "select",
+		"name"      : "loan-statement-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "loan-statement-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "loan-enquiries-page"
+	}
+]

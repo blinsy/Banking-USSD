@@ -1,0 +1,97 @@
+[
+	{
+		"type"             : "select",
+		"name"             : "lock-savings-open-debit-account",
+		"save-as"          : "lockSavingsOpenDebitAccount",
+		"options"          : "mwallet-account+savings-accounts",		
+		"options-error"    : "lock-savings-open-debit-account-options-error",
+		"previous"         : "lock-savings-page",
+		"next"             : "lock-savings-open-amount",
+		"error"            : "lock-savings-open-debit-account-error"
+	},
+	{
+		"type"             : "input",
+		"name"             : "lock-savings-open-amount",
+		"save-as"          : "lockSavingsOpenAmount",
+		"validation"       : [
+			{
+				"name"     : "isAmount",
+				"type"     : "joi",
+				"arguments": "min=5000"
+			}
+		],
+		"previous"         : "lock-savings-open-debit-account",
+		"next"             : "lock-savings-open-period",
+		"error"            : "lock-savings-open-amount-error"
+	},
+	{
+		"type"             : "select",
+		"name"             : "lock-savings-open-period",
+		"save-as"          : "lockSavingsOpenPeriod",
+		"options"          : [			
+			{
+				"label"    : "1 Month",
+				"value"    : 1
+			},
+			{
+				"label"    : "3 Months",
+				"value"    : 3
+			},
+			{
+				"label"    : "6 Months",
+				"value"    : 6
+			},
+			{
+				"label"    : "12 Months",
+				"value"    : 12
+			} 
+		],
+		"previous"         : "lock-open-amount",
+		"next"             : "lock-savings-open-deposit",
+		"error"            : "lock-open-period-error"
+	},
+	{
+		"type"             : "input",
+		"name"             : "lock-savings-open-deposit",
+		"save-as"          : "lockSavingsOpenDeposit",
+		"validation"       : [
+			{
+				"name"     : "isAmount",
+				"type"     : "joi",
+				"arguments": "min=0"
+			}
+		],
+		"previous"         : "lock-savings-open-period",
+		"next"             : "lock-savings-open-confirm",
+		"error"            : "lock-savings-open-deposit-error"
+	},
+	{
+		"type"             : "select",
+		"name"             : "lock-savings-open-confirm",
+		"options"          : "confirm-options",
+		"charges"         : true,
+		"previous"         : "lock-savings-open-deposit",
+		"action"           : "transact",
+		"external-fetch"   : {
+            "route"        : "lock-savings-open",
+            "success"      : "api-success",
+            "error"        : "api-error"
+		},
+		"on-cancel"        : "client-page",
+		"error"            : "lock-savings-open-confirm-error"
+	},
+
+
+
+	{
+		"type"      : "select",
+		"name"      : "lock-savings-open-debit-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "lock-savings-open-debit-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "dstv-credit-account"
+	}
+]
+

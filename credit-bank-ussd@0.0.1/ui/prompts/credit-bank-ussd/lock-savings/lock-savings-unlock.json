@@ -1,0 +1,25 @@
+[
+
+	
+	{
+		"type"             : "select",
+		"name"             : "lock-savings-unlock-confirm",
+		"options"          : "confirm-options",
+		"show-if"           : {
+			"param"       : "lockSavingsAccount",
+			"validates-to": "isLockSavingsAccount",
+			"on-error"    : "lock-savings-account-error"
+		},
+		"charges"         : true,
+		"previous"         : "lock-savings-page",
+		"action"           : "transact",
+		"external-fetch"   : {
+            "route"        : "lock-savings-unlock",
+            "success"      : "api-success",
+            "error"        : "api-error"
+		},
+		"on-cancel"        : "client-page",
+		"error"            : "lock-savings-unlock-confirm-error"
+	}
+]
+

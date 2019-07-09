@@ -1,0 +1,33 @@
+{
+    "type": "select",
+    "name": "funds-transfer-other-accounts-page",
+    "options": [
+		{
+            "name": "funds-transfer-savings-to-savings",
+            "label": "funds-transfer-savings-to-savings-label",
+            "enabled": true,
+            "authenticate": false
+		},
+		{
+            "name": "funds-transfer-savings-to-wallet",
+            "label": "funds-transfer-savings-to-wallet-label",
+            "enabled": true,
+            "authenticate": false
+		},
+		{
+            "name": "funds-transfer-wallet-to-savings",
+            "label": "funds-transfer-wallet-to-savings-label",
+            "enabled": true,
+            "authenticate": false
+		},
+		{
+            "name": "funds-transfer-wallet-to-wallet",
+            "label": "funds-transfer-wallet-to-wallet-label",
+            "enabled": true,
+            "authenticate": false
+        }
+        	
+    ],
+	"error": "funds-transfer-other-accounts-page-error",
+	"previous" :"funds-transfer-page"
+}

@@ -1,0 +1,78 @@
+[
+	{
+        "type"           : "select",
+        "name"           : "insurance-type",
+        "save-as"        : "insuranceType",
+		"options"              : [
+            {
+                "label"  : "Motor Insurance",
+                "value"  : "Motor Insurance",
+                "jump-to": "motor-insurance-confirm"  
+            },  
+            {
+                "label"  : "Personal Accident",
+                "value"  : "Personal Accident",
+                "jump-to": "personal-accident-confirm" 
+            }
+        ],	
+        "error"          : "insurance-type-error",
+        "previous"       : "pesalink-page"
+    },
+    {
+        "type"           : "select",
+        "name"           : "motor-insurance-confirm",
+		"options"              : [
+            {
+                "label" : "Get a Call Back",
+                "value" : "1"
+            },
+            {
+                "label" : "Get it",
+                "value" : "2"
+            }            
+        ],
+        "error"          : "motor-insurance-confirm-error",
+        "action"         : "transact",
+        "external-fetch" : {
+            "route"      : "motor-vehicle-insurance",
+            "success"    : "insurance-success",
+            "error"      : "api-error"
+        },
+        "on-cancel"      : "insurance-app-download",
+        "previous"       : "insurance-type"
+    },
+    {
+        "type"           : "select",
+        "name"           : "personal-accident-confirm",
+		"options"              : [
+            {
+                "label" : "Get a Call Back",
+                "value" : "1"
+            },
+            {
+                "label" : "Get it",
+                "value" : "2"
+            }  
+        ],
+        "error"          : "personal-accident-confirm-error",
+        "action"         : "transact",
+        "external-fetch" : {
+            "route"      : "personal-accident-insurance",
+            "success"    : "insurance-success",
+            "error"      : "api-error"
+        },
+        "on-cancel"      : "insurance-app-download",
+        "previous"       : "insurance-type"
+    },
+
+	{
+		"type"                 : "select",
+		"name"                 : "insurance-app-download",
+		"options"              : "yes-no-options",
+		"error"                : "insurance-app-download-error",
+		"action"               : "navigate",
+		"on-accept"            : "client-page",
+		"on-cancel"            : "logout",
+		"previous"             : "insurance-type"
+	}
+]

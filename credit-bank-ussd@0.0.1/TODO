@@ -1,0 +1,289 @@
+Tasks:
+    cbplc:    
+        ✔ lock savings withdraw and show if options @done(19-05-02 15:43)
+        ✔ c2b @done(19-05-02 15:47)
+        ✘ b2c @started(19-05-02 15:52) @cancelled(19-05-02 16:02) @wasted(10m51s)
+        ✔ migrate fraud guard to esb test server @done(19-05-27 11:27)
+    Refactoring:
+        ✔ input refactoring - in new ussd @done(19-06-12 12:31)
+        ☐ select refactoring
+        ☐ api refactoring
+        ☐ seperation of USSD into GUI and API service
+    Dev and Analytics Tools:
+        ☐ Analytics Tools ( remember to obtain number of unique visitors who logged in
+        ☐ Analytics GUI
+        ☐ USSD GUI
+    Eclectics:
+        ☐ Conversion of 
+            ☐ SMEP
+            ✔ Huduma @done(19-06-12 12:32)
+            ☐ Fortune Sacco
+        ☐ Documentation and training    
+
+
+    USSD and Fraud Guard status update:
+        ✔ Investigate why Fraud guard rules are failing - They were failing since the ESB server time was three hours behind the system time, this has been manually rectified. Awaiting on Franklin to give a permanent solution @done(19-05-20 18:34)
+        ✔ Investigate why some user IMSI's where being sent as phone numbers - after invetigation, it was found that the USSD is sending the value that was forwarded from the Eclectics php router as IMSI. It was concluded that this value had been changed momentarily by someone on the test server @done(19-05-20 18:35)
+        ✔ Fraud Guard Instance to be decommissioned from USSD server (192.168.7.136) @done(19-05-20 18:32)
+        ☐ Redis to be configured on cluster on ESB server to minimize downtime and dependency on USSD server - pending '     
+
+        ☐ Redis Clear text passwords to be encrypted and hashed - pending portal admin changes
+        ☐ Recommendation to get Premium Rate Service (PRSP) connectivity between Credit Bank PLC and Mobile Network Operators - pending Credit bank
+    .
+    CBPLC Phase Two:
+        ☐ Itax
+            {
+                presentment:{
+                    "field0":"0200",
+                    "field4":"0",
+                    "field2":"254727519227",
+                    "field3":"180000",
+                    "field7":"0523115403",
+                    "field11":"691966",
+                    "field12":"115403",
+                    "field13":"0523",
+                    "field15":"0523",
+                    "field24":"BB",
+                    "field32":"APP",
+                    "field37":"270GG23096",
+                    "field43":"CREDIT BANK",
+                    "field49":"KES",
+                    "field56":"f02507d0-eb14-47f6-9718-e3de6877cc48",
+                    "field60":"KE",
+                    "field100":"ITAX",
+                    "field101":"ITAX",
+                    "field102":"2020180000000" --iTax eslip number
+                },          
+                payment:{
+                    "field0": "0200",
+                    "field2": "254727519227",
+                    "field3": "500000",
+                    "field4": "200",
+                    "field7": "1003083436",
+                    "field11": "585601",
+                    "field12": "083436",
+                    "field13": "1003",
+                    "field24": "MM",
+                    "field32": "APP",
+                    "field37": "497947397",
+                    "field33": "IUBRUXExOTA1",
+                    "field40": "000",
+                    "field41": "d705e7f2d7b7aff",
+                    "field42": "606465ATM000001",
+                    "field43": "CREDIT BANK",
+                    "field49": "KES",
+                    "field56": "bcac5bdc-32fb-42df-8ddb-ce8f705ba8c5",
+                    "field60": "KE",
+                    "field61": "",
+                    "field62": "A00123456", --customer KRA pin
+                    "field63": "2901", --customer tax code
+                    "field64": "",
+                    "field52": "",
+                    "field65": "111111", --customer eslip number
+                    "field68": "iTax Payment - Account 254728268432 - Ref 497370047397",
+                    "field71": "ITAX",
+                    "field72": "",
+                    "field73": "",
+                    "field75": "",
+                    "field77": "Nairobi",
+                    "field78": "254 Nairobi",
+                    "field79": "001",
+                    "field98": "1100119",
+                    "field100": "ITAX",
+                    "field102": "CA727519227",
+                    "field103": "",
+                    "field123": "APP",
+                    "field126": "500000",
+                    "field128": ""
+                }
+            }
+        ☐ Account Mandates
+            Account MandatesFor account mandates, on login you will break linked accounts and get the last param which is either I for individual or J for joint
+            Send that value in field50
+            Then for the authorization leg
+            account mandate lookup request
+            {
+                "field0": "0200",
+                "field2": "254710696572",
+                "field3": "210000",
+                "field4": "0",
+                "field7": "0511111731",
+                "field11": "985078",
+                "field12": "111731",
+                "field13": "0511",
+                "field24": "MM",
+                "field32": "USSD",
+                "field33": "IUBRU89999OTA1",
+                "field37": "7R40TTGG",
+                "field40": "000",
+                "field41": "FID00001",
+                "field42": "606465ATM000001",
+                "field43": "CREDIT BANK",
+                "field49": "KES",
+                "field56": "bcac5bdc-32fb-42df-8ddb-ce8f705ba8c5",
+                "field65": "254710696572",
+                "field74": "ACCOUNT_MANDATES",
+                "field100": "LOOKUP"
+            }
+            {
+                "field0": "0200",
+                "field2": "254727519227",
+                "field3": "211000",
+                "field4": "0",
+                "field7": "0511111731",
+                "field11": "985078",
+                "field12": "111731",
+                "field13": "0511",
+                "field24": "MM",
+                "field32": "USSD",
+                "field33": "IUBRU89999OTA1",
+                "field37": "558FFG00",
+                "field40": "000",
+                "field41": "FID00001",
+                "field42": "606465ATM000001",
+                "field43": "CREDIT BANK",
+                "field49": "KES",
+                "field56": "bcac5bdc-32fb-42df-8ddb-ce8f705ba8c5",
+                "field65": "LTKL3Y9W", --pass authorization code
+                "field74": "ACCOUNT_MANDATES",
+                "field100": "AUTHORIZE"
+            }
+        ☐ Card Management
+            {
+                "field0":"0200",
+                "field4":"0",
+                "field2":"254727519227",
+                "field3":"180000",
+                "field7":"0523115403",
+                "field11":"691966",
+                "field12":"115403",
+                "field13":"0523",
+                "field15":"0523",
+                "field24":"BB",
+                "field32":"APP",
+                "field37":"27889996",
+                "field43":"CREDIT BANK",
+                "field49":"KES",
+                "field56":"f02507d0-eb14-47f6-9718-e3de6877cc48",
+                "field60":"KE",
+                "field100":"INTERSWITCH",
+                "field101":"LOOKUP",
+                "field102":"0011002000017"
+            }
+            {
+                "field0":"0200",
+                "field4":"0",
+                "field2":"254727519227",
+                "field3":"180000",
+                "field7":"0523115403",
+                "field11":"691966",
+                "field12":"115403",
+                "field13":"0523",
+                "field15":"0523",
+                "field24":"BB",
+                "field32":"APP",
+                "field37":"27070823096",
+                "field43":"CREDIT BANK",
+                "field49":"KES",
+                "field56":"f02507d0-eb14-47f6-9718-e3de6877cc48",
+                "field60":"KE",
+                "field100":"INTERSWITCH",
+                "field101":"BLOCK",
+                "field102":"413270*0821" //serial number
+            }
+            {
+                "field0":"0200",
+                "field4":"0",
+                "field2":"254727519227",
+                "field3":"180000",
+                "field7":"0523115403",
+                "field11":"691966",
+                "field12":"115403",
+                "field13":"0523",
+                "field15":"0523",
+                "field24":"BB",
+                "field32":"APP",
+                "field37":"27070823096",
+                "field43":"CREDIT BANK",
+                "field49":"KES",
+                "field56":"f02507d0-eb14-47f6-9718-e3de6877cc48",
+                "field60":"KE",
+                "field100":"INTERSWITCH",
+                "field101":"UNBLOCK",
+                "field102":"413270*0821"
+            }
+            {
+                "field0":"0200",
+                "field4":"10000",
+                "field2":"254727519227",
+                "field3":"180000",
+                "field7":"0523115403",
+                "field11":"691966",
+                "field12":"115403",
+                "field13":"0523",
+                "field15":"0523",
+                "field24":"BB",
+                "field32":"APP",
+                "field37":"27070823096",
+                "field43":"CREDIT BANK",
+                "field49":"KES",
+                "field56":"f02507d0-eb14-47f6-9718-e3de6877cc48",
+                "field60":"KE",
+                "field100":"INTERSWITCH",
+                "field101":"LIMITS",
+                "field102":"413270*0821"
+            }
+        ☐ Motor vehicle insurance Lead generation  
+        ☐ NCC
+    
+Credit Bank Phase 2 USSD status:
+    ☐ Itax 
+        ✔ user journey @done(19-06-13 18:41)
+        ☐ end to end testing - pending eslip number
+
+    ☐ Account Mandates
+        ✔ user journey @done(19-06-13 18:41)
+        ✔ end to end testing @done(19-06-13 18:41)
+
+    ☐ Card Management
+        ✔ user journey @done(19-06-13 18:41)
+        ☐ end to end testing - pending
+
+    ☐ Motor vehicle insurance Lead generation
+        ✔ user journey @done(19-06-13 18:41)
+        ☐ end to end testing
+    ☐ NCC
+        ☐ user journey
+        ☐ end to end testing
+
+USSD TRAINING:
+✔ Getting Started @done(19-06-13 18:44)
+✔ USSD 101 @done(19-06-13 18:44)
+    ✔ Accessing request query parameters and named parameters @done(19-06-13 18:44)
+    ✔ Adding Async/Await to our middleware @done(19-06-13 18:44)
+    ✔ NodeJs Process Management Using pm2 @done(19-06-13 18:44)
+    ✔ Nginx Reverse Proxy @done(19-06-13 18:44)
+    ✔ Redis @done(19-06-13 18:44)
+    ✔ Test and Prod Server Architecture and Set Up @done(19-06-13 18:44)
+    ✔ USSD Architecture @done(19-06-13 18:44)
+    ✔ Engine @done(19-06-13 18:44)
+    ✔ Logger @done(19-06-13 18:44)
+    ✔ Adapter @done(19-06-13 18:44)
+    ✔ Cron @done(19-06-13 18:44)
+    ✔ Analytics @done(19-06-13 18:44)
+✔ Configuring a USSD @done(19-06-13 18:44)
+    ✔ Folder Structure @done(19-06-13 18:44)
+    ✔ API @done(19-06-13 18:44)
+    ✔ Adapters @done(19-06-13 18:44)
+    ✔ Session @done(19-06-13 18:44)
+    ✔ Whitelist @done(19-06-13 18:44)
+    ✔ Base Configuration file @done(19-06-13 18:44)
+    ✔ Pages @done(19-06-13 18:44)
+    ✔ Prompts @done(19-06-13 18:44)
+    ✔ Presentments (update-parameters) @done(19-06-13 18:44)
+    ✔ Presentments (update-local) @done(19-06-13 18:44)
+    ✔ Configurations; Language @done(19-06-13 18:44)
+    ✔ Transactions @done(19-06-13 18:44)
+    ✔ Navigation @done(19-06-13 18:44)
+    ✔ Search @done(19-06-13 18:44)
+        

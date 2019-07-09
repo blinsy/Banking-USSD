@@ -1,0 +1,117 @@
+[
+    {
+        "type": "select",
+        "name": "buy-airtime-provider",
+        "save-as": "airtimeProvider",
+        "options": [
+            {
+				"label": "Safaricom",
+				"value" : "SAFARICOM"
+            },
+            {
+				"label": "Airtel",
+				"value" : "AIRTEL"
+            },
+            {
+				"label": "Telkom",
+				"value" : "ORANGE"
+            }
+        ],
+		"error": "buy-airtime-provider-error",
+		"next" :"buy-airtime-account-type",
+        "previous": "client-page"
+    },
+    {
+        "type": "select",
+		"name": "buy-airtime-account-type",
+		"save-as" : "airtimeCreditAccount",
+        "options": [
+            {
+				"label": "My Phone",
+				"value": "__walletAccount",
+                "jump-to": "buy-airtime-debit-account"
+            },
+            {
+                "label": "Other Phone",
+                "jump-to": "buy-airtime-credit-account"
+            }
+        ],
+        "error": "buy-airtime-account-type-error",
+        "previous": "buy-airtime-provider"
+	},	
+	{
+        "type": "input",
+        "name": "buy-airtime-credit-account",
+		"save-as" : "airtimeCreditAccount",
+		"format-as" : "international-mobile-number",
+        "validation": [
+			{
+				"name" : "matchesLength",
+				"type" : "joi",
+				"arguments": "length=10"
+			},
+            {
+                "name": "isNumber",
+                "type": "joi"
+            }
+        ],
+        "errors": [ "buy-airtime-credit-account-error", "buy-airtime-credit-account-error"],
+        "previous": "buy-airtime-account-type",
+        "next": "buy-airtime-debit-account"
+	},
+	{
+        "type": "select",
+        "name": "buy-airtime-debit-account",
+		"save-as" : "airtimeDebitAccount",
+		"options": "mwallet-account+savings-accounts",
+		"options-error" : "buy-airtime-debit-account-options-error",
+        "error": "buy-airtime-debit-account-error",
+		"previous": "buy-airtime-provider",
+		"next": "buy-airtime-amount"
+	},
+    {
+        "type": "input",
+        "name": "buy-airtime-amount",
+		"save-as" : "airtimeAmount",
+        "validation": [
+            {
+                "name": "isAmount",
+				"type": "joi",
+				"arguments": "min=10"
+            }
+        ],
+        "format-as": "",
+        "error": "buy-airtime-amount-error",
+        "previous": "buy-airtime-debit-account",
+        "next": "buy-airtime-confirm"
+	},
+    {
+        "type": "select",
+        "name": "buy-airtime-confirm",
+		"options": "confirm-options",
+		"charges"         : true,
+        "error": "buy-airtime-confirm-error",
+        "action": "transact",
+        "external-fetch": {
+            "route": "buy-airtime",
+            "success": "api-success",
+            "error": "api-error"
+        },
+        "on-cancel": "client-page",
+        "previous": "buy-airtime-amount"
+    },
+	
+
+
+	{
+		"type"      : "select",
+		"name"      : "buy-airtime-debit-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "buy-airtime-debit-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "balance-account"
+	}
+    
+]

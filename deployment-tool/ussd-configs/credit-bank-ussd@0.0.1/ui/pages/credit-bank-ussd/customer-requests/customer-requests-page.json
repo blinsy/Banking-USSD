@@ -1,0 +1,38 @@
+{
+    "type"                : "select",
+    "name"                : "customer-requests-page",
+    "options"             : [		
+		{
+                  "name"        : "standing-orders-page",
+                  "label"       : "standing-orders-page-label",
+                  "enabled"     : true,
+                  "authenticate": false
+		},
+		{
+                  "name"        : "cheques-page",
+                  "label"       : "cheques-page-label",
+                  "enabled"     : true,
+                  "authenticate": false
+		},
+		{
+                  "name"        : "atm-cards-page",
+                  "label"       : "atm-cards-page-label",
+                  "enabled"     : true,
+                  "authenticate": false
+		},
+		{
+                  "name"        : "account-requests-page",
+                  "label"       : "account-requests-page-label",
+                  "enabled"     : true,
+                  "authenticate": false
+		},
+		{
+                  "name"        : "insurance",
+                  "label"       : "insurance-label",
+                  "enabled"     : true,
+                  "authenticate": false
+            }
+    ],
+    "error"               : "customer-requests-page-error",
+    "previous"            : "client-page"
+}

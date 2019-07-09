@@ -1,0 +1,38 @@
+{
+    "type"                : "select",
+    "name"                : "funds-transfer-page",
+    "options"             : [
+	{
+            "name"        : "funds-transfer-own-accounts",
+            "label"       : "funds-transfer-own-accounts-label",
+            "enabled"     : true,
+            "authenticate": false
+      },
+      {
+            "name"        : "funds-transfer-other-accounts-page",
+            "label"       : "funds-transfer-other-accounts-page-label",
+            "enabled"     : true,
+            "authenticate": false
+	},
+	{
+            "name"        : "pesalink-page",
+            "label"       : "pesalink-page-label",
+            "enabled"     : true,
+            "authenticate": false
+	},
+	{
+            "name"        : "rtgs",
+            "label"       : "rtgs-label",
+            "enabled"     : true,
+            "authenticate": false
+	},
+	{
+            "name"        : "eft",
+            "label"       : "eft-label",
+            "enabled"     : true,
+            "authenticate": false
+	}
+    ],
+	"error"                  : "funds-transfer-page-error",
+	"previous"               : "client-page"
+}

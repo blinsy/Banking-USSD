@@ -1,0 +1,38 @@
+{
+    "type"                : "select",
+    "name"                : "account-requests-page",
+    "options"             : [	
+		{
+            "name"        : "account-linking",
+            "label"       : "account-linking-label",
+            "enabled"     : true,
+            "authenticate": false
+		},
+		{
+            "name"        : "wallet-account-opening",
+            "label"       : "wallet-account-opening-label",
+            "enabled"     : true,
+            "authenticate": false
+		},
+        {
+            "name"        : "core-account-opening",
+            "label"       : "core-account-opening-label",
+            "enabled"     : true,
+            "authenticate": false
+        },
+        {
+            "name"        : "account-mandates",
+            "label"       : "account-mandates-label",
+            "enabled"     : true,
+            "authenticate": false
+		},
+		{
+            "name"        : "view-accounts",
+            "label"       : "view-accounts-label",
+            "enabled"     : true,
+            "authenticate": false
+        }
+    ],
+    "error"               : "account-requests-page-error",
+    "previous"            : "customer-requests-page"
+}

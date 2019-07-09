@@ -1,0 +1,192 @@
+[
+    
+	{
+        "type"            : "select",
+        "name"            : "so-b2b-debit-account",
+        "save-as"         : "soDebitAccount",
+        "options"         : "savings-accounts",
+		"options-error"   : "so-b2b-debit-account-options-error",
+        "error"           : "so-b2b-debit-account-error",
+        "previous"        : "create-standing-orders-page",
+        "next"            : "so-b2b-credit-account"
+	},
+	{
+        "type"          : "input",
+        "name"          : "so-b2b-credit-account",
+        "save-as"       : "soCreditAccount",
+        "validation"    : [
+            {
+                "name"     : "isNumber",
+                "type"     : "joi"
+			},
+			{
+                "name"     : "matchesLength",
+				"type"     : "joi",
+				"arguments": "length=13"
+            }
+        ],
+        "error"         : "so-b2b-credit-account-error",
+        "previous"      : "so-b2b-debit-account",
+        "next"          : "so-b2b-amount"
+	},
+	{
+        "type"          : "input",
+        "name"          : "so-b2b-amount",
+        "save-as"       : "soAmount",
+        "validation"    : [
+			{
+                "name"     : "isAmount",
+				"type"     : "joi",
+				"arguments": "min=1"
+            }
+        ],
+        "error"         : "so-b2b-amount-error",
+        "previous"      : "so-b2b-credit-account",
+        "next"          : "so-b2b-start-date",
+        "action"          : "update-parameters",		
+        "external-fetch"  : {
+            "route"                 : "internal-account-lookup",
+            "success"               : "so-b2b-start-date",
+			"error"                 : "so-b2b-start-date",
+			"cache"                 : true,
+			"cache-path"            : "global-request-details",
+			"cache-parameters"      : [
+				{
+					"path"     : "field127",
+					"save-as"  : "internal-transfer-customer",
+					"format-as": "internal-transfer-customer"	
+				}
+			]
+        }
+	},
+	{
+        "type"          : "input",
+        "name"          : "so-b2b-start-date",
+		"save-as"       : "soStartDate",
+        "validation"    : [
+            {
+                "name"  : "isValidDate",
+				"type"  : "custom",
+				"arguments" :"format=MM-DD"
+            }
+		],
+		"format-as"     : "to-number",
+        "error"         : "so-b2b-start-date-error",
+        "previous"      : "so-b2b-amount",
+        "next"          : "so-b2b-end-date"
+	},
+	{
+        "type"          : "input",
+        "name"          : "so-b2b-end-date",
+		"save-as"       : "soEndDate",
+        "validation"    : [
+            {
+                "name"  : "isValidDateRange",
+				"type"  : "custom",
+				"arguments" :"format=YYYY-MM-DD,startDate=soStartDate,startDateFormat=MMDD"
+            }
+		],
+		"format-as"     : "to-number",
+        "error"         : "so-b2b-end-date-error",
+        "previous"      : "so-b2b-start-date",
+        "next"          : "so-b2b-frequency"
+	},
+	
+	{
+        "type"            : "select",
+        "name"            : "so-b2b-frequency",
+        "save-as"         : "soFrequency",
+        "options"         : [
+			{
+				"label" :"Daily",
+				"value" : "D"
+			},
+			{
+				"label" :"Weekly",
+				"value" : "W"
+			},
+			{
+				"label" :"Monthly",
+				"value" : "M"
+			},
+			{
+				"label" :"Yearly",
+				"value" : "Y"
+			}
+		],
+        "error"           : "so-b2b-frequency-error",
+        "previous"        : "so-b2b-date",
+        "next"          : "so-b2b-member-number"
+	},
+
+	{
+        "type"          : "input",
+        "name"          : "so-b2b-beneficiary-name",
+		"save-as"       : "soBeneficiaryName",
+		"format-as"        : "createSpaces",
+        "validation"    : [
+            {
+                "name"  : "isStatement",
+                "type"  : "custom"
+            }
+		],
+        "error"         : "so-b2b-beneficiary-name-error",
+        "previous"      : "so-b2b-frequency",
+        "next"          : "so-b2b-member-number"
+	},
+	{
+        "type"          : "input",
+        "name"          : "so-b2b-member-number",
+        "save-as"       : "soMemberNumber",
+        "validation"    : [
+            {
+                "name"     : "isNumber",
+                "type"     : "joi"
+            }
+		],
+        "error"         : "so-b2b-member-number-error",
+        "previous"      : "so-b2b-frequency",
+        "next"          : "so-b2b-instruction"
+	},
+
+	{
+        "type"          : "input",
+        "name"          : "so-b2b-instruction",
+		"save-as"       : "soInstruction",
+		"format-as"        : "createSpaces",
+        "validation"    : [
+            {
+                "name"  : "isStatement",
+                "type"  : "custom"
+            }
+		],
+        "error"         : "so-b2b-instruction-error",
+        "previous"      : "so-b2b-member-number",
+        "next"          : "so-b2b-confirm"
+	},
+    {
+        "type"            : "select",
+        "name"            : "so-b2b-confirm",
+		"options"         : "confirm-options",
+		"charges"         : true,
+        "previous"        : "so-b2b-instruction",
+        "action"          : "transact",
+        "external-fetch"  : {
+            "route"       : "standing-orders-internal",
+            "success"     : "api-success",
+            "error"       : "api-error"
+        },
+        "on-cancel"       : "client-page",
+        "error"           : "so-b2b-confirm-error"
+	},
+	{
+		"type"      : "select",
+		"name"      : "so-b2b-debit-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "so-b2b-debit-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "client-page"
+	}
+]

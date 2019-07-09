@@ -1,0 +1,69 @@
+[
+    {
+        "type"        : "input",
+        "name"        : "login-pin-change-old-pin",
+		"save-as"           : "oldPin",		
+		"format-as"     : "pin-hash",
+		"transform-function": "hash_pin",
+        "validation"  : [             
+            {
+                "name": "isCorrectPin",
+                "type": "custom"
+            }
+        ],
+        "error"       : "login-pin-change-wrong-old-pin-error",
+        "previous"    : "login-page",
+        "next"        : "login-pin-change-new-pin"
+    },
+    {
+        "type"          : "input",
+        "name"          : "login-pin-change-new-pin",
+		"save-as"       : "newPin",
+		"transform-function": "hash_pin",
+        "validation"    : [
+            {
+                "name"  : "isStrongPin",
+                "type"  : "custom"
+			},
+			{
+                "name": "isNotEqualToLastEntry",
+                "type": "custom",
+				"arguments": "path = oldPin"
+            }
+        ],
+        "errors"         : ["login-pin-change-new-pin-error", "login-pin-change-new-pin-not-last-entry-error"],
+        "previous"      : "login-pin-change-old-pin",
+        "next"          : "login-pin-change-new-pin-reenter"
+    },
+    {
+        "type"          : "input",
+        "name"          : "login-pin-change-new-pin-reenter",
+		"save-as"       : "newPin",
+		"format-as"     : "pin-hash",
+        "validation"    : [
+            {
+                "name"  : "isEqualToLastEntry",
+                "type"  	: "custom",
+				"arguments" : "path=newPin"
+            }
+        ],
+        "error"         : "login-pin-change-new-pin-reenter-error",
+        "previous"      : "login-pin-change-new-pin",
+        "next"          : "login-pin-change-confirm"
+    },
+    {
+        "type"          : "select",
+        "name"          : "login-pin-change-confirm",
+        "options"       : "confirm-options",
+        "error"         : "login-pin-change-confirm-error",
+        "authenticate"  : false,
+        "action"        : "transact",
+        "external-fetch": { 
+            "route"     : "pin-change",
+            "success"   : "pin-change-success",
+            "error"     : "pin-change-error"              
+        },
+		"on-cancel"           : "login-page",
+		"previous"            : "login-pin-change-new-pin-reenter"
+    }
+]

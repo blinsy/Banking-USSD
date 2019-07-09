@@ -1,0 +1,329 @@
+[
+	{
+        "type"         : "select",
+        "name"         : "eft-to-bank-debit-account",
+        "save-as"      : "eftDebitAccount",
+		"options"      : "savings-accounts",		
+		"options-error": "eft-to-bank-debit-account-options-error",
+		"error"        : "eft-to-bank-debit-account-error",
+		"previous"     : "funds-transfer-page",
+		"next"         : "eft-to-bank-bank-account"
+	},	
+    {
+        "type"         : "select",
+		"name"         : "eft-to-bank-bank-account",
+        "options"      : "eft-bank-letters",
+        "error"        : "eft-to-bank-bank-account-error",
+		"previous"     : "eft-to-bank-debit-account"
+	},
+
+	{
+        "type"         : "select",
+        "name"         : "eft-a-b-bank-account",
+		"save-as"      : "eftBankCode",
+		"options"      : "eft-a-b-bank-accounts",		
+        "error"        : "eft-a-b-bank-account-error",
+		"previous"     : "eft-to-bank-bank-account",
+		"next"         : "eft-branch-search",
+		"action"          : "update-parameters",		
+        "external-fetch"  : {
+            "route"                 : "eft-branch-lookup",
+            "success"               : "eft-branch-search",
+			"error"                 : "eft-branch-lookup-error",
+			"cache"                 : true,
+			"cache-path"            : "global-constants",
+			"cache-parameters"      : [
+				{
+					"path"     : "Result",
+					"save-as"  : "branch-options",
+					"format-as": "branch-lookup"	
+				}
+			]
+        }
+	},
+	{
+        "type"         : "select",
+        "name"         : "eft-c-bank-account",
+		"save-as"      : "eftBankCode",
+		"options"      : "eft-c-bank-accounts",		
+        "error"        : "eft-c-bank-account-error",
+		"previous"     : "eft-to-bank-bank-account",
+		"next"         : "eft-branch-search",
+		"action"          : "update-parameters",		
+        "external-fetch"  : {
+            "route"                 : "eft-branch-lookup",
+            "success"               : "eft-branch-search",
+			"error"                 : "eft-branch-lookup-error",
+			"cache"                 : true,
+			"cache-path"            : "global-constants",
+			"cache-parameters"      : [
+				{
+					"path"     : "Result",
+					"save-as"  : "branch-options",
+					"format-as": "branch-lookup"	
+				}
+			]
+        }
+	},
+	{
+        "type"         : "select",
+        "name"         : "eft-d-e-bank-account",
+		"save-as"      : "eftBankCode",
+		"options"      : "eft-d-e-bank-accounts",		
+        "error"        : "eft-d-e-bank-account-error",
+		"previous"     : "eft-to-bank-bank-account",
+		"next"         : "eft-branch-search",
+		"action"          : "update-parameters",		
+        "external-fetch"  : {
+            "route"                 : "eft-branch-lookup",
+            "success"               : "eft-branch-search",
+			"error"                 : "eft-branch-lookup-error",
+			"cache"                 : true,
+			"cache-path"            : "global-constants",
+			"cache-parameters"      : [
+				{
+					"path"     : "Result",
+					"save-as"  : "branch-options",
+					"format-as": "branch-lookup"	
+				}
+			]
+        }
+	},
+	{
+        "type"         : "select",
+        "name"         : "eft-f-bank-account",
+        "save-as"      : "eftBankCode",
+		"options"      : "eft-f-bank-accounts",		
+        "error"        : "eft-f-bank-account-error",
+		"previous"     : "eft-to-bank-bank-account",
+		"next"         : "eft-branch-search",
+		"action"          : "update-parameters",		
+        "external-fetch"  : {
+            "route"                 : "eft-branch-lookup",
+            "success"               : "eft-branch-search",
+			"error"                 : "eft-branch-lookup-error",
+			"cache"                 : true,
+			"cache-path"            : "global-constants",
+			"cache-parameters"      : [
+				{
+					"path"     : "Result",
+					"save-as"  : "branch-options",
+					"format-as": "branch-lookup"	
+				}
+			]
+        }
+	},
+	{
+        "type"         : "select",
+        "name"         : "eft-g-h-bank-account",
+        "save-as"      : "eftBankCode",
+		"options"      : "eft-g-h-bank-accounts",		
+        "error"        : "eft-g-h-bank-account-error",
+		"previous"     : "eft-to-bank-bank-account",
+		"next"         : "eft-branch-search",
+		"action"          : "update-parameters",		
+        "external-fetch"  : {
+            "route"                 : "eft-branch-lookup",
+            "success"               : "eft-branch-search",
+			"error"                 : "eft-branch-lookup-error",
+			"cache"                 : true,
+			"cache-path"            : "global-constants",
+			"cache-parameters"      : [
+				{
+					"path"     : "Result",
+					"save-as"  : "branch-options",
+					"format-as": "branch-lookup"	
+				}
+			]
+        }
+	},
+	{
+        "type"         : "select",
+        "name"         : "eft-i-m-bank-account",
+        "save-as"      : "eftBankCode",
+		"action"          : "update-parameters",		
+        "external-fetch"  : {
+            "route"                 : "eft-branch-lookup",
+            "success"               : "eft-branch-search",
+			"error"                 : "eft-branch-lookup-error",
+			"cache"                 : true,
+			"cache-path"            : "global-constants",
+			"cache-parameters"      : [
+				{
+					"path"     : "Result",
+					"save-as"  : "branch-options",
+					"format-as": "branch-lookup"	
+				}
+			]
+        },
+		"options"      : "eft-i-m-bank-accounts",		
+        "error"        : "eft-i-m-bank-account-error",
+		"previous"     : "eft-to-bank-bank-account",
+		"next"         : "eft-branch-search"
+	},
+	{
+        "type"         : "select",
+        "name"         : "eft-n-s-bank-account",
+        "save-as"      : "eftBankCode",
+		"options"      : "eft-n-s-bank-accounts",		
+        "error"        : "eft-n-s-bank-account-error",
+		"previous"     : "eft-to-bank-bank-account",
+		"next"         : "eft-branch-search",
+		"action"          : "update-parameters",		
+        "external-fetch"  : {
+            "route"                 : "eft-branch-lookup",
+            "success"               : "eft-branch-search",
+			"error"                 : "eft-branch-lookup-error",
+			"cache"                 : true,
+			"cache-path"            : "global-constants",
+			"cache-parameters"      : [
+				{
+					"path"     : "Result",
+					"save-as"  : "branch-options",
+					"format-as": "branch-lookup"	
+				}
+			]
+        }
+	},
+	{
+        "type"         : "select",
+        "name"         : "eft-t-z-bank-account",
+        "save-as"      : "eftBankCode",
+		"options"      : "eft-t-z-bank-accounts",		
+        "error"        : "eft-t-z-bank-account-error",
+		"previous"     : "eft-to-bank-bank-account",
+		"next"         : "eft-branch-search",
+		"action"          : "update-parameters",		
+        "external-fetch"  : {
+            "route"                 : "eft-branch-lookup",
+            "success"               : "eft-branch-search",
+			"error"                 : "eft-branch-lookup-error",
+			"cache"                 : true,
+			"cache-path"            : "global-constants",
+			"cache-parameters"      : [
+				{
+					"path"     : "Result",
+					"save-as"  : "branch-options",
+					"format-as": "branch-lookup"	
+				}
+			]
+        }
+	},
+
+
+
+
+
+	{
+        "type"             : "input",        
+        "name"             : "eft-branch-search",        
+        "action"           : "search",
+        "search-options"   : {
+            "limit"        : 5,
+            "dataset"      : "branch-options",
+            "saveTo"       : "branch-search-options"
+        },        
+        "errors"           : [ "eft-branch-no-results-error", "eft-branch-result-limit-exceeded-error" ],
+        "previous"         : "eft-to-bank-bank-account",
+        "next"             : "eft-branch-result"
+    },
+    {
+        "type"             : "select",
+        "name"             : "eft-branch-result",        
+        "save-as"          : "eftBranchCode",        
+        "options"          : "branch-search-options",        
+        "error"            : "eft-branch-result-error",
+        "previous"         : "eft-branch-search",
+        "next"             : "eft-to-bank-credit-account"
+	},
+
+
+
+    {
+        "type"           : "input",
+        "name"           : "eft-to-bank-credit-account",
+        "save-as"        : "eftCreditAccount",
+        "validation"     : [
+            {
+                "name"   : "isNumber",
+                "type"   : "joi"
+            }
+        ],
+        "error"          :"eft-to-bank-credit-account-error",
+        "previous"       : "eft-to-bank-bank-account",
+		"next"           : "eft-to-bank-credit-account-name"
+	},
+	{
+        "type"           : "input",
+        "name"           : "eft-to-bank-credit-account-name",
+		"save-as"        : "eftAccountName",
+		"format-as"        : "createSpaces",
+        "validation"     : [
+            {
+                "name"   : "isStatement",
+                "type"   : "custom"
+            }
+        ],
+        "error"          :"eft-to-bank-credit-account-name-error",
+        "previous"       : "eft-to-bank-credit-account",
+		"next"           : "eft-to-bank-amount"
+	},
+
+	{
+        "type"           : "input",
+        "name"           : "eft-to-bank-amount",
+        "save-as"        : "eftAmount",
+        "validation"     : [
+            {
+                "name"   : "isAmount",
+				"type"   : "joi",
+				"arguments":"min=funds-transfer-minimum-%@working-currency"
+            }
+        ],
+        "error"          : "eft-to-bank-amount-error",
+        "previous"       : "eft-to-bank-credit-account-name",
+		"next"           : "eft-to-bank-reason"
+	},
+
+	{
+        "type"           : "input",
+        "name"           : "eft-to-bank-reason",
+		"save-as"        : "eftReason",
+		"format-as"        : "createSpaces",
+        "validation"     : [
+            {
+                "name"   : "isStatement",
+                "type"   : "custom"
+            }
+        ],
+        "error"          : "eft-to-bank-reason-error",
+        "previous"       : "eft-to-bank-amount",
+		"next"           : "eft-to-bank-confirm"
+	},
+
+    {
+        "type"           : "select",
+        "name"           : "eft-to-bank-confirm",
+		"options"        : "confirm-options",
+		"charges"         : true,
+        "error"          : "eft-to-bank-confirm-error",
+        "action"         : "transact",
+        "external-fetch" : {
+            "route"      : "eft",
+            "success"    : "api-success",
+            "error"      : "api-error"
+        },
+        "on-cancel"      : "client-page",
+        "previous"       : "eft-to-bank-reason"
+    },
+	{
+		"type"      : "select",
+		"name"      : "eft-to-bank-debit-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "eft-to-bank-debit-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "eft-page"
+	}
+]

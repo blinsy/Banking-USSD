@@ -1,0 +1,84 @@
+[
+	{
+        "type"            : "select",
+        "name"            : "so-cancel-debit-account",
+        "save-as"         : "soDebitAccount",
+        "options"         : "savings-accounts",
+		"options-error"   : "so-cancel-debit-account-options-error",
+        "error"           : "so-cancel-debit-account-error",
+        "previous"        : "standing-orders-page",
+		"next"            : "so-cancel-id",
+		"action"          : "update-parameters",		
+        "external-fetch"  : {
+            "route"                 : "standing-orders-lookup",
+            "success"               : "so-cancel-id",
+			"error"                 : "standing-orders-lookup-error",
+			"cache"                 : true,
+			"cache-path"            : "global-constants",
+			"cache-parameters"      : [
+				{
+					"path"     : "field127",
+					"save-as"  : "current-standing-orders",
+					"format-as": "standing-orders"	
+				}
+			]
+        }
+	},
+    
+	{
+        "type"            : "select",
+        "name"            : "so-cancel-id",
+        "save-as"         : "soId",
+        "options"         : "current-standing-orders",
+		"options-error"   : "standing-orders-options-error",
+        "error"           : "so-cancel-id-error",
+        "previous"        : "create-standing-orders-page",
+        "next"            : "so-cancel-confirm"
+	},
+    {
+        "type"            : "select",
+        "name"            : "so-cancel-confirm",
+		"options"         : "confirm-options",
+		"charges"         : true,
+        "previous"        : "so-cancel-id",
+        "action"          : "transact",
+        "external-fetch"  : {
+            "route"       : "standing-orders-cancel",
+            "success"     : "api-success",
+            "error"       : "api-error"
+        },
+        "on-cancel"       : "client-page",
+        "error"           : "so-cancel-confirm-error"
+	},
+
+
+	{
+		"type"      : "select",
+		"name"      : "so-cancel-debit-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "so-cancel-debit-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "client-page"
+	},
+	{
+		"type"      : "select",
+		"name"      : "standing-orders-lookup-error",
+		"options"   : "yes-no-options",
+		"error"     : "standing-orders-lookup-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "client-page"
+	},
+	{
+		"type"      : "select",
+		"name"      : "standing-orders-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "standing-orders-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout"
+	}
+]

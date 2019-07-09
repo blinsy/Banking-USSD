@@ -1,0 +1,44 @@
+[
+    {
+        "type"          : "input",
+        "name"          : "email-change-current-email",
+        "validation"    : [
+            {
+                "name"  : "isValidEmail",
+                "type"  : "custom"
+            },                
+            {
+                "name"  : "isCurrentEmail",
+                "type"  : "custom"
+            }
+        ],
+        "errors"        : [ "email-change-invalid-email-error","email-change-wrong-email-error"],
+        "previous" : "settings-page"
+    },
+    {
+        "type"          : "input",
+        "name"          : "email-change-new-email",
+        "save-as"       : "new-email",
+        "validation"    : [
+            {
+                "name"  : "isValidEmail",
+                "type"  : "custom"
+            }
+        ],
+        "error"         : "email-change-invalid-new-email-error"
+    },
+    {
+        "type"          : "select",
+        "name"          : "email-change-confirm",
+        "options"       : "confirm-options",
+        "error"         : "email-change-confirm-error",
+        "action"        : "transact",
+        "external-fetch": { 
+            "api"       : "mock",
+            "route"     : "email-change",
+            "success"   : "email-change-success",
+            "error"     : "email-change-error"              
+        },
+        "on-cancel"     : "settings-page"
+    }
+]

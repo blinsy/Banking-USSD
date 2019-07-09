@@ -1,0 +1,255 @@
+{
+	"cbplc-cron-api" : {
+		"data-sources": {
+			"timeout"			: 25000,
+			"offline-timeout"	: 50,
+			"development"		: {
+				"host"    : "192.168.7.139",
+				"port"    : 8080,
+				"protocol": "http",
+				"method"  : "post",
+				"path"    : "CBPLC_ESBServlet/CBPLCServlet"
+			}
+		},
+		"meta-data": {
+			"appName"       : "CREDIT BANK PLC",
+			"currency"      : "KES",
+			"country-code"  : "KE",
+			"channel"       : "USSD",
+			"payload-format": "JSON"
+		},
+		"permissions": {
+			"base64"       : true,
+			"encrypt"      : false,
+			"hash-pin"     : true,
+			"fetch-charges": true
+		},
+		"request-settings": {
+			"headers": false,
+			"template": {
+				"field0"  : "0200",
+				"field7"  : "create:timeStamp=MMDDHHmmss",
+				"field11" : "create:stan",
+				"field12" : "create:timeStamp=HHmmss",
+				"field13" : "create:timeStamp=MMDD",
+				"field15" : "create:timeStamp=MMDD",
+				"field32" : "get:channel",	
+				"field33" : "IUBRUXExOTA1",
+				"field37" : "create:transactionId",
+				"field40" : "000",
+				"field41" : "FID00001",
+				"field42" : "606465ATM000001",
+				"field43" : "get:appName",
+				"field49" : "get:currency",
+				"field56" : "bcac5bdc-32fb-42df-8ddb-ce8f705ba8c5",
+				"field60" : "get:country-code",
+				"field123": "get:channel"				
+			},
+			"endpoints": {
+				"account-opening" : {
+					"request"     : {                        
+                        "field0"  : "0200",
+                        "field2"  : "__walletAccount",
+                        "field3"  : "210000",
+                        "field4"  : "0",
+                        "field24" : "BB",
+                        "field65" : "BANK",
+                        "field66" : "BANK",    
+                        "field68" : "USSD - Account Opening Lookup - Ref -%@FIELD37", 
+                        "field74" : "ACCOUNTOPENING",
+                        "field100": "LOOKUP"
+					},
+                    "response": {
+                        "status": {
+							"field": "field39",
+                            "matches": [
+                                {
+                                    "code": "00",
+                                    "status": "success"
+                                }
+                            ],
+                            "error": {
+                                "message": "field48"
+                            }
+                        },
+                        "save": false
+                    }		
+				},
+				"school" : {
+					"request"     : {
+						"field0"  : "0200",
+						"field2"  : "__walletAccount",
+						"field3"  : "210000",
+						"field4"  : "0",
+						"field24" : "MM",
+						"field68" : "USSD - School Lookup Request - Ref %@field37",
+						"field65" : "SCHOOL",
+						"field66" : "",
+						"field74" : "SCHOOL",
+						"field100": "LOOKUP"
+					},
+					"response": {
+						"status": {
+							"field": "field39",
+							"matches": [
+								{
+									"code": "00",
+									"status": "success"
+								}
+							],
+							"error": {
+								"message": "field48"
+							}
+						},
+						"save": false
+					}		
+				},
+				"eft" : {
+					"request"     : {
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "210000",
+						"field4": "0",
+						"field24": "MM",
+						"field65": "BANK",
+						"field68" : "USSD - EFT Bank Lookup Request - Ref %@field37",
+						"field66": "",
+						"field74": "EFT",
+						"field100": "LOOKUP"
+					},
+					"response": {
+						"status": {
+							"field": "field39",
+							"matches": [
+								{
+									"code": "00",
+									"status": "success"
+								}
+							],
+							"error": {
+								"message": "field48"
+							}
+						},
+						"save": false
+					}		
+				},
+				"rtgs" : {
+					"request"     : {
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "210000",
+						"field4": "0",
+						"field24": "MM",
+						"field65": "BANK",
+						"field68" : "USSD - RTGS Bank Lookup Request - Ref %@field37",
+						"field66": "",
+						"field74": "RTGS",
+						"field100": "LOOKUP"
+					},
+					"response": {
+						"status": {
+							"field": "field39",
+							"matches": [
+								{
+									"code": "00",
+									"status": "success"
+								}
+							],
+							"error": {
+								"message": "field48"
+							}
+						},
+						"save": false
+					}		
+				},
+				"pesalink" : {
+					"request"     : {
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "210000",
+						"field4": "0",
+						"field24": "MM",
+						"field65": "BANK",
+						"field68" : "USSD - PESALINK Bank Lookup Request - Ref %@field37",
+						"field66": "",
+						"field74": "PESALINK",
+						"field100": "LOOKUP"
+					},
+					"response": {
+						"status": {
+							"field": "field39",
+							"matches": [
+								{
+									"code": "00",
+									"status": "success"
+								}
+							],
+							"error": {
+								"message": "field48"
+							}
+						},
+						"save": false
+					}		
+				},
+				"so" : {
+					"request"     : {
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "210000",
+						"field4": "0",
+						"field24": "MM",
+						"field65": "BANK",
+						"field68" : "USSD - PESALINK Bank Lookup Request - Ref %@field37",
+						"field66": "",
+						"field74": "PESALINK",
+						"field100": "LOOKUP"
+					},
+					"response": {
+						"status": {
+							"field": "field39",
+							"matches": [
+								{
+									"code": "00",
+									"status": "success"
+								}
+							],
+							"error": {
+								"message": "field48"
+							}
+						},
+						"save": false
+					}		
+				},
+				"branch" : {
+					"request"     : {
+						"field0": "0200",
+						"field2": "__walletAccount",
+						"field3": "210000",
+						"field4": "0",
+						"field24": "MM",
+						"field65": "BRANCH",
+						"field68" : "USSD - Branch Lookup Request - Ref %@field37",
+						"field66": "__branchCode",
+						"field74": "RTGS",
+						"field100": "LOOKUP"
+					},
+					"response": {
+						"status": {
+							"field": "field39",
+							"matches": [
+								{
+									"code": "00",
+									"status": "success"
+								}
+							],
+							"error": {
+								"message": "field48"
+							}
+						},
+						"save": false
+					}		
+				}
+			}
+		}
+	}
+}

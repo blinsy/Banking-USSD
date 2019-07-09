@@ -1,0 +1,15 @@
+{
+	"type"             : "select",
+	"name"             : "wallet-account-opening",
+	"options"          : "confirm-options",
+	"charges"         : false,
+	"previous"         : "customer-requests-page",
+	"action"           : "transact",
+	"external-fetch"   : {
+		"route"        : "account-opening",
+		"success"      : "api-success",
+		"error"        : "api-error"
+	},
+	"on-cancel"        : "client-page",
+	"error"            : "wallet-account-opening-error"
+}

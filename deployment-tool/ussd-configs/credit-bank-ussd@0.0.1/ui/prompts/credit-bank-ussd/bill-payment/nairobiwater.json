@@ -1,0 +1,70 @@
+[
+	{
+        "type"           : "select",
+        "name"           : "nairobiwater-debit-account",
+        "save-as"        : "billPaymentDebitAccount",
+		"options"        : "mwallet-account+savings-accounts",		
+		"options-error"  : "nairobiwater-debit-account-options-error",
+        "error"          : "nairobiwater-debit-account-error",
+		"previous"       : "bill-payment-page",
+		"next"           : "nairobiwater-credit-account"
+    },
+    {
+        "type"           : "input",
+        "name"           : "nairobiwater-credit-account",
+        "save-as"        : "billPaymentCreditAccount",
+        "validation"     : [
+            {
+                "name"   : "isNumber",
+                "type"   : "joi"
+            }
+        ],
+        "error"          : "nairobiwater-credit-account-error",
+        "previous"       : "nairobiwater-credit-account",
+        "next"           : "nairobiwater-amount"
+	},	
+    {
+        "type"           : "input",
+        "name"           : "nairobiwater-amount",
+        "save-as"        : "billPaymentAmount",
+        "validation"     : [
+            {
+                "name"   : "isAmount",
+				"type"   : "joi",
+				"arguments":"min=200"
+            }
+        ],
+        "format-as"      : "",
+        "error"          : "nairobiwater-amount-error",
+        "previous"       : "nairobiwater-credit-account",
+        "next"           : "nairobiwater-confirm"
+    },    
+    {
+        "type"           : "select",
+        "name"           : "nairobiwater-confirm",
+		"options"        : "confirm-options",
+		"charges"         : true,
+        "error"          : "nairobiwater-confirm-error",
+        "action"         : "transact",
+        "external-fetch" : {
+            "route"      : "nairobi-water-bill-payment",
+            "success"    : "api-success",
+            "error"      : "api-error"
+        },
+        "on-cancel"      : "client-page",
+        "previous"       : "nairobiwater-amount"
+    },
+	
+
+
+	{
+		"type"      : "select",
+		"name"      : "nairobiwater-debit-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "nairobiwater-debit-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "nairobiwater-credit-account"
+	}
+]

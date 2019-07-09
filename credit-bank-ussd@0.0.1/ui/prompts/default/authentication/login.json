@@ -1,0 +1,38 @@
+{
+    "type"           : "input",
+    "name"           : "login",
+    "next"           : "client-page",
+    "validation"     : [
+		{
+			"name" : "matchesLength",
+			"type" : "joi",
+			"arguments": "length=4"
+		},
+        {
+            "name"   : "isValidPin",
+            "type"   : "custom"
+        },                
+        {
+            "name"   : "isCorrectPin",
+            "type"   : "custom"
+        }
+    ],    
+    "errors"         : [ "invalid-pin-length-error","invalid-pin-error","wrong-login"],
+	"transform-function": "hash_pin",
+	"internal-fetch"  	 : { 
+		"success"          : "client-page",
+		"success-handler"  : {
+			"handler"         : "reset_pin_trials",
+			"argument"        : "pin-trials-remaining",
+			"save-as"         : "pin-trials-remaining"
+		},		
+		"error"            : "wrong-login",
+		"error-handler"    : {
+			"handler"         : "decrement_pin_trials",
+			"argument"        : "pin-trials-remaining",
+			"save-as"         : "pin-trials-remaining"
+		},
+		"cache"            : true         
+	} ,
+	"previous" : "login-page"  
+}

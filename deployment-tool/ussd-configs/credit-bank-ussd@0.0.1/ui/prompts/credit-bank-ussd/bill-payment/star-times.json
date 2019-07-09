@@ -1,0 +1,71 @@
+[
+    {
+        "type"           : "input",
+        "name"           : "start-times-credit-account",
+        "save-as"        : "billPaymentCreditAccount",
+        "validation"     : [
+            {
+                "name"   : "isNumber",
+                "type"   : "joi"
+            }
+        ],
+        "format-as"      : "",
+        "error"          : "start-times-credit-account-error",
+        "previous"       : "bill-payment-page",
+        "next"           : "start-times-debit-account"
+	},
+	{
+        "type"           : "select",
+        "name"           : "start-times-debit-account",
+        "save-as"        : "billPaymentDebitAccount",
+		"options"        : "savings-accounts",		
+		"options-error"  : "start-times-debit-account-options-error",
+        "error"          : "start-times-debit-account-error",
+		"previous"       : "start-times-credit-account",
+		"next"           : "start-times-amount"
+    },
+    {
+        "type"           : "input",
+        "name"           : "start-times-amount",
+        "save-as"        : "billPaymentAmount",
+        "validation"     : [
+            {
+                "name"   : "isAmount",
+				"type"   : "joi",
+				"arguments":"min=200"
+            }
+        ],
+        "format-as"      : "",
+        "error"          : "start-times-amount-error",
+        "previous"       : "start-times-debit-account",
+        "next"           : "start-times-confirm"
+    },    
+    {
+        "type"           : "select",
+        "name"           : "start-times-confirm",
+		"options"        : "confirm-options",
+		"charges"         : true,
+        "error"          : "start-times-confirm-error",
+        "action"         : "transact",
+        "external-fetch" : {
+            "route"      : "accessKenyaPayment",
+            "success"    : "api-success",
+            "error"      : "api-error"
+        },
+        "on-cancel"      : "client-page",
+        "previous"       : "start-times-amount"
+    },
+	
+
+
+	{
+		"type"      : "select",
+		"name"      : "start-times-debit-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "start-times-debit-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "start-times-credit-account"
+	}
+]

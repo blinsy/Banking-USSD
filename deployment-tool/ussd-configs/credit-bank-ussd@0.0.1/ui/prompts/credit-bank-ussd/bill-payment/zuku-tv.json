@@ -1,0 +1,79 @@
+[
+	{
+        "type"           : "select",
+        "name"           : "zuku-tv-debit-account",
+        "save-as"        : "billPaymentDebitAccount",
+		"options"        : "mwallet-account+savings-accounts",		
+		"options-error"  : "zuku-tv-debit-account-options-error",
+        "error"          : "zuku-tv-debit-account-error",
+		"previous"       : "bill-payment-page",
+		"next"           : "zuku-tv-credit-account"
+    },
+    {
+        "type"           : "input",
+        "name"           : "zuku-tv-credit-account",
+        "save-as"        : "billPaymentCreditAccount",
+        "validation"     : [
+            {
+                "name"   : "isNumber",
+                "type"   : "joi"
+            }
+        ],
+        "error"          : "zuku-tv-credit-account-error",
+        "previous"       : "bill-payment-page",
+        "next"           : "zuku-tv-amount"
+	},
+	
+    {
+        "type"           : "input",
+        "name"           : "zuku-tv-amount",
+        "save-as"        : "billPaymentAmount",
+        "validation"     : [
+            {
+                "name"   : "isAmount",
+				"type"   : "joi",
+				"arguments":"min=200"
+            }
+        ],
+        "error"          : "zuku-tv-amount-error",
+        "previous"       : "zuku-tv-credit-account",
+        "next"           : "zuku-tv-confirm"
+    },    
+    {
+        "type"           : "select",
+        "name"           : "zuku-tv-confirm",
+		"options"        : "confirm-options",
+		"charges"         : true,
+        "error"          : "zuku-tv-confirm-error",
+        "action"         : "transact",
+        "external-fetch" : {
+            "route"      : "zuku-tv-bill-payment",
+            "success"    : "api-success",
+            "error"      : "api-error"
+        },
+        "on-cancel"      : "client-page",
+        "previous"       : "zuku-tv-amount"
+    },
+	
+
+
+	{
+		"type"      : "select",
+		"name"      : "zuku-tv-debit-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "zuku-tv-debit-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "zuku-tv-credit-account"
+	},
+	{
+		"type"      : "select",
+		"name"      : "zuku-tv-presentment-error",
+		"options"   : "yes-no-options",
+		"error"     : "zuku-tv-presentment-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout"
+	}
+]

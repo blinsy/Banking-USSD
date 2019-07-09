@@ -1,0 +1,117 @@
+[
+	{
+        "type"            : "select",
+        "name"            : "so-amend-debit-account",
+        "save-as"         : "soDebitAccount",
+        "options"         : "savings-accounts",
+		"options-error"   : "so-amend-debit-account-options-error",
+        "error"           : "so-amend-debit-account-error",
+        "previous"        : "standing-orders-page",
+		"next"            : "so-amend-id",
+		"action"          : "update-parameters",		
+        "external-fetch"  : {
+            "route"                 : "standing-orders-lookup",
+            "success"               : "so-amend-id",
+			"error"                 : "standing-orders-lookup-error",
+			"cache"                 : true,
+			"cache-path"            : "global-constants",
+			"cache-parameters"      : [
+				{
+					"path"     : "field127",
+					"save-as"  : "current-standing-orders",
+					"format-as": "standing-orders"	
+				}
+			]
+        }
+	},    
+	{
+        "type"            : "select",
+        "name"            : "so-amend-id",
+        "save-as"         : "soId",
+        "options"         : "current-standing-orders",
+		"options-error"   : "standing-orders-options-error",
+        "error"           : "so-amend-id-error",
+        "previous"        : "so-amend-debit-account",
+        "next"            : "so-amend-amount"
+	},
+	{
+        "type"          : "input",
+        "name"          : "so-amend-amount",
+		"save-as"       : "soAmendAmount",
+        "validation"    : [
+            {
+                "name"  : "isAmount",
+				"type"  : "joi",
+				"arguments" :"min=0"
+            }
+		],
+		"format-as"     : "to-number",
+        "error"         : "so-amend-amount-error",
+        "previous"      : "so-amend-id",
+        "next"          : "so-amend-end-date"
+	},
+	{
+        "type"          : "input",
+        "name"          : "so-amend-end-date",
+		"save-as"       : "soEndDate",
+        "validation"    : [
+            {
+                "name"  : "isValidDate",
+				"type"  : "custom",
+				"arguments" :"format=YYYY-MM-DD"
+            }
+		],
+		"format-as"     : "to-number",
+        "error"         : "so-amend-end-date-error",
+        "previous"      : "so-amend-amount",
+        "next"          : "so-amend-confirm"
+	},
+    {
+        "type"            : "select",
+        "name"            : "so-amend-confirm",
+		"options"         : "confirm-options",
+		"charges"         : true,
+        "previous"        : "so-amend-end-date",
+        "action"          : "transact",
+        "external-fetch"  : {
+            "route"       : "standing-orders-amend",
+            "success"     : "api-success",
+            "error"       : "api-error"
+        },
+        "on-cancel"       : "client-page",
+        "error"           : "so-amend-confirm-error"
+	},
+
+
+	{
+		"type"      : "select",
+		"name"      : "so-amend-debit-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "so-amend-debit-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "client-page"
+	},
+	{
+		"type"      : "select",
+		"name"      : "standing-orders-lookup-error",
+		"options"   : "yes-no-options",
+		"error"     : "standing-orders-lookup-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "client-page"
+	},
+
+	{
+		"type"      : "select",
+		"name"      : "standing-orders-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "standing-orders-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "so-amend-debit-account"
+	}
+]

@@ -1,0 +1,38 @@
+{
+    "type"                : "select",
+    "name"                : "bill-payment-page",
+    "options"             : [
+        {
+            "name"        : "pay-utility-bill-page",
+            "label"       : "pay-utility-bill-page-label",
+            "enabled"     : true,
+            "authenticate": false
+        },
+        {
+            "name"        : "pay-tv-bill-page",
+            "label"       : "pay-tv-bill-page-label",
+            "enabled"     : true,
+            "authenticate": false
+        },
+        {
+            "name"        : "pay-internet-bill-page",
+            "label"       : "pay-internet-bill-page-label",
+            "enabled"     : true,
+            "authenticate": false
+        },
+        {
+            "name"        : "pay-government-bill-page",
+            "label"       : "pay-government-bill-page-label",
+            "enabled"     : true,
+            "authenticate": false
+        },
+		{
+			"name"        : "school-fees",
+			"label"       : "school-fees-label",
+			"enabled"     : true,
+			"authenticate": false
+		}
+    ],
+    "error"               : "bill-payment-page-error",
+    "previous"            : "client-page"
+}

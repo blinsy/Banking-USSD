@@ -1,0 +1,96 @@
+[
+    {
+        "type"          : "select",
+		"name"          : "ft-own-accounts-debit-account",
+		"save-as"       : "fundsTransferDebitAccount",
+		"options"       : "mwallet-account+savings-accounts",		
+		"options-error" : "ft-own-accounts-debit-account-options-error",
+        "error"         : "ft-own-accounts-debit-account-error",
+		"previous"      : "funds-transfer-page",
+		"next"          : "ft-own-accounts-credit-account"
+    },
+    {
+        "type"          : "select",
+        "name"          : "ft-own-accounts-credit-account",
+		"save-as"       : "fundsTransferCreditAccount",	
+		"ignore-meta"   : ["working-currency"],	
+		"options"       : "mwallet-account+savings-accounts",				
+		"options-error" : "ft-own-accounts-credit-account-options-error",
+        "error"         : "ft-own-accounts-credit-account-error",
+		"previous"      : "ft-own-accounts-debit-account",
+		"next"          : "ft-own-accounts-amount"
+    },
+    {
+        "type"          : "input",
+		"name"          : "ft-own-accounts-amount",
+		"show-if"       : {
+			"param"          : "fundsTransferDebitAccount",
+			"is-not-equal-to": "fundsTransferCreditAccount",
+			"on-error"       : "ft-same-account-error"
+		},
+        "save-as"       : "fundsTransferAmount",
+        "validation"    : [
+            {
+                "name"  : "isAmount",
+				"type"  : "joi",
+				"arguments":"min=funds-transfer-minimum-%@working-currency"
+            }
+        ],
+        "format-as"     : "",
+        "error"         : "ft-own-accounts-amount-error",
+        "previous"      : "ft-own-accounts-credit-account",
+        "next"          : "ft-own-accounts-confirm"
+    },
+    {
+        "type"          : "select",
+        "name"          : "ft-own-accounts-confirm",
+		"options"       : "confirm-options",
+		"charges"         : true,
+        "error"         : "ft-own-accounts-confirm-error",
+        "action"        : "transact",
+        "external-fetch": {
+            "route"     : "funds-transfer",
+            "success"   : "api-success",
+            "error"     : "api-error"
+        },
+        "on-cancel"     : "client-page",
+        "previous"      : "ft-own-accounts-amount"
+	},
+	
+
+	
+	{
+		"type"      : "select",
+		"name"      : "ft-own-accounts-debit-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "ft-own-accounts-debit-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "funds-transfer-page"
+	},
+	
+	{
+		"type"      : "select",
+		"name"      : "ft-own-accounts-credit-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "ft-own-accounts-credit-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "funds-transfer-page"
+	},
+
+
+	
+	{
+		"type"      : "select",
+		"name"      : "ft-same-account-error",
+		"options"   : "yes-no-options",
+		"error"     : "ft-same-account-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "ft-own-accounts-credit-account"
+	}
+]

@@ -1,0 +1,108 @@
+[
+	{
+        "type"           : "select",
+        "name"           : "kplc-postpaid-debit-account",
+        "save-as"        : "billPaymentDebitAccount",
+		"options"        : "mwallet-account+savings-accounts",		
+		"options-error"  : "kplc-postpaid-debit-account-options-error",
+        "error"          : "kplc-postpaid-debit-account-error",
+		"previous"       : "bill-payment-page",
+		"next"           : "kplc-postpaid-credit-account"
+    },
+    {
+        "type"           : "input",
+        "name"           : "kplc-postpaid-credit-account",
+        "save-as"        : "billPaymentCreditAccount",
+        "validation"     : [
+            {
+                "name"   : "isNumber",
+                "type"   : "joi"
+            }
+        ],
+        "format-as"      : "",
+        "error"          : "kplc-postpaid-credit-account-error",
+        "previous"       : "kplc-postpaid-debit-account",
+		"next"           : "kplc-postpaid-confirm",		
+		"action"         : "update-parameters",
+		"external-fetch" : { 
+			"route"            : "kplc-post-paid-bill-presentment",
+			"success"          : "kplc-postpaid-confirm",	
+			"error"            : "kplc-postpaid-presentment-error",
+			"cache"            : true,
+			"cache-path"       : "global-request-details",
+			"cache-parameters" : [
+				{
+					"path"     : "field4",
+					"save-as"  : "billPaymentAmount",
+					"validation": {
+						"name"     : "isAmount",
+						"type"     : "joi",
+						"arguments": "min=10"
+					},
+					"error"    : "kplc-postpaid-presentment-amount-error"
+				}
+			],
+			"parameter-checks" : {
+				"billPaymentAmount" :{
+					"is-less-than": "0",
+					"redirect-to" : "kplc-postpaid-presentment-amount-error"
+				}
+			}         
+		}
+	},   
+    {
+        "type"           : "select",
+		"name"           : "kplc-postpaid-confirm",
+		"options"        : "confirm-options",
+		"charges"         : true,
+        "error"          : "kplc-postpaid-confirm-error",
+        "action"         : "transact",
+        "external-fetch" : {
+            "route"      : "kplc-post-paid-bill-payment",
+            "success"    : "api-success",
+            "error"      : "api-error"
+        },
+        "on-cancel"      : "client-page",
+        "previous"       : "kplc-postpaid-credit-account"
+    },
+	
+
+
+	{
+		"type"      : "select",
+		"name"      : "kplc-postpaid-debit-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "kplc-postpaid-debit-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "kplc-postpaid-credit-account"
+	},
+	{
+		"type"      : "select",
+		"name"      : "kplc-postpaid-presentment-error",
+		"options"   : "yes-no-options",
+		"error"     : "kplc-postpaid-presentment-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout"
+	},
+	{
+		"type"      : "select",
+		"name"      : "kplc-postpaid-presentment-amount-error",
+		"options"   : "yes-no-options",
+		"error"     : "kplc-postpaid-presentment-amount-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout"
+	},
+	{
+		"type"      : "select",
+		"name"      : "kplc-postpaid-presentment-amount-error",
+		"options"   : "yes-no-options",
+		"error"     : "kplc-postpaid-presentment-amount-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout"
+	}
+]

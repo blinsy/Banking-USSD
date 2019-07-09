@@ -1,0 +1,9 @@
+{
+    "type"      : "select",
+    "name"      : "ministatement-success",
+    "options"   : "yes-no-options",
+    "error"     : "ministatement-success-error",
+    "action"    : "navigate",
+    "on-accept" : "client-page",
+    "on-cancel" : "logout"    
+}

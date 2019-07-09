@@ -1,0 +1,69 @@
+[
+    {
+        "type"          : "select",
+		"name"          : "ft-savings-to-savings-debit-account",
+		"save-as"       : "fundsTransferDebitAccount",
+		"options"       : "savings-accounts",
+		"options-error" : "ft-savings-to-savings-debit-account-options-error",
+        "error"         : "ft-savings-to-savings-debit-account-error",
+		"previous"      : "funds-transfer-other-accounts-page",
+		"next"          : "ft-savings-to-savings-credit-account"
+    },
+    {
+        "type"          : "input",
+        "name"          : "ft-savings-to-savings-credit-account",
+        "save-as"       : "fundsTransferCreditAccount",
+        "validation"    : [
+            {
+                "name"  : "isNumber",
+                "type"  : "joi"
+            }
+        ],
+        "format-as"     : "",
+        "error"         : "ft-savings-to-savings-credit-account-error",
+        "previous"      : "ft-savings-to-savings-debit-account",
+        "next"          : "ft-savings-to-savings-amount"
+    },
+    {
+        "type"          : "input",
+        "name"          : "ft-savings-to-savings-amount",
+        "save-as"       : "fundsTransferAmount",
+        "validation"    : [
+            {
+                "name"  : "isAmount",
+				"type"              : "joi",				
+				"arguments":"min=funds-transfer-minimum-%@working-currency"
+            }
+        ],
+        "format-as"     : "",
+        "error"         : "ft-savings-to-savings-amount-error",
+        "previous"      : "ft-savings-to-savings-credit-account",
+        "next"          : "ft-savings-to-savings-confirm"
+    },
+    {
+        "type"          : "select",
+        "name"          : "ft-savings-to-savings-confirm",
+		"options"       : "confirm-options",
+		"charges"         : true,
+        "error"         : "ft-savings-to-savings-confirm-error",
+        "action"        : "transact",
+        "external-fetch": {
+            "route"     : "funds-transfer",
+            "success"   : "api-success",
+            "error"     : "api-error"
+        },
+        "on-cancel"     : "client-page",
+        "previous"      : "ft-savings-to-savings-amount"
+    },
+	
+	{
+		"type"      : "select",
+		"name"      : "ft-savings-to-savings-debit-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "ft-savings-to-savings-debit-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "funds-transfer-page"
+	}
+]

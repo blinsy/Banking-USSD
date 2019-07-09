@@ -1,0 +1,51 @@
+[
+	{
+        "type"            : "select",
+        "name"            : "balance-account",
+        "save-as"         : "balanceDebitAccount",
+		"options"         : "mwallet-account+savings-accounts",
+		"options-error"   : "balance-account-savings-options-error",
+        "error"           : "balance-account-savings-error",
+        "previous"        : "account-enquiries-page",
+        "next"            : "balance-confirm"
+	},
+    {
+        "type"            : "select",
+        "name"            : "balance-confirm",
+        "options"         : "confirm-options",
+		"previous"        : "balance-account",		
+		"charges"         : true,
+        "action"          : "transact",
+        "external-fetch"  : {
+            "route"       : "balance",
+            "success"     : "balance-success",
+			"error"       : "api-error",
+			"cache"            : true,
+			"cache-path"       : "global-request-details",
+			"cache-parameters" : [
+				{
+					"path"          : "field54",
+					"item-delimiter": "|",
+					"save-as"       : ["actual-balance", "available-balance" ],
+					"format-as"     : ["money", "money"]
+				},
+				{
+					"path"          : "field49",
+					"save-as"       : "currencyCode"
+				}
+			]
+        },
+        "on-cancel"       : "client-page",
+        "error"           : "balance-confirm-error"
+	},
+	{
+		"type"      : "select",
+		"name"      : "balance-account-savings-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "balance-account-savings-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "balance-account"
+	}
+]

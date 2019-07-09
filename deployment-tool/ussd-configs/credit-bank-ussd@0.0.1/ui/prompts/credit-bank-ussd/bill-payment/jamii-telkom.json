@@ -1,0 +1,71 @@
+[
+    {
+        "type"           : "input",
+        "name"           : "jamii-telkom-credit-account",
+        "save-as"        : "billPaymentCreditAccount",
+        "validation"     : [
+            {
+                "name"   : "isNumber",
+                "type"   : "joi"
+            }
+        ],
+        "format-as"      : "",
+        "error"          : "jamii-telkom-credit-account-error",
+        "previous"       : "bill-payment-page",
+        "next"           : "jamii-telkom-debit-account"
+	},
+	{
+        "type"           : "select",
+        "name"           : "jamii-telkom-debit-account",
+        "save-as"        : "billPaymentDebitAccount",
+		"options"        : "savings-accounts",		
+		"options-error"  : "jamii-telkom-debit-account-options-error",
+        "error"          : "jamii-telkom-debit-account-error",
+		"previous"       : "jamii-telkom-credit-account",
+		"next"           : "jamii-telkom-amount"
+    },
+    {
+        "type"           : "input",
+        "name"           : "jamii-telkom-amount",
+        "save-as"        : "billPaymentAmount",
+        "validation"     : [
+            {
+                "name"   : "isAmount",
+				"type"   : "joi",
+				"arguments":"min=200"
+            }
+        ],
+        "format-as"      : "",
+        "error"          : "jamii-telkom-amount-error",
+        "previous"       : "jamii-telkom-debit-account",
+        "next"           : "jamii-telkom-confirm"
+    },    
+    {
+        "type"           : "select",
+        "name"           : "jamii-telkom-confirm",
+		"options"        : "confirm-options",
+		"charges"         : true,
+        "error"          : "jamii-telkom-confirm-error",
+        "action"         : "transact",
+        "external-fetch" : {
+            "route"      : "accessKenyaPayment",
+            "success"    : "api-success",
+            "error"      : "api-error"
+        },
+        "on-cancel"      : "client-page",
+        "previous"       : "jamii-telkom-amount"
+    },
+	
+
+
+	{
+		"type"      : "select",
+		"name"      : "jamii-telkom-debit-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "jamii-telkom-debit-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "jamii-telkom-credit-account"
+	}
+]

@@ -1,0 +1,9 @@
+{
+    "type"      : "select",
+    "name"      : "insurance-success",
+    "options"   : "yes-no-options",
+    "error"     : "insurance-success-error",
+    "action"    : "navigate",
+    "on-accept" : "client-page",
+    "on-cancel" : "logout"    
+}

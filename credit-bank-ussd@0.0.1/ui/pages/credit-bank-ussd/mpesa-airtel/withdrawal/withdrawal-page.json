@@ -1,0 +1,20 @@
+{
+    "type": "select",
+    "name": "withdrawal-page",
+    "options": [
+        {
+            "name": "withdrawal-mpesa-b2c",
+            "label": "withdrawal-mpesa-b2c-label",
+            "enabled": true,
+            "authenticate": false
+        },
+        {
+            "name": "withdrawal-airtel-b2c",
+            "label": "withdrawal-airtel-b2c-label",
+            "enabled": true,
+            "authenticate": false
+        }
+    ],
+    "error": "withdrawal-page-error",
+    "previous": "mpesa-airtel-page"
+}

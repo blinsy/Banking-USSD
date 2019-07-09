@@ -1,0 +1,47 @@
+[
+
+	{
+		"type"       : "select",
+		"name"       : "forex-confirm",
+		"options"    : "yes-no-options",
+		"action"     : "update-parameters",
+		"external-fetch" : {
+			"route" :"forex-fetch",
+			"success":"forex-details",
+			"error":"forex-error",
+			"cache-path":"global-request-details",
+			"cache-parameters" : [
+				{
+					"path" :"field127",
+					"format-as": "forex",
+					"save-as":"forex-data"
+				}
+			]
+		},
+		"error"      : "forex-confirm-error",
+		"previous"   : "settings-page"
+	},
+
+	{
+		"type"       : "select",
+		"name"       : "forex-details",
+		"options"    : "yes-no-options",
+		"action"     : "navigate",
+		"on-accept"  : "client-page",
+		"on-cancel"  : "logout",
+		"error"      : "forex-details-error",
+		"previous"   : "forex-confirm"
+	}
+	,
+
+	{
+		"type"       : "select",
+		"name"       : "forex-error",
+		"options"    : "yes-no-options",
+		"action"     : "navigate",
+		"on-accept"  : "client-page",
+		"on-cancel"  : "logout",
+		"error"      : "forex-error-error",
+		"previous"   : "forex-confirm"
+	}
+]

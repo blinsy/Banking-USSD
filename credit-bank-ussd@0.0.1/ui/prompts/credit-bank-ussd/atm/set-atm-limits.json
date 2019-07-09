@@ -1,0 +1,225 @@
+[
+	{
+        "type"           : "select",
+        "name"           : "set-card-limit-account",
+        "save-as"        : "debitAccount",
+		"options"        : "savings-accounts",
+        "error"          : "set-card-limit-account-error",
+		"previous"       : "bill-payment-page",
+		"next"           : "set-card-limit-card",
+		"action"         : "update-parameters",
+		"external-fetch" : { 
+			"route"           : "card-lookup",
+			"success"         : "set-card-limit-card",	
+			"error"           : "card-lookup-error",
+			"cache"           : true,
+			"cache-path"      : "global-request-details",
+			"cache-parameters": [
+				{
+					"path"     : "field127.cards",
+					"save-as"  : "cards",
+					"format-as": "user-cards"
+				}
+			]        
+		}
+	},
+
+	{
+		"type"           : "select",
+		"name"           : "set-card-limit-card",
+		"save-as"        : "card",
+		"options"        : "cards",
+		"error"          : "set-card-limit-card-error",
+		"previous"       : "set-card-limit-account",
+		"next"           : "set-card-limit-transaction"
+	},
+
+	{
+		"type"           : "select",
+		"name"           : "set-card-limit-transaction",
+		"options"        : [
+			{
+				"label" : "PoS Transaction",
+				"jump-to" : "pos-amount"
+			},
+			{
+				"label" : "ATM Transaction",
+				"jump-to" : "atm-amount"
+			},
+			{
+				"label" : "Online Transaction",
+				"jump-to" : "online-amount"
+			}
+		],
+		"error"          : "set-card-limit-transaction-error",
+		"previous"       : "set-card-limit-card"
+	},
+
+
+	{
+        "type"           : "input",
+        "name"           : "pos-amount",
+        "save-as"        : "amount",
+        "validation"     : [
+            {
+                "name"      : "isAmount",
+				"type"      : "joi",
+				"arguments" : "min=1"
+            }
+        ],
+        "error"          : "pos-amount-error",
+        "previous"       : "set-card-limit-transaction",
+		"next"           : "pos-count"
+	},	   
+
+	{
+        "type"           : "input",
+        "name"           : "atm-amount",
+        "save-as"        : "amount",
+        "validation"     : [
+            {
+                "name"      : "isAmount",
+				"type"      : "joi",
+				"arguments" : "min=1"
+            }
+        ],
+        "error"          : "atm-amount-error",
+        "previous"       : "set-card-limit-transaction",
+		"next"           : "atm-count"
+	},	
+
+	{
+        "type"           : "input",
+        "name"           : "online-amount",
+        "save-as"        : "amount",
+        "validation"     : [
+            {
+                "name"      : "isAmount",
+				"type"      : "joi",
+				"arguments" : "min=1"
+            }
+        ],
+        "error"          : "online-amount-error",
+        "previous"       : "set-card-limit-transaction",
+		"next"           : "online-count"
+	},	
+
+
+	
+	
+	
+	
+	
+	
+	
+	{
+        "type"           : "input",
+        "name"           : "pos-count",
+        "save-as"        : "count",
+        "validation"     : [
+            {
+                "name"      : "isNumber",
+				"type"      : "joi"
+            }
+        ],
+        "error"          : "pos-count-error",
+        "previous"       : "pos-amount",
+		"next"           : "pos-confirm"
+	},	   
+	{
+        "type"           : "input",
+        "name"           : "atm-count",
+        "save-as"        : "count",
+        "validation"     : [
+            {
+                "name"      : "isNumber",
+				"type"      : "joi"
+            }
+        ],
+        "error"          : "atm-count-error",
+        "previous"       : "atm-amount",
+		"next"           : "atm-confirm"
+	},	
+	
+	{
+        "type"           : "input",
+        "name"           : "online-count",
+        "save-as"        : "count",
+        "validation"     : [
+            {
+                "name"      : "isNumber",
+				"type"      : "joi"
+            }
+        ],
+        "error"          : "online-count-error",
+        "previous"       : "online-amount",
+		"next"           : "online-confirm"
+	},	
+
+
+
+	{
+        "type"           : "select",
+        "name"           : "pos-confirm",
+		"options"        : "confirm-options",
+		"charges"         : true,
+        "error"          : "pos-confirm-error",
+        "action"         : "transact",
+        "external-fetch" : {
+            "route"      : "pos-limit",
+            "success"    : "api-success",
+            "error"      : "api-error"
+        },
+        "on-cancel"      : "client-page",
+        "previous"       : "pos-count"
+	},
+	
+	{
+        "type"           : "select",
+        "name"           : "atm-confirm",
+		"options"        : "confirm-options",
+		"charges"         : true,
+        "error"          : "atm-confirm-error",
+        "action"         : "transact",
+        "external-fetch" : {
+            "route"      : "atm-limit",
+            "success"    : "api-success",
+            "error"      : "api-error"
+        },
+        "on-cancel"      : "client-page",
+        "previous"       : "atm-count"
+	},
+	
+	{
+        "type"           : "select",
+        "name"           : "online-confirm",
+		"options"        : "confirm-options",
+		"charges"         : true,
+        "error"          : "online-confirm-error",
+        "action"         : "transact",
+        "external-fetch" : {
+            "route"      : "online-limit",
+            "success"    : "api-success",
+            "error"      : "api-error"
+        },
+        "on-cancel"      : "client-page",
+        "previous"       : "online-count"
+	},
+	
+
+
+
+	
+	{
+		"type"      : "select",
+		"name"      : "card-lookup-error",
+		"options"   : "yes-no-options",
+		"error"     : "card-lookup-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "bill-payment-page"
+	}
+	
+
+]

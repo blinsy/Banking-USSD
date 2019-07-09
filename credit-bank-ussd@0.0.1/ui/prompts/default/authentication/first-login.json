@@ -1,0 +1,61 @@
+[
+    {
+        "type"          : "input",
+        "name"          : "first-login-system-pin",
+        "save-as"       : "systemPin",
+		"transform-function": "hash_pin",
+        "validation"    : [               
+            {
+                "name"  : "isCorrectPin",
+                "type"  : "custom"
+            }
+        ],
+        "errors"        : [ "wrong-system-pin-error" ],
+        "next"          : "first-login-new-pin"
+    },
+    {
+        "type"          : "input",
+        "name"          : "first-login-new-pin",
+        "save-as"       : "newPin",
+        "validation"    : [
+            {
+                "name"  : "isStrongPin",
+                "type"  : "custom"
+            }
+        ],
+        "error"         : "first-login-new-pin-error",
+        "next"          : "first-login-new-pin-reenter",
+        "previous"      : "first-login-system-pin"
+	}, 
+	{
+        "type"          : "input",
+        "name"          : "first-login-new-pin-reenter",
+        "save-as"       : "newPin",
+		"format-as"     : "pin-hash",
+        "validation"    : [
+            {
+                "name"     : "isEqualToLastEntry",
+				"type"     : "custom",
+				"arguments": "path=newPin"
+            }
+        ],
+        "error"         : "first-login-new-pin-reenter-error",
+        "next"          : "first-login-confirm",
+        "previous"      : "first-login-new-pin"
+    },
+    {
+        "type"          : "select",
+        "name"          : "first-login-confirm",
+        "options"       : "confirm-options",
+        "error"         : "first-login-confirm-error",
+        "authenticate"  : false,
+        "action"        : "transact",
+        "external-fetch": { 
+            "route"     : "pin-change",
+            "success"   : "pin-change-success",
+            "error"     : "pin-change-error"              
+        },
+        "on-cancel"     : "logout",
+        "previous"      : "first-login-new-pin-reenter"
+    }
+]

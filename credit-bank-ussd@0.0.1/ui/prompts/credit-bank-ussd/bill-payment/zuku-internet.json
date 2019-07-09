@@ -1,0 +1,81 @@
+[
+	{
+        "type"           : "select",
+        "name"           : "zuku-internet-debit-account",
+        "save-as"        : "billPaymentDebitAccount",
+		"options"        : "mwallet-account+savings-accounts",		
+		"options-error"  : "zuku-internet-debit-account-options-error",
+        "error"          : "zuku-internet-debit-account-error",
+		"previous"       : "bill-payment-page",
+		"next"           : "zuku-internet-credit-account"
+    },
+    {
+        "type"           : "input",
+        "name"           : "zuku-internet-credit-account",
+        "save-as"        : "billPaymentCreditAccount",
+        "validation"     : [
+            {
+                "name"   : "isNumber",
+                "type"   : "joi"
+            }
+        ],
+        "format-as"      : "",
+        "error"          : "zuku-internet-credit-account-error",
+        "previous"       : "bill-payment-page",
+        "next"           : "zuku-internet-amount"
+	},
+	
+    {
+        "type"           : "input",
+        "name"           : "zuku-internet-amount",
+        "save-as"        : "billPaymentAmount",
+        "validation"     : [
+            {
+                "name"   : "isAmount",
+				"type"   : "joi",
+				"arguments":"min=200"
+            }
+        ],
+        "format-as"      : "",
+        "error"          : "zuku-internet-amount-error",
+        "previous"       : "zuku-internet-credit-account",
+        "next"           : "zuku-internet-confirm"
+    },    
+    {
+        "type"           : "select",
+        "name"           : "zuku-internet-confirm",
+		"options"        : "confirm-options",
+		"charges"         : true,
+        "error"          : "zuku-internet-confirm-error",
+        "action"         : "transact",
+        "external-fetch" : {
+            "route"      : "zuku-internet-bill-payment",
+            "success"    : "api-success",
+            "error"      : "api-error"
+        },
+        "on-cancel"      : "client-page",
+        "previous"       : "zuku-internet-amount"
+    },
+	
+
+
+	{
+		"type"      : "select",
+		"name"      : "zuku-internet-debit-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "zuku-internet-debit-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "zuku-internet-credit-account"
+	},
+	{
+		"type"      : "select",
+		"name"      : "zuku-internet-presentment-error",
+		"options"   : "yes-no-options",
+		"error"     : "zuku-internet-presentment-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout"
+	}
+]

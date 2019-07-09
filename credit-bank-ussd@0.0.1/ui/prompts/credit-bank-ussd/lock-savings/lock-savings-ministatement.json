@@ -1,0 +1,20 @@
+{
+	"type"             : "select",
+	"name"             : "lock-savings-ministatement",
+	"options"          : "confirm-options",
+	"charges"          : true,
+	"show-if"           : {
+		"param"       : "lockSavingsAccount",
+		"validates-to": "isLockSavingsAccount",
+		"on-error"    : "lock-savings-account-error"
+	},
+	"previous"         : "lock-savings-page",
+	"action"           : "transact",
+	"external-fetch"   : {
+		"route"        : "lock-savings-ministatement",
+		"success"      : "api-success",
+		"error"        : "api-error"
+	},
+	"on-cancel"        : "client-page",
+	"error"            : "lock-savings-ministatement-error"
+}

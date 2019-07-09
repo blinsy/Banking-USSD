@@ -1,0 +1,26 @@
+{
+	"type"         : "select",
+	"name"         : "loan-enquiries-page",
+	"options"      : [
+		{
+		"name"        : "loan-balance",
+		"label"       : "loan-balance-label",
+		"enabled"     : true,
+		"authenticate": false
+		},
+		{
+		"name"        : "loan-statement",
+		"label"       : "loan-statement-label",
+		"enabled"     : true,
+		"authenticate": false
+		},
+		{
+		"name"        : "loan-limit",
+		"label"       : "loan-limit-label",
+		"enabled"     : true,
+		"authenticate": false
+		}
+	],
+	"error"        : "loan-enquiries-page-error",
+	"previous"     : "loans-page"
+}

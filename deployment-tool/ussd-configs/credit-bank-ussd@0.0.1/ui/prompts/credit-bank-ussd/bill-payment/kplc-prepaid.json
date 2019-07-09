@@ -1,0 +1,71 @@
+[
+    {
+        "type"           : "input",
+        "name"           : "kplc-prepaid-credit-account",
+        "save-as"        : "billPaymentCreditAccount",
+        "validation"     : [
+            {
+                "name"   : "isNumber",
+                "type"   : "joi"
+            }
+        ],
+        "format-as"      : "",
+        "error"          : "kplc-prepaid-credit-account-error",
+        "previous"       : "bill-payment-page",
+        "next"           : "kplc-prepaid-debit-account"
+	},
+	{
+        "type"           : "select",
+        "name"           : "kplc-prepaid-debit-account",
+        "save-as"        : "billPaymentDebitAccount",
+		"options"        : "mwallet-account+savings-accounts",		
+		"options-error"  : "kplc-prepaid-debit-account-options-error",
+        "error"          : "kplc-prepaid-debit-account-error",
+		"previous"       : "kplc-prepaid-credit-account",
+		"next"           : "kplc-prepaid-amount"
+    },
+    {
+        "type"           : "input",
+        "name"           : "kplc-prepaid-amount",
+        "save-as"        : "billPaymentAmount",
+        "validation"     : [
+            {
+                "name"   : "isAmount",
+				"type"   : "joi",
+				"arguments":"min=200"
+            }
+        ],
+        "format-as"      : "",
+        "error"          : "kplc-prepaid-amount-error",
+        "previous"       : "kplc-prepaid-debit-account",
+        "next"           : "kplc-prepaid-confirm"
+    },    
+    {
+        "type"           : "select",
+        "name"           : "kplc-prepaid-confirm",
+		"options"        : "confirm-options",
+		"charges"         : true,
+        "error"          : "kplc-prepaid-confirm-error",
+        "action"         : "transact",
+        "external-fetch" : {
+            "route"      : "kplc-pre-paid-bill-payment",
+            "success"    : "api-success",
+            "error"      : "api-error"
+        },
+        "on-cancel"      : "client-page",
+        "previous"       : "kplc-prepaid-amount"
+    },
+	
+
+
+	{
+		"type"      : "select",
+		"name"      : "kplc-prepaid-debit-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "kplc-prepaid-debit-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "kplc-prepaid-credit-account"
+	}
+]

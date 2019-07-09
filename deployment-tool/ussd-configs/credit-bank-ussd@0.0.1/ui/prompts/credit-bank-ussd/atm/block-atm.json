@@ -1,0 +1,48 @@
+[
+    {
+        "type"            : "select",
+        "name"            : "block-atm-account",
+        "save-as"         : "atm",
+        "options"         : [
+            {
+                "label": "ATM-1234567890",
+                "value" : "1234567890"
+            },
+            {
+                "label": "ATM-0987654321",
+                "value" : "0987654321"
+            }
+        ],	
+		"options-error"   : "block-atm-account-options-error",
+        "error"           : "block-atm-account-error",
+        "previous"        : "atm-cards-page",
+        "next"            : "block-atm-confirm"
+    },
+    {
+        "type"            : "select",
+        "name"            : "block-atm-confirm",
+		"options"         : "confirm-options",
+		"charges"         : true,
+        "error"           : "block-atm-confirm-error",
+        "action"          : "transact",
+        "external-fetch"  : {
+            "route"       : "block-atm",
+            "success"     : "api-success",
+            "error"       : "api-error"
+        },
+        "on-cancel"       : "client-page",
+        "previous"        : "block-atm-account"
+	},
+	
+
+	{
+		"type"      : "select",
+		"name"      : "block-atm-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "block-atm-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "block-atm-account"
+	}
+]

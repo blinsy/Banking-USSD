@@ -1,0 +1,90 @@
+{	
+    "api-name"                 : "credit-bank-ussd-api",
+    "api-environment"          : "development",
+    "app-name"                 : "credit-bank-ussd",
+	"api-user-profile-route"   : "profile",
+	"do-not-load-profile"      : false,
+	"authenticate"             : true,
+	"authenticate-transactions": true,
+	"internal-authentication"  : true,  
+	"language"                 : "english",
+    "blocked-account-check"    : "is-blocked",
+    "first-login-check"        : "first-login",
+    "page-switch-check"        : {
+        "name"                     : "account-type",
+        "options"                  : {
+            "client"               : {
+                "page"             : "client-page",
+                "enabled"          : true
+            }
+        },
+        "enabled"                  : true
+    },
+    "pin-trials-max"           : 3,
+    "register"                 : true,
+    "registration-check"       : "is-registered",
+    "require-access-token"     : true,
+    "access-token-param"       : "access_token",
+	"ussd-response-format"     : "safaricom",
+	"meta-data"                : {
+		"app-contact-name" 	             : "Credit Bank Support",
+		"app-contact-number"             : "+254 709 072 000",
+		"app-description"                : "CB Konnect USSD",		
+		"app-email"                      : "customerservice@creditbank.co.ke",
+		"app-name"                       : "credit-bank-ussd@0.0.1",
+		"app-client"                     : "Credit Bank",		
+		"app-shortcode"                  : "*605*51#",	
+		"app-terms-url"                  : "https://creditbank.co.ke/terms-and-conditions/",
+		"app-whatsapp"                   : "+254 780 313 102",
+		"app-twitter"                    : "#CreditBankPlc",
+		"app-facebook"                   : "#CreditBankPlc",
+		"app-location"                   : "Mecantile Hse, Koinange Street",
+		"app-currency-code"              : "KES"
+	},
+	"global-constants"         : {
+		"funds-transfer-minimum-KES"         : 200,
+		"funds-transfer-minimum-GBP"         : 1,
+		"funds-transfer-minimum-EUR"         : 1,
+		"funds-transfer-minimum-USD"         : 1,
+		"pesalink-limit" 				 : 999999,
+		"lock-savings-minimum-amount"    : 5000,
+		"school-fees-minimum-amount"     : 100,
+		"billpayment-amount-minimum"     : 200,
+		"minimum-billpayment-amount"     : 200,
+		"buy-airtime-minimum"            : 10,
+		"loan-limit" : 500,
+		"loan-balance": 20,
+		"lock-savings-min-deposit-amount": 0,
+		"language-options"               : [
+			{
+				"label"                        : "english-label",
+				"value"                        : "english"
+			},
+			{
+				"label"                        : "swahili-label",
+				"value"                        : "swahili"
+			}
+		],
+		"yes-no-options"                 : [
+			{
+				"label"                        : "yes-label",
+				"value"                        : "1"
+			},
+			{
+				"label"                        : "no-label",
+				"value"                        : "2"
+			}
+		],
+		"confirm-options"                : [
+			{
+				"label"                        : "confirm-label",
+				"value"                        : "1"
+			},
+			{
+				"label"                        : "cancel-label",
+				"value"                        : "2"
+			}
+		],
+		"pesalink-lookup-result"         : []
+	}
+}

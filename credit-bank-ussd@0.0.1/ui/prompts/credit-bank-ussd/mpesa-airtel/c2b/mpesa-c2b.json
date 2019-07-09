@@ -1,0 +1,42 @@
+[
+	{
+        "type"          : "select",
+        "name"          : "deposit-mpesa-debit-account",
+        "save-as"       : "depositDebitAccount",
+        "options"       : "mwallet-account+savings-accounts",
+        "error"         : "deposit-mpesa-debit-account-error",
+        "previous"      : "mpesa-airtel-page",
+        "next"          : "deposit-mpesa-amount"
+    },
+	{
+        "type"          : "input",
+        "name"          : "deposit-mpesa-amount",
+        "save-as"       : "depositAmount",
+        "validation"    : [
+            {
+                "name"     : "isAmount",
+                "arguments": "min=1",
+                "type"     : "joi"
+            }
+        ],
+        "error"         : "deposit-mpesa-amount-error",
+        "previous"      : "deposit-mpesa-debit-account",
+        "next"          : "deposit-mpesa-confirm"
+    },
+    {
+        "type"            : "select",
+        "name"            : "deposit-mpesa-confirm",
+		"options"         : "confirm-options",
+		"charges"         : true,
+        "previous"        : "deposit-mpesa-amount",
+        "action"          : "transact",
+        "external-fetch"  : {
+            "api"         : "mock",
+            "route"       : "mpesa-c2b",
+            "success"     : "mpesa-c2b-success",
+            "error"       : "api-error"
+        },
+        "on-cancel"       : "client-page",
+        "error"           : "deposit-mpesa-confirm-error"
+	}
+]

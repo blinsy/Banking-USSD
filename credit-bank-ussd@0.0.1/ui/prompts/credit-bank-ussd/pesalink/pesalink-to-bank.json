@@ -1,0 +1,165 @@
+[
+	{
+        "type"         : "select",
+        "name"         : "pesalink-to-bank-debit-account",
+        "save-as"      : "pesalinkDebitAccount",
+		"options"      : "savings-accounts",		
+		"options-error": "pesalink-to-bank-debit-account-options-error",
+		"error"        : "pesalink-to-bank-debit-account-error",
+		"previous"     : "pesalink-page",
+		"next"         : "pesalink-to-bank-bank-account"
+	},	
+    {
+        "type"         : "select",
+		"name"         : "pesalink-to-bank-bank-account",
+        "options"      : "pesalink-bank-letters",
+        "error"        : "pesalink-to-bank-bank-account-error",
+		"previous"     : "pesalink-to-bank-debit-account"
+	},
+
+	{
+        "type"         : "select",
+        "name"         : "pesalink-a-b-bank-account",
+		"save-as"      : "pesalinkBankCode",
+		"options"      : "pesalink-a-b-bank-accounts",		
+        "error"        : "pesalink-a-b-bank-account-error",
+		"previous"     : "pesalink-to-bank-bank-account",
+		"next"         : "pesalink-to-bank-credit-account"
+	},
+	{
+        "type"         : "select",
+        "name"         : "pesalink-c-bank-account",
+        "save-as"      : "pesalinkBankCode",
+		"options"      : "pesalink-c-bank-accounts",		
+        "error"        : "pesalink-c-bank-account-error",
+		"previous"     : "pesalink-to-bank-bank-account",
+		"next"         : "pesalink-to-bank-credit-account"
+	},
+	{
+        "type"         : "select",
+        "name"         : "pesalink-d-e-bank-account",
+        "save-as"      : "pesalinkBankCode",
+		"options"      : "pesalink-d-e-bank-accounts",		
+        "error"        : "pesalink-d-e-bank-account-error",
+		"previous"     : "pesalink-to-bank-bank-account",
+		"next"         : "pesalink-to-bank-credit-account"
+	},
+	{
+        "type"         : "select",
+        "name"         : "pesalink-f-bank-account",
+        "save-as"      : "pesalinkBankCode",
+		"options"      : "pesalink-f-bank-accounts",		
+        "error"        : "pesalink-f-bank-account-error",
+		"previous"     : "pesalink-to-bank-bank-account",
+		"next"         : "pesalink-to-bank-credit-account"
+	},
+	{
+        "type"         : "select",
+        "name"         : "pesalink-g-h-bank-account",
+        "save-as"      : "pesalinkBankCode",
+		"options"      : "pesalink-g-h-bank-accounts",		
+        "error"        : "pesalink-g-h-bank-account-error",
+		"previous"     : "pesalink-to-bank-bank-account",
+		"next"         : "pesalink-to-bank-credit-account"
+	},
+	{
+        "type"         : "select",
+        "name"         : "pesalink-i-m-bank-account",
+        "save-as"      : "pesalinkBankCode",
+		"options"      : "pesalink-i-m-bank-accounts",		
+        "error"        : "pesalink-i-m-bank-account-error",
+		"previous"     : "pesalink-to-bank-bank-account",
+		"next"         : "pesalink-to-bank-credit-account"
+	},
+	{
+        "type"         : "select",
+        "name"         : "pesalink-n-s-bank-account",
+        "save-as"      : "pesalinkBankCode",
+		"options"      : "pesalink-n-s-bank-accounts",		
+        "error"        : "pesalink-n-s-bank-account-error",
+		"previous"     : "pesalink-to-bank-bank-account",
+		"next"         : "pesalink-to-bank-credit-account"
+	},
+	{
+        "type"         : "select",
+        "name"         : "pesalink-t-z-bank-account",
+        "save-as"      : "pesalinkBankCode",
+		"options"      : "pesalink-t-z-bank-accounts",		
+        "error"        : "pesalink-t-z-bank-account-error",
+		"previous"     : "pesalink-to-bank-bank-account",
+		"next"         : "pesalink-to-bank-credit-account"
+	},
+
+    {
+        "type"           : "input",
+        "name"           : "pesalink-to-bank-credit-account",
+        "save-as"        : "pesalinkCreditAccount",
+        "validation"     : [
+            {
+                "name"   : "isNumber",
+                "type"   : "joi"
+            }
+        ],
+        "error"          :"pesalink-to-bank-credit-account-error",
+        "previous"       : "pesalink-to-bank-bank-account",
+		"next"           : "pesalink-to-bank-amount"
+	},
+
+	{
+        "type"           : "input",
+        "name"           : "pesalink-to-bank-amount",
+        "save-as"        : "pesalinkAmount",
+        "validation"     : [
+            {
+                "name"   : "isAmount",
+				"type"   : "joi",
+				"arguments":"min=1"
+            }
+        ],
+        "error"          : "pesalink-to-bank-amount-error",
+        "previous"       : "pesalink-to-bank-credit-account",
+		"next"           : "pesalink-to-bank-reason"
+	},
+
+	{
+        "type"           : "input",
+        "name"           : "pesalink-to-bank-reason",
+		"save-as"        : "pesalinkReason",
+		"format-as"        : "createSpaces",
+        "validation"     : [
+            {
+                "name"   : "isStatement",
+                "type"   : "custom"
+            }
+        ],
+        "error"          : "pesalink-to-bank-reason-error",
+        "previous"       : "pesalink-to-bank-amount",
+		"next"           : "pesalink-to-bank-confirm"
+	},
+
+    {
+        "type"           : "select",
+        "name"           : "pesalink-to-bank-confirm",
+		"options"        : "confirm-options",
+		"charges"         : true,
+        "error"          : "pesalink-to-bank-confirm-error",
+        "action"         : "transact",
+        "external-fetch" : {
+            "route"      : "pesalink-to-bank",
+            "success"    : "api-success",
+            "error"      : "api-error"
+        },
+        "on-cancel"      : "client-page",
+        "previous"       : "pesalink-to-bank-reason"
+    },
+	{
+		"type"      : "select",
+		"name"      : "pesalink-to-bank-debit-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "pesalink-to-bank-debit-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "pesalink-page"
+	}
+]

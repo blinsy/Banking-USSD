@@ -1,0 +1,56 @@
+[
+    
+	{
+        "type"             : "select",
+        "name"             : "float-debit-account",
+        "save-as"          : "debitAccount",
+        "options"          : "mwallet-account+savings-accounts",
+        "error"            : "float-debit-account-error",
+        "previous"         : "withdrawal-page",
+        "next"             : "float-paybill"
+    },
+	{
+        "type"             : "input",
+        "name"             : "float-paybill",
+		"save-as"          : "floatAccount",
+        "validation"       : [
+            {
+                "name"     : "isNumber",
+                "type"     : "joi"
+            }
+        ],
+        "error"           : "float-paybill-error",
+        "previous"         : "float-debit-account",
+        "next"             : "float-amount"
+    },
+	{
+        "type"             : "input",
+        "name"             : "float-amount",
+        "save-as"          : "amount",
+        "validation"       : [
+            {
+                "name"     : "isAmount",
+                "arguments": "min= 10",
+                "type"     : "joi"
+            }
+        ],
+        "error"            : "float-amount-error",
+        "previous"         : "float-paybill",
+        "next"             : "float-confirm"
+    },
+    {
+        "type"             : "select",
+        "name"             : "float-confirm",
+		"options"          : "confirm-options",
+		"charges"          : true,
+        "previous"         : "float-amount",
+        "action"           : "transact",
+        "external-fetch"   : {
+            "route"        : "buy-mpesa-float",
+            "success"      : "api-success",
+            "error"        : "api-error"
+        },
+        "on-cancel"        : "client-page",
+        "error"            : "float-confirm-error"
+    }
+]

@@ -1,0 +1,129 @@
+[
+    {
+        "type"          : "input",
+        "name"          : "registration-surname",        
+        "save-as"       : "surname",
+        "validation"    : [
+            {
+                "name"  : "isText",
+                "type"  : "custom"
+            }
+        ],
+        "format-as"     : "capitalize",
+        "error"         : "registration-surname-error",
+        "previous"      : "registration-page",
+        "next"          : "registration-firstname"
+    },
+    {
+        "type"          : "input",
+        "name"          : "registration-firstname",
+        "save-as"       : "firstname",
+        "format-as"     : "capitalize",
+        "validation"    : [
+            {
+                "name"  : "isText",
+                "type"  : "custom"
+            }
+        ],
+        "error"         : "registration-firstname-error",
+        "previous"      : "registration-surname",
+        "next"          : "registration-othername"
+    },
+    {
+        "type"          : "input",
+        "name"          : "registration-othername",
+        "save-as"       : "othername",
+        "validation"    : [
+            {
+                "name"  : "isText",
+                "type"  : "custom"
+            }
+        ],
+        "format-as"     : "capitalize",
+        "error"         : "registration-othername-error",
+        "previous"      : "registration-firstname",
+        "next"          : "registration-id"
+    },
+    {
+        "type"          : "input",
+        "name"          : "registration-id",
+        "save-as"       : "id",
+        "validation"    : [
+            {
+                "name"  : "isNumber",
+                "type"  : "joi"
+            }
+        ],
+        "error"         : "registration-id-error",
+        "previous"      : "registration-othername",
+        "next"          : "registration-has-core-account"
+	},
+	{
+        "type"          : "select",
+        "name"          : "registration-has-core-account",
+		"save-as"       : "hasCoreAccount",
+		"options"       : [
+			{
+				"label" : "Yes",
+				"value" : 1,
+				"jump-to": "registration-core-account"
+			},
+			{
+				"label" : "No",
+				"value" : 0,
+				"jump-to": "registration-email"
+			}
+		],
+        "error"         : "registration-has-core-account-error",
+        "previous"      : "registration-id"
+	},
+	{
+        "type"          : "input",
+        "name"          : "registration-core-account",
+        "save-as"       : "coreAccount",
+        "validation"    : [
+            {
+                "name"  : "isNumber",
+                "type"  : "joi"
+			},
+			{
+				"name"      : "matchesLength",
+				"type"      : "joi",
+				"arguments" : "length=13"
+			}
+        ],
+        "errors"         : [ "registration-core-account-error","registration-core-account-error"],
+        "previous"      : "registration-has-core-account",
+        "next"          : "registration-email"
+	},
+    {
+        "type"          : "input",
+        "name"          : "registration-email",
+        "save-as"       : "email",
+        "validation"    : [
+            {
+                "name"  : "isEmail",
+                "type"  : "custom"
+            }
+        ],
+        "error"         : "registration-email-error",
+        "previous"      : "registration-has-core-account",
+        "next"          : "registration-confirm"
+    },
+    {
+        "type"          : "select",
+        "name"          : "registration-confirm",
+        "options"       : "confirm-options",
+        "error"         : "registration-confirm-error",
+        "authenticate"  : false,
+        "action"        : "transact",
+        "external-fetch": { 
+            "api"       : "ukulima-api",
+            "route"     : "registration",
+            "success"   : "registration-success",
+            "error"     : "registration-error"              
+        },
+        "on-cancel"     : "registration-cancel",
+        "previous"      : "registration-email"    
+    }
+] 

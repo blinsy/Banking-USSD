@@ -1,0 +1,26 @@
+{
+    "type": "select",
+    "name": "account-enquiries-page",
+    "options": [
+        {
+            "name": "balance",
+            "label": "balance-label",
+            "enabled": true,
+            "authenticate": false
+        },
+        {
+            "name": "ministatement",
+            "label": "ministatement-label",
+            "enabled": true,
+            "authenticate": false
+        },
+        {
+            "name": "fullstatement",
+            "label": "fullstatement-label",
+            "enabled": true,
+            "authenticate": false
+        }
+    ],
+    "error": "account-enquiries-page-error",
+    "previous": "client-page"
+}

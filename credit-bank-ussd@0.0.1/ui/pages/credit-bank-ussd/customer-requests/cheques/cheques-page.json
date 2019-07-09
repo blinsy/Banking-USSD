@@ -1,0 +1,20 @@
+{
+    "type": "select",
+    "name": "cheques-page",
+    "options": [
+        {
+            "name": "request-cheque-book",
+            "label": "request-cheque-book-label",
+            "enabled": true,
+            "authenticate": false
+        },
+        {
+            "name": "stop-cheque",
+            "label": "stop-cheque-label",
+            "enabled": true,
+            "authenticate": false
+        }
+    ],
+    "error": "cheques-page-error",
+    "previous": "customer-requests-page"
+}

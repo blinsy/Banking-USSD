@@ -1,0 +1,26 @@
+{
+    "type": "select",
+    "name": "loans-page",
+    "options": [
+        {
+            "name": "loan-enquiries-page",
+            "label": "loan-enquiries-label",
+            "enabled": true,
+            "authenticate": false
+        },
+        {
+            "name": "loan-application",
+            "label": "loan-application-label",
+            "enabled": true,
+            "authenticate": false
+        },
+        {
+            "name": "loan-repayment",
+            "label": "loan-repayment-label",
+            "enabled": true,
+            "authenticate": false
+        }
+    ],
+    "error": "loans-page-error",
+    "previous": "client-page"
+}

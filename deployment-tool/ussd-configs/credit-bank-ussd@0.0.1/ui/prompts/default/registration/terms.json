@@ -1,0 +1,9 @@
+{
+    "type"     : "select",
+    "name"     : "terms",
+    "options"  : "yes-no-options",
+    "error"    : "terms-error",
+    "action"   : "navigate",
+    "on-accept": "registration-page",
+    "on-cancel": "registration-cancel"    
+}

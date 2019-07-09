@@ -1,0 +1,60 @@
+[
+	{
+        "type"          : "select",
+		"name"          : "loan-application-type",
+		"save-as"       : "type",
+		"options"       : [
+            {
+                "label":"CB Micro Loan",
+                "value": "CB Micro Loan"
+            }
+        ],		
+		"options-error" : "loan-application-type-options-error",
+        "error"         : "loan-application-type-error",
+		"previous"      : "loans-page",
+		"next"          : "loan-application-amount"
+    },
+    {
+        "type"          : "input",
+        "name"          : "loan-application-amount",
+        "save-as"       : "amount",
+        "validation"    : [
+            {
+                "name"  : "isAmount",
+				"type"  : "joi",
+				"arguments":"min=200"
+            }
+        ],
+        "error"         : "loan-application-amount-error",
+        "previous"      : "loan-application-type",
+        "next"          : "loan-application-confirm"
+    },
+    
+    {
+        "type"          : "select",
+        "name"          : "loan-application-confirm",
+        "options"       : "confirm-options",
+        "error"         : "loan-application-confirm-error",
+        "action"        : "transact",
+        "external-fetch": {
+            "route"     : "loan-application",
+            "success"   : "api-success",
+            "error"     : "api-error"
+        },
+        "on-cancel"     : "client-page",
+        "previous"      : "loan-application-amount"
+	},
+	
+
+
+	{
+		"type"      : "select",
+		"name"      : "loan-application-type-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "loan-application-type-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "loans-page"
+	}
+]

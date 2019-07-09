@@ -1,0 +1,89 @@
+[
+	{
+        "type"           : "select",
+        "name"           : "landrates-debit-account",
+        "save-as"        : "billPaymentDebitAccount",
+		"options"        : "mwallet-account+savings-accounts",		
+		"options-error"  : "landrates-debit-account-options-error",
+        "error"          : "landrates-debit-account-error",
+		"previous"       : "bill-payment-page",
+		"next"           : "landrates-credit-account"
+    },
+    {
+        "type"           : "input",
+        "name"           : "landrates-credit-account",
+        "save-as"        : "billPaymentCreditAccount",
+        "validation"     : [
+            {
+                "name"   : "isKenyanPlotNumber",
+                "type"   : "custom"
+            }
+        ],
+        "error"          : "landrates-credit-account-error",
+        "previous"       : "landrates-debit-account",
+		"next"           : "landrates-confirm",
+		"action"         : "update-parameters",
+		"external-fetch" : { 
+			"route"           : "landrates-bill-presentment",
+			"success"         : "landrates-confirm",	
+			"error"           : "landrates-presentment-error",
+			"cache"           : true,
+			"cache-path"      : "global-request-details",
+			"cache-parameters": [
+				{
+					"path" :"field4",
+					"save-as" :"billPaymentAmount"	
+				}
+			],
+			"parameter-checks" : {
+				"billPaymentAmount" :{
+					"is-less-than": "0",
+					"redirect-to" : "landrates-presentment-amount-error"
+				}
+			}         
+		}
+	},	   
+    {
+        "type"           : "select",
+        "name"           : "landrates-confirm",
+		"options"        : "confirm-options",
+		"charges"         : true,
+        "error"          : "landrates-confirm-error",
+        "action"         : "transact",
+        "external-fetch" : {
+            "route"      : "landrates-bill-payment",
+            "success"    : "api-success",
+            "error"      : "api-error"
+        },
+        "on-cancel"      : "client-page",
+        "previous"       : "landrates-credit-account"
+    },
+	{
+		"type"      : "select",
+		"name"      : "landrates-debit-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "landrates-debit-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "landrates-credit-account"
+	},
+	{
+		"type"      : "select",
+		"name"      : "landrates-presentment-error",
+		"options"   : "yes-no-options",
+		"error"     : "landrates-presentment-error-error",
+		"action"    : "navigate",
+		"on-accept" : "bill-payment-page",
+		"on-cancel" : "logout"
+	},
+	{
+		"type"      : "select",
+		"name"      : "landrates-presentment-amount-error",
+		"options"   : "yes-no-options",
+		"error"     : "landrates-presentment-amount-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout"
+	}
+]

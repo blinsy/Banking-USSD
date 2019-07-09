@@ -1,0 +1,63 @@
+[
+    {
+        "type"            : "select",
+        "name"            : "atm-daily-amount-account",
+        "save-as"         : "atm",
+        "options"         : [
+            {
+                "label": "ATM-1234567890",
+                "value" : "1234567890"
+            },
+            {
+                "label": "ATM-0987654321",
+                "value" : "0987654321"
+            }
+        ],	
+		"options-error"   : "atm-daily-amount-account-options-error",
+        "error"           : "atm-daily-amount-account-error",
+        "previous"        : "set-atm-limits-page",
+        "next"            : "atm-daily-amount-amount"
+    },
+    {
+        "type"            : "input",
+        "name"            : "atm-daily-amount-amount",
+        "save-as"         : "amount",
+        "validation"         : [
+            {
+                "name": "isAmount",
+                "type" : "joi",
+                "arguments" : "min=10"
+            }
+        ],	
+        "error"           : "atm-daily-amount-amount-error",
+        "previous"        : "atm-daily-amount-account",
+        "next"            : "atm-daily-amount-confirm"
+    },
+    {
+        "type"            : "select",
+        "name"            : "atm-daily-amount-confirm",
+		"options"         : "confirm-options",
+		"charges"         : true,
+        "error"           : "atm-daily-amount-confirm-error",
+        "action"          : "transact",
+        "external-fetch"  : {
+            "route"       : "set-atm-daily-amount",
+            "success"     : "api-success",
+            "error"       : "api-error"
+        },
+        "on-cancel"       : "client-page",
+        "previous"        : "atm-daily-amount-amount"
+	},
+	
+
+	{
+		"type"      : "select",
+		"name"      : "atm-daily-amount-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "atm-daily-amount-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "set-atm-limits-page"
+	}
+]

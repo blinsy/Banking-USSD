@@ -1,0 +1,48 @@
+[
+	{
+        "type"            : "select",
+        "name"            : "ministatement-account",
+        "save-as"         : "ministatementDebitAccount",
+		"options"         : "mwallet-account+savings-accounts",
+		"options-error"   : "ministatement-account-savings-options-error",
+        "error"           : "ministatement-account-savings-error",
+        "previous"        : "account-enquiries-page",
+        "next"            : "ministatement-confirm"
+	},
+    {
+        "type"            : "select",
+        "name"            : "ministatement-confirm",
+		"options"         : "confirm-options",
+		"charges"         : true,
+        "previous"        : "ministatement-account",
+        "action"          : "transact",
+        "external-fetch"  : {
+            "route"       : "ministatement",
+            "success"     : "ministatement-success",
+			"error"       : "api-error",
+			"cache"            : true,
+			"cache-path"       : "global-request-details",
+			"cache-parameters" : [
+				{
+					"path"          : "field127",
+					"save-as"       : "ministatement",
+					"format-as"     : "core-mini-cbplc"
+				}
+			]
+        },
+        "on-cancel"       : "client-page",
+        "error"           : "ministatement-confirm-error"
+	},
+	
+
+	{
+		"type"      : "select",
+		"name"      : "ministatement-account-savings-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "ministatement-account-savings-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "ministatement-account"
+	}
+]

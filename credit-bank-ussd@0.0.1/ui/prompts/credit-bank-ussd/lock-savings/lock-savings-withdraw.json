@@ -1,0 +1,56 @@
+[
+	{
+		"type"             : "select",
+		"name"             : "lock-savings-withdraw-debit-account",
+		"save-as"          : "lockSavingsWithdrawCreditAccount",
+		"options"          : "mwallet-account+savings-accounts",		
+		"options-error"    : "lock-savings-withdraw-debit-account-options-error",
+		"previous"         : "lock-savings-page",
+		"next"             : "lock-savings-withdraw-amount",
+		"error"            : "lock-savings-withdraw-debit-account-error"
+	},
+	{
+		"type"             : "input",
+		"name"             : "lock-savings-withdraw-amount",
+		"save-as"          : "lockSavingsWithdrawAmount",
+		"validation"       : [
+			{
+				"name"     : "isAmount",
+				"type"     : "joi",
+				"arguments": "min=0"
+			}
+		],
+		"previous"         : "lock-savings-withdraw-debit-account",
+		"next"             : "lock-savings-withdraw-confirm",
+		"error"            : "lock-savings-withdraw-amount-error"
+	},
+	{
+		"type"             : "select",
+		"name"             : "lock-savings-withdraw-confirm",
+		"options"          : "confirm-options",
+		"charges"         : true,
+		"previous"         : "lock-savings-withdraw-amount",
+		"action"           : "transact",
+		"external-fetch"   : {
+            "route"        : "lock-savings-withdraw",
+            "success"      : "api-success",
+            "error"        : "api-error"
+		},
+		"on-cancel"        : "client-page",
+		"error"            : "lock-savings-withdraw-confirm-error"
+	},
+
+
+
+	{
+		"type"      : "select",
+		"name"      : "lock-savings-withdraw-debit-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "lock-savings-withdraw-debit-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "dstv-credit-account"
+	}
+]
+

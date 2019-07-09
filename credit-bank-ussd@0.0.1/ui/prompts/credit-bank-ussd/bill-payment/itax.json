@@ -1,0 +1,106 @@
+[
+	{
+        "type"           : "select",
+        "name"           : "itax-debit-account",
+        "save-as"        : "debitAccount",
+		"options"        : "mwallet-account+savings-accounts",		
+		"options-error"  : "itax-debit-account-options-error",
+        "error"          : "itax-debit-account-error",
+		"previous"       : "bill-payment-page",
+		"next"           : "itax-eslip"
+    },
+    {
+        "type"           : "input",
+        "name"           : "itax-eslip",
+        "save-as"        : "eslip",
+        "validation"     : [
+            {
+                "name"   : "isNumber",
+                "type"   : "joi"
+            }
+        ],
+        "error"          : "itax-eslip-error",
+        "previous"       : "itax-debit-account",
+		"next"           : "itax-confirm",
+		"action"         : "update-parameters",
+		"external-fetch" : { 
+			"route"           : "itax-bill-presentment",
+			"success"         : "itax-confirm",	
+			"error"           : "itax-presentment-error",
+			"cache"           : true,
+			"cache-path"      : "global-request-details",
+			"cache-parameters": [
+				{
+					"path" :"field127.TaxpayerFullName",
+					"save-as" :"fullName"	
+				},
+				{
+					"path" :"field127.PaymentAdviceDate",
+					"save-as" :"advicedate"	
+				},
+				{
+					"path" :"field127.TotalAmount",
+					"save-as" :"amount"	
+				},
+				{
+					"path" : "field127.TaxpayerPin",
+					"save-as" : "krapin"
+				},
+				{
+					"path" : "field127.TaxCode",
+					"save-as" : "taxcode"
+				}
+			],
+			"parameter-checks" : {
+				"amount" :{
+					"is-less-than": "0",
+					"redirect-to" : "itax-presentment-amount-error"
+				}
+			}         
+		}
+	},	   
+    {
+        "type"           : "select",
+        "name"           : "itax-confirm",
+		"options"        : "confirm-options",
+		"charges"         : true,
+        "error"          : "itax-confirm-error",
+        "action"         : "transact",
+        "external-fetch" : {
+            "route"      : "itax-bill-payment",
+            "success"    : "api-success",
+            "error"      : "api-error"
+        },
+        "on-cancel"      : "client-page",
+        "previous"       : "itax-eslip"
+    },
+	{
+		"type"      : "select",
+		"name"      : "itax-debit-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "itax-debit-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "bill-payment-page"
+	},
+	{
+		"type"      : "select",
+		"name"      : "itax-presentment-error",
+		"options"   : "yes-no-options",
+		"error"     : "itax-presentment-error-error",
+		"action"    : "navigate",
+		"on-accept" : "bill-payment-page",
+		"on-cancel" : "logout",
+		"previous"  : "itax-debit-account"
+	},
+	{
+		"type"      : "select",
+		"name"      : "itax-presentment-amount-error",
+		"options"   : "yes-no-options",
+		"error"     : "itax-presentment-amount-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout"
+	}
+]

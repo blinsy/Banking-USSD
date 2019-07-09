@@ -1,0 +1,9 @@
+{
+    "type"      : "select",
+    "name"      : "view-accounts",
+    "options"   : "yes-no-options",
+    "error"     : "view-accounts-error",
+    "action"    : "navigate",
+    "on-accept" : "client-page",
+    "on-cancel" : "logout"    
+}

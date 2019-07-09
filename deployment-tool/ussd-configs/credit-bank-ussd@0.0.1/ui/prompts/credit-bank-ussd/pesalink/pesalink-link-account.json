@@ -1,0 +1,36 @@
+[
+	{
+        "type"         : "select",
+        "name"         : "pesalink-link-account",
+        "save-as"      : "pesalinkLinkAccount",
+		"options"      : "savings-accounts",		
+		"options-error": "pesalink-link-account-options-error",
+        "error"        : "pesalink-link-account-error",
+		"previous"     : "pesalink-page",
+		"next"         : "pesalink-link-confirm"
+	},
+    {
+        "type"           : "select",
+        "name"           : "pesalink-link-confirm",
+		"options"        : "confirm-options",
+        "error"          : "pesalink-link-confirm-error",
+        "action"         : "transact",
+        "external-fetch" : {
+            "route"      : "pesalink-register",
+            "success"    : "api-success",
+            "error"      : "api-error"
+        },
+        "on-cancel"      : "client-page",
+        "previous"       : "pesalink-link-account"
+    },
+	{
+		"type"      : "select",
+		"name"      : "pesalink-link-account-options-error",
+		"options"   : "yes-no-options",
+		"error"     : "pesalink-link-account-options-error-error",
+		"action"    : "navigate",
+		"on-accept" : "client-page",
+		"on-cancel" : "logout",
+		"previous"  : "pesalink-page"
+	}
+]

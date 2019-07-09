@@ -1,0 +1,99 @@
+[
+    
+	{
+        "type"             : "select",
+        "name"             : "withdrawal-mpesa-debit-account",
+        "save-as"          : "withdrawalDebitAccount",
+        "options"          : "mwallet-account+savings-accounts",
+		"options-error"          : "withdrawal-mpesa-debit-account-options-error",
+        "error"            : "withdrawal-mpesa-debit-account-error",
+        "previous"         : "withdrawal-page",
+        "next"             : "withdrawal-mpesa-account-type"
+    },
+    {
+        "type"             : "select",
+		"name"                   : "withdrawal-mpesa-account-type",
+		"save-as"                : "withdrawalCreditAccount",
+        "options"          : [
+            {
+				"label"                : "My Number",
+				"value"                : "__walletAccount",
+                "jump-to"  : "withdrawal-mpesa-amount"
+            },
+            {
+                "label"    : "Other Number",
+                "jump-to"  : "withdrawal-mpesa-credit-account"
+            }
+        ],
+        "error"            : "withdrawal-mpesa-account-type-error",
+        "previous"         : "withdrawal-mpesa-debit-account"
+	},
+	{
+        "type"             : "input",
+        "name"             : "withdrawal-mpesa-credit-account",
+		"save-as"                : "withdrawalCreditAccount",
+		"format-as"              : "international-mobile-number",
+        "validation"       : [
+			{
+				"name"                 : "matchesLength",
+				"type"                 : "joi",
+				"arguments"            : "length = 10"
+			},
+            {
+                "name"     : "isNumber",
+                "type"     : "joi"
+            }
+        ],
+        "errors"           : [ "withdrawal-mpesa-credit-account-error", "withdrawal-mpesa-credit-account-error"],
+        "previous"         : "withdrawal-mpesa-debit-account",
+        "next"             : "withdrawal-mpesa-amount"
+	},
+	{
+        "type"             : "input",
+        "name"             : "withdrawal-mpesa-amount",
+        "save-as"          : "withdrawalAmount",
+        "validation"       : [
+            {
+                "name"     : "isAmount",
+                "arguments": "min    = 10",
+                "type"     : "joi"
+            }
+        ],
+        "error"            : "withdrawal-mpesa-amount-error",
+        "previous"         : "withdrawal-mpesa-account-type",
+        "next"             : "withdrawal-mpesa-confirm"
+    },
+    {
+        "type"             : "select",
+        "name"             : "withdrawal-mpesa-confirm",
+		"options"                : "confirm-options",
+		"charges"                : true,
+        "previous"         : "withdrawal-mpesa-amount",
+        "action"           : "transact",
+        "external-fetch"   : {
+            "api"          : "mock",
+            "route"        : "send-to-mpesa",
+            "success"      : "api-success",
+            "error"        : "api-error"
+        },
+        "on-cancel"        : "client-page",
+        "error"            : "withdrawal-mpesa-confirm-error"
+	},
+
+
+
+
+
+
+
+	{
+		"type"                   : "select",
+		"name"                   : "withdrawal-mpesa-debit-account-options-error",
+		"options"                : "yes-no-options",
+		"error"                  : "withdrawal-mpesa-debit-account-options-error-error",
+		"action"                 : "navigate",
+		"on-accept"              : "client-page",
+		"on-cancel"              : "logout",
+		"previous"               : "withdrawal-page"
+	}
+]
