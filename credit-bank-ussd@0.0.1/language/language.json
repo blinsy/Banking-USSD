@@ -965,7 +965,7 @@
             "eft-f-bank-account": "Please select the bank to send to",
             "eft-f-bank-account-error": "Invalid selection! Select the bank to send to",
             "eft-g-h-bank-account": "Please select the bank to send to",
-            "eft-g-h-bank-account-error": "Invalid selection! Select the bank to send to",
+            "eft-g-h-bank-account-error": "Invalid selection! Select the bank to send to", 
             "eft-i-m-bank-account": "Please select the bank to send to",
             "eft-i-m-bank-account-error": "Invalid selection! Select the bank to send to",
             "eft-n-s-bank-account": "Please select the bank to send to",
@@ -1001,7 +1001,7 @@
             "forex-error-error": "Invalid selection! Unable to fetch forex data. Continue?"
         }
     },
-    "insurance": {
+    "insurance": { 
         "english": {
             "insurance-type": "Please select the insurance to purchase",
             "insurance-type-error": "Invalid selection! Select the insurance to purchase",

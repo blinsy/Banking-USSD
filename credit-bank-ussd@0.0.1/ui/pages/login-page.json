@@ -1,19 +1,18 @@
 {
-    "type"                : "select",
-    "name"                : "login-page",
-    "options"             : [
-		{
-            "name"        : "login",
-            "label"       : "login-label",
-            "enabled"     : true,
-            "authenticate": false
-        },
-        {
-            "name"        : "login-pin-change",
-            "label"       : "login-pin-change-label",
-            "enabled"     : true,
-            "authenticate": false
-		}
-    ],
-    "error"               : "login-page-error"
+  "type": "select",
+  "name": "login-page",
+  "options": [{
+      "name": "login",
+      "label": "login-label",
+      "enabled": true,
+      "authenticate": false
+    },
+    {
+      "name": "login-pin-change",
+      "label": "login-pin-change-label",
+      "enabled": true,
+      "authenticate": false
+    }
+  ],
+  "error": "login-page-error"
 }

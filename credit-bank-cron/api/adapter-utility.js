@@ -319,7 +319,7 @@ let transform = (id, value, extra ) => {
 				periodFigure
 			}
 			break;
-	}
+	}  
 	return transformed;
 }
 module.exports = {

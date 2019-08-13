@@ -63,8 +63,7 @@ class Api {
                 code,
                 data: result
             };
-        }
-        catch (e) {
+        }catch (e) {
             return {
                 code,
                 data: result
@@ -222,8 +221,7 @@ class Api {
                     }
                     let replacement = this.requestDefaults(action, argName, arg, utility);
 					payload[key] = replacement;
-					
-					
+				
                 }
                 else {
                     payload[key] = template[key];
@@ -265,7 +263,6 @@ class Api {
                 err: validate.err
             };
 		}
-		
 		
         return payload;
 	}
@@ -401,14 +398,13 @@ class Api {
 					// }
 				}
 				
-
 				if ( requestObj[key].toString().includes ( '__walletAccount' ) )  {
 					requestObj[key] = requestObj[key].toString().replace ( /__walletAccount/g, this.msisdn )
 				}
 				if ( requestObj[key].toString().includes ( '__mwallet' ) )  {
 					requestObj[key] = requestObj[key].toString().replace ( /__mwallet/g, this.mwallet )
 				}
-				
+			
 			}
 		}
 
@@ -428,16 +424,13 @@ class Api {
 				let rex = new RegExp ( `__${item}`, 'g' )
 				jsonStr = jsonStr.replace (rex, '')
 			}
-			
-
-			
+					
             returnObj =  {
 				isValid: true,
 				replaced: JSON.parse ( jsonStr ),
                 warn: failedValidationArray
 			}
-			
-			
+					
 		}
 		
 		return returnObj
@@ -464,7 +457,7 @@ class Api {
             let dot = require('dot-object');
             merged = dot.str(groupTo, request, defaults);
         }
-        else {
+        else { 
             merged = Object.assign({}, defaults, request);
 		}
 
@@ -483,7 +476,7 @@ class Api {
 				dot.remove( current_path, merged );	
 			}
 		}
-		
+		 
 		/**
 		 * "group-fields"      : [
 							{
@@ -504,7 +497,6 @@ class Api {
 		//replace special fields
 		let values = Object.values ( request )
 
-		
 
 		for ( let value of values ) {
 			if ( value.includes ( '%' ) ) {
@@ -520,8 +512,7 @@ class Api {
 			}
 		}
 
-		
-
+	
 		let keys = Object.keys ( replacements ) 
 		let jsonStr = JSON.stringify ( request )
 
@@ -650,7 +641,6 @@ class Api {
 				res ['data']  = response.data
 			}
 			
-
 		}	
 		
         return res;

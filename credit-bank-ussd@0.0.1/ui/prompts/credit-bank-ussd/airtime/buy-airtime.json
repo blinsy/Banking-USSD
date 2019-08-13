@@ -15,7 +15,7 @@
             {
 				"label": "Telkom",
 				"value" : "ORANGE"
-            }
+            }  
         ],
 		"error": "buy-airtime-provider-error",
 		"next" :"buy-airtime-account-type",
