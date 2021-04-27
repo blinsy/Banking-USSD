@@ -19,6 +19,6 @@
     "node-cmd": "^3.0.0",
     "path": "^0.12.7",
     "recursive-readdir": "^2.2.2",
-    "redis": "^2.8.0"
+    "redis": "^3.1.1"
   }
 }
