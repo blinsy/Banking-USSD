@@ -15,7 +15,7 @@
     "figlet": "^1.2.1",
     "find": "^0.3.0",
     "fs-extra": "^7.0.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "node-cmd": "^3.0.0",
     "path": "^0.12.7",
     "recursive-readdir": "^2.2.2",
